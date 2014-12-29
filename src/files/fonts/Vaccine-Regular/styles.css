@@ -1,0 +1,9 @@
+
+@font-face {
+	font-family: 'Vaccine-Regular';
+	src: url('Vaccine-Regular.eot?') format('eot'), 
+	     url('Vaccine-Regular.otf')  format('opentype'),
+	     url('Vaccine-Regular.woff') format('woff'), 
+	     url('Vaccine-Regular.ttf')  format('truetype'),
+	     url('Vaccine-Regular.svg#Vaccine-Regular') format('svg');
+}

@@ -1,0 +1,56 @@
+---
+layout: master
+---
+
+#carousel.carousel.slide.carousel-fade(data-ride='carousel')
+  // Indicators
+  ol.carousel-indicators
+    li.active(data-target='#carousel', data-slide-to='0')
+    li(data-target='#carousel', data-slide-to='1')
+    li(data-target='#carousel', data-slide-to='2')
+  // Wrapper for slides
+  .carousel-inner
+    .item.active
+      img(src='img/st_aussen.jpg', alt='...')
+      .carousel-caption
+        | Wohntraum in lila
+    .item
+      img(src='img/st_wo1_1.jpg', alt='...')
+      .carousel-caption
+        | Seminare, die Ihr Leben positiv verändern
+    .item
+      img(src='img/st_wo1_2.jpg', alt='...')
+      .carousel-caption
+        | Salzige Räume – süße Träume
+  // Controls
+  a.left.carousel-control(href='#carousel', data-slide='prev')
+    span.glyphicon.glyphicon-chevron-left
+  a.right.carousel-control(href='#carousel', data-slide='next')
+    span.glyphicon.glyphicon-chevron-right
+.starter-template
+  // Stack the columns on mobile by making one full-width and the other half-width
+  .row
+    .col-xs-12.col-md-8
+      h1 Das erste Salz-Ferienhaus Deutschlands.
+      p.lead
+        | Unser Zentrum vereint mehrere Einrichtungen unter einem Dach — allen gemein ist
+        | das Credo ›Gesundheit und Revitalisierung‹.
+      p
+        | Die positive Wirkung von Salz war schon Kleopatra bekannt...
+        | Jeder kennt die revitalisierende Wirkung von einigen Tagen am Meer, schätzt den heilsamen Aufenthalt in einer Sole Therme und die Salzheilgrotten haben langsam aber sicher auch in Deutschland Einzug gehalten.
+        | Erstmalig in Deutschland ist jedoch ein Salz-Ferienheim. In unseren Räumen sind...
+      p
+        | я собирала  знания о человеке с позиции Дух, Душа и Тело. Потому что, чтоб добиться результата, надо  быть цельным. Человек – это целая система и нельзя развивать что-то одно  и при этом  терять связь с одной из своих частей.
+    .col-xs-6.col-md-4
+  // Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop
+  .row
+    .col-xs-12.col-md-4
+      img(src='img/eichh.jpg', alt='...')
+      p Für alle, die es natürlich und selbstgemacht mögen.
+    .col-xs-12.col-md-4
+      img(src='img/schmetter.jpg', alt='...')
+      p Es darf gerne außergewöhnlich und interessant sein.
+    .col-xs-12.col-md-4
+      img(src='img/fuchs.jpg', alt='...')
+      p Die sparsame Variante für alle, die gerne in Gesellschaft sind.
+

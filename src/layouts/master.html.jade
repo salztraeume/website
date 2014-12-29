@@ -1,0 +1,122 @@
+doctype
+html(lang='en')
+  head
+      meta(charset='utf-8')
+      meta(http-equiv='X-UA-Compatible', content='IE=edge')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      title Salz(t)äume am See
+      link(rel='stylesheet', href='fonts/PT-Sans-fontfacekit/web fonts/ptsans_italic/stylesheet.css', type='text/css', charset='utf-8')
+      link(rel='stylesheet', href='fonts/PT-Sans-fontfacekit/web fonts/ptsans_bold/stylesheet.css', type='text/css', charset='utf-8')
+      link(rel='stylesheet', href='fonts/PT-Sans-fontfacekit/web fonts/ptsans_regular/stylesheet.css', type='text/css', charset='utf-8')
+      link(rel='stylesheet', href='fonts/PT-Sans-fontfacekit/web fonts/ptsanscaption_regular/stylesheet.css', type='text/css', charset='utf-8')
+      //
+         Bootstrap (this a HTML comment)
+      link(href='bootstrap/bootstrap.css', rel='stylesheet')
+      //
+         HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+      //
+         WARNING: Respond.js doesn't work if you view the page via file:// 
+      //if lt IE 9
+        script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+        script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    .navbar-fixed-top.responsive-width
+      .progress
+        .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+          span.sr-only 60% Complete
+      .container
+        .circle.pull-right
+          div Buchen
+        a(href='index.html')
+          img(src='img/logo.png')
+      .container
+        .navbar.navbar-default(role='navigation')
+          .container__disabled
+            //
+               parent is already a container
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              //
+                 <a class="navbar-brand" href="#">Konzept</a> 
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav.horizontal-subnavi
+                li.active
+                  a(href='konzept.html') Konzept
+                li.dropdown
+                  a.dropdown-toggle(data-toggle='dropdown', href='wohnen.html')
+                    | Wohnen
+                  ul.dropdown-menu
+                    li
+                      a(href='schmetterling.html') Schmetterling
+                    li
+                      a(href='#contact') Eichhörnchen
+                    li
+                      a(href='#contact') Fuchs
+                    li
+                      a(href='#contact') |
+                    li
+                      a(href='#contact') Preise
+                    li
+                      a(href='#contact') Buchen
+                    li
+                      a(href='#contact') Verleih
+                //
+                  li class="dropdown" 
+                li.dropdown
+                  a.dropdown-toggle(data-toggle='dropdown', href='#')
+                    | Aktionen
+                  ul.dropdown-menu
+                    li
+                      a(href='#contact') Eröffnungsangebot
+                    li
+                      a(href='#contact') Geocache
+                    li
+                      a(href='#contact') Kulinarisches
+                //
+                  li class="dropdown" 
+                li.dropdown
+                  a.dropdown-toggle(data-toggle='dropdown', href='#')
+                    | Viva
+                  ul.dropdown-menu
+                    li
+                      a(href='#contact') Seminare
+                    li
+                      a(href='#contact') Infoabende
+                    li
+                      a(href='#contact') Yoga
+                //
+                  li class="dropdown" 
+                li
+                  a(href='#contact') Shop
+                li
+                  a(href='#contact') See&Saarow
+            //
+              /.nav-collapse 
+          //
+             /.container 
+        //
+          /.navbar 
+    .container.main-content!= content
+
+      
+      
+      //
+         /.starter-template 
+      .footer
+        a(href='mailto:hej@salztraeume-am-see.de') hej@salztraeume-am-see.de
+        a(href='#') Kontakt
+        a(href='#') Impressum
+    //
+       /.container 
+    //
+       (necessary for Bootstrap's JavaScript plugins) 
+    script(src='js/jquery-1.11.0-min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='js/bootstrap.js')
+    script(src='js/script.js')
+    script(src='js/livereload.js')
