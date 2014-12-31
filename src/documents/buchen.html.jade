@@ -1,0 +1,78 @@
+---
+layout: master
+---
+form.cal-controls
+
+    div.cal-date-control
+        button.btn.btn-primary.prev zurück
+        input.date
+        button.btn.btn-primary.next vor
+
+    div
+        label Filter: 
+        div
+            label.checkbox-inline
+                input.filter-SL(type="checkbox", checked)
+                | Schmetterling (SL)
+        div
+            label.checkbox-inline
+                input.filter-EH(type="checkbox", checked)
+                | Eichhörnchen (EH)
+        div
+            label.checkbox-inline
+                input.filter-FS(type="checkbox", checked)
+                | Fuchs (FS)
+
+table.booking-calendar
+    tr
+        each day in ['', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+            th=day
+    each week in [1,2,3,4,5,6]
+        tr(class='w'+week)
+            th
+                .table-header.SL
+                .table-header.EH
+                .table-header.FS
+            each day in [0,1,2,3,4,5,6]
+                td(class=['day','w'+week, 'd'+day])
+
+form.conainter.booking
+
+    div.form-group
+        div.input-daterange.input-group#datepicker
+            input#b_arrival.form-control(type="text", required, name="start", placeholder="Ankunft")
+            span.input-group-addon bis
+            input#b_departure.form-control(type="text", required, name="end", placeholder="Abreise")
+            span.input-group-addon in
+            select#b_flat.form-control
+                option Schmetterling (SL)
+                option Eichhörnchen (EH)
+                option Fuchs (FS)
+
+    div.form-group
+        div.input-group#guests_control
+            input#b_guests_adult.input.form-control(type="number", min="0", placeholder="Personen (ab 18 Jahre)", data-toggle="tooltip", data-placement="top", title="ab 18 Jahre")
+            span.input-group-addon 
+            input#b_guests_children.input.form-control(type="number", min="0", placeholder="Kinder (10-17 Jahre)", data-toggle="tooltip", data-placement="top", title="10-17 Jahre")
+            span.input-group-addon 
+            input#b_guests_children_free.input.form-control(type="number", min="0", placeholder="Kinder (bis 9 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 9 Jahre")
+
+    div.form-group
+        div.input-group
+            span.input-group-addon Anzahl insgesamt: 
+            input#b_guests_total.form-control(type="text", disabled, value="0")
+
+    div.form-group
+        input#b_name.form-control(type="text", required, placeholder="Name")
+
+    div.form-group
+        input#b_email.form-control(type="email", placeholder="E-Mail")
+
+    div.form-group
+        input#b_phone.form-control(type="tel", required, placeholder="Telefon")
+
+    div.form-group
+        textarea#b_note.form-control(rows="2", placeholder="Bemerkungen")
+
+    div.form-group
+        button#b_submit.btn.btn-primary Unverbindlich anfragen
