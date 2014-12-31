@@ -5,7 +5,7 @@ form.cal-controls
 
     div.cal-date-control
         button.btn.btn-primary.prev zurück
-        input.date
+        input.date(disabled)
         button.btn.btn-primary.next vor
 
     div
@@ -66,10 +66,10 @@ form.conainter.booking
         input#b_name.form-control(type="text", required, placeholder="Name")
 
     div.form-group
-        input#b_email.form-control(type="email", placeholder="E-Mail")
+        input#b_email.form-control(type="email", required, placeholder="E-Mail")
 
     div.form-group
-        input#b_phone.form-control(type="tel", required, placeholder="Telefon")
+        input#b_phone.form-control(type="tel", placeholder="Telefon")
 
     div.form-group
         textarea#b_note.form-control(rows="2", placeholder="Bemerkungen")

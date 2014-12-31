@@ -5,7 +5,7 @@ var base = 'https://www.googleapis.com/calendar/v3/calendars/';
 var url = base + calendarId + '/events?fields=' + fields + '&key=' + apiKey;
 
 var DE_FORMATTER = 'DD.MM.YYYY';
-var DATEPICKER_SELECTOR = 'form.conainter.booking .input-daterange';
+var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
 var DATEPICKER_OPTS = {
     format: "dd.mm.yyyy",
     weekStart: 1,
@@ -193,19 +193,22 @@ $(document).ready(function() {
     });
 
     $('#b_submit').on('click', function(e) {
+        e.preventDefault();
 
-        var form = $('form.conainter.booking')[0];
+        var form = $('.conainter.booking')[0];
         if (form.checkValidity && !form.checkValidity()) {
             var inputs = form.querySelectorAll("input");
             for (var i=0; i<inputs.length; i++) {
                 if (!inputs[i].validity.valid) {
                     var msg = inputs[i].validationMessage;
-                    // $(inputs[i]).popover({
-                    //     container: 'body',
-                    //     placement: 'top',
-                    //     content: msg,
-                    //     trigger: 'click'
-                    // });
+                    var popoverContainer = $(inputs[i]);
+                    popoverContainer.attr('data-placement', 'top');
+                    popoverContainer.attr('data-content', msg);
+                    popoverContainer.attr('data-trigger', 'manual focus');
+                    popoverContainer.popover('show');
+                    popoverContainer.on('hidden.bs.popover', function (e) {
+                      $(e.target).popover('destroy');
+                    });
                 }
             }
         } else {
@@ -236,7 +239,7 @@ $(document).ready(function() {
                 "Telefon: "+phone + NL +
                 "Bemerkung: "+note;
 
-            e.preventDefault();
+            
             window.location = "mailto:buchen@salztraeume-am-see.de?subject="+subject+"&body="+body;
         }
     });
