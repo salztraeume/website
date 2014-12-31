@@ -3,7 +3,9 @@
 
 # Define the DocPad Configuration
 docpadConfig = {
-	outPath: 'build'
+    outPath: 'build'
+
+    renderPasses: 2
 
 }
 
