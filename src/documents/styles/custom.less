@@ -25,22 +25,124 @@
 
 
 
+// buchen.html
 
+.cal-date-control {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+    padding-top: 20px;
+    input.date {
+        width: 120px;
+    }
 }
 
+form.booking {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
+table.booking-calendar {
     width: 100%;
 }
+.start{
+    background:-webkit-gradient(linear,28.08% -10.22%,71.92% 110.22%,color-stop(transparent,0),color-stop(transparent,0.5),color-stop(#9B70FE,0.51),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:   -moz-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:     -o-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+}
+.end{
+    background:-webkit-gradient(linear,71.92% 110.22%,28.08% -10.22%,color-stop(transparent,0),color-stop(transparent,0.5),color-stop(#9B70FE,0.51),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:   -moz-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:     -o-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+}
+.middle{
+    background:#9B70FE;
+}
+.end.start{
+    background:-webkit-gradient(linear,28.08% -10.22%,71.92% 110.22%,color-stop(#9B70FE,0),color-stop(#9B70FE,0.48),color-stop(transparent,0.49),color-stop(transparent,0.51),color-stop(#9B70FE,0.52),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:   -moz-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:     -o-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
 }
 
+div[data-id] {
+    display: inline-block;
+}
+/*
+span.title {
     position: absolute;
+    display: inline;
 }
+*/
+.flat {
+    margin-bottom: 2px;
+    height: 1em;
+    line-height: 12px;
 }
+.icon {
+    height: 1em;
 }
+.flat span.title {
+    display: none;
+    color: white;
 }
+.flat.start span.title {
+    text-align: right;
 }
+.flat.end span.title {
+    text-align: left;
 }
+.flat.middle span.title {
+    text-align: center;
+}
+// .flat:hover span.title {
+//     display: inline-block;
+//     width: 100%;
+// }
+table.booking-calendar {
+    border-collapse: collapse;
+
+    th {
+        padding-top: 1em;
+    }
+
+    td {
+        width: 14%;
+        border: 1px solid #ccc;
+        padding-top: 1em; /* space for day number above */
+    }
+
+    td .calDate {
+        font-size: 14px;
+        position: relative;
+        top: 0;
+        margin-top: -17px;
+    }
+
+    td.day {
+        background: #eee;
+    }
+
+    td[data-date] {
+        background: #fff;
+    }
+
+    td.today {
+        background: #ffdb99;
+    }
+
+    /* Tabellen Spalten am Anfang*/
+    .table-header.SL:before {
+        content: 'SL'
+    }
+    .table-header.EH:before {
+        content: 'EH'
+    }
+    .table-header.FS:before {
+        content: 'FS'
+    }
 }
 
 
