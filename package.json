@@ -8,13 +8,15 @@
   },
   "dependencies": {
     "docpad": "~6.69.0",
+    "docpad-plugin-coffee": "~2.0.2",
+    "docpad-plugin-eco": "~2.1.0",
     "docpad-plugin-jade": "~2.7.0",
     "docpad-plugin-less": "~2.4.1",
     "docpad-plugin-livereload": "~2.6.0",
-    "docpad-plugin-raw": "~2.3.2",
+    "docpad-plugin-marked": "^2.2.1",
     "docpad-plugin-moment": "~2.0.2",
-    "docpad-plugin-eco": "~2.1.0",
-    "docpad-plugin-coffee": "~2.0.2"
+    "docpad-plugin-raw": "~2.3.2",
+    "marked": "^0.3.2"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
