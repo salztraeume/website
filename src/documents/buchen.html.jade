@@ -36,7 +36,7 @@ table.booking-calendar
             each day in [0,1,2,3,4,5,6]
                 td(class=['day','w'+week, 'd'+day])
 
-form.conainter.booking
+form.conainter.booking(onsubmit="return false;")
 
     div.form-group
         div.input-daterange.input-group#datepicker
