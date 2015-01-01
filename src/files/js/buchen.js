@@ -188,6 +188,11 @@ $(document).ready(function() {
         $('.FS').toggle();
     });
 
+    // blur immediately to avoid ios android keyboard overlay
+    $('#b_arrival, #b_departure').on('click', function(e) {
+        e.target.blur();
+    });
+
     $('#guests_control input').on('change', function(e) {
         var inputs = $('#guests_control input');
         var a = parseInt(inputs[0].value || 0);
