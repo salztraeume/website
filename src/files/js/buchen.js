@@ -106,7 +106,7 @@ var updateItems = function(data) {
             }
         }
 
-        var stopCondition = moment(end);//.add('d', 1);
+        var stopCondition = moment(end);//.add(1, 'days');
 
         while(tmp.isBefore(stopCondition)) {
             // check if tmp is within the current month
@@ -115,7 +115,7 @@ var updateItems = function(data) {
                 var cssClass = '';
                 if (tmp.format(DE_FORMATTER) === start.format(DE_FORMATTER)) {
                     cssClass = 'start'
-                } else if (tmp.format(DE_FORMATTER) === moment(end).add('d', -1).format(DE_FORMATTER)) {
+                } else if (tmp.format(DE_FORMATTER) === moment(end).add(-1, 'days').format(DE_FORMATTER)) {
                     cssClass = 'end'
                 } else {
                     cssClass = 'middle'
@@ -129,7 +129,7 @@ var updateItems = function(data) {
                 //flat.find('.title').text(item.summary);
                 flat.append('<div data-id="'+item.id+'"></div>');
             }
-            tmp.add('d', 1);
+            tmp.add(1, 'days');
         }
     });
     // init the flat tooltips
@@ -178,14 +178,14 @@ $(document).ready(function() {
     updateItemsForCurrentMonth();
 
     $('.prev').click(function(e) {
-        current.subtract('months', 1);
+        current.subtract(1, 'months');
         clearCal();
         calcCalendar(current);
         updateItemsForCurrentMonth();
         e.preventDefault();
     });
     $('.next').click(function(e) {
-        current.add('months', 1);
+        current.add(1, 'months');
         clearCal();
         calcCalendar(current);
         updateItemsForCurrentMonth();
