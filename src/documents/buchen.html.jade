@@ -5,7 +5,7 @@ form.cal-controls
 
     div.cal-date-control
         button.btn.btn-primary.prev zurück
-        input.date(disabled)
+        input.date(readonly)
         button.btn.btn-primary.next vor
 
     div
@@ -60,7 +60,7 @@ form.conainter.booking(onsubmit="return false;")
     div.form-group
         div.input-group
             span.input-group-addon Anzahl insgesamt: 
-            input#b_guests_total.form-control(type="text", disabled, value="0")
+            input#b_guests_total.form-control(type="text", readonly, value="0")
 
     div.form-group
         input#b_name.form-control(type="text", required, placeholder="Name")
