@@ -75,8 +75,17 @@ var calcCalendar = function(dayInMonth) {
 
 var updateItems = function(data) {
     data.items.forEach(function(item) {
-        var start = moment(item.start.date || item.start.dateTime);
-        var end = moment(item.end.date || item.end.dateTime);
+        var start = moment(item.start.date);
+        var end = moment(item.end.date);
+
+        // chdck for dateTime
+        if (item.end.dateTime != null) {
+            start = moment(item.start.dateTime);
+            start = moment(start.format(DE_FORMATTER), DE_FORMATTER);
+            // fill up 'end' to the next day midnight
+            end = moment(item.end.dateTime).add(1, 'days');
+            end = moment(end.format(DE_FORMATTER), DE_FORMATTER);
+        }
         var tmp = moment(start);
         if (item.location == null) {
             // try to resolve by summary
