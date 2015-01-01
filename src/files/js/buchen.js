@@ -60,13 +60,17 @@ var calcCalendar = function(dayInMonth) {
         $(selector).attr('data-date', dateOfMonth);
         $(selector).append(cellTemplate);
         $(selector).find('.calDate').text(dateOfMonth);
-        start.add('days', 1);
-        if(weekDay == 6) {
-            week++;
-        }
+
         if (start.format(DE_FORMATTER) === moment().format(DE_FORMATTER)) {
             $(selector).addClass('today');
         }
+
+        // increment for next iteration
+        start.add(1, 'days');
+        if(weekDay == 6) {
+            week++;
+        }
+        
     }
     // remove weeks with no days
     if ($("tr.w5 td div").length === 0) $("tr.w5").remove();
