@@ -153,6 +153,10 @@ var updateItemsForCurrentMonth = function() {
 
 $(document).ready(function() {
 
+    if ($('table.booking-calendar').length === 0) {
+        return;
+    }
+
     window.tableTemplate = $('table.booking-calendar').clone();
     window.current = moment();
     DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
