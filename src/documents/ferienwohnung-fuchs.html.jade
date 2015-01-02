@@ -1,3 +1,58 @@
 ---
 layout: master
 ---
+include partials/mixins
+
++carousel()
+  .item.active
+    img(src='img/fuchs/title.jpg', alt='Fuchs')
+    .carousel-caption
+      | Ferienwohnung Fuchs
+  .item
+    img(src='img/fuchs/wohnraum.jpg', alt='Wohnraum')
+    .carousel-caption
+      | Wohnraum
+  .item
+    img(src='img/fuchs/kueche-1.jpg', alt='Küche')
+    .carousel-caption
+      | Wohnküche
+  .item
+    img(src='img/fuchs/kueche-2.jpg', alt='Küche')
+    .carousel-caption
+      | Küchenzelle
+  .item
+    img(src='img/fuchs/schlafzimmer1-1.jpg', alt='Schlafzimmer')
+    .carousel-caption
+      | Schlafzimmer
+  .item
+    img(src='img/fuchs/schlafzimmer1-2.jpg', alt='Schlafzimmer')
+    .carousel-caption
+      | Schlafzimmer
+  .item
+    img(src='img/fuchs/badezimmer-1.jpg', alt='Badezimmer')
+    .carousel-caption
+      | Badezimmer
+
+h3 Ausstattung
+
+.container
+  .row
+    ul.icons
+      li
+        i.flaticon-bed29
+        | 1. Schlafzimmer 1: 4 kleine Betten
+      li
+        i.flaticon-bed28
+        | 2. Schlafzimmer 1: 1 großes Bett
+      li
+        i.flaticon-bed28
+        | 3. Schlafzimmer 1: 1 großes Bett
+      li
+        i.flaticon-bath1
+        | Badewanne
+      li
+        i.flaticon-tv13
+        | TV
+      li
+        i.flaticon-wifi93
+        | Wi-Fi
