@@ -527,7 +527,8 @@ $(document).ready(function() {
                 flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
             }
 
-            var body = flatDetailsText + 
+            var body = "Wohnung: " + flat + NL +
+                flatDetailsText + 
                 "Erwachsene: "+guests_adult + NL +
                 "Kinder (bis 17): "+guests_teens + NL + 
                 "Kinder (bis 9): "+guests_children + NL +
