@@ -516,7 +516,7 @@ $(document).ready(function() {
             var note = $('#b_note').val() || null;
 
             var NL = "%0D%0A";
-            var subject = "Buchung: "+from+" - "+to+" / "+nights+" Übernachtungen in " + flat + " / "+guests+" Personen";
+            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flat + " / "+guests+" Personen";
             var flatDetails = getDetailsForFuchs();
             var flatDetailsText = '';
             if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
