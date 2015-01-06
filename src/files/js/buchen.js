@@ -183,6 +183,7 @@ var updateItemsForCurrentMonth = function() {
             updateItems(data);
         });
     }
+    considerFlatFilter();
 }; 
 
 
@@ -204,11 +205,11 @@ var calcTotalGuests = function() {
     var totalGuests = a+b+c+d;
     
     return totalGuests;
-}
+};
 
 var calculatePrice = function() {
     // sum up total guests
-    var totalGuests = calcTotalGuests()
+    var totalGuests = calcTotalGuests();
     $('#b_guests_total').val(totalGuests);
     // validte flat size and show warning if needed
     if (totalGuests > parseInt($('#flat_size').val())) {
@@ -227,7 +228,6 @@ var calculatePrice = function() {
         resetCalculation();
         return;
     }
-
 
     // flat and nights = base price
     var select = $('#b_flat');
@@ -256,8 +256,6 @@ var calculatePrice = function() {
     $('#price-base').text(nights + ' Nächte * ' + base + ' €');
 
     var toSubtract = extraTreshold;
-    
-    
     
     var extraSum = 0;
     var extraText = [];
@@ -387,6 +385,17 @@ var extraValidation = function() {
     return true;
 };
 
+var considerFlatFilter = function() {
+    var flatShortcuts = ['SL', 'EH', 'F1', 'F2', 'F3'];
+    for (var i=0; i<flatShortcuts.length; i++) {
+        var flatShortcut = flatShortcuts[i];
+        var filterElement = $('.filter-' + flatShortcut);
+        if (filterElement[0].checked === false) {
+            $('.' + flatShortcut).hide();
+        }
+    }
+};
+
 $(document).ready(function() {
 
     if ($('table.booking-calendar').length === 0) {
@@ -483,9 +492,7 @@ $(document).ready(function() {
                     var msg = tmp.validationMessage;
                     var validation = $(getValidationLabel(tmp));
                     validation.text(msg);
-                    //label.show();
                     $(tmp).parents('div.form-group').addClass('has-error');
-                    
                 }
             }
             
@@ -528,12 +535,9 @@ $(document).ready(function() {
                 "Telefon: "+phone + NL +
                 "Bemerkung: "+note;
 
-            
             window.location = "mailto:buchen@salztraeume-am-see.de?subject="+subject+"&body="+body;
         }
     });
-
-
 
     // enable tooltips booking
     $('[data-toggle="tooltip"]').tooltip();
