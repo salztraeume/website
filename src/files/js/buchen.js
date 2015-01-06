@@ -468,7 +468,23 @@ $(document).ready(function() {
         calculatePrice();
     });
 
-    $('#guests_control input, #b_arrival, #b_departure').on('change', function(e) {
+    $('#b_arrival').on('change', function(e) {
+        // limit the start date of departure
+        // at least to book 2 nights
+        var arrivalDate = e.target.value;
+        var minDeparture = moment(arrivalDate, DE_FORMATTER).add('days', 2);
+        _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
+
+        // check if the old departure is still valid
+        var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
+        if (departureDate && departureDate.isBefore(minDeparture)) {
+            $('#b_departure').val('');
+        }
+
+        calculatePrice();
+    });
+
+    $('#guests_control input, #b_departure').on('change', function(e) {
         calculatePrice();
     });
 
