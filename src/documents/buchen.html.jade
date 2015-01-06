@@ -20,8 +20,16 @@ form.cal-controls
                 | Eichhörnchen (EH)
         div
             label.checkbox-inline
-                input.filter-FS(type="checkbox", checked)
-                | Fuchs (FS)
+                input.filter-F1(type="checkbox", checked)
+                | Fuchs 1 (F1)
+        div
+            label.checkbox-inline
+                input.filter-F2(type="checkbox", checked)
+                | Fuchs 2 (F2)
+        div
+            label.checkbox-inline
+                input.filter-F3(type="checkbox", checked)
+                | Fuchs 3 (F3)
 
 table.booking-calendar
     tr
@@ -32,40 +40,85 @@ table.booking-calendar
             th
                 .table-header.SL
                 .table-header.EH
-                .table-header.FS
+                .table-header.F1
+                .table-header.F2
+                .table-header.F3
             each day in [0,1,2,3,4,5,6]
                 td(class=['day','w'+week, 'd'+day])
 
 form.conainter.booking(onsubmit="return false;")
 
     div.form-group
+        label.validation.arrival.control-label(for="b_arrival")
+        label.validation.departure.control-label(for="b_departure")
         div.input-daterange.input-group#datepicker
             input#b_arrival.form-control(type="text", required, name="start", placeholder="Ankunft")
             span.input-group-addon bis
             input#b_departure.form-control(type="text", required, name="end", placeholder="Abreise")
             span.input-group-addon in
-            select#b_flat.form-control
-                option Schmetterling (max. 3 P.)
-                option Eichhörnchen (max. 4 P.)
-                option Fuchs (max. 8 P.)
+            select#b_flat.form-control.ignore-error
+                option(data-price="50", data-max="3", value="Schmetterling") Schmetterling
+                option(data-price="55", data-max="4", value="Eichhoernchen") Eichhörnchen
+                option(data-price="20", data-max="9" ,value="Fuchs") Fuchs
+
+    div#flat_fuchs_detail.form-group
+        div.input-group
+            label.margin-right Welche Zimmer in Fuchs benötigst du? 
+            label.validation.control-label(for="b_flat_fs1") Es muss mindestens ein Zimmer in Fuchs ausgewählt werden
+            label.checkbox-inline
+                input#b_flat_fs1(type="checkbox")
+                | Fuchs 1 (F1)
+            label.checkbox-inline
+                input#b_flat_fs2(type="checkbox")
+                | Fuchs 2 (F2)
+            label.checkbox-inline
+                input#b_flat_fs3(type="checkbox")
+                | Fuchs 3 (F3)
 
     div.form-group
         div.input-group#guests_control
-            input#b_guests_adult.input.form-control(type="number", min="0", placeholder="Personen (ab 18 Jahre)", data-toggle="tooltip", data-placement="top", title="ab 18 Jahre")
+            input#b_guests_adult.input.form-control(type="number", min="0", data-price="15", data-fee="2", placeholder="Personen (ab 18 Jahre)", data-toggle="tooltip", data-placement="top", title="ab 18 Jahre")
             span.input-group-addon 
-            input#b_guests_children.input.form-control(type="number", min="0", placeholder="Kinder (10-17 Jahre)", data-toggle="tooltip", data-placement="top", title="10-17 Jahre")
+            input#b_guests_teens.input.form-control(type="number", min="0", data-price="10", data-fee="1", placeholder="Kinder (10-17 Jahre)", data-toggle="tooltip", data-placement="top", title="10-17 Jahre")
             span.input-group-addon 
-            input#b_guests_children_free.input.form-control(type="number", min="0", placeholder="Kinder (bis 9 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 9 Jahre")
+            input#b_guests_children.input.form-control(type="number", min="0", data-price="5", data-fee="0", placeholder="Kinder (5-9 Jahre)", data-toggle="tooltip", data-placement="top", title="5-9 Jahre")
+            span.input-group-addon 
+            input#b_guests_children_free.input.form-control(type="number", min="0", data-price="0", data-fee="0", placeholder="Kinder (bis 4 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 4 Jahre")
 
-    div.form-group
+    div.form-group.guests-size
+        label.size-overflow.control-label(for="b_guests_total") Wohnung bietet nicht genug Schlafplätze! Du kannst die Anfrage aber trotzdem abschicken.
+        label.size-underflow.control-label(for="b_guests_total") Es muss für mindestens eine Person gebucht werden
         div.input-group
             span.input-group-addon Anzahl insgesamt: 
             input#b_guests_total.form-control(type="text", readonly, value="0")
+            span.input-group-addon von maximal: 
+            input#flat_size.form-control(type="text", readonly, value="3")
+
+    div.forn-group
+        table.table.table-striped.table-hover.table-condensed
+            tr
+                th Grundpreis:
+                td#price-base
+            tr.price-extra
+                th weitere Personen: 
+                td#price-extra
+            tr
+                th Endreinigung:
+                td#price-clean
+            tr
+                th Summe:
+                td#price-sum
+            tr
+                th zzgl. Kurtaxe:
+                td#price-fee
+
 
     div.form-group
+        label.validation.name.control-label(for="b_name")
         input#b_name.form-control(type="text", required, placeholder="Name")
 
     div.form-group
+        label.validation.email.control-label(for="b_email")
         input#b_email.form-control(type="email", required, placeholder="E-Mail")
 
     div.form-group

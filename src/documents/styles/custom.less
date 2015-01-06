@@ -62,6 +62,14 @@ a.navbar-brand.logo {
     background-position: 0px -20px;
 }
 
+// 
+
+ul.icons {
+    list-style: none;
+    li i {
+        padding-right: 2px;
+    }
+}
 
 
 
@@ -180,8 +188,14 @@ table.booking-calendar {
     .table-header.EH:before {
         content: 'EH'
     }
-    .table-header.FS:before {
-        content: 'FS'
+    .table-header.F1:before {
+        content: 'F1'
+    }
+    .table-header.F2:before {
+        content: 'F2'
+    }
+    .table-header.F3:before {
+        content: 'F3'
     }
 }
 
@@ -189,4 +203,42 @@ table.booking-calendar {
 
 .input-daterange input {
     text-align: left;
+}
+
+label.margin-right {
+    margin-right: 5px;
+}
+
+#flat_fuchs_detail {
+    display: none;
+}
+
+.form-control.ignore-error {
+    border-color: @input-border
+}
+
+label.validation {
+    display: none;
+}
+
+.has-error, .has-warning {
+    label.validation {
+        display: inline-block;
+    }
+}
+
+// special validation label logic
+label.size-underflow, label.size-overflow {
+    display: none;
+}
+
+.has-error {
+    label.size-underflow {
+        display: inline-block;
+    }
+}
+.has-warning {
+    label.size-overflow {
+        display: inline-block;
+    }
 }
