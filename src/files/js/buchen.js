@@ -444,6 +444,8 @@ $(document).ready(function() {
             $('#flat_fuchs_detail').show();
             $('#flat_size').val("");
         } else {
+            // disable all checkboxes for fuchs
+            $('#flat_fuchs_detail input').prop("checked", false);
             $('#flat_fuchs_detail').hide();
             var flatSize = $(e.target).find("[value="+e.target.value+"]").attr('data-max');
             $('#flat_size').val(flatSize);
