@@ -507,16 +507,16 @@ $(document).ready(function() {
             var nights = calcNights();
             var guests = $('#b_guests_total').val() || '-';
             var guests_adult = $('#b_guests_adult').val() || '-';
-            var guests_teens = $('#b_guests_teens').val() || '-';
-            var guests_children = $('#b_guests_children').val() || '-';
-            var guests_children_free = $('#b_guests_children_free').val() || '-';
+            var guests_teens = $('#b_guests_teens').val() || null;
+            var guests_children = $('#b_guests_children').val() || null;
+            var guests_children_free = $('#b_guests_children_free').val() || null;
             var name = $('#b_name').val() || '-';
             var email = $('#b_email').val() || '-';
-            var phone = $('#b_phone').val() || '-';
-            var note = $('#b_note').val() || '-';
+            var phone = $('#b_phone').val() || null;
+            var note = $('#b_note').val() || null;
 
             var NL = "%0D%0A";
-            var subject = "Buchung: "+from+" - "+to+" / "+nights+" Nächte in " + flat + " / "+guests+" Personen";
+            var subject = "Buchung: "+from+" - "+to+" / "+nights+" Übernachtungen in " + flat + " / "+guests+" Personen";
             var flatDetails = getDetailsForFuchs();
             var flatDetailsText = '';
             if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
@@ -527,16 +527,22 @@ $(document).ready(function() {
                 flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
             }
 
-            var body = "Wohnung: " + flat + NL +
-                flatDetailsText + 
-                "Erwachsene: "+guests_adult + NL +
-                "Kinder (bis 17): "+guests_teens + NL + 
-                "Kinder (bis 9): "+guests_children + NL +
-                "Kinder (bis 4): "+guests_children_free + NL + 
+            var body = 
+                "Zeitraum: " + from + " — " + to + NL +
+                "Übernachtungen: " + nights + NL +
+                "Wohnung: " + flat + NL + flatDetailsText +
+                "Erwachsene: "+guests_adult + NL;
+
+            if (guests_teens) body += "Kinder (bis 17): "+guests_teens + NL;
+            if (guests_children) body += "Kinder (bis 9): "+guests_children + NL;
+            if (guests_children_free) body += "Kinder (bis 4): "+guests_children_free + NL;
+            
+            body += "Personen insgesamt: " + guests + NL +
+                NL +
                 "Name: "+name + NL + 
-                "E-Mail: "+email + NL +
-                "Telefon: "+phone + NL +
-                "Bemerkung: "+note;
+                "E-Mail: "+email + NL;
+            if (phone) body += "Telefon: "+phone + NL;
+            if (note) body += "Bemerkung: "+note;
 
             window.location = "mailto:buchen@salztraeume-am-see.de?subject="+subject+"&body="+body;
         }
