@@ -1427,6 +1427,7 @@
 						inputs: opts.inputs || $this.find('input').toArray()
 					};
 					$this.data('datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
+					window._datepickers = data;
 				}
 				else {
 					$this.data('datepicker', (data = new Datepicker(this, opts)));
