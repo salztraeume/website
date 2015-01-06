@@ -544,7 +544,7 @@ $(document).ready(function() {
             if (phone) body += "Telefon: "+phone + NL;
             if (note) body += "Bemerkung: "+note;
 
-            window.location = "mailto:buchen@salztraeume-am-see.de?subject="+subject+"&body="+body;
+            window.location = "mailto:hej@salztraeume-am-see.de?subject="+subject+"&body="+body;
         }
     });
 
