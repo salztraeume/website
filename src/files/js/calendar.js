@@ -160,9 +160,10 @@ var updateItems = function(data) {
             }
         }
 
-        var stopCondition = moment(end);//.add(1, 'days');
-
-        while(tmp.isBefore(stopCondition)) {
+        var stopCondition = moment(end);
+        var m1 = tmp.toDate().getTime();
+        var m2 = stopCondition.toDate().getTime();
+        while(m1 < m2) {
             // check if tmp is within the current month
             if (tmp.format('MM.YYYY') == current.format('MM.YYYY')) {
                 var date = tmp.date();
@@ -184,6 +185,7 @@ var updateItems = function(data) {
                 
             }
             tmp.add(1, 'days');
+            m1 = tmp.toDate().getTime();
         }
     });
 
