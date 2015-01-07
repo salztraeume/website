@@ -5,4 +5,5 @@
 <%- @include('./locales/bootstrap-datepicker.de.js') %>
 <%- @include('js/moment') %>
 <%- @include('js/moment-de.js') %>
+<%- @include('js/calendar.js') %>
 <%- @include('js/buchen.js') %>
