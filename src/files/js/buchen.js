@@ -11,6 +11,8 @@ var DATEPICKER_OPTS = {
     todayBtn: true
 };
 
+//  +++ calendar +++
+
 var fetchCal = function(cb) {
     // wait if the file was not loaded yet
     if (window.calendar_items == null) {
@@ -138,16 +140,6 @@ var updateItems = function(data) {
     $('[data-toggle="tooltip"]').tooltip();
 };
 
-var setFlat = function(flat, item, cssClass) {
-    flat.addClass(cssClass);
-    //data-toggle="tooltip", data-placement="top", title="
-    flat.attr('data-toggle', 'tooltip');
-    flat.attr('data-placement', 'top');
-    flat.attr('title', item.summary);
-    //flat.find('.title').text(item.summary);
-    flat.append('<div data-id="'+item.id+'"></div>');
-};
-
 var sortItems = function(data) {
     data.items.sort(function (a, b) {
         aStart = a.start.date || a.start.dateTime;
@@ -176,6 +168,7 @@ var updateItemsForCurrentMonth = function() {
     considerFlatFilter();
 }; 
 
+//  +++ booking +++
 
 var calcNights = function() {
     var from = $('#b_arrival').val() || '-';
@@ -386,16 +379,26 @@ var considerFlatFilter = function() {
     }
 };
 
+var setFlat = function(flat, item, cssClass) {
+    flat.addClass(cssClass);
+    //data-toggle="tooltip", data-placement="top", title="
+    flat.attr('data-toggle', 'tooltip');
+    flat.attr('data-placement', 'top');
+    flat.attr('title', item.summary);
+    //flat.find('.title').text(item.summary);
+    flat.append('<div data-id="'+item.id+'"></div>');
+};
+
 $(document).ready(function() {
 
+    //  +++ calendar +++
     if ($('table.booking-calendar').length === 0) {
         return;
     }
 
     window.tableTemplate = $('table.booking-calendar').clone();
     window.current = moment();
-    DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
-    $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
+    
     calcCalendar(current);
     updateItemsForCurrentMonth();
 
@@ -428,6 +431,12 @@ $(document).ready(function() {
     $('.filter-F3').change(function() {
         $('.F3').toggle();
     });
+
+    //  +++ booking +++
+
+    window.current = moment();
+    DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
+    $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
 
     $('#b_flat').on('change', function(e) {
         if (e.target.value === 'Fuchs') {

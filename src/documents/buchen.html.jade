@@ -1,50 +1,7 @@
 ---
 layout: master
 ---
-form.cal-controls
-
-    div.cal-date-control
-        button.btn.btn-primary.prev zurück
-        input.date(readonly)
-        button.btn.btn-primary.next vor
-
-    div
-        label Filter: 
-        div
-            label.checkbox-inline
-                input.filter-SL(type="checkbox", checked)
-                | Schmetterling (SL)
-        div
-            label.checkbox-inline
-                input.filter-EH(type="checkbox", checked)
-                | Eichhörnchen (EH)
-        div
-            label.checkbox-inline
-                input.filter-F1(type="checkbox", checked)
-                | Fuchs 1 (F1)
-        div
-            label.checkbox-inline
-                input.filter-F2(type="checkbox", checked)
-                | Fuchs 2 (F2)
-        div
-            label.checkbox-inline
-                input.filter-F3(type="checkbox", checked)
-                | Fuchs 3 (F3)
-
-table.booking-calendar
-    tr
-        each day in ['', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
-            th=day
-    each week in [1,2,3,4,5,6]
-        tr(class='w'+week)
-            th
-                .table-header.SL
-                .table-header.EH
-                .table-header.F1
-                .table-header.F2
-                .table-header.F3
-            each day in [0,1,2,3,4,5,6]
-                td(class=['day','w'+week, 'd'+day])
+include ./calendar
 
 form.conainter.booking(onsubmit="return false;")
 
