@@ -20,3 +20,8 @@ html(lang='en')
       .container.main-content!= content
 
       != getBlock('scripts').toHTML()
+      <!--[if lte IE 9]>
+      <link href='styles/ie.css' rel='stylesheet' type='text/css' charset='utf-8'></link>
+      <![endif]-->
+      script.
+        var $buoop = {c:2};function $buo_f(){var e = document.createElement("script");e.src = "//browser-update.org/update.js";document.body.appendChild(e);};try {document.addEventListener("DOMContentLoaded", $buo_f,false)}catch(e){window.attachEvent("onload", $buo_f)}
