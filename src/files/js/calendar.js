@@ -124,7 +124,7 @@ var updateItems = function(data) {
         var tmp = moment(start);
         if (item.location == null) {
             // try to resolve by summary
-            switch (item.summary) {
+            switch ($.trim(item.summary)) {
                 case 'Schmetterling': 
                     item.location = 'SL';
                     break;
