@@ -344,7 +344,7 @@ $(document).ready(function() {
         }
     });
 
-    // enable tooltips booking
+    // enable tooltips
     $('[data-toggle="tooltip"]').tooltip();
 
 });
