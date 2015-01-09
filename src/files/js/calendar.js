@@ -61,6 +61,23 @@ if (!Array.prototype.forEach) {
   };
 }
 
+// moment isBefore IE workarround
+
+var toDates = function(moment1, moment2) {
+    return [moment1.toDate().getTime(), moment2.toDate().getTime()];
+}
+
+var isBefore = function(moment1, moment2) {
+    var tmp = toDates(moment1, moment2);
+    return tmp[0] < tmp[1];
+};
+
+var isAfter = function(moment1, moment2) {
+    var tmp = toDates(moment1, moment2);
+    return tmp[0] > tmp[1];
+};
+
+
 //  +++ calendar +++
 
 var fetchCal = function(cb) {
@@ -96,7 +113,7 @@ var calcCalendar = function(dayInMonth) {
     "<div class='flat F1'><span class='title'></span></div>"+
     "<div class='flat F2'><span class='title'></span></div>"+
     "<div class='flat F3'><span class='title'></span></div>";
-    while (start.isBefore(end)) {
+    while (isBefore(start, end)) {
         var dateOfMonth = start.date();
         weekDay = start.format('e');
         selector = '.d'+weekDay+'.w'+week;
@@ -161,9 +178,7 @@ var updateItems = function(data) {
         }
 
         var stopCondition = moment(end);
-        var m1 = tmp.toDate().getTime();
-        var m2 = stopCondition.toDate().getTime();
-        while(m1 < m2) {
+        while (isBefore(tmp, stopCondition)) {
             // check if tmp is within the current month
             if (tmp.format('MM.YYYY') == current.format('MM.YYYY')) {
                 var date = tmp.date();
@@ -196,10 +211,10 @@ var sortItems = function(data) {
         aStart = a.start.date || a.start.dateTime;
         bStart = b.start.date || b.start.dateTime;
 
-        if (moment(aStart).isAfter(moment(bStart))) {
+        if (isAfter(moment(aStart), moment(bStart))) {
             return 1;
         }
-        if (moment(aStart).isBefore(moment(bStart))) {
+        if (isBefore(moment(aStart), moment(bStart))) {
             return -1;
         }
         // a must be equal to b
