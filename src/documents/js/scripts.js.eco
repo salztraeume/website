@@ -1,6 +1,5 @@
-<%- @include('./bootstrap.js') %>
+<%- @include('./bootstrap.min.js') %>
 <%- @include('./ie10.js') %>
-<%- @include('./custom.js') %>
 <%- @include('./bootstrap-datepicker.js') %>
 <%- @include('./locales/bootstrap-datepicker.de.js') %>
 <%- @include('js/moment') %>
