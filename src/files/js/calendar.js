@@ -201,6 +201,8 @@ var updateItemsForCurrentMonth = function() {
         });
     }
     considerFlatFilter();
+    // enable tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 };
 
 var considerFlatFilter = function() {
