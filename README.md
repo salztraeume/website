@@ -8,10 +8,8 @@
 
 ## Anna
 ### Gesamten Arbeitsordner im Terminal öffnen
-
-a1)Auf dem iMac einfach per Drag&Drop den `STAS_web` auf Terminal Icon im Dock ziehen.
-
-a2)Auf dem Macbook Terminal öfnnen, warten, dann `cd ` eintippen (mit Leerzeichen), **nicht** ENTER drücken! Dann per Drag & Drop den `STAS_web` in das offenen Terminal Fenster und danach ENTER.
+a) - GitHub öffnen
+    - im Menu "Repository" > Open in terminal
 
 b) Im Terminal einfach nur `make` eingeben und ENTER drücken
 (um Docpad und Co zu starten (ggf. vorher Plugins automatisch installieren))
@@ -19,6 +17,7 @@ b) Im Terminal einfach nur `make` eingeben und ENTER drücken
 !Du merkst, dass es erfolgreich ist, daran, dass "docpad run" steht, und einige Zeilen Text erscheinen.
 
 Um die Seite im Chrome zu öffnen: http://localhost:9778/ eingeben.
+c) ctrl+c zum Beenden von Docpad, Pfeiltaste hoch, um letzten Befehl anzuzeigen (Docpad starten), mit Enter bestätigen
 
 
 ## Selector live im Browser prüfen
