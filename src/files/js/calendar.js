@@ -76,12 +76,19 @@ var calcCalendar = function(dayInMonth) {
     var weekDay = null;
     var selector = null;
     var week = 1;
-    var cellTemplate = "<div class='calDate'></div>"+
-    "<div class='flat SL'><span class='title'></span></div>"+
-    "<div class='flat EH'><span class='title'></span></div>"+
-    "<div class='flat F1'><span class='title'></span></div>"+
-    "<div class='flat F2'><span class='title'></span></div>"+
-    "<div class='flat F3'><span class='title'></span></div>";
+    var cellTemplate = "<div class='calDate'></div>";
+    var flat = $(".booking-calendar").attr('data-flat'); // specific flat
+    if (flat != null || flat == '') {
+        cellTemplate += "<div class='flat "+flat+"'><span class='title'></span></div>";
+    } else {
+        cellTemplate +=
+        "<div class='flat SL'><span class='title'></span></div>"+
+        "<div class='flat EH'><span class='title'></span></div>"+
+        "<div class='flat F1'><span class='title'></span></div>"+
+        "<div class='flat F2'><span class='title'></span></div>"+
+        "<div class='flat F3'><span class='title'></span></div>";
+    }
+    
     while (isBefore(start, end)) {
         var dateOfMonth = start.date();
         weekDay = start.format('e');
@@ -210,6 +217,7 @@ var considerFlatFilter = function() {
     for (var i=0; i<flatShortcuts.length; i++) {
         var flatShortcut = flatShortcuts[i];
         var filterElement = $('.filter-' + flatShortcut);
+        if (filterElement.length === 0) continue;
         if (filterElement[0].checked === false) {
             $('.' + flatShortcut).hide();
         }
