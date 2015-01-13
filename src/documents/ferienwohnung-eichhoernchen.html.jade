@@ -1,3 +1,198 @@
 ---
 layout: master
+title: Eichhörnchen. Zwischen Wald&See.
 ---
+include partials/mixins
+include calendar
+
+div.row
+    div.col-md-3.text-center
+        img(src="img/eichh.jpg", width="100px" alt="Wohnung Eichhörnchen")
+    div.col-md-9
+
+        h1.overflow.h3.text-center-sm
+            | Eichhörnchen. Zwischen Wald&amp;See.
+
+        div.rating
+            a(href="https://www.airbnb.de/rooms/3955587#reviews") Bewertungen anschauen
+
+        div.row.row-condensed.text-muted.text-center
+            div.col-xs-3
+                i.icon.icon2x.flaticon-home63
+            div.col-xs-3
+                i.icon.icon2x.flaticon-group12
+            div.col-xs-3
+                i.icon.icon2x.flaticon-person193
+            div.col-xs-3
+                i.icon.icon2x.flaticon-bed28
+
+div.row
+    div.col-md-3.text-muted.text-center.hide-xs
+        | 
+    div.col-md-9
+        div.row.row-condensed.text-muted.text-center
+            div.col-xs-3
+                |Ganze Unterkunft
+            div.col-xs-3
+                |4 Gäste
+            div.col-xs-3
+                |1 Schlafzimmer
+            div.col-xs-3
+                |2 Betten
+
++carousel()
+  .item.active
+    img(alt="Eichhörnchen", src='https://a2.muscache.com/ic/pictures/51313166/dbc400f8_original.jpg?interpolation=lanczos-none&size=xx_large&output-format=jpg&output-quality=70')
+    .carousel-caption
+      | Ferienwohnung Eichhörnchen
+  .item
+    img(alt="Schlafzimmer", src='https://a1.muscache.com/ic/pictures/49760985/f594154e_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Schlafzimmer
+  .item
+    img(alt="Schlafzimmer", src='https://a0.muscache.com/ic/pictures/49760927/ea6d8511_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Schlafzimmer
+  .item
+    img(alt="Küche", src='https://a1.muscache.com/ic/pictures/49761054/149e822b_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Küche
+  .item
+    img(alt="Küche", src='https://a2.muscache.com/ic/pictures/49761132/86968bf4_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Küche
+  .item
+    img(alt="Küchentisch", src='https://a1.muscache.com/ic/pictures/56028445/40556437_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Küchentisch
+  .item
+    img(alt="Badezimmer", src='https://a2.muscache.com/ic/pictures/49760755/fac359f1_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+    .carousel-caption
+      | Badezimmer
+
+hr
+
+div.row
+    div.col-sm-3
+        div.text-muted Die Unterkunft
+
+    div.col-sm-9
+        div.row
+            div.col-sm-6
+                div
+                    |Art der Unterkunft: 
+                    strong  Wohnung
+                div 
+                    |Unterkunft für: 
+                    strong  4
+                div
+                    |Schlafzimmer: 
+                    strong  1
+                div
+                    |Badezimmer: 
+                    strong  1
+
+            div.col-sm-6
+                div
+                    |Betten:
+                    strong  2
+                div
+                    |Check-In:
+                    strong  14:00
+                div
+                    |Check-Out:
+                    strong  12:00
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Ausstattung
+
+    div.col-md-9
+        div.row
+            div.col-xs-6
+                div
+                    i.icon.icon2x.flaticon-fork
+                    span  Küche
+                div
+                    i.icon.icon2x.flaticon-wifi93
+                    span  Internet / Wi-Fi
+                div
+                    i.icon.icon2x.flaticon-widescreen
+                    span  TV
+                div
+                    i.icon.icon2x.flaticon-bathtub7
+                    span  Badewannde
+
+            div.col-xs-6
+                div
+                    i.icon.icon2x.flaticon-towel
+                    span  Wesentliches
+                div
+                    i.icon.icon2x.flaticon-oven4
+                    span  Backofen
+                div
+                    i.icon.icon2x.flaticon-parking19
+                    span  Parkplatz
+                div
+                    i.icon.icon2x.icon-kitchen
+                    span  Familien-/kinderfreundlich
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Preise
+
+    div.col-md-9
+        div.row
+            div.col-md-6
+                div bis 2 Personen:
+                    strong  55 €
+                div pro weitere Person:
+                    strong  15 €
+                div Reinigungsgebühr:
+                    strong  30 €
+                div Stornierung: 
+                    strong  flexibel
+                
+            div.col-md-6
+                div Jugendliche bis 17 Jahre:
+                    strong  10 €
+                div Kinder bis 9 Jahre:
+                    strong  5 €
+                div Kinder bis 4 Jahre:
+                    strong  kostenlos
+                div Mindestaufenthalt
+                    strong  2 Nächte
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Beschreibung
+
+    div.col-md-9
+        div.expandable
+            include:markdown ./eichhoernchen-details.md
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Hausregeln
+
+    div.col-md-9
+        div.expandable
+            include:markdown ./eichhoernchen-regeln.md
+
+hr
+
+h3 Belegungskalender
+
++calendar('EH')
+script(src="http://thunderwave.de:9776/items.js")
+
+div.text-center
+    a(href="buchen.html") Buchungsanfrage stellen
