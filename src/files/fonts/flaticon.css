@@ -11,10 +11,9 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-        font-size: 20px;
-font-style: normal;
-margin-left: 20px;
-}.flaticon-barbecue1:before {
+	font-style: normal;
+}
+.flaticon-barbecue1:before {
 	content: "\e000";
 }
 .flaticon-barbecue5:before {
