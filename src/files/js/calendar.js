@@ -160,11 +160,11 @@ var updateItems = function(data) {
                 var date = tmp.date();
                 var cssClass = '';
                 if (tmp.format(DE_FORMATTER) === start.format(DE_FORMATTER)) {
-                    cssClass = 'start'
+                    cssClass = 'start';
                 } else if (tmp.format(DE_FORMATTER) === moment(end).add(-1, 'days').format(DE_FORMATTER)) {
-                    cssClass = 'end'
+                    cssClass = 'end';
                 } else {
-                    cssClass = 'middle'
+                    cssClass = 'middle';
                 }
                 if (item.location === 'FS') {
                     setFlat($('.date'+date+' .F1'), item, cssClass);
