@@ -5,40 +5,37 @@ title: Eichhörnchen. Zwischen Wald&See.
 include partials/mixins
 include calendar
 
+mixin Bewertungenen
+    a(target="_blank", href="https://www.airbnb.de/rooms/3955587#reviews") Bewertungenen
+
 div.row
     div.col-md-3.text-center
         img(src="img/eichh.jpg", width="100px" alt="Wohnung Eichhörnchen")
+
+        div.rating.hidden-md.hidden-lg
+            +Bewertungenen()
     div.col-md-9
 
         h1.overflow.h3.text-center-sm
             | Eichhörnchen. Zwischen Wald&amp;See.
 
-        div.rating
-            a(href="https://www.airbnb.de/rooms/3955587#reviews") Bewertungen anschauen
-
         div.row.row-condensed.text-muted.text-center
-            div.col-xs-3
-                i.icon.icon2x.flaticon-home63
-            div.col-xs-3
-                i.icon.icon2x.flaticon-group12
-            div.col-xs-3
-                i.icon.icon2x.flaticon-person193
-            div.col-xs-3
-                i.icon.icon2x.flaticon-bed28
+            div.col-xs-3: i.icon.icon2x.flaticon-home63
+            div.col-xs-3: i.icon.icon2x.flaticon-group12
+            div.col-xs-3: i.icon.icon2x.flaticon-opened37
+            div.col-xs-3: i.icon.icon2x.flaticon-bed29
 
 div.row
     div.col-md-3.text-muted.text-center.hide-xs
-        | 
+        div.rating.hidden-xs.hidden-sm
+            +Bewertungenen()
+
     div.col-md-9
         div.row.row-condensed.text-muted.text-center
-            div.col-xs-3
-                |Ganze Unterkunft
-            div.col-xs-3
-                |4 Gäste
-            div.col-xs-3
-                |1 Schlafzimmer
-            div.col-xs-3
-                |2 Betten
+            div.col-xs-3 Ganze Unterkunft
+            div.col-xs-3 4 Gäste
+            div.col-xs-3 1 Schlafzimmer
+            div.col-xs-3 2 Betten
 
 +carousel()
   .item.active
