@@ -2,17 +2,15 @@
 
 #### SALZ›T‹RÄUME AM SEE 
 
-Das besondere an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist die Raumgestaltung mit Wandelementen oder Beleuchtungen aus Natursalz in den drei Wohnungen ›Fuchs‹, ›Eichhörnchen‹ und ›Schmetterling‹. Das orange-rote Himalayasalz – reich an Mineralien – verleiht dem Raum nicht nur eine außergewöhnliche Wohnatmosphäre, es ist auch für seine gesundheitsfördernde Wirkung bekannt. In den Räumen wird eine salzhaltige Luft geschaffen, wie sie am Meer oder in Salzstollen vorzu­finden ist. Und uns allen sind die positiven Effekte des Meeresklimas bekannt.
+Das besondere an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist die Raumgestaltung mit Wandelementen oder Beleuchtungen aus Natursalz in den drei Wohnungen <em>›Fuchs‹</em>, <em>›Eichhörnchen‹</em> und <em>›Schmetterling‹</em>. Das orange-rote Himalayasalz – reich an Mineralien – verleiht dem Raum nicht nur eine außergewöhnliche Wohnatmosphäre, es ist auch für seine gesundheitsfördernde Wirkung bekannt. In den Räumen wird eine salzhaltige Luft geschaffen, wie sie am Meer oder in Salzstollen vorzu­finden ist. Und uns allen sind die positiven Effekte des Meeresklimas bekannt.
 
-Eichhörnchen verfügt über ein Doppelbett (1,40x2,00m) im Schlafzimmer und eine Schlafcouch (1,40x2,00m) in der Wohnküche. Die beiden Zimmer sind über einen Flur separat begehbar.
+Eichhörnchen verfügt über ein Doppelbett (1,40 x 2,00m) im Schlafzimmer und eine Schlafcouch (1,40 x 2,00m) in der Wohnküche. Die beiden Zimmer sind über einen Flur separat begehbar.
 
 Im Bad befindet sich eine Duschkabine, eine Eckbadewanne, WC und 2 Waschbecken.
 
 Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Herd+Ofen, Kühl-Gefrier-Kombi, Spülmaschine und Mikrowelle.
 
 Die Wohnungen sind mit Bettwäsche, Hand- und Duschtüchern, Geschirrtüchern, Seife, Fön und sämtlichen Artikeln des täglichen Bedarfs (wie Spüli, Tabs, Lappen, Backpapier, Salz, etc. ) ausgestattet.
-
-Der Garten ist noch nicht angelegt, aber zur Mitbenutzung freigegeben. Ein Grill und eine Feuerstelle sind vorhanden. 4 Fahrräder & 2 Gummiboote stehen zum kostenlosen Verleih zur Verfügung.
 
 ##### Lage
 
