@@ -6,3 +6,5 @@
 <%- @include('js/moment-de.js') %>
 <%- @include('js/calendar.js') %>
 <%- @include('js/buchen.js') %>
+
+$('[data-toggle="tooltip"]').tooltip()
