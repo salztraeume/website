@@ -79,7 +79,14 @@ var calcCalendar = function(dayInMonth) {
     var cellTemplate = "<div class='calDate'></div>";
     var flat = $(".booking-calendar").attr('data-flat'); // specific flat
     if (flat != null || flat == '') {
-        cellTemplate += "<div class='flat "+flat+"'><span class='title'></span></div>";
+        if (flat === 'FS') {
+            cellTemplate +=
+            "<div class='flat F1'><span class='title'></span></div>"+
+            "<div class='flat F2'><span class='title'></span></div>"+
+            "<div class='flat F3'><span class='title'></span></div>";
+        } else {
+            cellTemplate += "<div class='flat "+flat+"'><span class='title'></span></div>";
+        }
     } else {
         cellTemplate +=
         "<div class='flat SL'><span class='title'></span></div>"+
@@ -229,7 +236,15 @@ var setFlat = function(flat, item, cssClass) {
     //data-toggle="tooltip", data-placement="top", title="
     flat.attr('data-toggle', 'tooltip');
     flat.attr('data-placement', 'top');
-    flat.attr('title', item.summary);
+    var title = item.summary;
+    if ($.trim(item.summary) === 'Fuchs') {
+        var f1 = flat.hasClass('F1');
+        var f2 = flat.hasClass('F2');
+        var f3 = flat.hasClass('F3');
+        var flatNumber = f1 ? 1 : (f2 ? 2 : 3);
+        title = 'Fuchs '+ flatNumber;
+    }
+    flat.attr('title', title);
     //flat.find('.title').text(item.summary);
     flat.append('<div data-id="'+item.id+'"></div>');
 };
