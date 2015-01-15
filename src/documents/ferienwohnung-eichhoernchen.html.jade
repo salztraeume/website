@@ -77,31 +77,17 @@ div.row
         div.text-muted Die Unterkunft
 
     div.col-sm-9
-        div.row
+        div.row.bigger-line
             div.col-sm-6
-                div
-                    |Art der Unterkunft: 
-                    strong  Wohnung
-                div 
-                    |Unterkunft für: 
-                    strong  4
-                div
-                    |Schlafzimmer: 
-                    strong  1
-                div
-                    |Badezimmer: 
-                    strong  1
+                +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
+                +keyAndStrongValue('Unterkunft für', '4')
+                +keyAndStrongValue('Schlafzimmer', '1')
+                +keyAndStrongValue('Badezimmer', '1')
 
             div.col-sm-6
-                div
-                    |Betten:
-                    strong  2
-                div
-                    |Check-In:
-                    strong  14:00
-                div
-                    |Check-Out:
-                    strong  12:00
+                +keyAndStrongValue('Betten', '2')
+                +keyAndStrongValue('Check-In', '14:00')
+                +keyAndStrongValue('Check-Out', '12:00')
 
 hr
 
@@ -112,32 +98,16 @@ div.row
     div.col-md-9
         div.row
             div.col-xs-6
-                div
-                    i.icon.icon2x.flaticon-fork
-                    span  Küche
-                div
-                    i.icon.icon2x.flaticon-wifi93
-                    span  Internet / Wi-Fi
-                div
-                    i.icon.icon2x.flaticon-widescreen
-                    span  TV
-                div
-                    i.icon.icon2x.flaticon-bathtub7
-                    span  Badewannde
+                +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd, Spühlmaschine sowie Kochutensilien')
+                +as('flaticon-wifi93', 'Wi-Fi')
+                +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+                +as('flaticon-bathtub7', 'Badewanne', '2 Waschbecken, Eckbadewanne und Dusche')
 
             div.col-xs-6
-                div
-                    i.icon.icon2x.flaticon-towel
-                    span  Wesentliches
-                div
-                    i.icon.icon2x.flaticon-oven4
-                    span  Backofen
-                div
-                    i.icon.icon2x.flaticon-parking19
-                    span  Parkplatz
-                div
-                    i.icon.icon2x.icon-kitchen
-                    span  Familien-/kinderfreundlich
+                +as('flaticon-bathroom13', 'Wesentliches', 'ettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+                +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
+                +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+                +as(null, 'Familien-/kinderfreundlich')
 
 hr
 
@@ -146,26 +116,18 @@ div.row
         | Preise
 
     div.col-md-9
-        div.row
+        div.row.bigger-line
             div.col-md-6
-                div bis 2 Personen:
-                    strong  55 €
-                div pro weitere Person:
-                    strong  15 €
-                div Reinigungsgebühr:
-                    strong  30 €
-                div Stornierung: 
-                    strong  flexibel
+                +keyAndStrongValue('bis zu 2 Personen', '55 €')
+                +keyAndStrongValue('pro weitere Person', '15 €')
+                +keyAndStrongValue('Reinigungsgebühr', '30 €')
+                +keyAndStrongValue('Stornierung', 'flexibel')
                 
             div.col-md-6
-                div Jugendliche bis 17 Jahre:
-                    strong  10 €
-                div Kinder bis 9 Jahre:
-                    strong  5 €
-                div Kinder bis 4 Jahre:
-                    strong  kostenlos
-                div Mindestaufenthalt
-                    strong  2 Nächte
+                +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
+                +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
+                +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
+                +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
 
 hr
 

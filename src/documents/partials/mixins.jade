@@ -1,17 +1,32 @@
 mixin carousel
-  #carousel-example-generic.carousel.slide(data-ride='carousel')
-    ol.carousel-indicators
-      li.active(data-target='#carousel-example-generic', data-slide-to='0')
-      - r = block.toString().match(/<div class=\\"item/g)
-      - amount = r ? r.length : 0
-      - for (var i=1; i<amount; i++) {
-        li(data-target='#carousel-example-generic', data-slide-to=i)
-      - }
+    #carousel-example-generic.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+            li.active(data-target='#carousel-example-generic', data-slide-to='0')
+            - r = block.toString().match(/<div class=\\"item/g)
+            - amount = r ? r.length : 0
+            - for (var i=1; i<amount; i++) {
+                li(data-target='#carousel-example-generic', data-slide-to=i)
+            - }
 
-    .carousel-inner(role="listbox")
-      block
+          .carousel-inner(role="listbox")
+              block
 
-    a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
-      span.glyphicon.glyphicon-chevron-left
-    a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
-      span.glyphicon.glyphicon-chevron-right
+          a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+          a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right
+
+//- Ausstattung template
+
+mixin as(icon, text, tooltip)
+    - classes = ['icon', 'icon2x']
+    - if (icon != null) classes.push(icon)
+
+    div
+        div.inline: i(class=classes)
+        span(data-toggle='tooltip', data-placement='top', title=tooltip)
+            |  #{text}
+
+mixin keyAndStrongValue(key, val)
+    div #{key}:
+        strong  #{val}
