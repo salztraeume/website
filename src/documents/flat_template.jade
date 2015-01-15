@@ -1,0 +1,96 @@
+div.row
+    div.col-md-3.text-center
+        block icon
+
+        div.rating.hidden-md.hidden-lg
+            block rating-mobile
+
+    div.col-md-9
+
+        h1.overflow.h3.text-center-sm
+            block flat-title
+
+        div.row.row-condensed.text-muted.text-center
+            div.col-xs-3: i.icon.icon2x.flaticon-home63
+            div.col-xs-3: i.icon.icon2x.flaticon-group12
+            div.col-xs-3: i.icon.icon2x.flaticon-opened37
+            div.col-xs-3: i.icon.icon2x.flaticon-bed29
+
+div.row
+    div.col-md-3.text-muted.text-center.hide-xs
+        div.rating.hidden-xs.hidden-sm
+            block rating-large
+
+    div.col-md-9
+        div.row.row-condensed.text-muted.text-center
+            div.col-xs-3 
+                block header-unterkunft
+            div.col-xs-3 
+                block header-anzahl
+            div.col-xs-3 
+                block header-schlafzimmer
+            div.col-xs-3 
+                block header-betten
+
+block carousel
+
+hr
+
+div.row
+    div.col-sm-3
+        div.text-muted Die Unterkunft
+
+    div.col-sm-9
+        div.row.bigger-line
+            block unterkunft
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Ausstattung
+
+    div.col-md-9
+        div.row
+            block ausstattung
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Preise
+
+    div.col-md-9
+        div.row.bigger-line
+            block preise
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Beschreibung
+
+    div.col-md-9
+        div.expandable
+            block beschreibung
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Hausregeln
+
+    div.col-md-9
+        div.expandable
+            block regeln
+
+hr
+
+h3 Belegungskalender
+
+block calender
+
+script(src="http://thunderwave.de:9776/items.js")
+
+div.text-center
+    a(href="buchen.html") Buchungsanfrage stellen

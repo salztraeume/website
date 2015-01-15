@@ -1,58 +1,79 @@
 ---
 layout: master
+title: Fuchs. Zwischen Wald&See.
 ---
 include partials/mixins
+include calendar
 
-+carousel()
-  .item.active
-    img(src='img/fuchs/title.jpg', alt='Fuchs')
-    .carousel-caption
-      | Ferienwohnung Fuchs
-  .item
-    img(src='img/fuchs/wohnraum.jpg', alt='Wohnraum')
-    .carousel-caption
-      | Wohnraum
-  .item
-    img(src='img/fuchs/kueche-1.jpg', alt='Küche')
-    .carousel-caption
-      | Wohnküche
-  .item
-    img(src='img/fuchs/kueche-2.jpg', alt='Küche')
-    .carousel-caption
-      | Küchenzelle
-  .item
-    img(src='img/fuchs/schlafzimmer1-1.jpg', alt='Schlafzimmer')
-    .carousel-caption
-      | Schlafzimmer
-  .item
-    img(src='img/fuchs/schlafzimmer1-2.jpg', alt='Schlafzimmer')
-    .carousel-caption
-      | Schlafzimmer
-  .item
-    img(src='img/fuchs/badezimmer-1.jpg', alt='Badezimmer')
-    .carousel-caption
-      | Badezimmer
+mixin Bewertungenen
+    a(target="_blank", href="https://www.airbnb.de/rooms/4844568#reviews") Bewertungenen
 
-h3 Ausstattung
 
-.container
-  .row
-    ul.icons
-      li
-        i.flaticon-bed29
-        | 1. Schlafzimmer 1: 4 kleine Betten
-      li
-        i.flaticon-bed28
-        | 2. Schlafzimmer 1: 1 großes Bett
-      li
-        i.flaticon-bed28
-        | 3. Schlafzimmer 1: 1 großes Bett
-      li
-        i.flaticon-bath1
-        | Badewanne
-      li
-        i.flaticon-tv13
-        | TV
-      li
-        i.flaticon-wifi93
-        | Wi-Fi
+extends flat_template
+
+block rating-mobile
+    +Bewertungenen()
+
+block rating-large
+    +Bewertungenen()
+
+block icon
+    img(src="img/fuchs.jpg", width="100px" alt="Wohnung Schmetterling")
+
+block flat-title
+    span Fuchs. Zwischen Wald&amp;See.
+
+block header-unterkunft
+    span Ganze Unterkunft
+block header-anzahl
+    span 10
+block header-schlafzimmer
+    span 3
+block header-betten
+    span 4 — 1 — 1
+
+block unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
+        +keyAndStrongValue('Unterkunft für', '10')
+        +keyAndStrongValue('Schlafzimmer', '3')
+        +keyAndStrongValue('Badezimmer', '1,5')
+
+    div.col-sm-6
+        +keyAndStrongValue('Betten', '7')
+        +keyAndStrongValue('Check-In', '14:00')
+        +keyAndStrongValue('Check-Out', '12:00')
+
+block ausstattung
+    div.col-xs-6
+        +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd sowie Kochutensilien')
+        +as('flaticon-wifi93', 'Wi-Fi')
+        +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+        +as('flaticon-bathroom13', 'Wesentliches', 'ettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+
+    div.col-xs-6
+        +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
+        +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+        +as(null, 'Familien-/kinderfreundlich')
+
+block preise
+    div.col-md-6
+        +keyAndStrongValue('pro Zimmer (1 Person inkl.)', '20 €')
+        +keyAndStrongValue('pro weitere Person', '15 €')
+        +keyAndStrongValue('Reinigungsgebühr', '30 €')
+        +keyAndStrongValue('Reinigungsgebühr ab der 5. Person', '5 € /p.P.')
+        +keyAndStrongValue('Stornierung', 'flexibel')
+
+    div.col-md-6
+        +keyAndStrongValue('ab 8 Personen', 'eine Person umsonst')
+        +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
+        +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
+        +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
+
+block beschreibung
+    include:markdown ./details-fuchs.md
+
+
+block calender
+    +calendar('FS')
