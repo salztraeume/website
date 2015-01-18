@@ -98,13 +98,18 @@ ul.icons {
     display: none;
 }
 
+@media (min-width: @screen-lg-min) {
+    .cal-date-control {
+        padding-top: 165px;
+    }
+}
+
 .cal-date-control {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 250px;
-    padding-top: 20px;
     input.date {
         width: 120px;
+        height: 34px;
+        vertical-align: top;
+        margin-top: 1px;
     }
 }
 
@@ -149,10 +154,9 @@ div[data-id] {
 }
 
 .flat {
-    margin-bottom: 6px;
-    margin-top: 1px;
-    height: 1.0em;
-    line-height: 12px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    height: 28px;
 }
 .icon {
     height: 1em;
@@ -202,23 +206,43 @@ table.booking-calendar {
     td.today {
         background: #ffdb99;
     }
+}
 
-    /* Tabellen Spalten am Anfang*/
-    .table-header.SL:before {
-        content: 'SL'
-    }
-    .table-header.EH:before {
-        content: 'EH'
-    }
-    .table-header.F1:before {
-        content: 'F1'
-    }
-    .table-header.F2:before {
-        content: 'F2'
-    }
-    .table-header.F3:before {
-        content: 'F3'
-    }
+.flat-icon-container input[type="checkbox"] {
+    margin-left: 2px;
+}
+
+
+.flat-icon-container .icon-label {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 6px;
+    text-transform: uppercase;
+}
+
+
+.flat-icon-container .icon, .table-header.icon {
+    display: inline-block;
+    margin-right: 2px;
+    height: 32px;
+    width: 40px;
+    background-repeat: no-repeat;
+}
+
+.icon.SL {
+    background-image: url(/img/kalender_sl.svg);
+}
+.icon.EH {
+    background-image: url(/img/kalender_eh.svg);
+}
+.icon.F1 {
+    background-image: url(/img/kalender_f1.svg);
+}
+.icon.F2 {
+    background-image: url(/img/kalender_f2.svg);
+}
+.icon.F3 {
+    background-image: url(/img/kalender_f3.svg);
 }
 
 // customize form elements
