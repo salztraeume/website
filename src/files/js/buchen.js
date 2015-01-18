@@ -13,12 +13,92 @@ var DATEPICKER_OPTS = {
 
 //  +++ booking +++
 
+var locationHash = {};
+var PERMA_LINK_KEYS = [
+    'from',
+    'to',
+    'flat',
+    'flat_d',
+    'ga',
+    'gb',
+    'gc',
+    'gd'
+];
+var setPermaLink = function(key, value) {
+    if ('.' + PERMA_LINK_KEYS.join('.').indexOf(key) < 0) {
+        throw new Error('there is no key: '+key);
+    }
+    locationHash[key] = value;
+
+    var locationArray = [];
+    for(var i=0; i<PERMA_LINK_KEYS.length; i++) {
+        var currentKey = PERMA_LINK_KEYS[i];
+        var currentVal = locationHash[currentKey];
+        if (currentVal != null && currentVal !== '' && currentVal !== 0) {
+            locationArray.push(currentKey + '=' + currentVal);
+        }
+    }
+    window.location.hash = locationArray.join('&');
+};
+
+var readPermaLink = function() {
+    var str = window.location.hash.substr(1);
+    var pairs = str.split('&');
+
+    // prophylactic reset
+    $('#flat_fuchs_detail').hide();
+    
+    for (var i=0; i<pairs.length; i++) {
+        var splitted = pairs[i].split('=');
+        var key = splitted[0];
+        var value = splitted[1];
+        locationHash[key] = value;
+
+        switch(key) {
+            case 'from':
+                $('#b_arrival').val(value);
+                break;
+            case 'to':
+                $('#b_departure').val(value);
+                break;
+            case 'flat':
+                $('#b_flat').val(value);
+                break;
+            case 'flat_d':
+                if (locationHash.flat != 'Fuchs') {break;}
+                
+                flat_values = value.split('').map(function(i) {return i === '1' ? true : false});
+                $('#flat_fuchs_detail input')[0].checked = flat_values[0];
+                $('#flat_fuchs_detail input')[1].checked = flat_values[1];
+                $('#flat_fuchs_detail input')[2].checked = flat_values[2];
+                $('#flat_fuchs_detail').show();
+                break;
+            case 'ga':
+                $('#b_guests_adult').val(value);
+                break;
+            case 'gb':
+                $('#b_guests_teens').val(value);
+                break;
+            case 'gc':
+                $('#b_guests_children').val(value);
+                break;
+            case 'gd':
+                $('#b_guests_children_free').val(value);
+                break;
+        }
+    }
+    calculatePrice();
+};
+
 var calcGuestDates = function() {
     var from = $('#b_arrival').val() || '-';
     var to = $('#b_departure').val() || '-';
     var fromDate = moment(from, DE_FORMATTER);
     var toDate = moment(to, DE_FORMATTER);
     var nights = moment(toDate).diff(fromDate, 'days');
+    setPermaLink('from', from);
+    setPermaLink('to', to);
+
     return [nights, fromDate, toDate];
 };
 
@@ -29,6 +109,10 @@ var calcTotalGuests = function() {
     var c = parseInt(inputs[2].value || 0);
     var d = parseInt(inputs[3].value || 0);
     var totalGuests = a+b+c+d;
+    setPermaLink('ga', a);
+    setPermaLink('gb', b);
+    setPermaLink('gc', c);
+    setPermaLink('gd', d);
     
     return totalGuests;
 };
@@ -56,8 +140,10 @@ var calculatePrice = function() {
     }
 
     // flat and nights = base price
-    var select = $('#b_flat');
-    var base = parseInt(select.find("[value="+select.val()+"]").attr('data-price'));
+    var flatElement = $('#b_flat');
+    var flatName = flatElement.val();
+    setPermaLink('flat', flatName);
+    var base = parseInt(flatElement.find("[value="+flatName+"]").attr('data-price'));
     var dates = calcGuestDates();
     var nights = dates[0];
     var fromDate = dates[1];
@@ -66,7 +152,7 @@ var calculatePrice = function() {
     var extraTreshold = 0;
 
     // sepcial logic for fuchs rooms
-    if (select.val() === 'Fuchs') {
+    if (flatName === 'Fuchs') {
         var values = getDetailsForFuchs();
         var result = values[0] + values[1] + values[2];
         
@@ -258,6 +344,11 @@ $(document).ready(function() {
     DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
     $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
 
+    // read initial url params
+    readPermaLink();
+
+    //
+
     $('#b_flat').on('change', function(e) {
         if (e.target.value === 'Fuchs') {
             $('#flat_fuchs_detail').show();
@@ -268,6 +359,7 @@ $(document).ready(function() {
             $('#flat_fuchs_detail').hide();
             var flatSize = $(e.target).find("[value="+e.target.value+"]").attr('data-max');
             $('#flat_size').val(flatSize);
+            setPermaLink('flat_d', null);
         }
         calculatePrice();
     });
@@ -275,7 +367,7 @@ $(document).ready(function() {
     $('#flat_fuchs_detail input').on('change', function(e) {
         var values = getDetailsForFuchs();
         var result = values[0] + values[1] + values[2];
-
+        setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
         // set max room
         var flatSize = 0;
         if (values[0]) flatSize += 4; // 4 beds
