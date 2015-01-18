@@ -230,19 +230,19 @@ $(document).ready(function() {
         e.preventDefault();
     });
     $('.filter-SL').change(function() {
-        $('.SL').toggle();
+        $('.booking-calendar .SL').toggle();
     });
     $('.filter-EH').change(function() {
-        $('.EH').toggle();
+        $('.booking-calendar .EH').toggle();
     });
     $('.filter-F1').change(function() {
-        $('.F1').toggle();
+        $('.booking-calendar .F1').toggle();
     });
     $('.filter-F2').change(function() {
-        $('.F2').toggle();
+        $('.booking-calendar .F2').toggle();
     });
     $('.filter-F3').change(function() {
-        $('.F3').toggle();
+        $('.booking-calendar .F3').toggle();
     });
 
 });
