@@ -30,22 +30,6 @@ if (!Array.prototype.forEach) {
   };
 }
 
-// moment isBefore IE workarround
-
-var toDates = function(moment1, moment2) {
-    return [moment1.toDate().getTime(), moment2.toDate().getTime()];
-}
-
-var isBefore = function(moment1, moment2) {
-    var tmp = toDates(moment1, moment2);
-    return tmp[0] < tmp[1];
-};
-
-var isAfter = function(moment1, moment2) {
-    var tmp = toDates(moment1, moment2);
-    return tmp[0] > tmp[1];
-};
-
 
 //  +++ calendar +++
 
