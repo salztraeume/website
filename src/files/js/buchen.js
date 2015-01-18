@@ -13,13 +13,13 @@ var DATEPICKER_OPTS = {
 
 //  +++ booking +++
 
-var calcNights = function() {
+var calcGuestDates = function() {
     var from = $('#b_arrival').val() || '-';
     var to = $('#b_departure').val() || '-';
     var fromDate = moment(from, DE_FORMATTER);
     var toDate = moment(to, DE_FORMATTER);
     var nights = moment(toDate).diff(fromDate, 'days');
-    return nights;
+    return [nights, fromDate, toDate];
 };
 
 var calcTotalGuests = function() {
@@ -58,7 +58,8 @@ var calculatePrice = function() {
     // flat and nights = base price
     var select = $('#b_flat');
     var base = parseInt(select.find("[value="+select.val()+"]").attr('data-price'));
-    var nights = calcNights();
+    var dates = calcGuestDates();
+    var nights = dates[0];
 
     var extraTreshold = 0;
 
@@ -83,7 +84,7 @@ var calculatePrice = function() {
 
     var toSubtract = extraTreshold;
     
-    var extraSum = 0;
+    var extraPersonSum = 0;
     var extraText = [];
     var fee = 0;
 
@@ -136,19 +137,19 @@ var calculatePrice = function() {
             var tmp = map[array[i]];
             if (tmp.size > 0 && tmp.price > 0) {
                 extraText.push(tmp.size + ' * ' + tmp.price + ' €');
-                extraSum += tmp.size * tmp.price;
+                extraPersonSum += tmp.size * tmp.price;
             }
         }
         
         // special offer 8 persons for fuchs = 120 €
-        if (totalGuests > 7 && extraSum > (120 - base)) {
-            extraSum -= map.adult.price;
+        if (totalGuests > 7 && extraPersonSum > (120 - base)) {
+            extraPersonSum -= map.adult.price;
             extraText.push('Aktions Rabatt');
         }
 
-        $('#price-extra').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
+        $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
     } else {
-        $('#price-extra').text('–');
+        $('#price-extra-person').text('–');
     }
 
     // clean
@@ -168,7 +169,7 @@ var calculatePrice = function() {
 
 var resetCalculation = function() {
     $('#price-base').text('');
-    $('#price-extra').text('');
+    $('#price-extra-person').text('');
     $('#price-clean').text('');
     $('#price-sum').text('');
     $('#price-fee').text('');
@@ -300,7 +301,8 @@ $(document).ready(function() {
             var flat = $('#b_flat').val() || '-';
             var from = $('#b_arrival').val() || '-';
             var to = $('#b_departure').val() || '-';
-            var nights = calcNights();
+            var dates = calcGuestDates();
+            var nights = dates[0];
             var guests = $('#b_guests_total').val() || '-';
             var guests_adult = $('#b_guests_adult').val() || '-';
             var guests_teens = $('#b_guests_teens').val() || null;
@@ -333,10 +335,14 @@ $(document).ready(function() {
             if (guests_children) body += "Kinder (bis 9): "+guests_children + NL;
             if (guests_children_free) body += "Kinder (bis 4): "+guests_children_free + NL;
             
+            body += NL + 
+                "Preis: " + $('#price-sum').text() + NL;
+
             body += "Personen insgesamt: " + guests + NL +
                 NL +
                 "Name: "+name + NL + 
                 "E-Mail: "+email + NL;
+
             if (phone) body += "Telefon: "+phone + NL;
             if (note) body += "Bemerkung: "+note;
 
