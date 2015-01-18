@@ -60,6 +60,8 @@ var calculatePrice = function() {
     var base = parseInt(select.find("[value="+select.val()+"]").attr('data-price'));
     var dates = calcGuestDates();
     var nights = dates[0];
+    var fromDate = dates[1];
+    var toDate = dates[2];
 
     var extraTreshold = 0;
 
@@ -160,8 +162,43 @@ var calculatePrice = function() {
     var totalClean = CLEAN_BASE + extraClean;
     $('#price-clean').text(totalClean + ' €');
 
+    // special costs
+    // check if the daterange is within summer special prices
+    var saisonSpecial = 0;
+    var saisonDays = 0;
+    var currentYear = moment().year();
+    var specialPriceStart = moment('01.06' + currentYear, DE_FORMATTER).subtract('day', 1);
+    var specialPriceEnd = moment('31.08' + currentYear, DE_FORMATTER).add('day', 1);
+    var specialPriceStartNext = moment(specialPriceStart).add('year', 1);
+    var specialPriceEndNext = moment(specialPriceEnd).add('year', 1);
+
+    var tmpDate = moment(fromDate);
+    while (isBefore(tmpDate, toDate)) {
+        if (isAfter(tmpDate, specialPriceStart) && isBefore(tmpDate, specialPriceEnd)) {
+            // check current year
+            saisonSpecial += 5;
+            saisonDays++;
+        } else if(isAfter(tmpDate, specialPriceStartNext) && isBefore(tmpDate, specialPriceEndNext)) {
+            // check for next year
+            saisonSpecial += 5;
+            saisonDays++;
+        } else {
+            saisonSpecial += 0;
+        }
+        // increment for loop
+        tmpDate.add(1, 'days');
+    }
+    if (saisonSpecial > 0) {
+        $('.price-extra-saison').show();
+        $('#price-extra-saison').text(saisonDays + ' Nächte * 5 €');
+    } else {
+        $('#price-extra-saison').text('');
+        $('.price-extra-saison').hide();
+    }
+    
+
     // total price
-    $('#price-sum').text((base*nights + extraSum*nights + totalClean) + ' €');
+    $('#price-sum').text((base*nights + saisonSpecial + extraPersonSum*nights + totalClean) + ' €');
 
     // fee
     $('#price-fee').text(fee*nights + ' €');
@@ -170,6 +207,7 @@ var calculatePrice = function() {
 var resetCalculation = function() {
     $('#price-base').text('');
     $('#price-extra-person').text('');
+    $('#price-extra-saison').text('');
     $('#price-clean').text('');
     $('#price-sum').text('');
     $('#price-fee').text('');
