@@ -2,6 +2,7 @@
 - sobald du eine Datei (less, jade, ...) änderst, baut Docpad das automatisch und aktualisiert sogar deinen Browser von selbst!
 - momentan gibts noch n Bug, wenn man neue Dateien hinzufügt
   - Lösung: docpad beenden (CTRL + C) auf dem Terminal und ggf. `build` Ordner löschen
+  - dann wieder "make" eingeben
 
 
 

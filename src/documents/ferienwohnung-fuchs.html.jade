@@ -5,17 +5,16 @@ title: Fuchs. Zwischen Wald&See.
 include partials/mixins
 include calendar
 
-mixin Bewertungenen
-    a(target="_blank", href="https://www.airbnb.de/rooms/4844568#reviews") Bewertungenen
-
+mixin Bewertungen
+    a(target="_blank", href="https://www.airbnb.de/rooms/4844568#reviews") Bewertungen
 
 extends flat_template
 
 block rating-mobile
-    +Bewertungenen()
+    +Bewertungen()
 
 block rating-large
-    +Bewertungenen()
+    +Bewertungen()
 
 block icon
     img(src="img/fuchs.jpg", width="100px" alt="Wohnung Schmetterling")
@@ -31,6 +30,18 @@ block header-schlafzimmer
     span 3
 block header-betten
     span 4 — 1 — 1
+
+block carousel
+    +carousel()
+        .item.active
+            img(alt="Schlafzimmer", src='https://a1.muscache.com/ic/pictures/49760985/f594154e_original.jpg?interpolation=lanczos-none&size=x_large&output-format=progressive-jpeg&output-quality=70')
+            .carousel-caption
+                | Schlafzimmer
+        .item
+            img(alt="Eichhörnchen", src='/img/fuchs/wohnraum.jpg')
+            .carousel-caption
+                | Ferienwohnung Fuchs
+
 
 block unterkunft
     div.col-sm-6
