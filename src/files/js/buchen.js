@@ -10,7 +10,8 @@ var DATEPICKER_OPTS = {
     todayHighlight: true,
     todayBtn: true
 };
-
+var NL = NEWLINE = "%0D%0A";
+var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
 //  +++ booking +++
 
 var locationHash = {};
@@ -41,6 +42,28 @@ var setPermaLink = function(key, value) {
     window.location.hash = locationArray.join('&');
 };
 
+var parsePrice = function(str) {
+    var stripped = str.replace(/\D/g,' ');
+    var splitted = stripped.split(' ');
+    var factors = [];
+    for (var i=0; i<splitted.length; i++) {
+        var tmp = splitted[i];
+        if (tmp != '') {
+            factors.push(parseInt(tmp));
+        }
+    }
+    var price = 0;
+    for (var i=0; i<factors.length; i++) {
+        var tmp = factors[i];
+        if (price === 0) {
+            // for the first factor
+            price = 1;
+        }
+        price *= tmp;
+    }
+    return price;
+};
+
 var readPermaLink = function() {
     var str = window.location.hash.substr(1);
     var pairs = str.split('&');
@@ -53,6 +76,16 @@ var readPermaLink = function() {
         var key = splitted[0];
         var value = splitted[1];
         locationHash[key] = value;
+
+        if (key === 'RSP') {
+            if (value === 'off' || value === '0') {
+                localStorage.setItem(LOCAL_STORAGE_KEY, null);
+                console.log('reservation-view disabled');
+            } else {
+                localStorage.setItem(LOCAL_STORAGE_KEY, 'on');
+                console.log('reservation-view activated');
+            }
+        }
 
         switch(key) {
             case 'from':
@@ -288,6 +321,11 @@ var calculatePrice = function() {
 
     // fee
     $('#price-fee').text(fee*nights + ' €');
+
+
+    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
+        showReservation();
+    }
 };
 
 var resetCalculation = function() {
@@ -428,7 +466,7 @@ $(document).ready(function() {
         } else {
             if (!extraValidation()) return;
 
-            var flat = $('#b_flat').val() || '-';
+            var flatName = $('#b_flat').val() || '-';
             var from = $('#b_arrival').val() || '-';
             var to = $('#b_departure').val() || '-';
             var dates = calcGuestDates();
@@ -443,8 +481,8 @@ $(document).ready(function() {
             var phone = $('#b_phone').val() || null;
             var note = $('#b_note').val() || null;
 
-            var NL = "%0D%0A";
-            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flat + " / "+guests+" Personen";
+            
+            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flatName + " / "+guests+" Personen";
             var flatDetails = getDetailsForFuchs();
             var flatDetailsText = '';
             if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
@@ -458,7 +496,7 @@ $(document).ready(function() {
             var body = 
                 "Zeitraum: " + from + " — " + to + NL +
                 "Übernachtungen: " + nights + NL +
-                "Wohnung: " + flat + NL + flatDetailsText +
+                "Wohnung: " + flatName + NL + flatDetailsText +
                 "Erwachsene: "+guests_adult + NL;
 
             if (guests_teens) body += "Kinder (bis 17): "+guests_teens + NL;
@@ -484,3 +522,87 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
 });
+
+var showReservation = function() {
+    var NL = '<br/>';
+
+    var flatName = $('#b_flat').val() || '-';
+    var from = $('#b_arrival').val() || '-';
+    var to = $('#b_departure').val() || '-';
+    var dates = calcGuestDates();
+    var nights = dates[0];
+    var guests = $('#b_guests_total').val() || '-';
+    var guests_adult = $('#b_guests_adult').val() || '-';
+    var guests_teens = $('#b_guests_teens').val() || '-';
+    var guests_children = $('#b_guests_children').val() || '-';
+    var guests_children_free = $('#b_guests_children_free').val() || '-';
+
+    var priceSuffix = ',00 Euro';
+    var priceBasic = parsePrice($('#price-base').text()) + priceSuffix;
+    var priceTotal = parsePrice($('#price-sum').text()) + priceSuffix;
+    var priceExtrPersons = parsePrice($('#price-extra-person').text()) + priceSuffix;
+    var priceClean = parsePrice($('#price-clean').text()) + priceSuffix;
+    var priceFee = parsePrice($('#price-fee').text()) + priceSuffix;
+    var pricePart = parsePrice($('#price-sum').text()) * 0.2 + priceSuffix;
+    var priceRest = parsePrice($('#price-sum').text()) * 0.8  + priceSuffix;
+    var priceRestDate = moment(from, DE_FORMATTER).subtract('day', 13).format(DE_FORMATTER);
+    
+    var flatDetails = getDetailsForFuchs();
+    var flatDetailsText = '';
+    if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
+        var tmp = '';
+        tmp +=  flatDetails[0] ? ' 1. ' : '';
+        tmp +=  flatDetails[1] ? ' 2. ' : '';
+        tmp +=  flatDetails[2] ? ' 3. ' : '';
+        flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
+    }
+    
+    var template = 'Hallo XX YY,' + NL + 
+        NL + 
+        'gerne bestätige ich Ihnen hiermit die Reservierung für das Apartment ' + flatName + '.' + NL +
+        'Der Gesamtpreis setzt sich wie folgt zusammen:' + NL +
+        NL + 
+
+        '<span style="color: #9B70FE; font-weight: bold;">Apartment ' + flatName + '</span>' + NL + 
+        flatDetailsText +
+        from + ' – ' + to + '  |  ' + nights + ' Nächte  |  ' + guests + ' Personen' + NL +
+        'Erwachsene: ' + guests_adult + NL +
+        'Kinder (bis 17): ' + guests_teens + NL +
+        'Kinder (bis 9): ' + guests_children + NL +
+        'Kinder (bis 4): ' + guests_children_free + NL +
+        NL +
+
+        'Wohnungspreis: ' + priceBasic + NL +
+        'weitere Personen: ' + priceExtrPersons + NL +
+        'Servicegebühr: ' + priceClean + NL +
+        '<strong>GESAMT: ' + priceTotal + '</strong>' + NL +
+        NL +
+
+        '(Die Kurtaxe beläuft sich auf insgesamt ca. ' + priceFee + ' und muss bitte ' +
+        'bar vor Ort entrichtet werden. Mit der ausgestellten Kurkarte erhalten Sie ' +
+        'Rabatte u.a. in der SaarowTherme.)' + NL +
+        NL +
+        NL +
+
+        'Wir bitten Sie eine Anzahlung in Höhe von ' + pricePart + ' (20% des Gesamtbetrages) innerhalb von 14 Tagen auf folgendes Konto zu überweisen: ' + NL +
+        NL +
+
+        'Valentina Wilhelm' + NL +
+        'comdirect' + NL +
+        'IBAN: DE75200411550893836700' + NL +
+        'BIC: COBADEHD055' + NL +
+        NL +
+
+        'Bitte überweisen Sie den restlichen Betrag in Höhe von ' + priceRest + ' 14 Tage vor Ihrer Anreise, jedoch spätestens zum ' + priceRestDate + '.' + NL +
+        NL +
+
+        'STORNOBEDINGUNGEN ' + NL +
+        '100% Erstattung für Stornierung mehr als 14 Tage vor Anreisetag.' + NL +
+        '50% Erstattung für Stornierung mehr als 7 Tage vor Anreisetag.' + NL +
+        NL +
+
+        'Wir freuen uns darauf, Sie schon bald in unserer Ferienunterkunft <span style="color: #9B70FE">SALZ›T‹RÄUME AM SEE</span> begrüßen zu dürfen.';
+    
+    var content = '<div class="container"><p>' + template +  '</p></div>';
+    $('#reservation').html(content);
+}
