@@ -1,38 +1,18 @@
+include partials/mixins
+
+block carousel
+
 div.row
-    div.col-md-3.text-center
-        block icon
-
-        div.rating.hidden-md.hidden-lg
-            block rating-mobile
-
     div.col-md-9
-
         h1.overflow.h3.text-center-sm
             block flat-title
 
-        div.row.row-condensed.text-muted.text-center
-            div.col-xs-3: i.icon.icon2x.flaticon-home63
-            div.col-xs-3: i.icon.icon2x.flaticon-group12
-            div.col-xs-3: i.icon.icon2x.flaticon-opened37
-            div.col-xs-3: i.icon.icon2x.flaticon-bed29
+    div.col-md-3.text-center.text-muted
+        div.rating.hidden-md.hidden-lg
+            block rating-mobile
 
-div.row
-    div.col-md-3.text-muted.text-center.hide-xs
-        div.rating.hidden-xs.hidden-sm
+        div.rating.hidden-xs.text-center.hidden-sm.hide-xs(style="padding-top: 2em")
             block rating-large
-
-    div.col-md-9
-        div.row.row-condensed.text-muted.text-center
-            div.col-xs-3 
-                block header-unterkunft
-            div.col-xs-3 
-                block header-anzahl
-            div.col-xs-3 
-                block header-schlafzimmer
-            div.col-xs-3 
-                block header-betten
-
-block carousel
 
 hr
 
@@ -43,6 +23,8 @@ div.row
     div.col-sm-9
         div.row.bigger-line
             block unterkunft
+            +keyAndStrongValue('Check-In', '15:00')
+            +keyAndStrongValue('Check-Out', '11:00')
 
 hr
 
@@ -53,16 +35,6 @@ div.row
     div.col-md-9
         div.row
             block ausstattung
-
-hr
-
-div.row
-    div.col-md-3.text-muted
-        | Preise
-
-    div.col-md-9
-        div.row.bigger-line
-            block preise
 
 hr
 
@@ -86,11 +58,21 @@ div.row
 
 hr
 
+div.row
+    div.col-md-3.text-muted
+        | Preise
+
+    div.col-md-9
+        div.row.bigger-line
+            block preise
+
+hr
+
 h3 Belegungskalender
 
 block calender
 
 script(src="http://thunderwave.de:9776/items.js")
 
-div.text-center
-    a(href="buchen.html") Buchungsanfrage stellen
+div.text-center.padding-arround
+    block buchen

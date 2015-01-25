@@ -6,8 +6,7 @@ include partials/mixins
 include calendar
 
 mixin Bewertungenen
-    a(target="_blank", href="https://www.airbnb.de/rooms/3956514#reviews") Bewertungen
-
+    a(target="_blank", href="https://www.airbnb.de/users/show/20503227#reviews") Bewertungen
 
 extends flat_template
 
@@ -17,20 +16,8 @@ block rating-mobile
 block rating-large
     +Bewertungenen()
 
-block icon
-    img(src="img/schmetter.jpg", width="100px" alt="Wohnung Schmetterling")
-
 block flat-title
     span Schmetterling. Zwischen Wald&amp;See.
-
-block header-unterkunft
-    span Ganze Unterkunft
-block header-anzahl
-    span 3
-block header-schlafzimmer
-    span 1
-block header-betten
-    span 2
 
 block carousel
     +carousel()
@@ -81,8 +68,6 @@ block unterkunft
 
     div.col-sm-6
         +keyAndStrongValue('Betten', '2')
-        +keyAndStrongValue('Check-In', '14:00')
-        +keyAndStrongValue('Check-Out', '12:00')
 
 block ausstattung
     div.col-xs-6
@@ -114,3 +99,6 @@ block beschreibung
 
 block calender
     +calendar('SL')
+
+block buchen
+    +buchen('SL')

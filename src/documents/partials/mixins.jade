@@ -30,3 +30,9 @@ mixin as(icon, text, tooltip)
 mixin keyAndStrongValue(key, val)
     div #{key}:
         strong  #{val}
+
+mixin buchen(flatShortcut)
+    if flatShortcut == 'FS'
+        a(href="buchen.html#filter-F1&filter-F2&filter-F3") Buchungsanfrage stellen
+    else
+        a(href="buchen.html#filter-#{flatShortcut}") Buchungsanfrage stellen

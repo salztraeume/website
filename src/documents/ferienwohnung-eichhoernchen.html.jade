@@ -6,36 +6,19 @@ include partials/mixins
 include calendar
 
 mixin Bewertungen
-    a(target="_blank", href="https://www.airbnb.de/rooms/3955587#reviews") Bewertungen
+    a(target="_blank", href="https://www.airbnb.de/users/show/20503227#reviews") Bewertungen
 
-div.row
-    div.col-md-3.text-center
-        img(src="img/eichh.jpg", width="100px" alt="Wohnung Eichhörnchen")
+extends flat_template
 
-        div.rating.hidden-md.hidden-lg
-            +Bewertungen()
-    div.col-md-9
+block rating-mobile
+    +Bewertungen()
 
-        h1.overflow.h3.text-center-sm
-            | Eichhörnchen. Zwischen Wald&amp;See.
+block rating-large
+    +Bewertungen()
 
-        div.row.row-condensed.text-muted.text-center
-            div.col-xs-3: i.icon.icon2x.flaticon-home63
-            div.col-xs-3: i.icon.icon2x.flaticon-group12
-            div.col-xs-3: i.icon.icon2x.flaticon-opened37
-            div.col-xs-3: i.icon.icon2x.flaticon-bed29
+block flat-title
+    span Eichhörnchen. Zwischen Wald&amp;See.
 
-div.row
-    div.col-md-3.text-muted.text-center.hide-xs
-        div.rating.hidden-xs.hidden-sm
-            +Bewertungen()
-
-    div.col-md-9
-        div.row.row-condensed.text-muted.text-center
-            div.col-xs-3 Ganze Unterkunft
-            div.col-xs-3 4 Gäste
-            div.col-xs-3 1 Schlafzimmer
-            div.col-xs-3 2 Betten
 block carousel
     +carousel()
       .item.active
@@ -71,91 +54,50 @@ block carousel
         .carousel-caption
           | Flur
 
-hr
+block unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
+        +keyAndStrongValue('Unterkunft für', '4')
+        +keyAndStrongValue('Schlafzimmer', '1')
+        +keyAndStrongValue('Badezimmer', '1')
 
-div.row
-    div.col-sm-3
-        div.text-muted Die Unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Betten', '2')
 
-    div.col-sm-9
-        div.row.bigger-line
-            div.col-sm-6
-                +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
-                +keyAndStrongValue('Unterkunft für', '4')
-                +keyAndStrongValue('Schlafzimmer', '1')
-                +keyAndStrongValue('Badezimmer', '1')
+block ausstattung
+    div.col-xs-6
+        +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd, Spühlmaschine sowie Kochutensilien')
+        +as('flaticon-wifi93', 'Wi-Fi')
+        +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+        +as('flaticon-bathtub7', 'Badewanne', '2 Waschbecken, Eckbadewanne und Dusche')
 
-            div.col-sm-6
-                +keyAndStrongValue('Betten', '2')
-                +keyAndStrongValue('Check-In', '14:00')
-                +keyAndStrongValue('Check-Out', '12:00')
+    div.col-xs-6
+        +as('flaticon-bathroom13', 'Wesentliches', 'ettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+        +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
+        +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+        +as(null, 'Familien-/kinderfreundlich')
 
-hr
+block preise
+    div.col-md-6
+        +keyAndStrongValue('bis zu 2 Personen', '55 €')
+        +keyAndStrongValue('pro weitere Person', '15 €')
+        +keyAndStrongValue('Reinigungsgebühr', '30 €')
+        +keyAndStrongValue('Stornierung', 'flexibel')
+        
+    div.col-md-6
+        +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
+        +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
+        +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
 
-div.row
-    div.col-md-3.text-muted
-        | Ausstattung
+block beschreibung
+    include:markdown ./details-eichhoernchen.md
 
-    div.col-md-9
-        div.row
-            div.col-xs-6
-                +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd, Spühlmaschine sowie Kochutensilien')
-                +as('flaticon-wifi93', 'Wi-Fi')
-                +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
-                +as('flaticon-bathtub7', 'Badewanne', '2 Waschbecken, Eckbadewanne und Dusche')
+block regeln
+    include:markdown ./regeln-eichhoernchen.md
 
-            div.col-xs-6
-                +as('flaticon-bathroom13', 'Wesentliches', 'ettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
-                +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
-                +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
-                +as(null, 'Familien-/kinderfreundlich')
+block calender
+    +calendar('EH')
 
-hr
-
-div.row
-    div.col-md-3.text-muted
-        | Preise
-
-    div.col-md-9
-        div.row.bigger-line
-            div.col-md-6
-                +keyAndStrongValue('bis zu 2 Personen', '55 €')
-                +keyAndStrongValue('pro weitere Person', '15 €')
-                +keyAndStrongValue('Reinigungsgebühr', '30 €')
-                +keyAndStrongValue('Stornierung', 'flexibel')
-                
-            div.col-md-6
-                +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
-                +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
-                +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
-                +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
-
-hr
-
-div.row
-    div.col-md-3.text-muted
-        | Beschreibung
-
-    div.col-md-9
-        div.expandable
-            include:markdown ./details-eichhoernchen.md
-
-hr
-
-div.row
-    div.col-md-3.text-muted
-        | Hausregeln
-
-    div.col-md-9
-        div.expandable
-            include:markdown ./regeln-eichhoernchen.md
-
-hr
-
-h3 Belegungskalender
-
-+calendar('EH')
-script(src="http://thunderwave.de:9776/items.js")
-
-div.text-center
-    a(href="buchen.html") Buchungsanfrage stellen
+block buchen
+    +buchen('EH')
