@@ -10,4 +10,14 @@ build:
 node_modules: package.json
 	npm install
 
+deploy:
+	mkdir -p ftp
+	cp -r build/* ftp
+	rm -rf ftp/WIP
+	rm -rf ftp/video
+	rm -rf ftp/partials
+	cd ftp && find . -name "*.less" -type f -delete
+	cd ftp && find . -name "*.md" -type f -delete
+	cd ftp && find . -name "*.jade" -type f -delete
+
 .PHONY: build
