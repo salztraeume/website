@@ -3,13 +3,104 @@ layout: master
 ---
 
 
-div.panel.panel-default
-  div.panel-heading Preise
-  div.panel-body
+div(style="padding: 10px")
     p.
-      Die Tabelle zeigt unseren aktuellen Preise für unsere drei Ferienwohnungen.
+        Die folgende Tabelle zeigt unsere Preise pro Person pro Nacht.<br>
+        Mindestaufenthalt beträgt 2 Nächte.
+
+table.table.table-bordered
+    thead
+        tr
+            th Personen
+            th Schmetterling
+            th Eichhörnchen
+            th Fuchs 1
+            th Fuchs 2
+            th Fuchs 3
+            th Fuchs komplett
+
+    tbody
+        tr
+            th(scope='row') 1
+            td 50* €
+            td 55* €
+            td 20 €
+            td 20 €
+            td 20 €
+            td
+        tr
+            th(scope='row') 2
+            td 50* €
+            td 55* €
+            td 35 €
+            td 35 €
+            td 35 €
+            td
+        tr
+            th(scope='row') 3
+            td 65* €
+            td 70* €
+            td 50 €
+            td
+            td
+            td
+        tr
+            th(scope='row') 4
+            td 
+            td 85* €
+            td 65 €
+            td
+            td
+            td
+        tr
+            th(scope='row') bis 5
+            td 
+            td
+            td
+            td
+            td
+            td 90 €
+        tr
+            th(scope='row') 6
+            td 
+            td
+            td
+            td
+            td
+            td 105 €
+        tr
+            th(scope='row') ab 7
+            td 
+            td
+            td
+            td
+            td
+            td 120 €
+
+    tbody
+        tr
+            th(scope="row") Service Gebühr
+            td(colspan=6, style='text-align: center') 30 €
+        tr
+            th(scope="row") ab der 5. Person
+            td(colspan=5)
+            td 5 € pro Person
+p.
+    * In der Hauptsaison (01.06 — 31.08) gibt es einen Aufschlag 
+    von 5 € pro Nacht für die Wohnungen Schmetterling und Eichhörnchen.
 
 
-  table.table
-    tr
-      th
+div
+    strong Kurtaxe:
+div
+    p.
+        Die Kurtaxe in Bad Saarow beträgt 1,50 € pro Person pro Tag.<br>
+        An- und Abreise zählen als ein Tag.<br>
+        Für Kinder von 10-17 Jahre beträgt die Kurtaxe 0,50 €.<br>
+        Kinder unter 10 Jahre zahlen keine Kurtaxe.<br>
+
+div
+    p
+        | Der Gesamtpreis kann auf der 
+        a(href="buchen.html") Buchen 
+        | Seite interaktiv berechnet werden.
