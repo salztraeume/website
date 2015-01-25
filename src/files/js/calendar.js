@@ -179,7 +179,7 @@ var considerFlatFilter = function() {
         var filterElement = $('.filter-' + flatShortcut);
         if (filterElement.length === 0) continue;
         if (filterElement[0].checked === false) {
-            $('.' + flatShortcut).hide();
+            $('.booking-calendar .' + flatShortcut).hide();
         }
     }
 };
