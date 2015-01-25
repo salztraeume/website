@@ -1,4 +1,5 @@
 
+
 - sobald du eine Datei (less, jade, ...) änderst, baut Docpad das automatisch und aktualisiert sogar deinen Browser von selbst!
 - momentan gibts noch n Bug, wenn man neue Dateien hinzufügt
   - Lösung: docpad beenden (CTRL + C) auf dem Terminal und ggf. `build` Ordner löschen
@@ -10,7 +11,11 @@
 ## Anna
 ### Gesamten Arbeitsordner im Terminal öffnen
 a) - GitHub öffnen
-    - im Menu "Repository" > Open in terminal
+    - 2 mal Apfel(cmd) + T drücken (für 2 Fenster im Terminal)
+    - 1. Fenster: make (oder make build)
+    - 2. Fenster: serve build
+
+b) http://localhost:3000/ im browser öffnen
 
 b) Im Terminal einfach nur `make` eingeben und ENTER drücken
 (um Docpad und Co zu starten (ggf. vorher Plugins automatisch installieren))
@@ -29,8 +34,9 @@ ESC drücken um Konsole eim/aus zublenden dann einen Selektor reinschreiben z.B:
 dann enter drücken
 
 
-
-
+buchen.salzträume-am-see.de/
+http://localhost:3000/buchen.html
+http://localhost:3000/ferienwohnung-fuchs.html
 
 ## Verlinkung von Resoursen (z.B. fonts, images)
 
