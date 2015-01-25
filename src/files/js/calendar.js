@@ -231,18 +231,23 @@ $(document).ready(function() {
     });
     $('.filter-SL').change(function() {
         $('.booking-calendar .SL').toggle();
+        if (setPermaLink) setPermaLink('filter', 'SL');
     });
     $('.filter-EH').change(function() {
         $('.booking-calendar .EH').toggle();
+        if (setPermaLink) setPermaLink('filter', 'EH');
     });
     $('.filter-F1').change(function() {
         $('.booking-calendar .F1').toggle();
+        if (setPermaLink) setPermaLink('filter', 'F1');
     });
     $('.filter-F2').change(function() {
         $('.booking-calendar .F2').toggle();
+        if (setPermaLink) setPermaLink('filter', 'F2');
     });
     $('.filter-F3').change(function() {
         $('.booking-calendar .F3').toggle();
+        if (setPermaLink) setPermaLink('filter', 'F3');
     });
 
 });

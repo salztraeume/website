@@ -16,6 +16,11 @@ var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
 
 var locationHash = {};
 var PERMA_LINK_KEYS = [
+    'filter-SL',
+    'filter-EH',
+    'filter-F1',
+    'filter-F2',
+    'filter-F3',
     'from',
     'to',
     'flat',
@@ -23,9 +28,14 @@ var PERMA_LINK_KEYS = [
     'ga',
     'gb',
     'gc',
-    'gd'
+    'gd',
 ];
+
 var setPermaLink = function(key, value) {
+    if (key === 'filter') {
+        var checkbox = $('input.filter-'+value)[0].checked;
+        return setPermaLink('filter-'+value, checkbox ? '1' : null);
+    }
     if ('.' + PERMA_LINK_KEYS.join('.').indexOf(key) < 0) {
         throw new Error('there is no key: '+key);
     }
@@ -64,9 +74,25 @@ var parsePrice = function(str) {
     return price;
 };
 
+var handleFilterFromURL = function(flatShortcut) {
+    var setFilter = function(key) {
+        $('input.filter-'+key).click();
+    };
+    if (flatShortcut === 'FS') {
+        setFilter('F1');
+        setFilter('F2');
+        setFilter('F3');
+        setPermaLink('filter', 'FS');
+    } else {
+        setFilter(flatShortcut);
+        setPermaLink('filter', flatShortcut);
+    }
+};
+
 var readPermaLink = function() {
     var str = window.location.hash.substr(1);
     var pairs = str.split('&');
+    var filterHandled = false;
 
     // prophylactic reset
     $('#flat_fuchs_detail').hide();
@@ -88,6 +114,26 @@ var readPermaLink = function() {
         }
 
         switch(key) {
+            case 'filter-SL':
+                handleFilterFromURL('SL');
+                filterHandled = true;
+                break;
+            case 'filter-EH':
+                handleFilterFromURL('EH');
+                filterHandled = true;
+                break;
+            case 'filter-F1':
+                handleFilterFromURL('F1');
+                filterHandled = true;
+                break;
+            case 'filter-F2':
+                handleFilterFromURL('F2');
+                filterHandled = true;
+                break;
+            case 'filter-F3':
+                handleFilterFromURL('F3');
+                filterHandled = true;
+                break;
             case 'from':
                 $('#b_arrival').val(value);
                 break;
@@ -119,6 +165,9 @@ var readPermaLink = function() {
                 $('#b_guests_children_free').val(value);
                 break;
         }
+    }
+    if (!filterHandled) {
+        handleFilterFromURL('SL');
     }
     calculatePrice();
 };
