@@ -6,37 +6,61 @@ include partials/mixins
 
 +carousel()
   .item.active
-    img(src='img/st_aussen.jpg', alt='Gebäude Salzträume am See')
+    img(src='img/start/start1.jpg', alt='Ferienhaus SALZ›T‹RÄUME AM SEE')
     .carousel-caption
-      | Wohntraum in lila
+      | SALZ›T‹RÄUME AM SEE
   .item
-    img(src='img/st_wo1_1.jpg', alt='...')
+    img(src='img/start/start2.jpg', alt='...')
     .carousel-caption
-      | Seminare, die Ihr Leben positiv verändern
+      | Apartment Schmetterling
   .item
-    img(src='img/st_wo1_2.jpg', alt='...')
+    img(src='img/start/start3.jpg', alt='...')
     .carousel-caption
-      | Salzige Räume – süße Träume
+      | Apartment Schmetterling
+  .item
+    img(src='img/start/start4.jpg', alt='...')
+    .carousel-caption
+      | Apartment Eichhörnchen
+  .item
+    img(src='img/start/start5.jpg', alt='...')
+    .carousel-caption
+      | Wohnung Fuchs
+  .item
+    img(src='img/start/start6.jpg', alt='...')
+    .carousel-caption
+      | Wohnung Fuchs
  
 div.row
   .col-xs-12.col-md-8
-    h1 Das erste Salz-Ferienhaus Deutschlands.
+    h1 Die erste Salz-Ferienunterkunft Deutschlands.
     p.lead
-      | Unser Zentrum vereint mehrere Einrichtungen unter einem Dach — allen gemein ist
-      | das Credo ›Gesundheit und Revitalisierung‹.
+      | Zwischen Wald und See gelegen bietet unsere Ferienunterkunft drei komfortabel eingerichtete Wohnungen 
+      | mit dem gewissen Extra. Die Raumgestaltung mit dem neuen Trend-Material Himalayasalz macht sie zu etwas Besonderem. Wandelemente  
+      | und Beleuchtungen aus Natursalz verleihen den Räumen nicht nur eine außergewöhnliche Wohnatmosphäre – Natursalz 
+      | ist auch für seine gesundheitsfördernde Wirkung bekannt.
     p
-      | Die positive Wirkung von Salz war schon Kleopatra bekannt...
-      | Jeder kennt die revitalisierende Wirkung von einigen Tagen am Meer, schätzt den heilsamen Aufenthalt in einer Sole Therme und die Salzheilgrotten haben langsam aber sicher auch in Deutschland Einzug gehalten.
-      | Erstmalig in Deutschland ist jedoch ein Salz-Ferienheim. In unseren Räumen sind...
-
+      | Das orange-rote Himalayasalz schafft in den Räumen eine mineralsalzhaltige Luft, ähnlich wie sie 
+      | am Meer oder in Salzstollen vorzu­finden ist. Uns allen ist die revitalisierende Wirkung des Meeresklimas bekannt, viele schätzen den 
+      | heilsamen Aufenthalt in einer Sole Therme und Salzheilgrotten haben langsam aber sicher in Deutschland Einzug gehalten.
+      | Erstmalig in Deutschland ist jetzt eine Salz-Ferienunterkunft. 
+  .col-xs-12.col-md-4
+    a(href='/ferienwohnung-eichhoernchen.html')
+      img(src='img/eichh.jpg', alt='...')
+    p Für alle, die natürliche Materialien und handgemachte Dinge mögen.
+    
 div.row
   .col-xs-12.col-md-4
-    img(src='img/eichh.jpg', alt='...')
-    p Für alle, die es natürlich und selbstgemacht mögen.
+    a(href='/ferienwohnung-eichhoernchen.html')
+      img(src='img/eichh.jpg', alt='...')
+    p Für alle, die natürliche Materialien und handgemachte Dinge mögen.
+
   .col-xs-12.col-md-4
-    img(src='img/schmetter.jpg', alt='...')
-    p Es darf gerne außergewöhnlich und interessant sein.
+    a(href='/ferienwohnung-schmetterling.html')
+      img(src='img/schmetter.jpg', alt='...')
+    p Es darf gerne außergewöhnlich und leuchtend bunt sein.
+
   .col-xs-12.col-md-4
-    img(src='img/fuchs.jpg', alt='...')
+    a(href='/ferienwohnung-fuchs.html')
+      img(src='img/fuchs.jpg', alt='...')
     p Die sparsame Variante für alle, die gerne in Gesellschaft sind.
 
