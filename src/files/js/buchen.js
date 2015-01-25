@@ -39,7 +39,7 @@ var setPermaLink = function(key, value) {
         var filterElement = $('input.filter-'+value);
         if (filterElement.length > 0) {
             var checkbox = filterElement[0].checked;
-            return setPermaLink('filter-'+value, checkbox ? '1' : null);
+            return setPermaLink('filter-'+value, checkbox ? '' : null);
         }
         
     }
@@ -52,8 +52,12 @@ var setPermaLink = function(key, value) {
     for(var i=0; i<PERMA_LINK_KEYS.length; i++) {
         var currentKey = PERMA_LINK_KEYS[i];
         var currentVal = locationHash[currentKey];
-        if (currentVal != null && currentVal !== '' && currentVal !== 0) {
-            locationArray.push(currentKey + '=' + currentVal);
+        if (currentVal != null && currentVal !== 0) {
+            if (currentVal == '') {
+                locationArray.push(currentKey);
+            } else {
+                locationArray.push(currentKey + '=' + currentVal);
+            }
         }
     }
     window.location.hash = locationArray.join('&');
