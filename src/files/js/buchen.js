@@ -10,6 +10,9 @@ var DATEPICKER_OPTS = {
     todayHighlight: true,
     todayBtn: true
 };
+SAISON_START = '01.06';
+SAISON_END = '31.08';
+
 var NL = NEWLINE = "%0D%0A";
 var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
 //  +++ booking +++
@@ -33,8 +36,12 @@ var PERMA_LINK_KEYS = [
 
 var setPermaLink = function(key, value) {
     if (key === 'filter') {
-        var checkbox = $('input.filter-'+value)[0].checked;
-        return setPermaLink('filter-'+value, checkbox ? '1' : null);
+        var filterElement = $('input.filter-'+value);
+        if (filterElement.length > 0) {
+            var checkbox = filterElement[0].checked;
+            return setPermaLink('filter-'+value, checkbox ? '1' : null);
+        }
+        
     }
     if ('.' + PERMA_LINK_KEYS.join('.').indexOf(key) < 0) {
         throw new Error('there is no key: '+key);
@@ -169,7 +176,9 @@ var readPermaLink = function() {
     if (!filterHandled) {
         handleFilterFromURL('SL');
     }
-    calculatePrice();
+    if ($('.conainter.booking').length > 0) {
+        calculatePrice();
+    }
 };
 
 var calcGuestDates = function() {
@@ -186,6 +195,8 @@ var calcGuestDates = function() {
 
 var calcTotalGuests = function() {
     var inputs = $('#guests_control input');
+    if (inputs.length === 0) return
+
     var a = parseInt(inputs[0].value || 0);
     var b = parseInt(inputs[1].value || 0);
     var c = parseInt(inputs[2].value || 0);
@@ -335,8 +346,8 @@ var calculatePrice = function() {
     var saisonSpecial = 0;
     var saisonDays = 0;
     var currentYear = moment().year();
-    var specialPriceStart = moment('01.06' + currentYear, DE_FORMATTER).subtract('day', 1);
-    var specialPriceEnd = moment('31.08' + currentYear, DE_FORMATTER).add('day', 1);
+    var specialPriceStart = moment(SAISON_START + currentYear, DE_FORMATTER).subtract('day', 1);
+    var specialPriceEnd = moment(SAISON_END + currentYear, DE_FORMATTER).add('day', 1);
     var specialPriceStartNext = moment(specialPriceStart).add('year', 1);
     var specialPriceEndNext = moment(specialPriceEnd).add('year', 1);
 
