@@ -6,12 +6,6 @@ Valentina Wilhelm
 Ziegeleiring 52  
 26817 Rhauderfehn  
 
-### Kontakt
-
-Telefon:    +49 33631 809869  
-Telefax:    +49 33631 8098699  
-E-Mail: info@salztraeume-am-see.de
-
 ### Umsatzsteuer-ID
 
 Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:
