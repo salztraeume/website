@@ -158,7 +158,7 @@ var readPermaLink = function() {
                 break;
             case 'flat_d':
                 if (locationHash.flat != 'Fuchs') {break;}
-                
+
                 flat_values = value.split('').map(function(i) {return i === '1' ? true : false});
                 $('#flat_fuchs_detail input')[0].checked = flat_values[0];
                 $('#flat_fuchs_detail input')[1].checked = flat_values[1];
@@ -183,6 +183,9 @@ var readPermaLink = function() {
         handleFilterFromURL('SL');
     }
     if ($('.conainter.booking').length > 0) {
+        // only on the buchen.html
+        fixFlatSizeIfFUchs();
+        limitDatePicker($('#b_arrival')[0]);
         calculatePrice();
     }
 };
@@ -254,7 +257,7 @@ var calculatePrice = function() {
     if (flatName === 'Fuchs') {
         var values = getDetailsForFuchs();
         var result = values[0] + values[1] + values[2];
-        
+        setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
         if (result === 0) {
             resetCalculation();
             return;
@@ -447,6 +450,46 @@ var extraValidation = function() {
     return true;
 };
 
+var fixFlatSizeIfFUchs = function() {
+    var values = getDetailsForFuchs();
+    var result = values[0] + values[1] + values[2];
+    // set max room
+    var flatSize = 0;
+    if (values[0]) flatSize += 4; // 4 beds
+    if (values[1]) flatSize += 2; // 1 double bed
+    if (values[2]) flatSize += 2; // 1 double bed
+    if (result === 3) flatSize += 1; // 1 couch
+    $('#flat_size').val(flatSize);
+};
+
+var limitDatePicker = function(element) {
+    // limit the start date of departure
+    // at least to book 2 nights
+    var arrivalDate = element.value;
+    var minDeparture = moment(arrivalDate, DE_FORMATTER).add('days', 2);
+    _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
+
+    // check if the old departure is still valid
+    var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
+    if (departureDate && departureDate.isBefore(minDeparture)) {
+        $('#b_departure').val('');
+    }
+};
+
+var toggleFlatDetails = function(element) {
+    if (element.value === 'Fuchs') {
+        $('#flat_fuchs_detail').show();
+        $('#flat_size').val("");
+    } else {
+        // disable all checkboxes for fuchs
+        $('#flat_fuchs_detail input').prop("checked", false);
+        $('#flat_fuchs_detail').hide();
+        var flatSize = $(element).find("[value="+element.value+"]").attr('data-max');
+        $('#flat_size').val(flatSize);
+        if (!noPermaLink) setPermaLink('flat_d', null);
+    }
+};
+
 $(document).ready(function() {
 
     //  +++ booking +++
@@ -458,51 +501,18 @@ $(document).ready(function() {
     // read initial url params
     readPermaLink();
 
-    //
-
-    $('#b_flat').on('change', function(e) {
-        if (e.target.value === 'Fuchs') {
-            $('#flat_fuchs_detail').show();
-            $('#flat_size').val("");
-        } else {
-            // disable all checkboxes for fuchs
-            $('#flat_fuchs_detail input').prop("checked", false);
-            $('#flat_fuchs_detail').hide();
-            var flatSize = $(e.target).find("[value="+e.target.value+"]").attr('data-max');
-            $('#flat_size').val(flatSize);
-            setPermaLink('flat_d', null);
-        }
+    $('#b_flat').on('change', function(event) {
+        toggleFlatDetails(event.target);
         calculatePrice();
     });
 
     $('#flat_fuchs_detail input').on('change', function(e) {
-        var values = getDetailsForFuchs();
-        var result = values[0] + values[1] + values[2];
-        setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
-        // set max room
-        var flatSize = 0;
-        if (values[0]) flatSize += 4; // 4 beds
-        if (values[1]) flatSize += 2; // 1 double bed
-        if (values[2]) flatSize += 2; // 1 double bed
-        if (result === 3) flatSize += 1; // 1 couch
-        $('#flat_size').val(flatSize);
-
+        fixFlatSizeIfFUchs();
         calculatePrice();
     });
 
-    $('#b_arrival').on('change', function(e) {
-        // limit the start date of departure
-        // at least to book 2 nights
-        var arrivalDate = e.target.value;
-        var minDeparture = moment(arrivalDate, DE_FORMATTER).add('days', 2);
-        _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
-
-        // check if the old departure is still valid
-        var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
-        if (departureDate && departureDate.isBefore(minDeparture)) {
-            $('#b_departure').val('');
-        }
-
+    $('#b_arrival').on('change', function(event) {
+        limitDatePicker(event.target);
         calculatePrice();
     });
 
