@@ -8,6 +8,8 @@ div.calendar
 
 form.conainter.booking(onsubmit="return false;")
 
+    h3 Reservierungsanfrage
+
     div.form-group
         label.validation.arrival.control-label(for="b_arrival")
         label.validation.departure.control-label(for="b_departure")
@@ -23,7 +25,7 @@ form.conainter.booking(onsubmit="return false;")
 
     div#flat_fuchs_detail.form-group
         div.input-group
-            label.margin-right Welche Zimmer in Fuchs benötigst du? 
+            label.margin-right Welche Zimmer in Fuchs werden benötigt? 
             label.validation.control-label(for="b_flat_fs1") Es muss mindestens ein Zimmer in Fuchs ausgewählt werden
             label.checkbox-inline
                 input#b_flat_fs1(type="checkbox")
@@ -46,7 +48,7 @@ form.conainter.booking(onsubmit="return false;")
             input#b_guests_children_free.input.form-control(type="number", min="0", data-price="0", data-fee="0", placeholder="Kinder (bis 4 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 4 Jahre")
 
     div.form-group.guests-size
-        label.size-overflow.control-label(for="b_guests_total") Wohnung bietet nicht genug Schlafplätze! Du kannst die Anfrage aber trotzdem abschicken.
+        label.size-overflow.control-label(for="b_guests_total") Wohnung bietet nicht genug Schlafplätze! Anfrage kann aber trotzdem abgeschickt werden.
         label.size-underflow.control-label(for="b_guests_total") Es muss für mindestens eine Person gebucht werden
         div.input-group
             span.input-group-addon Anzahl insgesamt: 
