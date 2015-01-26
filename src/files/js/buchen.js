@@ -12,6 +12,8 @@ var DATEPICKER_OPTS = {
 };
 SAISON_START = '01.06';
 SAISON_END = '31.08';
+FUCHS_FULLHOUSE_BASE = 90; // 3 (each room) * 20 € + 30 € = 90
+FUCHS_FULLHOUSE_PERSON_THRESHOLD = 5;
 
 var NL = NEWLINE = "%0D%0A";
 var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
@@ -257,8 +259,14 @@ var calculatePrice = function() {
             resetCalculation();
             return;
         } 
-        extraTreshold = result;
-        base = base * result;
+        if (result < 3) {
+            extraTreshold = result;
+            base = base * result;
+        } else {
+            // full house
+            extraTreshold = FUCHS_FULLHOUSE_PERSON_THRESHOLD;
+            base = FUCHS_FULLHOUSE_BASE;
+        }
 
     } else {
         // Schmetterling and Eichhoernchen
@@ -328,8 +336,9 @@ var calculatePrice = function() {
         
         // special offer 8 persons for fuchs = 120 €
         if (totalGuests > 7 && extraPersonSum > (120 - base)) {
+            var overFlow = totalGuests - 7;
             extraPersonSum -= map.adult.price;
-            extraText.push('Aktions Rabatt');
+            extraText = ['Fullhouse Rabatt: 30 €'];
         }
 
         $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
