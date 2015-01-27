@@ -8,7 +8,7 @@ div.calendar
 
 form.conainter.booking(onsubmit="return false;")
 
-    h3 Reservierungsanfrage
+    h3#header-title Reservierungsanfrage
 
     div.form-group
         label.validation.arrival.control-label(for="b_arrival")
@@ -74,7 +74,10 @@ form.conainter.booking(onsubmit="return false;")
                 th Summe:
                 td#price-sum
             tr
-                th zzgl. Kurtaxe:
+                th 
+                    | zzgl. Kurtaxe 
+                    //-span.glyphicon.glyphicon-info-sign
+                    |: 
                 td#price-fee
 
 

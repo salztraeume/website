@@ -4,7 +4,7 @@
 
 Das besondere an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist die Raumgestaltung mit Wandelementen oder Beleuchtungen aus Natursalz in den drei Wohnungen <em>›Fuchs‹</em>, <em>›Eichhörnchen‹</em> und <em>›Schmetterling‹</em>. Das orange-rote Himalayasalz – reich an Mineralien – verleiht dem Raum nicht nur eine außergewöhnliche Wohnatmosphäre, es ist auch für seine gesundheitsfördernde Wirkung bekannt. In den Räumen wird eine salzhaltige Luft geschaffen, wie sie am Meer oder in Salzstollen vorzu­finden ist. Und uns allen sind die positiven Effekte des Meeresklimas bekannt.
 
-Die Wohnung ›Fuchs‹ bietet Raum für bis zu 10 Personen. 
+Die Wohnung ›Fuchs‹ bietet Raum für bis zu 10 Personen. Die Wohnung fungiert als eine Art Hostel, bei der bis zu drei verschiedene Parteien übernachten können. Alternativ kann die Wohnung auch komplett gebucht werden.
 1. Schlafzimmer: 4 Einzelbetten (0,90x2,00m), 
 2. Schlafzimmer: 1 Doppelbett (1,40x2,00m), 
 3. Schlafzimmer: 1 Doppelbett (1,40x2,00m), 
