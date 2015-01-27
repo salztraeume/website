@@ -501,6 +501,18 @@ $(document).ready(function() {
     // read initial url params
     readPermaLink();
 
+    if ($("#b_arrival").length > 0) {
+        $(".booking-calendar .day").on('click', function() {
+            $('html, body').animate({
+                scrollTop: $("#header-title").offset().top - 60
+            }, 1000);
+            setTimeout(function() {
+                $('#b_arrival').focus();
+            }, 1000);
+        });
+    }
+
+
     $('#b_flat').on('change', function(event) {
         toggleFlatDetails(event.target);
         calculatePrice();
