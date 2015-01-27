@@ -12,6 +12,7 @@ node_modules: package.json
 
 deploy:
 	mkdir -p ftp
+	git log --pretty=format:"%h" -1 > ftp/_git_version.txt
 	cp -r build/* ftp
 	rm -rf ftp/WIP
 	rm -rf ftp/video
