@@ -331,8 +331,7 @@ var calculatePrice = function() {
         
         // special offer 8 persons for fuchs = 120 €
         if (totalGuests > 7 && extraPersonSum > (120 - base)) {
-            var overFlow = totalGuests - 7;
-            extraPersonSum -= map.adult.price;
+            extraPersonSum = 30;
             extraText = ['Fullhouse Rabatt: 30 €'];
         }
 
