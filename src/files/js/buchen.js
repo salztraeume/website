@@ -173,7 +173,7 @@ var readPermaLink = function() {
     }
     if ($('.conainter.booking').length > 0) {
         // only on the buchen.html
-        fixFlatSizeIfFUchs();
+        toggleFlatDetails($('#b_flat')[0], true);
         limitDatePicker($('#b_arrival')[0]);
         calculatePrice();
     }
@@ -334,7 +334,8 @@ var calculatePrice = function() {
             extraPersonSum = 30;
             extraText = ['Fullhouse Rabatt: 30 €'];
         }
-
+    } 
+    if (extraText.length > 0) {
         $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
     } else {
         $('#price-extra-person').text('–');
@@ -455,18 +456,28 @@ var limitDatePicker = function(element) {
     }
 };
 
-var toggleFlatDetails = function(element) {
+
+// toggle flat details
+// adapt flat size
+var toggleFlatDetails = function(element, noPermaLink) {
+    var flatSize = 0;
     if (element.value === 'Fuchs') {
         $('#flat_fuchs_detail').show();
-        $('#flat_size').val("");
+        var values = getDetailsForFuchs();
+        var result = values[0] + values[1] + values[2];
+        // set max room
+        if (values[0]) flatSize += 4; // 4 beds
+        if (values[1]) flatSize += 2; // 1 double bed
+        if (values[2]) flatSize += 2; // 1 double bed
+        if (result === 3) flatSize += 2; // 2 couch
     } else {
         // disable all checkboxes for fuchs
         $('#flat_fuchs_detail input').prop("checked", false);
         $('#flat_fuchs_detail').hide();
-        var flatSize = $(element).find("[value="+element.value+"]").attr('data-max');
-        $('#flat_size').val(flatSize);
+        flatSize = $(element).find("[value="+element.value+"]").attr('data-max');
         if (!noPermaLink) setPermaLink('flat_d', null);
     }
+    $('#flat_size').val(flatSize);
 };
 
 $(document).ready(function() {
@@ -498,7 +509,7 @@ $(document).ready(function() {
     });
 
     $('#flat_fuchs_detail input').on('change', function(e) {
-        fixFlatSizeIfFUchs();
+        toggleFlatDetails($('#b_flat')[0]);
         calculatePrice();
     });
 
