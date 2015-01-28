@@ -1,15 +1,17 @@
 <!-- -->
 
-#### SALZ›T‹RÄUME AM SEE 
+Unser farbenfrohes Apartment ›Schmetterling‹ liegt in der 1. Etage und bietet Platz für 2–3 Personen. 
 
-Das besondere an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist die Raumgestaltung mit Wandelementen oder Beleuchtungen aus Natursalz in den drei Wohnungen <em>›Fuchs‹</em>, <em>›Eichhörnchen‹</em> und <em>›Schmetterling‹</em>. Das orange-rote Himalayasalz – reich an Mineralien – verleiht dem Raum nicht nur eine außergewöhnliche Wohnatmosphäre, es ist auch für seine gesundheitsfördernde Wirkung bekannt. In den Räumen wird eine salzhaltige Luft geschaffen, wie sie am Meer oder in Salzstollen vorzu­finden ist. Und uns allen sind die positiven Effekte des Meeresklimas bekannt.
+- Größe: ca. 43 qm
+- Schlafzimmer mit Doppelbett (1,80 m)
+- 1 Wohnküche mit Schlafcouch für 1 Person 
+- Modernes Bad mit ebenerdiger Dusche
 
-Schmetterling verfügt über ein Doppelbett (1,80) im Schlafzimmer und eine Schlafcouch für eine weitere Person (oder 2 kleine Kinder) in der Wohnküche. Die beiden Zimmer sind durch eine Schiebetür voneinander getrennt.
+Schlafzimmer und Wohnküche sind durch eine Schiebetür voneinander getrennt. Ins Bad kommt man aus der Wohnküche über das Schlafzimmer.
 
-Das Bad ist mit einer ebenerdigen geräumigen Dusche ausgestattet.
+## AUSSTATTUNG
+Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Kühl-Gefrierkombi, Herd, Ofen, Spülmaschine, Kaffeemaschine, Wasserkocher, Toaster.
 
-Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Herd+Ofen, Kühl-Gefrier-Kombi, Spülmaschine und Mikrowelle.
+Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x Dusch- und Handtuch, Badvorleger, Geschirrtuch). Weiterhin sämtliche Artikel des täglichen Bedarfs: Seife, Fön, Spüli, Tabs, Lappen, Backpapier, Salz, etc.)
 
-Die Wohnungen sind mit Bettwäsche, Hand- und Duschtüchern, Geschirrtüchern, Seife, Fön und sämtlichen Artikeln des täglichen Bedarfs (wie Spüli, Tabs, Lappen, Backpapier, Salz, etc. ) ausgestattet.
-
-
+Alle Wohnungen sind mit wertvollem unbehandelten Naturspeisesalz aus unserem Salzshop ausgestattet.

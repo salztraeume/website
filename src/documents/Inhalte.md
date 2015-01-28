@@ -3,7 +3,7 @@ Die erste Salz-Ferienunterkunft Deutschlands. Direkt zwischen Wald & See.
 
 # APARTMENT ›SCHMETTERLING‹
 Unser farbenfrohes Apartment ›Schmetterling‹ liegt in der 1. Etage und bietet Platz für 2–3 Personen. 
-- ca. 43 qm
+- Größe: ca. 43 qm
 - Schlafzimmer mit Doppelbett (1,80 m)
 - 1 Wohnküche mit Schlafcouch für 1 Person 
 - Modernes Bad mit ebenerdiger Dusche
@@ -11,7 +11,7 @@ Unser farbenfrohes Apartment ›Schmetterling‹ liegt in der 1. Etage und biete
 Schlafzimmer und Wohnküche sind durch eine Schiebetür voneinander getrennt. Ins Bad kommt man aus der Wohnküche über das Schlafzimmer.
 
 ## AUSSTATTUNG
-Küche: Kühl-Gefrierkombi, Herd, Ofen, Spülmaschine, Kaffeemaschine, Wasserkocher, Toaster.
+Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Kühl-Gefrierkombi, Herd, Ofen, Spülmaschine, Kaffeemaschine, Wasserkocher, Toaster.
 
 Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x Dusch- und Handtuch, Badvorleger, Geschirrtuch). Weiterhin sämtliche Artikel des täglichen Bedarfs: Seife, Fön, Spüli, Tabs, Lappen, Backpapier, Salz, etc.)
 
@@ -32,14 +32,14 @@ Einmalige Servicegebühr: 30 €
 
 # APARTMENT ›EICHHÖRNCHEN‹
 Unser gemütliches Apartment ›Eichhörnchen‹ liegt im 1. Obergeschoss und bietet Platz für 2–4 Personen. 
-- ca. 53 qm
+- Größe: ca. 53 qm
 - Schlafzimmer mit Doppelbett (1,40 m)
 - 1 Wohnküche mit Schlafcouch (1,40 m)
 - Bad mit Eckbadewanne und Dusche
 - Diele
 
 ## AUSSTATTUNG
-Küche: Kühl-Gefrierkombi, Herd, Ofen, Spülmaschine, Mikrowelle, Kaffeemaschine, Wasserkocher, Toaster.
+Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Kühl-Gefrierkombi, Herd, Ofen, Spülmaschine, Mikrowelle, Kaffeemaschine, Wasserkocher, Toaster.
 
 Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x Dusch- und Handtuch, Badvorleger, Geschirrtuch). Weiterhin sämtliche Artikel des täglichen Bedarfs: Seife, Fön, Spüli, Tabs, Lappen, Backpapier, Salz, etc.)
 
@@ -63,7 +63,7 @@ Einmalige Servicegebühr: 30 €
 Die preiswerte Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hostel-Flair und bietet Platz für bis zu 10 Personen. Die Wohnung kann komplett oder alle 3 Schlafräume ›Fuchs1‹, ›Fuchs2‹ und ›Fuchs3‹ separat gemietet werden. Die Wohnküche, das Bad und Gäste-WC wird dann mit anderen Gästen geteilt. Alle 3 Schlafräume lassen sich separat abschließen. 
 
 - 1. Etage
-- ca. 100qm
+- Größe: ca. 100qm
 
 - 3 Schlafräume: 
 - Fuchs1: 4 Einzelbetten (0,90 m). 2 Betten lassen sich zu einem Doppelbett zusammenstellen (1,80m).
@@ -75,7 +75,7 @@ Die preiswerte Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hostel-Flair
 - Diele
 
 ## AUSSTATTUNG
-Küche: Kühl-Gefrierkombi, Herd, Ofen, Mikrowelle, Kaffeemaschine, Wasserkocher
+Die Wohnküche verfügt über eine voll ausgestattete Einbauküche mit Kühl-Gefrierkombi, Herd, Ofen, Mikrowelle, Kaffeemaschine, Wasserkocher
 
 Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x Dusch- und Handtuch, Badvorleger, Geschirrtücher). Weiterhin sämtliche Artikel des täglichen Bedarfs: Seife, Fön, Spüli, Lappen, Backpapier, Salz, etc.)
 
