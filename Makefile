@@ -4,7 +4,7 @@ run: node_modules
 
 # Nur Website generieren, ohne Starten von Docpad (localhost:9778 geht dann nicht mehr!)
 build:
-	docpad generate
+	docpad generate --env static
 
 # npm module installieren (docpad, less plugin, livereload, ...)
 node_modules: package.json
