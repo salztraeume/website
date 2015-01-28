@@ -324,7 +324,7 @@ var calculatePrice = function() {
             if (personGroup === 'babies') continue;
             var tmp = map[personGroup];
             if (tmp.size > 0 && tmp.price > 0) {
-                extraText.push(tmp.size + ' * ' + tmp.price + ' €');
+                extraText.push(tmp.size + ' P. * ' + tmp.price + ' €');
                 extraPersonSum += tmp.size * tmp.price;
             }
         }
