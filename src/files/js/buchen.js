@@ -69,7 +69,11 @@ var parsePrice = function(str) {
     var regexp = /[^\d()+*]/g;
     var formula = str.replace(regexp, '');
     try {
-        return eval(formula);
+        var result = eval(formula);
+        if (result == null) {
+            return 0;
+        }
+        return result;
     } catch (err) {
         return 0;
     }
