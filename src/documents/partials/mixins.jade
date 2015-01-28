@@ -16,6 +16,11 @@ mixin carousel
           a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
               span.glyphicon.glyphicon-chevron-right
 
+
+mixin checkInOut
+    +keyAndStrongValue('Check-In', '15:00')
+    +keyAndStrongValue('Check-Out', '11:00')
+    
 //- Ausstattung template
 
 mixin as(icon, text, tooltip)
