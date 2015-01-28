@@ -646,7 +646,7 @@ var showReservation = function() {
         flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
     }
     
-    var template = 'Hallo XX YY,' + NL + 
+    var template = 'Hallo Frau Herr,' + NL + 
         NL + 
         'gerne bestätige ich Ihnen hiermit die Reservierung für das Apartment ' + flatName + '.' + NL +
         'Der Gesamtpreis setzt sich wie folgt zusammen:' + NL +
@@ -654,7 +654,7 @@ var showReservation = function() {
 
         '<span style="color: #9B70FE; font-weight: bold;">Apartment ' + flatName + '</span>' + NL + 
         flatDetailsText +
-        from + ' – ' + to + '  |  ' + nights + ' Nächte  |  ' + guests + ' Personen' + NL +
+        from + ' – ' + to + '  |  ' + nights + ' Nächte  |  ' + guests + ' Person' + (guests == '1' ? '':'en') + NL +
         'Erwachsene: ' + guests_adult + NL +
         'Kinder (bis 17): ' + guests_teens + NL +
         'Kinder (bis 9): ' + guests_children + NL +
