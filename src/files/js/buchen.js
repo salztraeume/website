@@ -66,25 +66,14 @@ var setPermaLink = function(key, value) {
 };
 
 var parsePrice = function(str) {
-    var stripped = str.replace(/\D/g,' ');
-    var splitted = stripped.split(' ');
-    var factors = [];
-    for (var i=0; i<splitted.length; i++) {
-        var tmp = splitted[i];
-        if (tmp != '') {
-            factors.push(parseInt(tmp));
-        }
+    var regexp = /[^\d()+*]/g;
+    var formula = str.replace(regexp, '');
+    try {
+        return eval(formula);
+    } catch (err) {
+        return 0;
     }
-    var price = 0;
-    for (var i=0; i<factors.length; i++) {
-        var tmp = factors[i];
-        if (price === 0) {
-            // for the first factor
-            price = 1;
-        }
-        price *= tmp;
-    }
-    return price;
+    
 };
 
 var handleFilterFromURL = function(flatShortcut) {
@@ -320,7 +309,8 @@ var calculatePrice = function() {
     if (totalGuests > extraTreshold) {
         // compensate the person inclusive amount
         for (var i=0; i<array.length; i++) {
-            var tmp = map[array[i]];
+            var personGroup = array[i];
+            var tmp = map[personGroup];
             if (tmp.size > 0) {
                 while (tmp.size > 0 && toSubtract > 0) {
                     tmp.size--;
@@ -330,7 +320,9 @@ var calculatePrice = function() {
         }
         // the add now the extra costs
         for (var i=0; i<array.length; i++) {
-            var tmp = map[array[i]];
+            var personGroup = array[i];
+            if (personGroup === 'babies') continue;
+            var tmp = map[personGroup];
             if (tmp.size > 0 && tmp.price > 0) {
                 extraText.push(tmp.size + ' * ' + tmp.price + ' €');
                 extraPersonSum += tmp.size * tmp.price;
@@ -448,18 +440,6 @@ var extraValidation = function() {
     }
 
     return true;
-};
-
-var fixFlatSizeIfFUchs = function() {
-    var values = getDetailsForFuchs();
-    var result = values[0] + values[1] + values[2];
-    // set max room
-    var flatSize = 0;
-    if (values[0]) flatSize += 4; // 4 beds
-    if (values[1]) flatSize += 2; // 1 double bed
-    if (values[2]) flatSize += 2; // 1 double bed
-    if (result === 3) flatSize += 1; // 1 couch
-    $('#flat_size').val(flatSize);
 };
 
 var limitDatePicker = function(element) {
