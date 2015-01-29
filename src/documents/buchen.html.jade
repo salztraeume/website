@@ -96,6 +96,18 @@ form.conainter.booking(onsubmit="return false;")
         textarea#b_note.form-control(rows="2", placeholder="Bemerkungen")
 
     div.form-group
+        select#b_found.form-control
+            option(value='' disabled, selected) Gefunden über ...
+            option(value="suchmaschine") Suchmaschine
+            option(value="airbnb") Airbnb
+            option(value="fewo") FeWo-direkt
+            option(value="vorort-schild") Vor-Ort-Außenschild
+            option(value="flyer") Flyer
+            option(value="empfehlung") Empfehlung
+            option(value="sonstiges") Sonstiges
+                
+
+    div.form-group
         button#b_submit.btn.btn-primary Unverbindlich anfragen
 
 div#reservation

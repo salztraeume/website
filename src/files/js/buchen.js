@@ -569,6 +569,7 @@ $(document).ready(function() {
             var email = $('#b_email').val() || '-';
             var phone = $('#b_phone').val() || null;
             var note = $('#b_note').val() || null;
+            var found = $('#b_found').val() || '-';
 
             
             var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flatName + " / "+guests+" Personen";
@@ -601,7 +602,8 @@ $(document).ready(function() {
                 "E-Mail: "+email + NL;
 
             if (phone) body += "Telefon: "+phone + NL;
-            if (note) body += "Bemerkung: "+note;
+            if (note) body += "Bemerkung: "+note + NL;
+            if (found !== '') body += "Gefunden über: " + found;
 
             window.location = "mailto:hej@salztraeume-am-see.de?subject="+subject+"&body="+body;
         }
