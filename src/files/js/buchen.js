@@ -629,7 +629,9 @@ var showReservation = function() {
     var guests_children_free = $('#b_guests_children_free').val() || '-';
 
     var priceSuffix = ',00 Euro';
-    var priceBasic = parsePrice($('#price-base').text()) + priceSuffix;
+    var priceBasic_ = parsePrice($('#price-base').text());
+    var priceSaison_ = parsePrice($('#price-extra-saison').text());
+    var priceBasic = (priceBasic_ + priceSaison_) + priceSuffix;
     var priceTotal = parsePrice($('#price-sum').text()) + priceSuffix;
     var priceExtrPersons = parsePrice($('#price-extra-person').text()) + priceSuffix;
     var priceClean = parsePrice($('#price-clean').text()) + priceSuffix;
