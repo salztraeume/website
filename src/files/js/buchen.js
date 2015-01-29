@@ -555,26 +555,30 @@ $(document).ready(function() {
         } else {
             if (!extraValidation()) return;
 
+            var dates = calcGuestDates();
+
+            // --------------------------------------
+            // form data
             var flatName = $('#b_flat').val() || '-';
             var from = $('#b_arrival').val() || '-';
             var to = $('#b_departure').val() || '-';
-            var dates = calcGuestDates();
             var nights = dates[0];
             var guests = $('#b_guests_total').val() || '-';
             var guests_adult = $('#b_guests_adult').val() || '-';
             var guests_teens = $('#b_guests_teens').val() || null;
             var guests_children = $('#b_guests_children').val() || null;
             var guests_children_free = $('#b_guests_children_free').val() || null;
+            var price = $('#price-sum').text();
             var name = $('#b_name').val() || '-';
             var email = $('#b_email').val() || '-';
             var phone = $('#b_phone').val() || null;
             var note = $('#b_note').val() || null;
             var found = $('#b_found').val() || '-';
-
-            
-            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flatName + " / "+guests+" Personen";
-            var flatDetails = getDetailsForFuchs();
             var flatDetailsText = '';
+            // --------------------------------------
+
+            var flatDetails = getDetailsForFuchs();
+            flatDetailsText = '';
             if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
                 var tmp = '';
                 tmp +=  flatDetails[0] ? ' 1. ' : '';
@@ -582,7 +586,9 @@ $(document).ready(function() {
                 tmp +=  flatDetails[2] ? ' 3. ' : '';
                 flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
             }
+            // --------------------------------------
 
+            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flatName + " / "+guests+" Personen";
             var body = 
                 "Zeitraum: " + from + " — " + to + NL +
                 "Übernachtungen: " + nights + NL +
@@ -594,7 +600,7 @@ $(document).ready(function() {
             if (guests_children_free) body += "Kinder (bis 4): "+guests_children_free + NL;
             
             body += NL + 
-                "Preis: " + $('#price-sum').text() + NL;
+                "Preis: " + price + NL;
 
             body += "Personen insgesamt: " + guests + NL +
                 NL +
