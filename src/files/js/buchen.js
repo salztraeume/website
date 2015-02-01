@@ -559,7 +559,7 @@ $(document).ready(function() {
 
             // --------------------------------------
             // form data
-            var flatName = $('#b_flat').val() || '-';
+            var flat_name = $('#b_flat').val() || '-';
             var from = $('#b_arrival').val() || '-';
             var to = $('#b_departure').val() || '-';
             var nights = dates[0];
@@ -568,31 +568,39 @@ $(document).ready(function() {
             var guests_teens = $('#b_guests_teens').val() || null;
             var guests_children = $('#b_guests_children').val() || null;
             var guests_children_free = $('#b_guests_children_free').val() || null;
-            var price = $('#price-sum').text();
+
+            var price_Basic_ = parsePrice($('#price-base').text());
+            var price_Saison_ = parsePrice($('#price-extra-saison').text());
+            var price_basic = price_Basic_ + price_Saison_;
+            var price_extra_persons = parsePrice($('#price-extra-person').text());
+            var price_clean = parsePrice($('#price-clean').text());
+            var price_fee = parsePrice($('#price-fee').text());
+            var price_total = parsePrice($('#price-sum').text());
+
             var name = $('#b_name').val() || '-';
             var email = $('#b_email').val() || '-';
             var phone = $('#b_phone').val() || null;
             var note = $('#b_note').val() || null;
             var found = $('#b_found').val() || '-';
-            var flatDetailsText = '';
+            var flat_details_text = '';
             // --------------------------------------
 
             var flatDetails = getDetailsForFuchs();
-            flatDetailsText = '';
+            flat_details_text = '';
             if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
                 var tmp = '';
                 tmp +=  flatDetails[0] ? ' 1. ' : '';
                 tmp +=  flatDetails[1] ? ' 2. ' : '';
                 tmp +=  flatDetails[2] ? ' 3. ' : '';
-                flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
+                flat_details_text = "Fuchs Zimmer:" + tmp;
             }
             // --------------------------------------
 
-            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flatName + " / "+guests+" Personen";
+            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flat_name + " / "+guests+" Personen";
             var body = 
                 "Zeitraum: " + from + " — " + to + NL +
                 "Übernachtungen: " + nights + NL +
-                "Wohnung: " + flatName + NL + flatDetailsText +
+                "Wohnung: " + flat_name + NL + flat_details_text +
                 "Erwachsene: "+guests_adult + NL;
 
             if (guests_teens) body += "Kinder (bis 17): "+guests_teens + NL;
@@ -600,7 +608,7 @@ $(document).ready(function() {
             if (guests_children_free) body += "Kinder (bis 4): "+guests_children_free + NL;
             
             body += NL + 
-                "Preis: " + price + NL;
+                "Preis: " + price_total + NL;
 
             body += "Personen insgesamt: " + guests + NL +
                 NL +
@@ -653,7 +661,7 @@ var showReservation = function() {
         tmp +=  flatDetails[0] ? ' 1. ' : '';
         tmp +=  flatDetails[1] ? ' 2. ' : '';
         tmp +=  flatDetails[2] ? ' 3. ' : '';
-        flatDetailsText = "Fuchs Zimmer:"+tmp + NL;
+        flatDetailsText = "Fuchs Zimmer:" + tmp;
     }
     
     var template = 'Hallo Frau Herr,' + NL + 
@@ -663,7 +671,7 @@ var showReservation = function() {
         NL + 
 
         '<span style="color: #9B70FE; font-weight: bold;">Apartment ' + flatName + '</span>' + NL + 
-        flatDetailsText +
+        flatDetailsText + NL +
         from + ' – ' + to + '  |  ' + nights + ' Nächte  |  ' + guests + ' Person' + (guests == '1' ? '':'en') + NL +
         'Erwachsene: ' + guests_adult + NL +
         'Kinder (bis 17): ' + guests_teens + NL +
