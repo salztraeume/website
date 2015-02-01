@@ -619,7 +619,58 @@ $(document).ready(function() {
             if (note) body += "Bemerkung: "+note + NL;
             if (found !== '') body += "Gefunden über: " + found;
 
-            window.location = "mailto:hej@salztraeume-am-see.de?subject="+subject+"&body="+body;
+            var formUrl = 'http://thunderwave.de:9775/submit';
+            var submitButton = $('#b_submit');
+            submitButton[0].disabled = true;
+            submitButtonOriginalText = submitButton.text();
+            submitButton.text('Bitte warten ...');
+            var request = $.ajax({
+                url: formUrl,
+                type: "POST",
+                data: {
+                    flat_name: flat_name,
+                    flat_details_text: flat_details_text,
+                    from: from,
+                    to: to,
+                    nights: nights,
+                    guests: guests,
+                    guests_adult: guests_adult,
+                    guests_teens: guests_teens,
+                    guests_children: guests_children,
+                    guests_children_free: guests_children_free,
+                    price_basic: price_basic,
+                    price_extra_persons: price_extra_persons,
+                    price_clean: price_clean,
+                    price_fee: price_fee,
+                    price_total: price_total,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    note: note,
+                    found: found,
+                    user_url: window.location.host + window.location.pathname + window.location.hash
+              },
+              dataType: 'json'
+            });
+             
+            request.done(function(json, responseType, xhr) {
+                alert('Anfrage erfolgreich verschickt. Sie bekommen in wenigen Minuten eine E-Mail.');
+                console.log(xhr);
+                var submitButton = $('#b_submit');
+                submitButton[0].disabled = true;
+                var content = parseJson(xhr.responseText).content || '';
+                submitButton.text('Abgeschickt, Referenz-Nr: ' + content);
+            });
+             
+            request.fail(function(xhr, responseType, statusText) {
+                var content = parseJson(xhr.responseText).content || 'Entschuldigung, bitte versuchen Sie es später noch einmal';
+                if (content !== '') content = ': ' + content;
+                alert('Anfrage konnte nicht gesendet werden' + content);
+                var submitButton = $('#b_submit');
+                submitButton.text(submitButtonOriginalText);
+                submitButton[0].disabled = false;
+                console.log(xhr);
+            });
         }
     });
 
@@ -627,6 +678,14 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
 });
+
+var parseJson = function(string) {
+    var json = {};
+    try {
+        json = JSON.parse(string);
+    } catch (err){}
+    return json;
+};
 
 var showReservation = function() {
     var NL = '<br/>';
