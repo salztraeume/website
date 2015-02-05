@@ -128,5 +128,8 @@ UNTERKUNFT  SALZ›T‹RÄUME AM SEE
 Das besondere an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist die Raumgestaltung mit Wandelementen oder Beleuchtungen aus Natursalz in den drei Wohnungen ›Fuchs‹, ›Eichhörnchen‹ und ›Schmetterling‹. Das orange-rote Himalayasalz – reich an Mineralien – verleiht dem Raum nicht nur eine außergewöhnliche Wohnatmosphäre, es ist auch für seine gesundheitsfördernde Wirkung bekannt. In den Räumen wird eine salzhaltige Luft geschaffen, wie sie am Meer oder in Salzstollen vorzu­finden ist. Und uns allen sind die positiven Effekte des Meeresklimas bekannt.
 
 
+so ähnlich formulieren:
+
+Küche: Neben der vollen Ausstattung mit Küchengeschirr und Pfannen, verfügt die große Küche außerdem über einen Elektroherd (Ceranfeld mit 4 Kochplatten), Ofen, ein Kühlschrank mit Gefrierfach, eine Mikrowelle, eine Kaffeemaschine, ein Wasserkocher, ein Backofen, ein Toaster, ein Esstisch und 4 Stühle. Extras: Aufzug, TV-Plasma, Radio, CD Player, Föhn, Zimmersafe, Bügeleisen/ Bügelbrett, Staubsauger, Bettwäsche und Handtücher werden Ihnen kostenlos zur Verfügung gestellt. Gebührenpflichtig: Endreinigung 35,00 EUR, Wlan flat (5 Euro/Tag), Babybett (5 Euro/ Tag) Waschen Waschmaschine & Trockner (Waschsalon) in der Nähe Essen & Trinken Restaurant, Cafe´s, Supermärkte, Bäckerei, Bistro in unmittelbarer Nähe. Parken - Parken, öffentlich: Das Parken auf der Strasse ist kostenfrei möglich (öffentliche Parkplätze). - Parkplätze und Parkhäuser in der Umgebung: Tiefgarage, Brüsseler Straße 3, 13353 Berlin
 
 
