@@ -2,6 +2,10 @@ include partials/mixins
 
 block carousel
 
+mixin Bewertungen
+    a(href="https://www.airbnb.de/users/show/20503227#reviews")
+        img(src="img/bewertungen.png")
+
 div.row
     div.col-md-9
         h1.overflow.h3.text-center-sm
@@ -10,10 +14,11 @@ div.row
     div.col-md-3.text-center.text-muted
         div.rating.hidden-md.hidden-lg
             block rating-mobile
+                +Bewertungen() 
 
-        div.rating.hidden-xs.text-center.hidden-sm.hide-xs(style="padding-top: 2em")
+        div.rating.hidden-xs.hidden-sm.hide-xs.text-center(style="padding-top: 2em")
             block rating-large
-
+                +Bewertungen()
 hr
 
 div.row
