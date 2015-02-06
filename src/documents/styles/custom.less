@@ -127,9 +127,11 @@ label.checker span {/* <-- style the artificial checkbox */
   width: 10px;
   border: 1px solid grey;
   display: inline-block;
+  margin-bottom: 0.7em;
 }
 input.checker:checked + span {/* <-- style its checked state */
   background: #9B70FE;
+  margin-bottom: 0.7em;
 }
 
 // buchen.html
@@ -266,6 +268,12 @@ table.booking-calendar {
     height: 32px;
     width: 40px;
     background-repeat: no-repeat;
+}
+
+.checker {
+    .icon {
+        margin-left: 5px;
+    }
 }
 
 .icon.SL {
