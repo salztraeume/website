@@ -117,6 +117,21 @@ ul.icons {
     background-color: #eee;
 }
 
+// checkboxes
+
+label.checker input {
+  display: none;/* <-- hide the default checkbox */
+}
+label.checker span {/* <-- style the artificial checkbox */
+  height: 10px;
+  width: 10px;
+  border: 1px solid grey;
+  display: inline-block;
+}
+input.checker:checked + span {/* <-- style its checked state */
+  background: #9B70FE;
+}
+
 // buchen.html
 
 .price-extra-saison {

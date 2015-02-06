@@ -3,34 +3,39 @@ mixin calendar(flat)
         if flat == null
             div(style="padding: 20px")
                 label Wähle Wohnungen aus, um die Belegung im Kalender anzuzeigen
-            
+        
         if flat == null
             div.col-lg-8.col-md-12.flat-icon-container 
                 div
-                    label
+                    label.checker
                         div.icon.SL
                         div.icon-label Schmetterling
-                            input.filter-SL(type="checkbox")
+                            input.checker.filter-SL(type="checkbox")
+                            span
                 div
-                    label
+                    label.checker
                         div.icon.EH
                         div.icon-label Eichhörnchen
-                            input.filter-EH(type="checkbox")
+                            input.checker.filter-EH(type="checkbox")
+                            span
                 div
-                    label
+                    label.checker
                         div.icon.F1
                         div.icon-label Fuchs 1
-                            input.filter-F1(type="checkbox")
+                            input.checker.filter-F1(type="checkbox")
+                            span
                 div
-                    label
+                    label.checker
                         div.icon.F2
                         div.icon-label Fuchs 2
-                            input.filter-F2(type="checkbox")
+                            input.checker.filter-F2(type="checkbox")
+                            span
                 div
-                    label
+                    label.checker
                         div.icon.F3
                         div.icon-label Fuchs 3
-                            input.filter-F3(type="checkbox")
+                            input.checker.filter-F3(type="checkbox")
+                            span
 
         div.col-lg-4.col-md-12.cal-controls
             div.cal-date-control
