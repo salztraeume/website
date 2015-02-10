@@ -12,6 +12,8 @@ var DATEPICKER_OPTS = {
 };
 SAISON_START = '01.06';
 SAISON_END = '31.08';
+SAISON_MIN_NIGHTS = 4;
+MIN_NIGHTS = 2;
 FUCHS_FULLHOUSE_BASE = 90; // 3 (each room) * 20 € + 30 € = 90
 FUCHS_FULLHOUSE_PERSON_THRESHOLD = 5;
 
@@ -449,12 +451,29 @@ var extraValidation = function() {
 var limitDatePicker = function(element) {
     // limit the start date of departure
     // at least to book 2 nights
-    var arrivalDate = element.value;
-    var minDeparture = moment(arrivalDate, DE_FORMATTER).add('days', 2);
+    var arrivalDate = moment(element.value, DE_FORMATTER);
+    var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
+    
+    var saisonStart = SAISON_START.split('.').map(function(i) {
+        return parseInt(i);
+    });
+    var saisonEnd = SAISON_END.split('.').map(function(i) {
+        return parseInt(i);
+    });
+    var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]);
+    var saisonEndDate = moment(arrivalDate).month(saisonEnd[1]-1).date(saisonEnd[0]);
+
+    var minNights = MIN_NIGHTS;
+    var tmp = moment(arrivalDate).add('days', SAISON_MIN_NIGHTS);
+    if (tmp.diff(saisonStartDate) >= 0 && tmp.diff(saisonEndDate) <= 0 ||
+        arrivalDate.diff(saisonStartDate) >= 0 && arrivalDate.diff(saisonEndDate) <= 0) {
+        minNights = SAISON_MIN_NIGHTS;
+    }
+
+    var minDeparture = moment(arrivalDate).add('days', minNights);
     _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
 
     // check if the old departure is still valid
-    var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
     if (departureDate && departureDate.isBefore(minDeparture)) {
         $('#b_departure').val('');
     }
