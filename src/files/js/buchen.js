@@ -615,29 +615,6 @@ $(document).ready(function() {
             }
             // --------------------------------------
 
-            var subject = "Buchung: "+from+" — "+to+" / "+nights+" Übernachtungen in " + flat_name + " / "+guests+" Personen";
-            var body = 
-                "Zeitraum: " + from + " — " + to + NL +
-                "Übernachtungen: " + nights + NL +
-                "Wohnung: " + flat_name + NL + flat_details_text +
-                "Erwachsene: "+guests_adult + NL;
-
-            if (guests_teens) body += "Kinder (bis 17): "+guests_teens + NL;
-            if (guests_children) body += "Kinder (bis 9): "+guests_children + NL;
-            if (guests_children_free) body += "Kinder (bis 4): "+guests_children_free + NL;
-            
-            body += NL + 
-                "Preis: " + price_total + NL;
-
-            body += "Personen insgesamt: " + guests + NL +
-                NL +
-                "Name: "+name + NL + 
-                "E-Mail: "+email + NL;
-
-            if (phone) body += "Telefon: "+phone + NL;
-            if (note) body += "Bemerkung: "+note + NL;
-            if (found !== '') body += "Gefunden über: " + found;
-
             var formUrl = 'http://thunderwave.de:9775/submit';
             var submitButton = $('#b_submit');
             submitButton[0].disabled = true;
