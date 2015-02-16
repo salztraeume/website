@@ -1,4 +1,8 @@
-mixin calendar(flat)
+mixin calendar(flat, month, columns)
+    +calendarControls(flat)
+    +bookingCalendar(flat, month, columns)
+
+mixin calendarControls(flat)
     div.row
         if flat == null
             div(style="padding: 20px")
@@ -47,21 +51,38 @@ mixin calendar(flat)
                 input.date(readonly)
                 button.btn.btn-primary.next.glyphicon.glyphicon-chevron-right
 
-    table.booking-calendar(data-flat=flat)
-        tr
-            each day in ['', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
-                th=day
-        each week in [1,2,3,4,5,6]
-            tr(class='w'+week)
-                th
-                    if flat != null
-                        .table-header
-                    else
-                        .table-header.icon.SL
-                        .table-header.icon.EH
-                        .table-header.icon.F1
-                        .table-header.icon.F2
-                        .table-header.icon.F3
+mixin bookingCalendar(flat, month, columns)
+    if month != null
+        - classes = ['col-md-'+columns]
+    else 
+        - classes = ['col-xs-12']
 
-                each day in [0,1,2,3,4,5,6]
-                    td(class=['day','w'+week, 'd'+day])
+    table.booking-calendar(data-flat=flat, data-month=month, class=classes)
+        thead
+            if month != null
+                tr
+                    th.month-name(colspan="8", data-month=month) MONATSNAME
+
+            tr
+                each day in ['', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+                    th=day
+
+        tbody
+            each week in [1,2,3,4,5,6]
+                tr(class='w'+week)
+                    th
+                        if flat != null && month == null
+                            .table-header
+                        if flat == null && month != null
+                            if month == -1
+                                //- show icons only for the first calendar
+                                .table-header.icon.SL
+                                .table-header.icon.EH
+                                .table-header.icon.F1
+                                .table-header.icon.F2
+                                .table-header.icon.F3
+                            else
+                                .table-header
+
+                    each day in [0,1,2,3,4,5,6]
+                        td(class=['day','w'+week, 'd'+day])

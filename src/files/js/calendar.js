@@ -16,12 +16,33 @@ var fetchCal = function(cb) {
 
 var clearCal = function() {
     var emptyTable = window.tableTemplate.clone();
-    $('table.booking-calendar').replaceWith(emptyTable);
+    $('table.booking-calendar').each(function() {
+        $(this).replaceWith(emptyTable);
+    });
 };
 
 var calcCalendar = function(dayInMonth) {
+    var calendars = $(".booking-calendar");
+    if (calendars.length > 1) {
+        for (var i=0; i<calendars.length; i++) {
+            var calendar = calendars[i];
+            var monthValue = $(calendar).attr('data-month');
+            calcSingleCalendar(moment(dayInMonth).add(monthValue, 'month'), calendar);
+        }
+    } else {
+        calcSingleCalendar(dayInMonth, $(".booking-calendar")[0]);
+    }
+};
+
+var calcSingleCalendar = function(dayInMonth, scope) {
+
     var formatted = dayInMonth.format("MMMM YYYY");
-    $('input.date').val(formatted);
+    if ($('th.month-name', scope).length > 0) {
+        $('th.month-name', scope).text(formatted);
+    }
+    if ($('input.date').length > 0) {
+        $('input.date').val(formatted);
+    }
 
     var start = moment(dayInMonth).startOf('month');
     var end = moment(dayInMonth).endOf('month');
@@ -30,7 +51,7 @@ var calcCalendar = function(dayInMonth) {
     var selector = null;
     var week = 1;
     var cellTemplate = "<div class='calDate'></div>";
-    var flat = $(".booking-calendar").attr('data-flat'); // specific flat
+    var flat = $(scope).attr('data-flat'); // specific flat
     if (flat != null || flat == '') {
         if (flat === 'FS') {
             cellTemplate +=
@@ -53,14 +74,16 @@ var calcCalendar = function(dayInMonth) {
         var dateOfMonth = start.date();
         weekDay = start.format('e');
         selector = '.d'+weekDay+'.w'+week;
-        //$(selector).text(dateOfMonth);
-        $(selector).addClass('date'+dateOfMonth);
-        $(selector).attr('data-date', dateOfMonth);
-        $(selector).append(cellTemplate);
-        $(selector).find('.calDate').text(dateOfMonth);
+        if ($(selector, scope).find(".calDate").length > 0) {
+            $(selector, scope).empty();
+        }
+        $(selector, scope).addClass('date'+dateOfMonth);
+        $(selector, scope).attr('data-date', dateOfMonth);
+        $(selector, scope).append(cellTemplate);
+        $(selector, scope).find('.calDate').text(dateOfMonth);
 
         if (start.format(DE_FORMATTER) === moment().format(DE_FORMATTER)) {
-            $(selector).addClass('today');
+            $(selector, scope).addClass('today');
         }
 
         // increment for next iteration
@@ -71,16 +94,32 @@ var calcCalendar = function(dayInMonth) {
         
     }
     // remove weeks with no days
-    if ($("tr.w5 td div").length === 0) $("tr.w5").remove();
-    if ($("tr.w6 td div").length === 0) $("tr.w6").remove();
+    if ($("tr.w5 td div", scope).length === 0) $("tr.w5", scope).remove();
+    if ($("tr.w6 td div", scope).length === 0) $("tr.w6", scope).remove();
 };
 
-var updateItems = function(data) {
+var updateItems = function(data, monthToShow) {
+    var dayInMonth = window.current;
+    var calendars = $(".booking-calendar");
+    if (calendars.length > 1) {
+        for (var i=0; i<calendars.length; i++) {
+            var calendar = calendars[i];
+            var monthValue = $(calendar).attr('data-month');
+            updateItemsForSingleCalendar(data, moment(dayInMonth).add(monthValue, 'month'), calendar);
+        }
+    } else {
+        calcSingleCalendar(dayInMonth, $(".booking-calendar")[0]);
+        updateItemsForSingleCalendar(data, dayInMonth, $(".booking-calendar")[0]);
+
+    }
+};
+
+var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
     data.items.forEach(function(item) {
         var start = moment(item.start.date);
         var end = moment(item.end.date);
 
-        // chdck for dateTime
+        // check for dateTime
         if (item.end.dateTime != null) {
             start = moment(item.start.dateTime);
             start = moment(start.format(DE_FORMATTER), DE_FORMATTER);
@@ -116,7 +155,7 @@ var updateItems = function(data) {
         var stopCondition = moment(end);
         while (isBefore(tmp, stopCondition)) {
             // check if tmp is within the current month
-            if (tmp.format('MM.YYYY') == current.format('MM.YYYY')) {
+            if (tmp.format('MM.YYYY') == monthToShow.format('MM.YYYY')) {
                 var date = tmp.date();
                 var cssClass = '';
                 if (tmp.format(DE_FORMATTER) === start.format(DE_FORMATTER)) {
@@ -127,11 +166,11 @@ var updateItems = function(data) {
                     cssClass = 'middle';
                 }
                 if (item.location === 'FS') {
-                    setFlat($('.date'+date+' .F1'), item, cssClass);
-                    setFlat($('.date'+date+' .F2'), item, cssClass);
-                    setFlat($('.date'+date+' .F3'), item, cssClass);
+                    setFlat($('.date'+date+' .F1', scope), item, cssClass);
+                    setFlat($('.date'+date+' .F2', scope), item, cssClass);
+                    setFlat($('.date'+date+' .F3', scope), item, cssClass);
                 } else {
-                    setFlat($('.date'+date+' .'+item.location), item, cssClass);
+                    setFlat($('.date'+date+' .'+item.location, scope), item, cssClass);
                 }
                 
             }
@@ -210,22 +249,24 @@ $(document).ready(function() {
     }
 
     window.tableTemplate = $('table.booking-calendar').clone();
+    // initial is now
+    //TODO: maybe should better be the start date's month
     window.current = moment();
     
-    calcCalendar(current);
+    calcCalendar(window.current);
     updateItemsForCurrentMonth();
 
     $('.prev').click(function(e) {
-        current.subtract(1, 'months');
+        window.current.subtract(1, 'months');
         clearCal();
-        calcCalendar(current);
+        calcCalendar(window.current);
         updateItemsForCurrentMonth();
         e.preventDefault();
     });
     $('.next').click(function(e) {
-        current.add(1, 'months');
+        window.current.add(1, 'months');
         clearCal();
-        calcCalendar(current);
+        calcCalendar(window.current);
         updateItemsForCurrentMonth();
         e.preventDefault();
     });

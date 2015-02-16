@@ -164,9 +164,6 @@ form.booking {
     padding-bottom: 30px;
 }
 
-table.booking-calendar {
-    width: 100%;
-}
 .start {
     background:-webkit-gradient(linear,28.08% -10.22%,71.92% 110.22%,color-stop(transparent,0),color-stop(transparent,0.5),color-stop(#9B70FE,0.51),color-stop(#9B70FE,1));
     background:-webkit-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
@@ -222,6 +219,10 @@ div[data-id] {
 }
 
 table.booking-calendar {
+    //width: 100%;
+}
+
+table.booking-calendar {
     border-collapse: collapse;
 
     th {
@@ -229,9 +230,12 @@ table.booking-calendar {
     }
 
     td {
-        width: 14%;
-        border: 1px solid #ccc;
+        //width: 14%;
         padding-top: 1em; /* space for day number above */
+        background: transparent;
+        border-left: none;
+        border-top: none;
+        width: 14.2858%; // 100 / 7 = 14.2857
     }
 
     td .calDate {
@@ -241,12 +245,13 @@ table.booking-calendar {
         margin-top: -17px;
     }
 
-    td.day {
-        background: #eee;
-    }
+    // td.day {
+    //     background: #eee;
+    // }
 
     td[data-date] {
         background: #fff;
+        border: 1px solid #ccc;
     }
 
     td.today {
@@ -254,21 +259,30 @@ table.booking-calendar {
     }
 }
 
+th.month-name {
+  text-align: center
+}
+
 .flat-icon-container input[type="checkbox"] {
     margin-left: 2px;
 }
 
 
-.flat-icon-container .icon-label {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 6px;
-    text-transform: uppercase;
+.flat-icon-container {
+    .icon {
+        display: inline-block;
+    }
+
+    .icon-label {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 6px;
+      text-transform: uppercase;
+    }
 }
 
 
 .flat-icon-container .icon, .table-header.icon {
-    display: inline-block;
     margin-right: 2px;
     height: 32px;
     width: 40px;
