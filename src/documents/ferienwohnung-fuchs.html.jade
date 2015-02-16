@@ -1,6 +1,8 @@
 ---
 layout: master
 title: Fuchs. Zwischen Wald & See.
+keywords: ferienwohnung, schmetterling
+description: Ferienwohnung Fuchs - Schlitzohr & Weitblicker. Die sparsame Variante für alle, die gerne in Gesellschaft sind.
 ---
 include partials/mixins
 include calendar
@@ -8,7 +10,7 @@ include calendar
 extends flat_template
 
 block flat-title
-    span Ferienwohnung Fuchs. Direkt zwischen Wald &amp; See.
+    h1 Ferienwohnung Fuchs. <br>Direkt zwischen Wald &amp; See.
 
 block carousel
     +carousel()
@@ -111,7 +113,6 @@ block preise
 
 block beschreibung
     include:markdown ./details-fuchs.md
-
 
 block calender
     +calendar('FS')

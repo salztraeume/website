@@ -4,9 +4,9 @@ html(lang='en')
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      meta(name='description', content='Salzträume am See')
-      meta(name='keywords', content='Ferienwohnungen Bad Saarow Berlin Umgebung')
-      title Salz(t)äume am See
+      meta(name='description', content=document.description)
+      meta(name='keywords', content=document.keywords)
+      title=document.title
       link(rel='icon', href='favicon.ico')
       != getBlock("styles").toHTML()
       link(href='styles/all.css', rel='stylesheet', type='text/css', charset='utf-8')
