@@ -1,4 +1,12 @@
+# Setup für gulp
 
+1. einmalig
+`make install`
+
+2. Bei jedem Neustart bzw. Schließen des Prozesses
+`make`
+
+---
 
 - sobald du eine Datei (less, jade, ...) änderst, baut Docpad das automatisch und aktualisiert sogar deinen Browser von selbst!
 - momentan gibts noch n Bug, wenn man neue Dateien hinzufügt
