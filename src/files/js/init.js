@@ -1,19 +1,10 @@
-<%- @include('./bootstrap.min.js') %>
-<%- @include('./ie10.js') %>
-<%- @include('./bootstrap-datepicker.js') %>
-<%- @include('./locales/bootstrap-datepicker.de.js') %>
-<%- @include('js/moment') %>
-<%- @include('js/moment-de.js') %>
-<%- @include('js/calendar.js') %>
-<%- @include('js/buchen.js') %>
-
-$('[data-toggle="tooltip"]').tooltip()
+$('[data-toggle="tooltip"]').tooltip();
 
 // moment isBefore, isAfter IE workarround
 
 var toDates = function(moment1, moment2) {
     return [moment1.toDate().getTime(), moment2.toDate().getTime()];
-}
+};
 
 var isBefore = function(moment1, moment2) {
     var tmp = toDates(moment1, moment2);
