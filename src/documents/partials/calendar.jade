@@ -2,6 +2,10 @@ mixin calendar(flat, month, columns)
     +calendarControls(flat)
     +bookingCalendar(flat, month, columns)
 
+mixin loadCalendarEvents
+    unless process.env.OFFLINE
+        script(src="http://thunderwave.de:9776/items.js")
+
 mixin calendarControls(flat)
     div.row
         if flat == null
