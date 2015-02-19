@@ -10,10 +10,26 @@ var DATEPICKER_OPTS = {
     todayHighlight: true,
     todayBtn: true
 };
-SAISON_START = '01.06';
-SAISON_END = '31.08';
-SAISON_MIN_NIGHTS = 4;
-MIN_NIGHTS = 2;
+SAISONS = [
+    {
+        name: 'summer',
+        start: '01.06',
+        duration: moment('2000-08-31').diff(moment('2000-06-01'), 'days'),
+        nights: 4,
+        type: 'fix-offset',
+        amount: 5
+    },
+    {
+        name: 'winter',
+        start: '23.12',
+        duration: moment('2001-01-03').diff(moment('2000-12-23'), 'days'),
+        nights: 4,
+        type: 'fix-offset',
+        amount: 15
+    }
+];
+
+DEFAULT_MIN_NIGHTS = 2;
 FUCHS_FULLHOUSE_BASE = 90; // 3 (each room) * 20 € + 30 € = 90
 FUCHS_FULLHOUSE_PERSON_THRESHOLD = 5;
 
@@ -356,39 +372,50 @@ var calculatePrice = function() {
     $('#price-clean').text(totalClean + ' €');
 
     // special costs
-    // check if the daterange is within summer special prices
+    // check if the daterange is within a saison
     var saisonSpecial = 0;
     var saisonDays = 0;
-    var currentYear = moment().year();
-    var specialPriceStart = moment(SAISON_START + currentYear, DE_FORMATTER).subtract('day', 1);
-    var specialPriceEnd = moment(SAISON_END + currentYear, DE_FORMATTER).add('day', 1);
-    var specialPriceStartNext = moment(specialPriceStart).add('year', 1);
-    var specialPriceEndNext = moment(specialPriceEnd).add('year', 1);
-
-    var tmpDate = moment(fromDate);
-    while (isBefore(tmpDate, toDate)) {
-        if (isAfter(tmpDate, specialPriceStart) && isBefore(tmpDate, specialPriceEnd)) {
-            // check current year
-            saisonSpecial += 5;
-            saisonDays++;
-        } else if(isAfter(tmpDate, specialPriceStartNext) && isBefore(tmpDate, specialPriceEndNext)) {
-            // check for next year
-            saisonSpecial += 5;
-            saisonDays++;
-        } else {
-            saisonSpecial += 0;
+    var saisonPrice = 0;
+    for (var i=0; i<SAISONS.length; i++) {
+        var saison = SAISONS[i];
+        var currentYear = moment().year();
+        var specialPriceStart = moment(saison.start + '.' + currentYear, DE_FORMATTER).subtract(1, 'day');
+        var specialPriceEnd = moment(specialPriceStart).add(saison.duration + 1, 'days');
+        var specialPriceStartNext = moment(specialPriceStart).add('year', 1);
+        var specialPriceEndNext = moment(specialPriceEnd).add('year', 1);
+        if (saison.type !== 'fix-offset') {
+            console.log(new Error('cannot handle saison type: '+saison.type));
+            alert('Entschuldigung, es ist ein Fehler aufgetreten (CODE: 101)');
+            return;
         }
-        // increment for loop
-        tmpDate.add(1, 'days');
+
+        var tmpDate = moment(fromDate);
+        while (isBefore(tmpDate, toDate)) {
+            if (isAfter(tmpDate, specialPriceStart) && isBefore(tmpDate, specialPriceEnd)) {
+                // check current year
+                saisonSpecial += saison.amount;
+                saisonPrice = saison.amount;
+                saisonDays++;
+            } else if(isAfter(tmpDate, specialPriceStartNext) && isBefore(tmpDate, specialPriceEndNext)) {
+                // check for next year
+                saisonSpecial += saison.amount;
+                saisonPrice = saison.amount;
+                saisonDays++;
+            } else {
+                saisonSpecial += 0;
+            }
+            // increment for loop
+            tmpDate.add(1, 'days');
+        }
     }
+
     if (saisonSpecial > 0) {
         $('.price-extra-saison').show();
-        $('#price-extra-saison').text(saisonDays + ' Nächte * 5 €');
+        $('#price-extra-saison').text(saisonDays + ' Nächte * ' + saisonPrice + ' €');
     } else {
         $('#price-extra-saison').text('');
         $('.price-extra-saison').hide();
     }
-    
 
     // total price
     $('#price-sum').text((base*nights + saisonSpecial + extraPersonSum*nights + totalClean) + ' €');
@@ -453,23 +480,31 @@ var limitDatePicker = function(element) {
     // at least to book 2 nights
     var arrivalDate = moment(element.value, DE_FORMATTER);
     var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
-    
-    var saisonStart = SAISON_START.split('.').map(function(i) {
-        return parseInt(i);
-    });
-    var saisonEnd = SAISON_END.split('.').map(function(i) {
-        return parseInt(i);
-    });
-    var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]);
-    var saisonEndDate = moment(arrivalDate).month(saisonEnd[1]-1).date(saisonEnd[0]);
 
-    var minNights = MIN_NIGHTS;
-    var tmp = moment(arrivalDate).add('days', SAISON_MIN_NIGHTS);
-    if (tmp.diff(saisonStartDate) >= 0 && tmp.diff(saisonEndDate) <= 0 ||
-        arrivalDate.diff(saisonStartDate) >= 0 && arrivalDate.diff(saisonEndDate) <= 0) {
-        minNights = SAISON_MIN_NIGHTS;
+    checkNights(arrivalDate, departureDate, DEFAULT_MIN_NIGHTS);
+
+    for (var i=0; i<SAISONS.length; i++) {
+        var saison = SAISONS[i];
+        var saisonStart = saison.start.split('.').map(function(i) {
+            return parseInt(i);
+        });
+        var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'day');
+        // extra check for winter saison, year change
+        if (arrivalDate.months() === 0) {
+            // if arrival is January
+            saisonStartDate.subtract(1, 'year');
+        } 
+        var saisonEndDate = moment(saisonStartDate).add(saison.duration - 2, 'days');
+
+        var tmp = moment(arrivalDate).add('days', saison.nights);
+        if (tmp.diff(saisonStartDate) >= 0 && tmp.diff(saisonEndDate) <= 0 ||
+            arrivalDate.diff(saisonStartDate) >= 0 && arrivalDate.diff(saisonEndDate) <= 0) {
+            checkNights(arrivalDate, departureDate, saison.nights);
+        }
     }
+};
 
+var checkNights = function(arrivalDate, departureDate, minNights) {
     var minDeparture = moment(arrivalDate).add('days', minNights);
     _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
 
