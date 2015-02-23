@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'gulp' ]
+2 info using npm@2.4.1
+3 info using node@v0.10.28
+4 verbose node symlink /usr/local/bin/node
+5 verbose run-script [ 'pregulp', 'gulp', 'postgulp' ]
+6 info pregulp no-skeleton.docpad@0.1.0
+7 info gulp no-skeleton.docpad@0.1.0
+8 verbose unsafe-perm in lifecycle true
+9 info no-skeleton.docpad@0.1.0 Failed to exec gulp script
+10 verbose stack Error: no-skeleton.docpad@0.1.0 gulp: `gulp`
+10 verbose stack Exit status 8
+10 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+10 verbose stack     at EventEmitter.emit (events.js:98:17)
+10 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+10 verbose stack     at ChildProcess.EventEmitter.emit (events.js:98:17)
+10 verbose stack     at maybeClose (child_process.js:753:16)
+10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:820:5)
+11 verbose pkgid no-skeleton.docpad@0.1.0
+12 verbose cwd /Users/annagebhardt/Documents/#IMPYLS/#AUFTRÄGE/SalztraeumeAmSee/website
+13 error Darwin 13.4.0
+14 error argv "node" "/usr/local/bin/npm" "run" "gulp"
+15 error node v0.10.28
+16 error npm  v2.4.1
+17 error code ELIFECYCLE
+18 error no-skeleton.docpad@0.1.0 gulp: `gulp`
+18 error Exit status 8
+19 error Failed at the no-skeleton.docpad@0.1.0 gulp script 'gulp'.
+19 error This is most likely a problem with the no-skeleton.docpad package,
+19 error not with npm itself.
+19 error Tell the author that this fails on your system:
+19 error     gulp
+19 error You can get their info via:
+19 error     npm owner ls no-skeleton.docpad
+19 error There is likely additional logging output above.
+20 verbose exit [ 1, true ]
