@@ -36,12 +36,12 @@ html(lang='en')
                 span.caret
               ul.dropdown-menu(role="menu")
                 li.dropdown-header Ferienwohnungen
-                li: a(href="ferienwohnung-schmetterling.html") Schmetterling
-                li: a(href="ferienwohnung-eichhoernchen.html") Eichhörnchen
-                li: a(href="ferienwohnung-fuchs.html") Fuchs
+                li: a(href="/ferienwohnung-schmetterling.html") Schmetterling
+                li: a(href="/ferienwohnung-eichhoernchen.html") Eichhörnchen
+                li: a(href="/ferienwohnung-fuchs.html") Fuchs
                 li.divider
-                li: a(href="preise.html") Preise
-                li: a(href="buchen.html") Buchen
+                li: a(href="/preise.html") Preise
+                li: a(href="/buchen.html") Buchen
 
             //- li.dropdown
             //-   a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false")
@@ -51,10 +51,10 @@ html(lang='en')
             //-     li: a(href="angebot.html") Eröffnungsangebot
             //-     li: a(href="geocache.html") Geocache
 
-            li: a(href='see-und-saarow.html') See&amp;Saarow
+            li: a(href='/see-und-saarow.html') See&amp;Saarow
 
           ul.nav.navbar-nav.navbar-right
-            li: a(href="buchen.html") Buchen
+            li: a(href="/buchen.html") Buchen
 
     .container.main-content!=locals.mainContent
 
@@ -62,13 +62,13 @@ html(lang='en')
       div.container
         ul.pull-right
           //-li: a(href='kontakt.html') Kontakt
-          li: a(href='kontakt.html') KONTAKT
-          li: a(href='impressum.html') IMPRESSUM
-          li: a(href='datenschutz.html') DATENSCHUTZ
+          li: a(href='/kontakt.html') KONTAKT
+          li: a(href='/impressum.html') IMPRESSUM
+          li: a(href='/datenschutz.html') DATENSCHUTZ
 
     unless process.env.OFFLINE
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    script(src='js/scripts.js')
+    script(src='/js/scripts.js')
 
     <!--[if lte IE 9]>
     <link href='styles/ie.css' rel='stylesheet' type='text/css' charset='utf-8'></link>
