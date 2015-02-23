@@ -7,6 +7,21 @@
 `make`
 
 ---
+JADE BEISPIELE Zeilenumbruch
+
+```
+p.1 asdasdasd<br>asdasdasd
+
+p.2
+  | asdasd
+  br
+  | asdasdasd
+
+p.3.
+  asdasdasd
+  <br>
+  asdasdasd
+```
 
 - sobald du eine Datei (less, jade, ...) änderst, baut Docpad das automatisch und aktualisiert sogar deinen Browser von selbst!
 - momentan gibts noch n Bug, wenn man neue Dateien hinzufügt

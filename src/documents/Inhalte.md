@@ -2,8 +2,9 @@ Die erste Salz-Ferienunterkunft Deutschlands. Direkt zwischen Wald & See.
 
 
 # FERIENWOHNUNG ›SCHMETTERLING‹
-Unser farbenfrohes 1-Zi-Apartment ›Schmetterling‹ liegt in der 1. Etage und bietet Platz für 2–3 Personen. 
+Unser farbenfrohes 1-Zi-Apartment ›Schmetterling‹ bietet Platz für 2–3 Personen. 
 - Größe: ca. 43 qm
+- Erdgeschoss
 - Schlafzimmer mit Doppelbett (1,80 m)
 - 1 Wohnküche mit Schlafcouch für 1 Person (oder 2 kleine Kinder) 
 - Modernes Bad mit ebenerdiger Dusche

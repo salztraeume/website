@@ -85,20 +85,20 @@ block ausstattung
         +as('flaticon-bathroom13', 'Wesentliches', 'ettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
         +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
         +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
-        +as(null, 'Familien-/kinderfreundlich')
+        +as('flaticon-family11', 'Familien-/kinderfreundlich')
 
 block preise
     div.col-md-6
-        +keyAndStrongValue('bis zu 2 Personen', '55 €')
+        +keyAndStrongValue('Wohnungspreis (bis 2 P.)', '55 €')
         +keyAndStrongValue('pro weitere Person', '15 €')
-        +keyAndStrongValue('Reinigungsgebühr', '30 €')
-        +keyAndStrongValue('Stornierung', 'flexibel')
+        +keyAndStrongValue('Servicegebühr', '30 €')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
         
     div.col-md-6
+        |Ermäßigungen:
         +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
         +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
         +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
-        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
 
 block beschreibung
     include:markdown ./details-eichhoernchen.md
