@@ -16,6 +16,21 @@ var isAfter = function(moment1, moment2) {
     return tmp[0] > tmp[1];
 };
 
+setInterval(function() {
+  var faviconElement = $('link.favicon');
+  var prefix = faviconElement.attr('data-prefix');
+  var suffix = faviconElement.attr('data-suffix');
+  var oldHref = faviconElement[0].href.substr(location.origin.length);
+  var match = oldHref.match(/\d/);
+  if (match) {
+    var number = parseInt(match[0]) + 1;
+    if (number > 5) {
+      number = 1;
+    }
+    $('link.favicon')[0].href = prefix + number + suffix;
+  }
+}, 100);
+
 
 // polyfills
 
