@@ -754,13 +754,13 @@ var showReservation = function() {
         flatDetailsText = "Fuchs Zimmer:" + tmp;
     }
     
-    var template = 'Hallo Frau Herr,' + NL + 
+    var template = 'Hej Frau/Herr,' + NL + 
         NL + 
-        'gerne bestätige ich Ihnen hiermit die Reservierung für das Apartment ' + flatName + '.' + NL +
+        'gerne bestätigen wir Ihnen hiermit die Reservierung für das Apartment/die Wohnung ' + flatName + '.' + NL +
         'Der Gesamtpreis setzt sich wie folgt zusammen:' + NL +
         NL + 
 
-        '<span style="color: #9B70FE; font-weight: bold;">Apartment ' + flatName + '</span>' + NL + 
+        '<span style="color: #9B70FE; font-weight: bold;">Apartment/Wohnung ' + flatName + '</span>' + NL + 
         flatDetailsText + NL +
         from + ' – ' + to + '  |  ' + nights + ' Nächte  |  ' + guests + ' Person' + (guests == '1' ? '':'en') + NL +
         'Erwachsene: ' + guests_adult + NL +
@@ -776,12 +776,18 @@ var showReservation = function() {
         NL +
 
         '(Die Kurtaxe beläuft sich auf insgesamt ca. ' + priceFee + ' und muss bitte ' +
-        'bar vor Ort entrichtet werden. Mit der ausgestellten Kurkarte erhalten Sie ' +
+        'bar vor Ort entrichtet werden. Mit der ausgestellten Kurkarte erhält man ' +
         'Rabatte u.a. in der SaarowTherme.)' + NL +
         NL +
         NL +
 
-        'Wir bitten Sie eine Anzahlung in Höhe von ' + pricePart + ' (20% des Gesamtbetrages) innerhalb von 14 Tagen auf folgendes Konto zu überweisen: ' + NL +
+        'Falls eine Buchung in Frage kommt, bitten wir, uns dies innerhalb von 24 Stunden' +
+        'per Email zu bestätigen und anschließend die Zahlung zu veranlassen.' +
+        'Der Gesamtbetrag ist bitte innerhalb von 7 Werktagen auf folgendes Konto zu überweisen:' + NL +
+
+        'Falls eine Buchung in Frage kommt, bitten wir, uns dies innerhalb von 24 Stunden' +
+        'per Email zu bestätigen und anschließend die Zahlung zu veranlassen.' +
+        'Eine Anzahlung in Höhe von ' + pricePart + ' (20% des Gesamtbetrages) ist bitte innerhalb von 7 Werktagen auf folgendes Konto zu überweisen: ' + NL +
         NL +
 
         'Valentina Wilhelm' + NL +
@@ -790,7 +796,7 @@ var showReservation = function() {
         'BIC: COBADEHD055' + NL +
         NL +
 
-        'Bitte überweisen Sie den restlichen Betrag in Höhe von ' + priceRest + ' 14 Tage vor Ihrer Anreise, jedoch spätestens zum ' + priceRestDate + '.' + NL +
+        'Der restlichen Betrag in Höhe von ' + priceRest + ' ist 14 Tage vor Anreise, jedoch spätestens zum ' + priceRestDate + ' fällig.' + NL +
         NL +
 
         'STORNOBEDINGUNGEN ' + NL +
@@ -798,7 +804,7 @@ var showReservation = function() {
         '50% Erstattung für Stornierung mehr als 7 Tage vor Anreisetag.' + NL +
         NL +
 
-        'Wir freuen uns darauf, Sie schon bald in unserer Ferienunterkunft <span style="color: #9B70FE">SALZ›T‹RÄUME AM SEE</span> begrüßen zu dürfen.';
+        'Wir freuen uns darauf, Sie vielleicht schon bald in unserer Ferienunterkunft <span style="color: #9B70FE">SALZ›T‹RÄUME AM SEE</span> begrüßen zu dürfen.';
     
     var content = '<div class="container"><p>' + template +  '</p></div>';
     $('#reservation').html(content);
