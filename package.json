@@ -33,7 +33,6 @@
     "run-sequence": "^1.0.2",
     "utils-merge": "^1.0.0"
   },
-  "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "gulp": "gulp"
   },
