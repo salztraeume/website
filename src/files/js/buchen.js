@@ -52,6 +52,7 @@ var PERMA_LINK_KEYS = [
     'gb',
     'gc',
     'gd',
+    'verify'
 ];
 
 var setPermaLink = function(key, value) {
@@ -69,11 +70,26 @@ var setPermaLink = function(key, value) {
     locationHash[key] = value;
 
     var locationArray = [];
+    // handle input filter 
+    for (var i=0; i<Object.keys(locationHash).length; i++) {
+        var key = Object.keys(locationHash)[i];
+        if (key.indexOf('filter-') !== -1) {
+            if (PERMA_LINK_KEYS.indexOf(key) !== -1) {
+                if ($('.'+key)[0].checked) {
+                    locationArray.push(key);
+                }
+            }
+        }
+    }
+    // handle rest
     for(var i=0; i<PERMA_LINK_KEYS.length; i++) {
         var currentKey = PERMA_LINK_KEYS[i];
+        if (currentKey.indexOf('filter-') !== -1) {
+            continue;
+        }
         var currentVal = locationHash[currentKey];
-        if (currentVal != null && currentVal !== 0) {
-            if (currentVal == '') {
+        if ((currentVal != null && currentVal !== 0)) {
+            if (!currentVal) { // for falsy values use just the key
                 locationArray.push(currentKey);
             } else {
                 locationArray.push(currentKey + '=' + currentVal);
@@ -113,7 +129,7 @@ var handleFilterFromURL = function(flatShortcut) {
     }
 };
 
-var readPermaLink = function() {
+var readPermaLink = function(options) {
     var str = window.location.hash.substr(1);
     var pairs = str.split('&');
     var filterHandled = false;
@@ -136,7 +152,12 @@ var readPermaLink = function() {
                 console.log('reservation-view activated');
             }
         }
-
+        if (options.init) {
+            if (key === 'verify') continue;
+        }
+        if (options.finished) {
+            if (key !== 'verify') continue;
+        }
         switch(key) {
             case 'filter-SL':
                 handleFilterFromURL('SL');
@@ -188,16 +209,30 @@ var readPermaLink = function() {
             case 'gd':
                 $('#b_guests_children_free').val(value);
                 break;
+            case 'verify':
+                verify(value);
+                break;
         }
     }
-    if (!filterHandled) {
-        handleFilterFromURL('SL');
+    if (!filterHandled && $(".checker input").filter(function(i, input){return input.checked}).length === 0) {
+        $('.filter-SL').click();
     }
     if ($('.conainter.booking').length > 0) {
         // only on the buchen.html
         toggleFlatDetails($('#b_flat')[0], true);
         limitDatePicker($('#b_arrival')[0]);
         calculatePrice();
+    }
+};
+
+var verify = function(price) {
+    var calculatedPrice = $("#price-sum").text();
+    if (parseFloat(calculatedPrice) === parseFloat(price)) {
+        $("body").css('background', 'green');
+    } else {
+        console.log('user', price);
+        console.log('calculated', $("#price-sum").text());
+        $("body").css('background', 'red');
     }
 };
 
@@ -547,7 +582,7 @@ $(document).ready(function() {
     $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
 
     // read initial url params
-    readPermaLink();
+    readPermaLink({init: true});
 
     if ($("#b_arrival").length > 0) {
         $(".booking-calendar .day").on('click', function() {
@@ -707,6 +742,8 @@ $(document).ready(function() {
 
     // enable tooltips
     $('[data-toggle="tooltip"]').tooltip();
+
+    readPermaLink({finished: true});
 
 });
 
