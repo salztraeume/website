@@ -714,7 +714,7 @@ $(document).ready(function() {
                     phone: phone,
                     note: note,
                     found: found,
-                    user_url: window.location.host + window.location.pathname + window.location.hash
+                    user_url: 'http://' + window.location.host + window.location.pathname + window.location.hash
               },
               dataType: 'json'
             });
