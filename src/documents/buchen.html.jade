@@ -98,6 +98,10 @@ form#booking-form.conainter.booking(onsubmit="return false;")
         input#b_email.form-control(type="email", required, placeholder="E-Mail")
 
     div.form-group
+        span.control-label Kopie an mich mitschicken: 
+        input#b_send_email(type="checkbox", checked)
+
+    div.form-group
         input#b_phone.form-control(type="tel", placeholder="Telefon")
 
     div.form-group

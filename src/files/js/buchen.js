@@ -668,6 +668,7 @@ $(document).ready(function() {
 
             var name = $('#b_name').val() || '-';
             var email = $('#b_email').val() || '-';
+            var send_email = $('#b_send_email').prop('checked');
             var phone = $('#b_phone').val() || null;
             var note = $('#b_note').val() || null;
             var found = $('#b_found').val() || '-';
@@ -685,7 +686,7 @@ $(document).ready(function() {
             }
             // --------------------------------------
 
-            var formUrl = 'http://thunderwave.de:9775/submit';
+            var formUrl = 'http://thunderwave.de:9771/submit';
             var submitButton = $('#b_submit');
             submitButton[0].disabled = true;
             submitButtonOriginalText = submitButton.text();
@@ -711,6 +712,7 @@ $(document).ready(function() {
                     price_total: price_total,
                     name: name,
                     email: email,
+                    send_email: send_email,
                     phone: phone,
                     note: note,
                     found: found,
