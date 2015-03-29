@@ -1,5 +1,6 @@
 var CLEAN_BASE = 30;
 var DE_FORMATTER = 'DD.MM.YYYY';
+var EN_FORMATTER = 'YYYY-MM-DD'
 var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
 var DATEPICKER_OPTS = {
     format: "dd.mm.yyyy",
@@ -671,8 +672,11 @@ var prepareSubmit = function() {
         // --------------------------------------
         // form data
         var flat_name = $('#b_flat').val() || '-';
-        var from = $('#b_arrival').val() || '-';
-        var to = $('#b_departure').val() || '-';
+        var flat_name = $('#b_flat').val();
+        var from = $('#b_arrival').val();
+        var to = $('#b_departure').val();
+        from = moment(from, DE_FORMATTER).format(EN_FORMATTER);
+        to = moment(to, DE_FORMATTER).format(EN_FORMATTER);
         var nights = dates[0];
         var guests = $('#b_guests_total').val() || '-';
         var guests_adult = $('#b_guests_adult').val() || '-';
