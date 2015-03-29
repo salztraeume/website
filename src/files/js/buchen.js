@@ -52,6 +52,8 @@ var PERMA_LINK_KEYS = [
     'gb',
     'gc',
     'gd',
+    'name',
+    'email',
     'verify'
 ];
 
@@ -208,6 +210,12 @@ var readPermaLink = function(options) {
                 break;
             case 'gd':
                 $('#b_guests_children_free').val(value);
+                break;
+            case 'name':
+                $('#b_name').val(value);
+                break;
+            case 'email':
+                $('#b_email').val(value);
                 break;
             case 'verify':
                 verify(value);
