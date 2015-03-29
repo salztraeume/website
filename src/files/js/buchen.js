@@ -631,122 +631,9 @@ $(document).ready(function() {
     $('#b_submit').on('click', function(e) {
         e.preventDefault();
 
-        // remove validation errors if there were some
-        $('div.form-group.has-error').removeClass('has-error');
-
-        extraValidation();
-
-        var form = $('.conainter.booking')[0];
-        if (form.checkValidity && !form.checkValidity()) {
-            var inputs = form.querySelectorAll("input");
-            for (var i=0; i<inputs.length; i++) {
-                var tmp = inputs[i];
-                if (!tmp.validity.valid) {
-                    var msg = tmp.validationMessage;
-                    var validation = $(getValidationLabel(tmp));
-                    validation.text(msg);
-                    $(tmp).parents('div.form-group').addClass('has-error');
-                }
-            }
-            
-        } else {
-            if (!extraValidation()) return;
-
-            var dates = calcGuestDates();
-
-            // --------------------------------------
-            // form data
-            var flat_name = $('#b_flat').val() || '-';
-            var from = $('#b_arrival').val() || '-';
-            var to = $('#b_departure').val() || '-';
-            var nights = dates[0];
-            var guests = $('#b_guests_total').val() || '-';
-            var guests_adult = $('#b_guests_adult').val() || '-';
-            var guests_teens = $('#b_guests_teens').val() || null;
-            var guests_children = $('#b_guests_children').val() || null;
-            var guests_children_free = $('#b_guests_children_free').val() || null;
-
-            var price_Basic_ = parsePrice($('#price-base').text());
-            var price_Saison_ = parsePrice($('#price-extra-saison').text());
-            var price_basic = price_Basic_ + price_Saison_;
-            var price_extra_persons = parsePrice($('#price-extra-person').text());
-            var price_clean = parsePrice($('#price-clean').text());
-            var price_fee = parsePrice($('#price-fee').text());
-            var price_total = parsePrice($('#price-sum').text());
-
-            var name = $('#b_name').val() || '-';
-            var email = $('#b_email').val() || '-';
-            var send_email = $('#b_send_email').prop('checked');
-            var phone = $('#b_phone').val() || null;
-            var note = $('#b_note').val() || null;
-            var found = $('#b_found').val() || '-';
-            var flat_details_text = '';
-            // --------------------------------------
-
-            var flatDetails = getDetailsForFuchs();
-            flat_details_text = '';
-            if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
-                var tmp = '';
-                tmp +=  flatDetails[0] ? ' 1. ' : '';
-                tmp +=  flatDetails[1] ? ' 2. ' : '';
-                tmp +=  flatDetails[2] ? ' 3. ' : '';
-                flat_details_text = "Fuchs Zimmer:" + tmp;
-            }
-            // --------------------------------------
-
-            var formUrl = 'http://thunderwave.de:9771/submit';
-            var submitButton = $('#b_submit');
-            submitButton[0].disabled = true;
-            submitButtonOriginalText = submitButton.text();
-            submitButton.text('Bitte warten ...');
-            var request = $.ajax({
-                url: formUrl,
-                type: "POST",
-                data: {
-                    flat_name: flat_name,
-                    flat_details_text: flat_details_text,
-                    from: from,
-                    to: to,
-                    nights: nights,
-                    guests: guests,
-                    guests_adult: guests_adult,
-                    guests_teens: guests_teens,
-                    guests_children: guests_children,
-                    guests_children_free: guests_children_free,
-                    price_basic: price_basic,
-                    price_extra_persons: price_extra_persons,
-                    price_clean: price_clean,
-                    price_fee: price_fee,
-                    price_total: price_total,
-                    name: name,
-                    email: email,
-                    send_email: send_email,
-                    phone: phone,
-                    note: note,
-                    found: found,
-                    user_url: 'http://' + window.location.host + window.location.pathname + window.location.hash
-              },
-              dataType: 'json'
-            });
-             
-            request.done(function(json, responseType, xhr) {
-                alert('Anfrage erfolgreich verschickt. Sie bekommen in wenigen Minuten eine E-Mail.');
-                console.log(xhr);
-                var submitButton = $('#b_submit');
-                submitButton[0].disabled = true;
-                var content = parseJson(xhr.responseText).content || '';
-                submitButton.text('Abgeschickt, Referenz-Nr: ' + content);
-            });
-             
-            request.fail(function(xhr, responseType, statusText) {
-                var content = parseJson(xhr.responseText).content || 'Entschuldigung, bitte versuchen Sie es später noch einmal';
-                if (content !== '') content = ': ' + content;
-                alert('Anfrage konnte nicht gesendet werden' + content);
-                var submitButton = $('#b_submit');
-                submitButton.text(submitButtonOriginalText);
-                submitButton[0].disabled = false;
-                console.log(xhr);
-            });
+        var data = prepareSubmit();
+        if (data != null) {
+            doSubmit(data);
         }
     });
 
@@ -756,6 +643,130 @@ $(document).ready(function() {
     readPermaLink({finished: true});
 
 });
+
+var prepareSubmit = function() {
+    // remove validation errors if there were some
+    $('div.form-group.has-error').removeClass('has-error');
+
+    extraValidation();
+
+    var form = $('.conainter.booking')[0];
+    if (form.checkValidity && !form.checkValidity()) {
+        var inputs = form.querySelectorAll("input");
+        for (var i=0; i<inputs.length; i++) {
+            var tmp = inputs[i];
+            if (!tmp.validity.valid) {
+                var msg = tmp.validationMessage;
+                var validation = $(getValidationLabel(tmp));
+                validation.text(msg);
+                $(tmp).parents('div.form-group').addClass('has-error');
+            }
+        }
+        return null;
+    } else {
+        if (!extraValidation()) return;
+
+        var dates = calcGuestDates();
+
+        // --------------------------------------
+        // form data
+        var flat_name = $('#b_flat').val() || '-';
+        var from = $('#b_arrival').val() || '-';
+        var to = $('#b_departure').val() || '-';
+        var nights = dates[0];
+        var guests = $('#b_guests_total').val() || '-';
+        var guests_adult = $('#b_guests_adult').val() || '-';
+        var guests_teens = $('#b_guests_teens').val() || null;
+        var guests_children = $('#b_guests_children').val() || null;
+        var guests_children_free = $('#b_guests_children_free').val() || null;
+
+        var price_Basic_ = parsePrice($('#price-base').text());
+        var price_Saison_ = parsePrice($('#price-extra-saison').text());
+        var price_basic = price_Basic_ + price_Saison_;
+        var price_extra_persons = parsePrice($('#price-extra-person').text());
+        var price_clean = parsePrice($('#price-clean').text());
+        var price_fee = parsePrice($('#price-fee').text());
+        var price_total = parsePrice($('#price-sum').text());
+
+        var name = $('#b_name').val() || '-';
+        var email = $('#b_email').val() || '-';
+        var send_email = $('#b_send_email').prop('checked');
+        var phone = $('#b_phone').val() || null;
+        var note = $('#b_note').val() || null;
+        var found = $('#b_found').val() || '-';
+        var flat_details_text = '';
+        // --------------------------------------
+
+        var flatDetails = getDetailsForFuchs();
+        flat_details_text = '';
+        if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
+            var tmp = '';
+            tmp +=  flatDetails[0] ? ' 1. ' : '';
+            tmp +=  flatDetails[1] ? ' 2. ' : '';
+            tmp +=  flatDetails[2] ? ' 3. ' : '';
+            flat_details_text = "Fuchs Zimmer:" + tmp;
+        }
+        // --------------------------------------
+        
+        var data = {
+            flat_name: flat_name,
+            flat_details_text: flat_details_text,
+            from: from,
+            to: to,
+            nights: nights,
+            guests: guests,
+            guests_adult: guests_adult,
+            guests_teens: guests_teens,
+            guests_children: guests_children,
+            guests_children_free: guests_children_free,
+            price_basic: price_basic,
+            price_extra_persons: price_extra_persons,
+            price_clean: price_clean,
+            price_fee: price_fee,
+            price_total: price_total,
+            name: name,
+            email: email,
+            send_email: send_email,
+            phone: phone,
+            note: note,
+            found: found,
+            user_url: 'http://' + window.location.host + window.location.pathname + window.location.hash
+      };
+      return data;
+    }
+}
+
+var doSubmit = function(data) {
+    var submitButton = $('#b_submit');
+    submitButtonOriginalText = submitButton.text();
+    submitButton.text('Bitte warten ...');
+    submitButton[0].disabled = true;
+    var formUrl = 'http://thunderwave.de:9771/submit';
+
+    var request = $.ajax({
+        url: formUrl,
+        type: "POST",
+        data: data,
+        dataType: 'json'
+    });
+     
+    request.done(function(json, responseType, xhr) {
+        alert('Anfrage erfolgreich verschickt. Sie bekommen in wenigen Minuten eine E-Mail.');
+        console.log(xhr);
+        submitButton[0].disabled = true;
+        var content = parseJson(xhr.responseText).content || '';
+        submitButton.text('Abgeschickt, Referenz-Nr: ' + content);
+    });
+     
+    request.fail(function(xhr, responseType, statusText) {
+        var content = parseJson(xhr.responseText).content || 'Entschuldigung, bitte versuchen Sie es später noch einmal';
+        if (content !== '') content = ': ' + content;
+        alert('Anfrage konnte nicht gesendet werden' + content);
+        submitButton.text(submitButtonOriginalText);
+        submitButton[0].disabled = false;
+        console.log(xhr);
+    });
+}
 
 var parseJson = function(string) {
     var json = {};
