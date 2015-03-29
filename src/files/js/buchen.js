@@ -671,15 +671,14 @@ var prepareSubmit = function() {
 
         // --------------------------------------
         // form data
-        var flat_name = $('#b_flat').val() || '-';
         var flat_name = $('#b_flat').val();
         var from = $('#b_arrival').val();
         var to = $('#b_departure').val();
         from = moment(from, DE_FORMATTER).format(EN_FORMATTER);
         to = moment(to, DE_FORMATTER).format(EN_FORMATTER);
         var nights = dates[0];
-        var guests = $('#b_guests_total').val() || '-';
-        var guests_adult = $('#b_guests_adult').val() || '-';
+        var guests = $('#b_guests_total').val();
+        var guests_adult = $('#b_guests_adult').val() || null;
         var guests_teens = $('#b_guests_teens').val() || null;
         var guests_children = $('#b_guests_children').val() || null;
         var guests_children_free = $('#b_guests_children_free').val() || null;
@@ -692,12 +691,12 @@ var prepareSubmit = function() {
         var price_fee = parsePrice($('#price-fee').text());
         var price_total = parsePrice($('#price-sum').text());
 
-        var name = $('#b_name').val() || '-';
-        var email = $('#b_email').val() || '-';
+        var name = $('#b_name').val();
+        var email = $('#b_email').val();
         var send_email = $('#b_send_email').prop('checked');
         var phone = $('#b_phone').val() || null;
         var note = $('#b_note').val() || null;
-        var found = $('#b_found').val() || '-';
+        var found = $('#b_found').val();
         var flat_details_text = '';
         // --------------------------------------
 
