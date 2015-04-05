@@ -509,7 +509,7 @@ var extraValidation = function() {
     // check if at least one room for fuchs was checked
     var flatDetails = getDetailsForFuchs();
     var flat = $('#b_flat').val();
-    if (flat === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[1] <= 0) {
+    if (flat === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
         $('#flat_fuchs_detail').addClass('has-error');
         return false;
     } else {
