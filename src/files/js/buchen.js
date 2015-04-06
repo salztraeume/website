@@ -465,7 +465,7 @@ var calculatePrice = function() {
     $('#price-sum').text((base*nights + saisonSpecial + extraPersonSum*nights + totalClean) + ' €');
 
     // fee
-    $('#price-fee').text(fee*nights + ' €');
+    $('#price-fee').text('ca. ' + (fee*nights) + ' €');
 
 
     if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
