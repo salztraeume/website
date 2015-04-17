@@ -151,6 +151,22 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                     break;
             }
         }
+        // set summary by location for cases with a r_id is only set
+        if (isNaN(parseInt(item.summary))) {
+            // do nothing
+        } else {
+            // r_id is set
+            // add also the flat full name
+            var flatName;
+            switch(item.location) {
+                case 'SL': flatName  = 'Schmetterling'; break;
+                case 'EH': flatName  = 'Eichhörnchen'; break;
+                case 'F1': flatName  = 'Fuchs1'; break;
+                case 'F2': flatName  = 'Fuchs2'; break;
+                case 'F3': flatName  = 'Fuchs3'; break;
+            }
+            item.summary = flatName + ': ' + item.summary;
+        }
 
         var stopCondition = moment(end);
         while (isBefore(tmp, stopCondition)) {
