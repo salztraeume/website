@@ -149,6 +149,8 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 case 'Fuchs3', 'FS3':
                     item.location = "F3";
                     break;
+                default:
+                    console.log('could not match flat name for: '+item.summary);
             }
         }
         // set summary by location for cases with a r_id is only set
