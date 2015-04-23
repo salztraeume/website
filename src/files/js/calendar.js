@@ -159,15 +159,16 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
         } else {
             // r_id is set
             // add also the flat full name
-            var flatName;
+            var flatName = '';
             switch(item.location) {
                 case 'SL': flatName  = 'Schmetterling'; break;
                 case 'EH': flatName  = 'Eichhörnchen'; break;
                 case 'F1': flatName  = 'Fuchs1'; break;
                 case 'F2': flatName  = 'Fuchs2'; break;
                 case 'F3': flatName  = 'Fuchs3'; break;
+                default: console.log('could not identify location for: ' + JSON.stringify(item));
             }
-            item.summary = flatName + ': ' + item.summary;
+            item.summary = flatName;
         }
 
         var stopCondition = moment(end);
