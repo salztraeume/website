@@ -61,6 +61,11 @@ mixin bookingCalendar(flat, month, columns)
     else 
         - classes = ['col-xs-12']
 
+    div.ajax-spinner
+        span.glyphicon.glyphicon-refresh.spinning
+        | 
+        | Daten werden geladen
+
     table.booking-calendar(data-flat=flat, data-month=month, class=classes)
         thead
             if month != null

@@ -10,6 +10,7 @@ var fetchCal = function(cb) {
         }, 100);
     } else {
         cb(window.calendar_items);
+        $('.ajax-spinner').hide();
     }
 };
 
