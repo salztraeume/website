@@ -508,16 +508,53 @@ var extraValidation = function() {
 
     // check if at least one room for fuchs was checked
     var flatDetails = getDetailsForFuchs();
-    var flat = $('#b_flat').val();
-    if (flat === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
+    var flatSelectedValue = $('#b_flat').val();
+    if (flatSelectedValue === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
         $('#flat_fuchs_detail').addClass('has-error');
         return false;
     } else {
         $('#flat_fuchs_detail').removeClass('has-error');
     }
 
+    // check if time and flat is available
+    var available = true;
+    if (flatSelectedValue === 'Fuchs') {
+        if(checkAvailabilityFor('F1', flatDetails[0]) === false) {
+            available = false;
+        }
+        if (checkAvailabilityFor('F2', flatDetails[1]) === false) {
+            available = false;
+        }
+        if(checkAvailabilityFor('F3', flatDetails[2]) === false) {
+            available = false;
+        }
+    } else {
+        var location = $("#b_flat :selected").attr('data-location');
+        if (checkAvailabilityFor(location) === false) {
+            available = false;
+        }
+    }
+    if (available === false) {
+        alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
+        return false;
+    }
     return true;
 };
+
+var checkAvailabilityFor = function(flatShortCut, check) {
+    if (check != 1) return true;
+
+    var start = moment($("#b_arrival").val(), DE_FORMATTER);
+    var end = moment($("#b_departure").val(), DE_FORMATTER);
+    while (start.format(DE_FORMATTER) !== end.format(DE_FORMATTER)) {
+        var key = start.format('YYYY-MM-DD') + '_' + flatShortCut;
+        if (window.blockingMap[key]) {
+            return false;
+        }
+        start.add(1, 'days');
+    }
+    return true;
+}
 
 var limitDatePicker = function(element) {
     // limit the start date of departure
@@ -649,7 +686,7 @@ var prepareSubmit = function() {
     // remove validation errors if there were some
     $('div.form-group.has-error').removeClass('has-error');
 
-    extraValidation();
+    if (!extraValidation()) return;
 
     var form = $('.conainter.booking')[0];
     if (form.checkValidity && !form.checkValidity()) {
@@ -744,7 +781,7 @@ var doSubmit = function(data) {
     submitButtonOriginalText = submitButton.text();
     submitButton.text('Bitte warten ...');
     submitButton[0].disabled = true;
-    var formUrl = 'http://thunderwave.de:9771/submit';
+    var formUrl = 'http://thunderwave.de:97711/submit';
 
     var request = $.ajax({
         url: formUrl,
