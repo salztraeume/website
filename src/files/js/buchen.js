@@ -530,7 +530,7 @@ var extraValidation = function() {
         }
     } else {
         var location = $("#b_flat :selected").attr('data-location');
-        if (checkAvailabilityFor(location) === false) {
+        if (checkAvailabilityFor(location, 1) === false) {
             available = false;
         }
     }
