@@ -1,6 +1,6 @@
 {
   "name": "no-skeleton.docpad",
-  "version": "0.1.0",
+  "version": "1.3.0",
   "description": "New DocPad project without using a skeleton",
   "engines": {
     "node": "0.10",
