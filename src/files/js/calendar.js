@@ -9,11 +9,27 @@ var fetchCal = function(cb) {
             fetchCal(cb);
         }, 100);
     } else {
+        injectBlockingMap(window.calendar_items.items);
         cb(window.calendar_items);
         $('.ajax-spinner').hide();
     }
 };
 
+var injectBlockingMap = function(items) {
+    var itemKeys = Object.keys(items); 
+    var map = {};
+    var DAY_PRECISION = 'YYYY-MM-DD';
+    for (var i = 0; i < itemKeys.length; i++) {
+      var item = items[i];
+      var start = moment(item.start.dateTime);
+      var end = moment(item.end.dateTime);
+      while (start.format(DAY_PRECISION) !== end.format(DAY_PRECISION)) {
+        map[start.format(DAY_PRECISION) + '_' + item.location] = true;
+        start.add(1, 'days');
+      }
+    }
+    window.blockingMap = map;
+};
 
 var clearCal = function() {
     var emptyTable = window.tableTemplate.clone();
