@@ -1,6 +1,7 @@
+var FORM_MAILER_URL = 'http://localhost:9771/submit';
 var CLEAN_BASE = 30;
 var DE_FORMATTER = 'DD.MM.YYYY';
-var EN_FORMATTER = 'YYYY-MM-DD'
+var EN_FORMATTER = 'YYYY-MM-DD';
 var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
 var DATEPICKER_OPTS = {
     format: "dd.mm.yyyy",
@@ -781,10 +782,9 @@ var doSubmit = function(data) {
     submitButtonOriginalText = submitButton.text();
     submitButton.text('Bitte warten ...');
     submitButton[0].disabled = true;
-    var formUrl = 'http://thunderwave.de:97711/submit';
 
     var request = $.ajax({
-        url: formUrl,
+        url: FORM_MAILER_URL,
         type: "POST",
         data: data,
         dataType: 'json'
