@@ -1,4 +1,4 @@
-var FORM_MAILER_URL = 'http://localhost:9771/submit';
+var FORM_MAILER_URL = 'http://thunderwave.de:9771/submit';
 var CLEAN_BASE = 30;
 var DE_FORMATTER = 'DD.MM.YYYY';
 var EN_FORMATTER = 'YYYY-MM-DD';
