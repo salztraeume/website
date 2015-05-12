@@ -64,16 +64,14 @@ html(lang='en')
           li: a(href='/impressum.html') IMPRESSUM
           li: a(href='/datenschutz.html') DATENSCHUTZ
 
-    unless process.env.OFFLINE
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/scripts.js')
 
     <!--[if lte IE 9]>
     <link href='styles/ie.css' rel='stylesheet' type='text/css' charset='utf-8'></link>
     <![endif]-->
-    unless process.env.OFFLINE
+    if process.env.OFFLINE == null
       script.
-        var $buoop = {c:2};function $buo_f(){var e = document.createElement("script");e.src = "//browser-update.org/update.js";document.body.appendChild(e);};try {document.addEventListener("DOMContentLoaded", $buo_f,false)}catch(e){window.attachEvent("onload", $buo_f)}
+        //var $buoop = {c:2};function $buo_f(){var e = document.createElement("script");e.src = "//browser-update.org/update.js";document.body.appendChild(e);};try {document.addEventListener("DOMContentLoaded", $buo_f,false)}catch(e){window.attachEvent("onload", $buo_f)}
       script.
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
