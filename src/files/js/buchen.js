@@ -66,7 +66,7 @@ var setPermaLink = function(key, value) {
             var checkbox = filterElement[0].checked;
             return setPermaLink('filter-'+value, checkbox ? '' : null);
         }
-        
+
     }
     if ('.' + PERMA_LINK_KEYS.join('.').indexOf(key) < 0) {
         throw new Error('there is no key: '+key);
@@ -74,7 +74,7 @@ var setPermaLink = function(key, value) {
     locationHash[key] = value;
 
     var locationArray = [];
-    // handle input filter 
+    // handle input filter
     for (var i=0; i<Object.keys(locationHash).length; i++) {
         var key = Object.keys(locationHash)[i];
         if (key.indexOf('filter-') !== -1) {
@@ -115,7 +115,7 @@ var parsePrice = function(str) {
     } catch (err) {
         return 0;
     }
-    
+
 };
 
 var handleFilterFromURL = function(flatShortcut) {
@@ -140,7 +140,7 @@ var readPermaLink = function(options) {
 
     // prophylactic reset
     $('#flat_fuchs_detail').hide();
-    
+
     for (var i=0; i<pairs.length; i++) {
         var splitted = pairs[i].split('=');
         var key = splitted[0];
@@ -271,7 +271,7 @@ var calcTotalGuests = function() {
     setPermaLink('gb', b);
     setPermaLink('gc', c);
     setPermaLink('gd', d);
-    
+
     return totalGuests;
 };
 
@@ -317,7 +317,7 @@ var calculatePrice = function() {
         if (result === 0) {
             resetCalculation();
             return;
-        } 
+        }
         if (result < 3) {
             extraTreshold = result;
             base = base * result;
@@ -335,7 +335,7 @@ var calculatePrice = function() {
     $('#price-base').text(nights + ' Nächte * ' + base + ' €');
 
     var toSubtract = extraTreshold;
-    
+
     var extraPersonSum = 0;
     var extraText = [];
     var fee = 0;
@@ -395,13 +395,13 @@ var calculatePrice = function() {
                 extraPersonSum += tmp.size * tmp.price;
             }
         }
-        
+
         // special offer 8 persons for fuchs = 120 €
         if (totalGuests > 7 && extraPersonSum > (120 - base)) {
             extraPersonSum = 30;
             extraText = ['Fullhouse Rabatt: 30 €'];
         }
-    } 
+    }
     if (extraText.length > 0) {
         $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
     } else {
@@ -575,7 +575,7 @@ var limitDatePicker = function(element) {
         if (arrivalDate.months() === 0) {
             // if arrival is January
             saisonStartDate.subtract(1, 'year');
-        } 
+        }
         var saisonEndDate = moment(saisonStartDate).add(saison.duration - 2, 'days');
 
         var tmp = moment(arrivalDate).add('days', saison.nights);
@@ -748,7 +748,7 @@ var prepareSubmit = function() {
             flat_details_text = "Fuchs Zimmer:" + tmp;
         }
         // --------------------------------------
-        
+
         var data = {
             flat_name: flat_name,
             flat_details_text: flat_details_text,
@@ -789,7 +789,7 @@ var doSubmit = function(data) {
         data: data,
         dataType: 'json'
     });
-     
+
     request.done(function(json, responseType, xhr) {
         alert('Anfrage erfolgreich verschickt. Sie bekommen in wenigen Minuten eine E-Mail.');
         console.log(xhr);
@@ -797,7 +797,7 @@ var doSubmit = function(data) {
         var content = parseJson(xhr.responseText).content || '';
         submitButton.text('Abgeschickt, Referenz-Nr: ' + content);
     });
-     
+
     request.fail(function(xhr, responseType, statusText) {
         var content = parseJson(xhr.responseText).content || 'Entschuldigung, bitte versuchen Sie es später noch einmal';
         if (content !== '') content = ': ' + content;
@@ -819,7 +819,7 @@ var parseJson = function(string) {
 var showReservation = function() {
     var data = prepareSubmit();
     /*
-    ignore: 
+    ignore:
           "send_email": true,
           "phone": null,
           "note": null,
