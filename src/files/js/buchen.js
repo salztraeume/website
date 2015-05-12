@@ -497,6 +497,8 @@ var getValidationLabel = function(referenceElement) {
 };
 
 var extraValidation = function() {
+    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') return true;
+
     // check that at least one person is booked
     if (calcTotalGuests() <= 0) {
         $('.guests-size').addClass('has-error');
@@ -558,6 +560,8 @@ var checkAvailabilityFor = function(flatShortCut, check) {
 }
 
 var limitDatePicker = function(element) {
+    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') return;
+    console.log('limitDatePicker');
     // limit the start date of departure
     // at least to book 2 nights
     var arrivalDate = moment(element.value, DE_FORMATTER);
@@ -625,7 +629,9 @@ $(document).ready(function() {
     //  +++ booking +++
 
     window.current = moment();
-    DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
+    if (localStorage.getItem(LOCAL_STORAGE_KEY) != 'on') {
+        DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
+    }
     $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
 
     // read initial url params
