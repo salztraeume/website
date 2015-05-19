@@ -4,7 +4,7 @@ var config = require('../config');
 gulp.task('javascript', function() {
 
     var jsFiles = [
-        './src/files/js/jquery-1.11.3.js',
+        './src/files/js/jquery-1.11.3.min.js',
         './src/files/js/bootstrap.min.js',
         './src/files/js/ie10.js',
         './src/files/js/bootstrap-datepicker.js',
