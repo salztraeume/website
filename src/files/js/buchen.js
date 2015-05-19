@@ -746,7 +746,7 @@ var prepareSubmit = function() {
 
         var flatDetails = getDetailsForFuchs();
         flat_details_text = '';
-        if (flatDetails[0] + flatDetails[1] + flatDetails[1] > 0) {
+        if (flatDetails[0] + flatDetails[1] + flatDetails[2] > 0) {
             var tmp = '';
             tmp +=  flatDetails[0] ? ' 1. ' : '';
             tmp +=  flatDetails[1] ? ' 2. ' : '';
