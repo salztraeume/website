@@ -1,10 +1,10 @@
 <!-- -->
 
-Unser farbenfrohes 1-Zi-Apartment ›Schmetterling‹ bietet Platz für 2–3 Personen. 
+Unser farbenfrohes 1-Zi-Apartment ›Schmetterling‹ bietet Platz für 2 Personen.
 - Größe: ca. 43 qm
 - Erdgeschoss
 - Schlafzimmer mit Doppelbett (1,80 m)
-- 1 Wohnküche mit Schlafcouch für 1 Person (oder 2 kleine Kinder) 
+- 1 Wohnküche mit Schlafcouch für 1 Kind
 - Modernes Bad mit ebenerdiger Dusche
 
 Schlafzimmer und Wohnküche sind durch eine Schiebetür voneinander getrennt. Ins Bad kommt man aus der Wohnküche über das Schlafzimmer.
@@ -31,5 +31,5 @@ Pro Wohnung steht ein kostenloser Parkplatz vor dem Haus zur Verfügung.
 
 #### HAUSREGELN
 
-Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer Inneneinrichtung. Wir bitten mit der Einrichtung pfleglich umzugehen.  
+Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer Inneneinrichtung. Wir bitten mit der Einrichtung pfleglich umzugehen.
 Das Rauchen ist in der Wohnung nicht gestattet. Dafür steht ein Aschenbecher und eine Sitzgruppe auf dem Hof bereit.

@@ -55,12 +55,12 @@ block carousel
 block unterkunft
     div.col-sm-6
         +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
-        +keyAndStrongValue('Unterkunft für', '3')
+        +keyAndStrongValue('Unterkunft für', '2')
         +keyAndStrongValue('Schlafzimmer', '1')
         +keyAndStrongValue('Badezimmer', '1')
 
     div.col-sm-6
-        +keyAndStrongValue('Betten', '2')
+        +keyAndStrongValue('Betten', '1')
         +checkInOut()
 
 block ausstattung
@@ -81,14 +81,14 @@ block preise
         +keyAndStrongValue('pro weitere Person', '15 €')
         +keyAndStrongValue('Servicegebühr', '30 €')
         +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
-        
-        
+
+
     div.col-md-6
         |Ermäßigungen:
         +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
         +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
         +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
-        
+
 
 block beschreibung
     include:markdown ./details-schmetterling.md

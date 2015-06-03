@@ -1,6 +1,6 @@
 <!-- -->
 
-Die preiswerte 3 1/2-Zi-Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hostel-Flair und bietet Platz für bis zu 10 Personen. Die Wohnung kann komplett oder alle 3 Schlafräume ›Fuchs1‹, ›Fuchs2‹ und ›Fuchs3‹ separat gemietet werden. Die Wohnküche, das Bad und Gäste-WC wird dann mit anderen Gästen geteilt. Alle drei Schlafräume lassen sich separat abschließen.
+Die preiswerte 3 1/2-Zi-Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hostel-Flair und bietet Platz für bis zu 8 Personen. Die Wohnung kann komplett oder alle 3 Schlafräume ›Fuchs1‹, ›Fuchs2‹ und ›Fuchs3‹ separat gemietet werden. Die Wohnküche, das Bad und Gäste-WC wird dann mit anderen Gästen geteilt. Alle drei Schlafräume lassen sich separat abschließen.
 
 
 - Größe: ca. 100qm
@@ -11,7 +11,7 @@ Die preiswerte 3 1/2-Zi-Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hos
 - Fuchs1: 4 Einzelbetten (0,90 m). 2 Betten lassen sich zu einem Doppelbett zusammenstellen (1,80m)
 - Fuchs2: 1 Doppelbett (1,40 m)
 - Fuchs3: 1 Doppelbett (1,40 m)
-- Wohnküche mit 2 ausziehbaren Schlafcouches für 2 weitere Personen
+- Wohnküche mit 2 ausziehbaren Schlafcouches für 2 weitere Personen (Kinder)
 - Bad mit Eckbadewanne und Dusche
 - Gäste-WC
 - Diele
@@ -38,7 +38,7 @@ Pro Wohnung steht ein kostenloser Parkplatz vor dem Haus zur Verfügung.
 
 #### HAUSREGELN
 
-Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer Inneneinrichtung. Wir bitten mit der Einrichtung pfleglich umzugehen.  
+Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer Inneneinrichtung. Wir bitten mit der Einrichtung pfleglich umzugehen.
 Das Rauchen ist in der Wohnung nicht gestattet. Dafür steht ein Aschenbecher und eine Sitzgruppe auf dem Hof bereit.
 
 

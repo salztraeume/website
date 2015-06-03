@@ -76,12 +76,12 @@ block carousel
 block unterkunft
     div.col-sm-6
         +keyAndStrongValue('Art der Unterkunft', 'Einzelzimmer/Wohnung')
-        +keyAndStrongValue('Unterkunft für', '10')
+        +keyAndStrongValue('Unterkunft für', '8')
         +keyAndStrongValue('Schlafzimmer', '3')
         +keyAndStrongValue('Badezimmer', '1,5')
 
     div.col-sm-6
-        +keyAndStrongValue('Betten', '7')
+        +keyAndStrongValue('Betten', '6')
         +checkInOut()
 
 block ausstattung
@@ -101,9 +101,9 @@ block preise
         +keyAndStrongValue('Zimmerpreis (1 P.)', '20 €')
         +keyAndStrongValue('pro weitere Person', '15 €')
         +keyAndStrongValue('Servicegebühr', '30 €')
-        +keyAndStrongValue('Servicegebühr ab der 5. Person', '5 € /p.P.')
+        +keyAndStrongValue('Servicegebühr ab der 5. Person', 'zzgl. 5 € /p.P.')
         +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
-        
+
 
     div.col-md-6
         |Ermäßigungen:
@@ -111,7 +111,7 @@ block preise
         +keyAndStrongValue('Jugendliche bis 17 Jahre', '10 €')
         +keyAndStrongValue('Kinder bis 9 Jahre', '5 €')
         +keyAndStrongValue('Kinder bis 4 Jahre', 'kostenlos')
-        
+
 
 block beschreibung
     include:markdown ./details-fuchs.md
