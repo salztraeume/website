@@ -61,3 +61,7 @@ if (!Array.prototype.forEach) {
     }
   };
 }
+
+loadCookieChoices();
+cookieChoices.showCookieConsentBar('Diese Seite verwendet Cookies, um Ihnen den bestmöglichen Service zu gewährleisten.',
+  'Akzeptieren und Ausblenden', 'Mehr erfahren', 'datenschutz.html');
