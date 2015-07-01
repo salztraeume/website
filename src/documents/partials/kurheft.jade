@@ -1,0 +1,126 @@
+mixin kurheft
+    h3 Kurheft Nr. 1
+    h5 Angaben zur Kurkarte
+    div.input-group
+        input.form-control(type="text", name="fullpayer_person", maxlength=2, size=1, placeholder="Vollzahler")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="fullpayer_tage", maxlength=3, size=1, placeholder="Tage")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="fullpayer_euro", disabled, size=1, value='2,00 €')
+        span.input-group-addon=' = '
+        input.form-control(type="text", name="fullpayer_summe", disabled, size=3, placeholder="Summe")
+
+    div.input-group
+        input.form-control(type="text", name="reduced_person", maxlength=2, size=1, placeholder="Ermäßigte")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="reduced_tage", maxlength=3, size=1, placeholder="Tage")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="reduced_euro", disabled, size=1, value='1,00 €')
+        span.input-group-addon=' = '
+        input.form-control(type="text", name="reduced_summe", disabled, size=3, placeholder="Summe")
+
+    div.input-group
+        input.form-control(type="text", name="freed_person", maxlength=2, size=1, placeholder="Befreite Personen")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="freed_tage", maxlength=3, size=1, placeholder="Tage")
+        span.input-group-addon=' x '
+        input.form-control(type="text", name="freed_euro", disabled, size=1, value='0,00 €')
+        span.input-group-addon=' = '
+        input.form-control(type="text", name="freed_summe", disabled, size=3, placeholder="0,00")
+
+    br
+
+    div.input-group.pull-right
+        input.form-control(type="text" name="guests_total" disabled placeholder="Gesamtpersonenanzahl")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="guests_under_18" maxlength="2" placeholder="davon Kinder unter 18 J.")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="price_total", disabled, placeholder="Gesamtsumme")
+
+    div.clearfix
+    br
+
+    span Hauptgast (1. Person)
+    div.input-group
+        input.form-control(type="text" name="firstname1" placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="lastname1" placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="birthday1" maxlength="8" placeholder="Geburtsdatum (TT.MM.JJ)")
+    br
+
+    div.input-group
+        input.form-control(type="text" name="street" placeholder="Straße / Platz, Hausnummer")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="zipcode" size=3 maxlength="5" placeholder="Postleitzahl")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="city" placeholder="Wohnort")
+
+    br
+
+    span Weitere Person (2. Person)
+    div.input-group
+        input.form-control(type="text" name="firstname2" placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="lastname2" placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="birthdays2" fimaxlength="8" placeholder="Geburtsdatum (TT.MM.JJ)")
+    br
+
+    h5 Angaben für die Busfahrkarten
+
+    span Hauptgast (1. Person)
+    div.input-group
+        input.form-control(type="text" name="b_firstname1" disabled placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_lastname1" disabled placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_arrival1"  maxlength="8" placeholder="Ankunft (TT.MM.JJ)")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_departure1" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
+
+    br
+    span Begleitender Gasts (2. Person)
+    div.input-group
+        input.form-control(type="text" name="b_firstname2" disabled placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_lastname2" disabled placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_arrival2" maxlength="8" placeholder="Ankunft (TT.MM.JJ)")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_departure2" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
+
+    br
+
+    span 3. Person
+    div.input-group
+        input.form-control(type="text" name="b_firstname3" placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_lastname3" placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_arrival3" maxlength="8" placeholder="Ankunft (TT.MM.JJ)")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_departure3" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
+    br
+
+    span 4. Person
+    div.input-group
+        input.form-control(type="text" name="b_firstname4" placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_lastname4" placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_arrival4" maxlength="8" placeholder="Ankunft (TT.MM.JJ)")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_departure4" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
+    br
+
+    span 5. Person
+    div.input-group
+        input.form-control(type="text" name="b_firstname5" placeholder="Vorname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_lastname5" placeholder="Familienname")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_arival5" maxlength="8" placeholder="Ankunft (TT.MM.JJ)")
+        span.input-group-addon=' '
+        input.form-control(type="text" name="b_departure5" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
+    br

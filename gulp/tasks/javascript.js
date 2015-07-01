@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var config = require('../config');
+var coffee = require('gulp-coffee');
+
 gulp.task('javascript', function() {
 
     var jsFiles = [
@@ -22,6 +24,11 @@ gulp.task('javascript', function() {
 
     gulp.src(jsFiles)
     .pipe(concat('scripts.js'))
+    .pipe(gulp.dest(config.dest+'/js'));
+
+    gulp.src('./src/files/js/kurtaxe.coffee')
+    .pipe(coffee({bare: true}))
+    .pipe(concat('kurtaxe.js'))
     .pipe(gulp.dest(config.dest+'/js'));
 
 });

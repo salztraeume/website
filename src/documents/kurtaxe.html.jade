@@ -1,0 +1,94 @@
+---
+layout: master
+script: js/kurtaxe.js
+title: Salzträume am See | Fragen und Antworten
+keywords: Fragen, Antworten, FAQ, Vorabinfos
+description: Fragen und Antworten rund um die Ferienunterkunft und Bad Saarow
+---
+include partials/kurheft
+
+style.
+    .main-content {
+        padding-bottom: 20px !important;
+    }
+
+div.row
+    .col-xs-12
+        h1 Online-Formular für Kurtaxe
+        div.step-1
+            button.btn.btn-primary#init-load Reservierung laden
+
+        div.step-2(style="display: none")
+            h3 Reservierung gefunden
+            //- date from ajax response will be injected here
+            div#booking-data
+
+            button.btn.btn-primary#show-form Kurkarte ausfüllen
+
+        div.step-3(style='display: none')
+            p.
+                Bad Saarow in ein staatlich anerkannter Kurort.
+                Aus diesem Grund sind alle Beherbergungsstätten in Bad Saarow
+                dazu verpflichtet einen Kurbeitrag von ihren Gästen zu kassieren.
+
+            h3 Kurkarte und Busfahrkarten
+
+            p.
+                Vom Gast sind aus dem Kurheft zwei Seiten auszufüllen.
+                Die eine Seite beinhaltet die Kurkarte und die andere enthält bis
+                zu 5 Busfahrkarten für den Landkreis Oder-Spree.
+                <br>
+                Die Kurkarte wird für auf den Hauptgast
+                ausgestellt wird. Daten für eine begleitende Person könen hinzugefügt werden.
+                Alle weitere Personen werden nur in der Anzahl der Personen berücksichtigt.
+                <br>
+                Eine Heft wird pro Familie / Haushalt ausgefüllt.
+
+            p.
+                Familien zahlen maximal für 5 Personen und erhalten auch höchstens
+                5 Busfahrkarten.
+
+            h3 Tarife
+
+            p
+                strong='Vollzahler: '
+                span  Personen über 18 Jahre zahlen den vollen Tarif in Höhe von 2,00 €
+                br
+
+                strong='Ermäßigt: '
+                span.
+                    Kinder im Alter von 10 und 17 Jahren zahlen einen ermäßigten Beitrag
+                    von 1,00 €. Schwerbehinderte mit einer Behinderung von mindestens 80% zahlen
+                    ebenfalls 1,00 €
+                br
+
+                strong='Aufenthaltsdauer: '
+                span.
+                    An- und Abreise zählen als ein Tag. Somit entspricht die Anzahl
+                    der berechneten Tage der Anzahl der Übernachtungen.
+
+
+            form
+                div.forms-container
+                    div.well(data-form-id='1')
+                        +kurheft()
+
+                div
+                    span='Kurheft für eine weitere Familie/Haushalt hinzufügen: '
+                    button.btn.btn-primary.add-form
+                        i.glyphicon.glyphicon-plus
+
+                br
+                div
+                    p.
+                        Mit am Abschicken stimmen Sie zu, dass die Formulardaten
+                         elektronisch gespeichert werden. Somit kann die
+                        Kurkarte für Sie bereits vor der Anreise vorbereitet werden.
+                        Die Daten werden spätestens nach der Abreise gelöscht.
+
+                    button.btn.btn-primary#submit-data.primary Daten abschicken
+                    div
+                        span#submit-feedback
+
+                br
+                br

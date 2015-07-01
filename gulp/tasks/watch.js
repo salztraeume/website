@@ -7,6 +7,6 @@ gulp.task('watch', function() {
   gulp.watch('./src/layouts/**/*.jade', ['templates']);
 
   gulp.watch('./src/documents/**/*.less', ['styles']);
-  gulp.watch('./src/files/**/*.js', ['javascript']);
+  gulp.watch('./src/files/**/*', ['javascript']);
   gulp.watch('./src/raw/**/*.{jpg,jpeg,png,gif,svg}', ['copy']);
 });
