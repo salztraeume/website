@@ -272,7 +272,7 @@ submitButton.on 'click', (e) ->
 renderTemplate = (data) ->
   {name, flat_name, flat_details_text, from, to, nights, guests} = data
   detailsHtml = ''
-  if not flat_details_text? and flat_details_text isnt ''
+  if flat_details_text? and flat_details_text isnt ''
     if flat_details_text.match(/\d/g).length is 3
         value = 'gesamte Wohung'
     else
