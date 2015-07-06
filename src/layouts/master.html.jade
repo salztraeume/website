@@ -65,8 +65,10 @@ html(lang='en')
           li: a(href='/datenschutz.html') DATENSCHUTZ
 
     script(src='/js/scripts.js')
-    if locals.script
-      script(src=locals.script)
+    if locals.scripts
+      - scriptFiles = locals.scripts.split(',')
+      each script in scriptFiles
+        script(src=script)
 
     <!--[if lte IE 9]>
     <link href='styles/ie.css' rel='stylesheet' type='text/css' charset='utf-8'></link>
