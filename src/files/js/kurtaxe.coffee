@@ -39,7 +39,7 @@ resetEventListeners = ->
     $n('freed_tage').on 'change', (e) ->
         changeModel 'freedDays', e.target
 
-    # ---
+    # --- copy person 1. and 2.
 
     $n('firstname1').on 'change', (e) ->
         formContainer = getFormContainer e.target
@@ -56,6 +56,21 @@ resetEventListeners = ->
     $n('lastname2').on 'change', (e) ->
         formContainer = getFormContainer e.target
         $n('b_lastname2', formContainer).val e.target.value
+
+    # --- copy arrival and departe
+    $n('b_arrival1').on 'change', (e) ->
+        formContainer = getFormContainer e.target
+        $n('b_arrival2', formContainer).val e.target.value
+        $n('b_arrival3', formContainer).val e.target.value
+        $n('b_arrival4', formContainer).val e.target.value
+        $n('b_arrival5', formContainer).val e.target.value
+
+    $n('b_departure1').on 'change', (e) ->
+        formContainer = getFormContainer e.target
+        $n('b_departure2', formContainer).val e.target.value
+        $n('b_departure3', formContainer).val e.target.value
+        $n('b_departure4', formContainer).val e.target.value
+        $n('b_departure5', formContainer).val e.target.value
 
     # tooltips
     inputs = $ 'input'
