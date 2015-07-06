@@ -11,7 +11,7 @@ mixin kurheft
         input.form-control(type="text", name="fullpayer_summe", disabled, size=3, placeholder="Summe")
 
     div.input-group
-        input.form-control(type="text", name="reduced_person", maxlength=2, size=1, placeholder="Ermäßigte")
+        input.form-control(type="text", name="reduced_person", maxlength=2, size=1, placeholder="Ermäßigte Personen")
         span.input-group-addon=' x '
         input.form-control(type="text", name="reduced_tage", maxlength=3, size=1, placeholder="Tage")
         span.input-group-addon=' x '
@@ -40,7 +40,7 @@ mixin kurheft
     div.clearfix
     br
 
-    span Hauptgast (1. Person)
+    span Hauptgast
     div.input-group
         input.form-control(type="text" name="firstname1" placeholder="Vorname")
         span.input-group-addon=' '
@@ -58,7 +58,7 @@ mixin kurheft
 
     br
 
-    span Weitere Person (2. Person)
+    span Begleitende Person
     div.input-group
         input.form-control(type="text" name="firstname2" placeholder="Vorname")
         span.input-group-addon=' '
@@ -69,7 +69,7 @@ mixin kurheft
 
     h5 Angaben für die Busfahrkarten
 
-    span Hauptgast (1. Person)
+    span Hauptgast (1. Familienmitglied)
     div.input-group
         input.form-control(type="text" name="b_firstname1" disabled placeholder="Vorname")
         span.input-group-addon=' '
@@ -80,7 +80,7 @@ mixin kurheft
         input.form-control(type="text" name="b_departure1" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
 
     br
-    span Begleitender Gasts (2. Person)
+    span Begleitende Person (2. Familienmitglied)
     div.input-group
         input.form-control(type="text" name="b_firstname2" disabled placeholder="Vorname")
         span.input-group-addon=' '
@@ -92,7 +92,7 @@ mixin kurheft
 
     br
 
-    span 3. Person
+    span 3. Familienmitglied
     div.input-group
         input.form-control(type="text" name="b_firstname3" placeholder="Vorname")
         span.input-group-addon=' '
@@ -103,7 +103,7 @@ mixin kurheft
         input.form-control(type="text" name="b_departure3" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
     br
 
-    span 4. Person
+    span 4. Familienmitglied
     div.input-group
         input.form-control(type="text" name="b_firstname4" placeholder="Vorname")
         span.input-group-addon=' '
@@ -114,7 +114,7 @@ mixin kurheft
         input.form-control(type="text" name="b_departure4" maxlength="8" placeholder="Abreise (TT.MM.JJ)")
     br
 
-    span 5. Person
+    span 5. Familienmitglied
     div.input-group
         input.form-control(type="text" name="b_firstname5" placeholder="Vorname")
         span.input-group-addon=' '
