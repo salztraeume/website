@@ -247,7 +247,7 @@ submitButton.on 'click', (e) ->
             &b_departure4[#{index+1}]=#{$nGetValue 'b_departure4', form}
             &b_firstname5[#{index+1}]=#{$nGetValue 'b_firstname5', form}
             &b_lastname5[#{index+1}]=#{$nGetValue 'b_lastname5', form}
-            &b_arival5[#{index+1}]=#{$nGetValue 'b_arival5', form}
+            &b_arrival5[#{index+1}]=#{$nGetValue 'b_arrival5', form}
             &b_departure5[#{index+1}]=#{$nGetValue 'b_departure5', form}
             &fullpayer_summe[#{index+1}]=#{$nGetValue 'fullpayer_summe', form}
             &reduced_summe[#{index+1}]=#{$nGetValue 'reduced_summe', form}
