@@ -324,7 +324,7 @@ var calculatePrice = function() {
             extraTreshold = result;
             base = base * result;
         } else {
-            // full house
+            // exclusive
             extraTreshold = FUCHS_FULLHOUSE_PERSON_THRESHOLD;
             base = FUCHS_FULLHOUSE_BASE;
         }
@@ -494,13 +494,16 @@ var getValidationLabel = function(referenceElement) {
 };
 
 var extraValidation = function() {
-    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') return true;
+    var returnValue = false;
+    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
+        returnValue = true;
+    }
 
     // check that at least one person is booked
     if (calcTotalGuests() <= 0) {
         $('.guests-size').addClass('has-error');
         $('label.size-underflow').show();
-        return false;
+        return returnValue;
     } else {
         $('.guests-size').removeClass('has-error');
         $('label.size-underflow').hide();
@@ -511,7 +514,7 @@ var extraValidation = function() {
     var flatSelectedValue = $('#b_flat').val();
     if (flatSelectedValue === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
         $('#flat_fuchs_detail').addClass('has-error');
-        return false;
+        return returnValue;
     } else {
         $('#flat_fuchs_detail').removeClass('has-error');
     }
