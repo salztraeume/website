@@ -32,7 +32,7 @@ SAISONS = [
 ];
 
 DEFAULT_MIN_NIGHTS = 2;
-FUCHS_FULLHOUSE_BASE = 90; // 3 (each room) * 20 € + 30 € = 90
+FUCHS_FULLHOUSE_BASE = 105; // 3 (each room) * 25 € + 30 € = 105
 FUCHS_FULLHOUSE_PERSON_THRESHOLD = 5;
 
 var NL = NEWLINE = "%0D%0A";
@@ -396,11 +396,6 @@ var calculatePrice = function() {
             }
         }
 
-        // special offer 8 persons for fuchs = 120 €
-        if (totalGuests > 7 && extraPersonSum > (120 - base)) {
-            extraPersonSum = 30;
-            extraText = ['Fullhouse Rabatt: 30 €'];
-        }
     }
     if (extraText.length > 0) {
         $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
