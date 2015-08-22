@@ -658,13 +658,29 @@ $(document).ready(function() {
         calculatePrice();
     });
 
-    $('#b_arrival').on('change', function(event) {
-        limitDatePicker(event.target);
+    $('#guests_control input').on('change', function(e) {
         calculatePrice();
     });
 
-    $('#guests_control input, #b_departure').on('change', function(e) {
+    previousDepartureValue = null;
+    $('#b_arrival').on('change', function(e) {
+        if (e.target.value === previousDepartureValue) {
+            // datepicker bug: https://github.com/eternicode/bootstrap-datepicker/issues/912
+            return;
+        }
+        limitDatePicker(e.target);
         calculatePrice();
+        previousDepartureValue = e.target.value;
+    });
+
+    previousArrivalValue = null;
+    $('#b_departure').on('change', function(e) {
+        if (e.target.value === previousArrivalValue) {
+            // datepicker bug: https://github.com/eternicode/bootstrap-datepicker/issues/912
+            return;
+        }
+        calculatePrice();
+        previousArrivalValue = e.target.value;
     });
 
     // blur immediately to avoid ios android keyboard overlay
