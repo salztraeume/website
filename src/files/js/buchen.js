@@ -1,5 +1,5 @@
 var FORM_MAILER_URL = 'http://thunderwave.de:9771/submit';
-var CLEAN_BASE = 30;
+
 var DE_FORMATTER = 'DD.MM.YYYY';
 var EN_FORMATTER = 'YYYY-MM-DD';
 var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
@@ -31,9 +31,13 @@ SAISONS = [
     }
 ];
 
-DEFAULT_MIN_NIGHTS = 2;
-FUCHS_FULLHOUSE_BASE = 105; // 3 (each room) * 25 € + 30 € = 105
-FUCHS_FULLHOUSE_PERSON_THRESHOLD = 5;
+var DEFAULT_MIN_NIGHTS = 2;
+var WHOLE_FUCHS_BASE = 105; // 3 (each room) * 25 € + 30 € = 105
+var EH_AND_SL_PERSON_THRESHOLD = 2; // count extra persons after the second
+var WHOLE_FUCHS_PERSON_THRESHOLD = 5; // count extra persons after the fifth
+// person threshold for fuchs: 1 per room
+var CLEAN_BASE = 30;
+var CLEAN_BASE_WHOLE_FUCHS = CLEAN_BASE;// + 5;
 
 var NL = NEWLINE = "%0D%0A";
 var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
@@ -310,9 +314,11 @@ var calculatePrice = function() {
     var toDate = dates[2];
 
     var extraTreshold = 0;
+    var cleanFee = CLEAN_BASE;
 
     // sepcial logic for fuchs rooms
     if (flatName === 'Fuchs') {
+        cleanFee = CLEAN_BASE_WHOLE_FUCHS;
         var values = getDetailsForFuchs();
         var result = values[0] + values[1] + values[2];
         setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
@@ -325,13 +331,13 @@ var calculatePrice = function() {
             base = base * result;
         } else {
             // exclusive
-            extraTreshold = FUCHS_FULLHOUSE_PERSON_THRESHOLD;
-            base = FUCHS_FULLHOUSE_BASE;
+            extraTreshold = WHOLE_FUCHS_PERSON_THRESHOLD;
+            base = WHOLE_FUCHS_BASE;
         }
 
     } else {
         // Schmetterling and Eichhoernchen
-        extraTreshold = 2;
+        extraTreshold = EH_AND_SL_PERSON_THRESHOLD;
     }
 
     $('#price-base').text(nights + ' Nächte * ' + base + ' €');
@@ -410,7 +416,7 @@ var calculatePrice = function() {
     if (totalGuests > 4) {
         extraClean = (totalGuests - 4) * 5;
     }
-    var totalClean = CLEAN_BASE + extraClean;
+    var totalClean = cleanFee + extraClean;
     $('#price-clean').text(totalClean + ' €');
 
     // special costs
