@@ -231,7 +231,9 @@ var readPermaLink = function(options) {
         // only on the buchen.html
         toggleFlatDetails($('#b_flat')[0], true);
         limitDatePicker($('#b_arrival')[0]);
-        calculatePrice();
+        if (!options.init) {
+            calculatePrice();
+        }
     }
 };
 
