@@ -561,7 +561,6 @@ var checkAvailabilityFor = function(flatShortCut, check) {
 
 var limitDatePicker = function(element) {
     if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') return;
-    console.log('limitDatePicker');
     // limit the start date of departure
     // at least to book 2 nights
     var arrivalDate = moment(element.value, DE_FORMATTER);
