@@ -423,8 +423,8 @@ var calculatePrice = function() {
         var currentYear = moment().year();
         var specialPriceStart = moment(saison.start + '.' + currentYear, DE_FORMATTER).subtract(1, 'day');
         var specialPriceEnd = moment(specialPriceStart).add(saison.duration + 1, 'days');
-        var specialPriceStartNext = moment(specialPriceStart).add('year', 1);
-        var specialPriceEndNext = moment(specialPriceEnd).add('year', 1);
+        var specialPriceStartNext = moment(specialPriceStart).add(1, 'year');
+        var specialPriceEndNext = moment(specialPriceEnd).add(1, 'year');
         if (saison.type !== 'fix-offset') {
             console.log(new Error('cannot handle saison type: '+saison.type));
             alert('Entschuldigung, es ist ein Fehler aufgetreten (CODE: 101)');
@@ -573,7 +573,7 @@ var limitDatePicker = function(element) {
         var saisonStart = saison.start.split('.').map(function(i) {
             return parseInt(i);
         });
-        var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'day');
+        var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'days');
         // extra check for winter saison, year change
         if (arrivalDate.months() === 0) {
             // if arrival is January
@@ -581,7 +581,7 @@ var limitDatePicker = function(element) {
         }
         var saisonEndDate = moment(saisonStartDate).add(saison.duration - 2, 'days');
 
-        var tmp = moment(arrivalDate).add('days', saison.nights);
+        var tmp = moment(arrivalDate).add(saison.nights, 'days');
         if (tmp.diff(saisonStartDate) >= 0 && tmp.diff(saisonEndDate) <= 0 ||
             arrivalDate.diff(saisonStartDate) >= 0 && arrivalDate.diff(saisonEndDate) <= 0) {
             checkNights(arrivalDate, departureDate, saison.nights);
@@ -590,7 +590,7 @@ var limitDatePicker = function(element) {
 };
 
 var checkNights = function(arrivalDate, departureDate, minNights) {
-    var minDeparture = moment(arrivalDate).add('days', minNights);
+    var minDeparture = moment(arrivalDate).add(minNights, 'days');
     _datepickers.pickers[1].setStartDate(minDeparture.format(DE_FORMATTER));
 
     // check if the old departure is still valid

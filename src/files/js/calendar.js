@@ -16,7 +16,7 @@ var fetchCal = function(cb) {
 };
 
 var injectBlockingMap = function(items) {
-    var itemKeys = Object.keys(items); 
+    var itemKeys = Object.keys(items);
     var map = {};
     var DAY_PRECISION = 'YYYY-MM-DD';
     for (var i = 0; i < itemKeys.length; i++) {
@@ -25,7 +25,7 @@ var injectBlockingMap = function(items) {
       var end = moment(item.end.dateTime);
       while (start.format(DAY_PRECISION) !== end.format(DAY_PRECISION)) {
         map[start.format(DAY_PRECISION) + '_' + item.location] = true;
-        start.add(1, 'days');
+        start.add(1, 'day');
       }
     }
     window.blockingMap = map;
@@ -86,7 +86,7 @@ var calcSingleCalendar = function(dayInMonth, scope) {
         "<div class='flat F2'><span class='title'></span></div>"+
         "<div class='flat F3'><span class='title'></span></div>";
     }
-    
+
     while (isBefore(start, end)) {
         var dateOfMonth = start.date();
         weekDay = start.format('e');
@@ -104,11 +104,11 @@ var calcSingleCalendar = function(dayInMonth, scope) {
         }
 
         // increment for next iteration
-        start.add(1, 'days');
+        start.add(1, 'day');
         if(weekDay == 6) {
             week++;
         }
-        
+
     }
     // remove weeks with no days
     if ($("tr.w5 td div", scope).length === 0) $("tr.w5", scope).remove();
@@ -141,20 +141,20 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
             start = moment(item.start.dateTime);
             start = moment(start.format(DE_FORMATTER), DE_FORMATTER);
             // fill up 'end' to the next day midnight
-            end = moment(item.end.dateTime).add(1, 'days');
+            end = moment(item.end.dateTime).add(1, 'day');
             end = moment(end.format(DE_FORMATTER), DE_FORMATTER);
         }
         var tmp = moment(start);
         if (item.location == null) {
             // try to resolve by summary
             switch ($.trim(item.summary)) {
-                case 'Schmetterling': 
+                case 'Schmetterling':
                     item.location = 'SL';
                     break;
-                case 'Eichhörnchen': 
+                case 'Eichhörnchen':
                     item.location = 'EH';
                     break;
-                case 'Fuchs': 
+                case 'Fuchs':
                     item.location = 'FS';
                     break;
                 case 'Fuchs1', 'FS1':
@@ -196,7 +196,7 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 var cssClass = '';
                 if (tmp.format(DE_FORMATTER) === start.format(DE_FORMATTER)) {
                     cssClass = 'start';
-                } else if (tmp.format(DE_FORMATTER) === moment(end).add(-1, 'days').format(DE_FORMATTER)) {
+                } else if (tmp.format(DE_FORMATTER) === moment(end).add(-1, 'day').format(DE_FORMATTER)) {
                     cssClass = 'end';
                 } else {
                     cssClass = 'middle';
@@ -208,9 +208,9 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 } else {
                     setFlat($('.date'+date+' .'+item.location, scope), item, cssClass);
                 }
-                
+
             }
-            tmp.add(1, 'days');
+            tmp.add(1, 'day');
             m1 = tmp.toDate().getTime();
         }
     });
@@ -288,7 +288,7 @@ $(document).ready(function() {
     // initial is now
     //TODO: maybe should better be the start date's month
     window.current = moment();
-    
+
     calcCalendar(window.current);
     updateItemsForCurrentMonth();
 
@@ -300,7 +300,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
     $('.next').click(function(e) {
-        window.current.add(1, 'months');
+        window.current.add(1, 'month');
         clearCal();
         calcCalendar(window.current);
         updateItemsForCurrentMonth();
