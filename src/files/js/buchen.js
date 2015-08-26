@@ -544,8 +544,15 @@ var extraValidation = function() {
         }
     }
     if (available === false) {
-        alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
-        return false;
+        if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
+            if (window.location.hash.indexOf('verify') === -1) {
+                alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
+            }
+            // verify mode, ignore
+        } else {
+            alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
+            return false;
+        }
     }
     return true;
 };
