@@ -717,7 +717,7 @@ var prepareSubmit = function() {
     if (!extraValidation()) return;
 
     var form = $('.conainter.booking')[0];
-    if (form.checkValidity && !form.checkValidity()) {
+    if (form.checkValidity && !form.checkValidity() && localStorage.getItem(LOCAL_STORAGE_KEY) !== 'on') {
         var inputs = form.querySelectorAll("input");
         for (var i=0; i<inputs.length; i++) {
             var tmp = inputs[i];
