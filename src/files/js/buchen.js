@@ -31,6 +31,9 @@ SAISONS = [
     }
 ];
 
+var SL_BASIC = 55;
+var EH_BASIC = 60;
+var FS_BASIC = 25;
 var DEFAULT_MIN_NIGHTS = 2;
 var WHOLE_FUCHS_BASE = 105; // 3 (each room) * 25 € + 30 € = 105
 var EH_AND_SL_PERSON_THRESHOLD = 2; // count extra persons after the second
@@ -41,6 +44,25 @@ var CLEAN_BASE_WHOLE_FUCHS = CLEAN_BASE;// + 5;
 
 var NL = NEWLINE = "%0D%0A";
 var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
+var LOCAL_STORAGE_VERSION = 'preis';
+
+if (sessionStorage.getItem(LOCAL_STORAGE_VERSION) === '0.1') {
+    WHOLE_FUCHS_BASE = 90;
+    SL_BASIC = 50;
+    EH_BASIC = 55;
+    FS_BASIC = 20;
+    $("#b_flat option[value=Schmetterling]").attr('data-price', SL_BASIC);
+    $("#b_flat option[value=Eichhoernchen]").attr('data-price', EH_BASIC);
+    $("#b_flat option[value=Fuchs]").attr('data-price', FS_BASIC);
+    alert('alte Preise sind aktiv!');
+    console.log('Preistabelle:');
+    priceTable = $("#b_flat option").map(function(i, e) {
+        console.log($(e).text() + ': '+ $(e).attr('data-price'));
+    });
+    console.log("Fuchs komplett: "+WHOLE_FUCHS_BASE);
+}
+
+
 //  +++ booking +++
 
 var locationHash = {};
