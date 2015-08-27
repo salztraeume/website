@@ -246,7 +246,7 @@ var readPermaLink = function(options) {
                 $('#b_email').val(value);
                 break;
             case 'verify':
-                verify(value);
+                console.log("WTF");
                 break;
         }
     }
@@ -259,6 +259,11 @@ var readPermaLink = function(options) {
         limitDatePicker($('#b_arrival')[0]);
         if (!options.init) {
             calculatePrice();
+            if (window.location.hash.indexOf('verify') !== -1) {
+                var x = window.location.hash.split("&");
+                var y = x[x.length-1].split("=");
+                verify(y[1]);
+            }
         }
     }
 };
@@ -567,10 +572,12 @@ var extraValidation = function() {
     }
     if (available === false) {
         if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
-            if (window.location.hash.indexOf('verify') === -1) {
-                alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
+            if (window.location.hash.indexOf('verify') !== -1) {
+                // verify mode, use green or red
+            } else {
+                // non verify mode, make orange
+                $("body").css('background', 'orange');
             }
-            // verify mode, ignore
         } else {
             alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
             return false;
