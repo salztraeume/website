@@ -33,20 +33,12 @@ RSP für Reservierungsbestätigung
 
 ## Anna
 ### Gesamten Arbeitsordner im Terminal öffnen
-a) - GitHub öffnen
-    - 2 mal Apfel(cmd) + T drücken (für 2 Fenster im Terminal)
-    - 1. Fenster: make (oder make build)
-    - 2. Fenster: serve build
+- GitHub öffnen
+- Apfel(cmd) + T drücken 
+- `make` im Terminal ausführen (mit Enter am Ende)
+- http://127.0.0.1:9777 im browser öffnen
 
-b) http://localhost:3000/ im browser öffnen
-
-b) Im Terminal einfach nur `make` eingeben und ENTER drücken
-(um Docpad und Co zu starten (ggf. vorher Plugins automatisch installieren))
-
-!Du merkst, dass es erfolgreich ist, daran, dass "docpad run" steht, und einige Zeilen Text erscheinen.
-
-Um die Seite im Chrome zu öffnen: http://localhost:9778/ eingeben.
-c) ctrl+c zum Beenden von Docpad, Pfeiltaste hoch, um letzten Befehl anzuzeigen (Docpad starten), mit Enter bestätigen
+`ctrl+c` zum Beenden von make, Pfeiltaste hoch, um letzten Befehl anzuzeigen, mit Enter ausführen
 
 
 ## Selector live im Browser prüfen
