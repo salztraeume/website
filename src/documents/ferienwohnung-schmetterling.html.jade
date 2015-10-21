@@ -15,41 +15,22 @@ block flat-title
 block carousel
     +carousel()
         .item.active
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter1.jpg')
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea1.jpg')
             .carousel-caption
-                | Wohnküche
+                | Apartment Schmetterling
         .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter2.jpg')
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea2.jpg')
             .carousel-caption
-                | Wohnküche
+                | Apartment Schmetterling
         .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter3.jpg')
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea3.jpg')
             .carousel-caption
-                | Wohnküche
+                | Apartment Schmetterling
         .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter4.jpg')
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea4.jpg')
             .carousel-caption
-                | Wohnküche
-        .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter5.jpg')
-            .carousel-caption
-                | Schlafzimmer
-        .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter6.jpg')
-            .carousel-caption
-                | Schlafzimmer
-        .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter7.jpg')
-            .carousel-caption
-                | Schlafzimmer
-        .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter8.jpg')
-            .carousel-caption
-                | Bad
-        .item
-            img(alt="Schmetterling", src='/img/schmetterling/schmetter9.jpg')
-            .carousel-caption
-                | Bad
+                | Apartment Schmetterling
+        
 
 
 block unterkunft
@@ -89,6 +70,57 @@ block preise
         +keyAndStrongValue('Jugendliche bis 17 Jahren', '10 €')
         +keyAndStrongValue('Kinder bis 9 Jahren', '5 €')
         +keyAndStrongValue('Kinder bis 4 Jahren', 'kostenlos')
+
+block specialcarusel        
+    +carousel(name='special-carousel')
+      .item.active
+        img(src='img/schmetterling/schmetterling1.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling2.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling3.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling4.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer   
+      .item
+        img(src='img/schmetterling/schmetterling5.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer   
+      .item
+        img(src='img/schmetterling/schmetterling6.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling7.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling8.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche    
+      .item
+        img(src='img/schmetterling/schmetterling9.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling10.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche   
+      .item
+        img(src='img/schmetterling/schmetterling11.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Badezimmer   
+      .item
+        img(src='img/schmetterling/schmetterling12.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Badezimmer                                        
 
 
 block beschreibung

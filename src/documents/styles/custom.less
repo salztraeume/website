@@ -80,7 +80,7 @@ body {
 }
 
 body > .container {
-  padding: @footer-height 15px 0;
+  padding: @footer-height 15px 30px;
   background: #fff;
 }
 
@@ -107,6 +107,8 @@ body > .container {
 
 .navbar-default {
     background-color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 a.navbar-brand.logo {
@@ -258,9 +260,8 @@ table.booking-calendar {
     td {
         //width: 14%;
         padding-top: 1em; /* space for day number above */
-        background: transparent;
-        border-left: none;
-        border-top: none;
+        background: #F2F2F2;
+        border: 1px solid #ccc;
         width: 14.2858%; // 100 / 7 = 14.2857
     }
 
@@ -277,7 +278,6 @@ table.booking-calendar {
 
     td[data-date] {
         background: #fff;
-        border: 1px solid #ccc;
     }
 
     td.today {
@@ -409,4 +409,11 @@ label.size-underflow, label.size-overflow {
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg);}
     to { -webkit-transform: rotate(360deg);}
+}
+
+.width100procent {
+  width: 100%;
+}
+.carousel-margin {
+    margin-top: 40px;
 }

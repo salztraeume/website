@@ -33,6 +33,7 @@ RSP für Reservierungsbestätigung
 
 ## Anna
 ### Gesamten Arbeitsordner im Terminal öffnen
+
 - GitHub öffnen
 - Apfel(cmd) + T drücken 
 - `make` im Terminal ausführen (mit Enter am Ende)
