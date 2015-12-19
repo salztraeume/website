@@ -1,7 +1,7 @@
 mixin carousel()
     - name = attributes.name ? attributes.name : 'carousel-default'
     - href = '#' + name
-    div(id=name).carousel.slide(data-ride='carousel')
+    div.carousel.slide(id=name data-ride='carousel')
         ol.carousel-indicators
             li.active(data-target=href, data-slide-to='0')
             - r = block.toString().match(/<div class=\\"item/g)
@@ -22,7 +22,7 @@ mixin carousel()
 mixin checkInOut
     +keyAndStrongValue('Check-In', '15:00')
     +keyAndStrongValue('Check-Out', '11:00')
-    
+
 //- Ausstattung template
 
 mixin as(icon, text, tooltip)
