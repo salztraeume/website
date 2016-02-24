@@ -1,0 +1,91 @@
+---
+layout: master
+title: Salzträume am See | Fragen und Antworten
+keywords: Fragen, Antworten, FAQ, Vorabinfos
+description: Fragen und Antworten rund um die Ferienunterkunft und Bad Saarow
+scripts: js/kurtaxe.js
+---
+include partials/kurheft
+
+style.
+    .main-content {
+        padding-bottom: 20px !important;
+    }
+
+div.row
+    .col-xs-12
+        h1 Online-Formular für Kurtaxe
+        div.step-1
+            button.btn.btn-primary#init-load Reservierung laden
+
+        div.step-2(style="display: none")
+            h3 Reservierung gefunden
+            //- date from ajax response will be injected here
+            div#booking-data
+
+            button.btn.btn-primary#show-form Kurkarte ausfüllen
+
+        div.step-3(style='display: none')
+            p.
+                Bad Saarow in ein staatlich anerkannter Kurort.
+                Aus diesem Grund sind alle Beherbergungsstätten in Bad Saarow
+                dazu verpflichtet einen Kurbeitrag von ihren Gästen zu kassieren
+                und an die Gemeinde zu entrichten.
+
+            h3 Kurkarte und Busfahrkarten
+
+            p.
+                Pro Paar/Familie/Haushalt wird  ein <strong>Kurheft</strong> ausgefüllt.
+                <br>
+                Mit der Kurkarte erhalten Sie Rabatte in verschiedenen Einrichtungen
+                wie zum Beispiel der SaarowTherme, sowie kostenlosen Bustranfer
+                im Landkreis Oder-Spree.
+
+            form
+                div.forms-container
+                    div.well(data-form-id='1')
+                        +kurheft()
+
+                div
+                    span='Kurheft für eine weitere Familie/Haushalt hinzufügen: '
+                    button.btn.btn-primary.add-form
+                        i.glyphicon.glyphicon-plus
+
+                br
+                div
+                    p.
+                        Mit Klicken auf <strong>Abschicken</strong> stimmen Sie
+                        der elektronischen Speicherung der Formulardaten zu.
+                        Somit kann die
+                        Kurkarte für Sie bereits vor der Anreise vorbereitet werden.
+                        Die Daten werden spätestens nach Ihrer Abreise gelöscht.
+
+                    button.btn.btn-primary#submit-data.primary Abschicken
+                    div
+                        span#submit-feedback
+
+            h3 Tarife
+
+            p
+                span.
+                    Die folgenden Preise gelten pro Tag pro Person.
+                    An- und Abreisetag zählen als ein Tag. Somit entspricht die Anzahl
+                    der berechneten Tage der Anzahl der Übernachtungen.
+                br
+                br
+
+                strong='Vollzahler: '
+                span  Personen über 18 Jahren zahlen den vollen Tarif in Höhe von 2,00 €
+                br
+
+                strong='Ermäßigte Personen: '
+                span.
+                    Kinder im Alter von 10 bis 17 Jahren zahlen einen ermäßigten Beitrag
+                    von 1,00 €. Schwerbehinderte mit einer Behinderung von mindestens 80% zahlen
+                    ebenfalls 1,00 €
+                br
+
+                strong='Befreite Personen: '
+                span.
+                    Kinder unter 10 Jahren sind von der Kurtaxe befreit
+                br

@@ -1,0 +1,78 @@
+include partials/mixins
+include partials/calendar
+
+block carousel
+
+mixin Bewertungen
+    a(href="https://www.airbnb.de/users/show/20503227#reviews", target="_blank")
+        img(src="img/bewertungen.png")
+
+div.row
+    div.col-md-9
+        h1.overflow.h3.text-center-sm
+            block flat-title
+
+    div.col-md-3.text-center.text-muted
+        div.rating.hidden-md.hidden-lg
+            block rating-mobile
+                +Bewertungen() 
+
+        div.rating.hidden-xs.hidden-sm.hide-xs.text-center(style="padding-top: 2em")
+            block rating-large
+                +Bewertungen()
+hr
+
+div.row
+    div.col-sm-3
+        div.text-muted Unterkunft
+
+    div.col-sm-9
+        div.row.bigger-line
+            block unterkunft
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Ausstattung
+
+    div.col-md-9
+        div.row
+            block ausstattung
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Beschreibung
+
+    div.col-md-9
+        div.expandable
+            block beschreibung
+
+hr
+
+div.row
+    div.col-md-3.text-muted
+        | Preise
+
+    div.col-md-9
+        div.row.bigger-line
+            block preise
+
+
+div.row
+    div.col-md-12
+        div.row.carousel-margin
+            block specialcarusel
+
+hr
+
+h3#belegung Belegungskalender
+
+block calender
+
+div.text-center.padding-arround
+    block buchen
+
++loadCalendarEvents()

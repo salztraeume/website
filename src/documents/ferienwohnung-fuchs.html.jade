@@ -1,0 +1,124 @@
+---
+layout: master
+title: Fuchs. Zwischen Wald & See.
+keywords: ferienwohnung, schmetterling
+description: Ferienwohnung Fuchs - Schlitzohr & Weitblicker. Die sparsame Variante für alle, die gerne in Gesellschaft sind.
+---
+include partials/mixins
+include partials/calendar
+
+extends flat_template
+
+block flat-title
+    h1 Ferienwohnung Fuchs. <br>Direkt zwischen Wald &amp; See.
+
+block carousel
+    +carousel()
+        .item.active
+            img(alt="Fuchs", src='/img/fuchs/fuchs1.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs2.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs3.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs4.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs5.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs6.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs7.jpg')
+            .carousel-caption
+                | Zimmer Fuchs1
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs8.jpg')
+            .carousel-caption
+                | Zimmer Fuchs1
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs9.jpg')
+            .carousel-caption
+                | Zimmer Fuchs1
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs10.jpg')
+            .carousel-caption
+                | Zimmer Fuchs2
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs11.jpg')
+            .carousel-caption
+                | Zimmer Fuchs2
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs12.jpg')
+            .carousel-caption
+                | Zimmer Fuchs3
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs13.jpg')
+            .carousel-caption
+                | Bad mit Eckbadewanne und Dusche
+        .item
+            img(alt="Fuchs", src='/img/fuchs/fuchs14.jpg')
+            .carousel-caption
+                | Bad mit Eckbadewanne und Dusche
+
+
+
+block unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Art der Unterkunft', 'Einzelzimmer/Wohnung')
+        +keyAndStrongValue('Unterkunft für', '8')
+        +keyAndStrongValue('Schlafzimmer', '3')
+        +keyAndStrongValue('Badezimmer', '1,5')
+
+    div.col-sm-6
+        +keyAndStrongValue('Betten', '6')
+        +checkInOut()
+
+block ausstattung
+    div.col-xs-6
+        +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd sowie Kochutensilien')
+        +as('flaticon-wifi93', 'Wi-Fi')
+        +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+        +as('flaticon-bathroom13', 'Wesentliches', 'Bettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+
+    div.col-xs-6
+        +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
+        +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+        +as('flaticon-family11', 'Familien-/Kinderfreundlich')
+        +as('flaticon_base64-ac', 'Klimaanlage')
+
+block preise
+    div.col-md-6
+        +keyAndStrongValue('Zimmerpreis (1 Person)', '25 €')
+        +keyAndStrongValue('gesamte Wohnung (bis 5 Personen)', '105 €')
+        +keyAndStrongValue('Servicegebühr', '30 €')
+        +keyAndStrongValue('Servicegebühr ab der 5. Person', 'zzgl. 5 € /p.P.')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
+
+
+    div.col-md-6
+        |jede weitere Personen:
+        +keyAndStrongValue('Erwachsene Person', '15 €')
+        +keyAndStrongValue('Jugendliche bis 17 Jahren', '10 €')
+        +keyAndStrongValue('Kinder bis 9 Jahren', '5 €')
+        +keyAndStrongValue('Kinder bis 4 Jahren', 'kostenlos')
+
+
+block beschreibung
+    include:markdown ./details-fuchs.md
+
+block calender
+    +calendar('FS')
+
+block buchen
+    +buchen('FS')

@@ -1,0 +1,133 @@
+---
+layout: master
+title: Schmetterling. Zwischen Wald & See.
+keywords: ferienwohnung, schmetterling
+description: Ferienwohnung Schmetterling - Farbexperte & Verwandlungskünstler. Es darf gerne außergewöhnlich und leuchtend bunt sein.
+---
+include partials/mixins
+include partials/calendar
+
+extends flat_template
+
+block flat-title
+    h1 Ferienwohnung Schmetterling. <br>Direkt zwischen Wald &amp; See.
+
+block carousel
+    +carousel()
+        .item.active
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea1.jpg')
+            .carousel-caption
+                | Apartment Schmetterling
+        .item
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea2.jpg')
+            .carousel-caption
+                | Apartment Schmetterling
+        .item
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea3.jpg')
+            .carousel-caption
+                | Apartment Schmetterling
+        .item
+            img(alt="Schmetterling", src='/img/schmetterling/schmetterling-tea4.jpg')
+            .carousel-caption
+                | Apartment Schmetterling
+        
+
+
+block unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
+        +keyAndStrongValue('Unterkunft für', '2')
+        +keyAndStrongValue('Schlafzimmer', '1')
+        +keyAndStrongValue('Badezimmer', '1')
+
+    div.col-sm-6
+        +keyAndStrongValue('Betten', '1')
+        +checkInOut()
+
+block ausstattung
+    div.col-xs-6
+        +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd, Spühlmaschine sowie Kochutensilien')
+        +as('flaticon-wifi93', 'Wi-Fi')
+        +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+        +as('flaticon-bathroom13', 'Wesentliches', 'Bettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+
+    div.col-xs-6
+        +as('flaticon-oven4', 'Backofen', 'Cerankochfeld, Backofen und Mikrowelle')
+        +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+        +as('flaticon-family11', 'Familien-/Kinderfreundlich')
+        +as('flaticon_base64-ac', 'Klimaanlage')
+
+block preise
+    div.col-md-6
+        +keyAndStrongValue('Wohnungspreis (bis 2 P.)', '55 €')
+        +keyAndStrongValue('pro weitere Person', '15 €')
+        +keyAndStrongValue('Servicegebühr', '30 €')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
+
+
+    div.col-md-6
+        |Ermäßigungen:
+        +keyAndStrongValue('Jugendliche bis 17 Jahren', '10 €')
+        +keyAndStrongValue('Kinder bis 9 Jahren', '5 €')
+        +keyAndStrongValue('Kinder bis 4 Jahren', 'kostenlos')
+
+block specialcarusel        
+    +carousel(name='special-carousel')
+      .item.active
+        img(src='img/schmetterling/schmetterling1.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling2.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling3.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer
+      .item
+        img(src='img/schmetterling/schmetterling4.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer   
+      .item
+        img(src='img/schmetterling/schmetterling5.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer   
+      .item
+        img(src='img/schmetterling/schmetterling6.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling7.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling8.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche    
+      .item
+        img(src='img/schmetterling/schmetterling9.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schmetterling/schmetterling10.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Wohnküche   
+      .item
+        img(src='img/schmetterling/schmetterling11.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Badezimmer   
+      .item
+        img(src='img/schmetterling/schmetterling12.jpg', alt='Ferienwohnung Schmetterling Bad Saarow')
+        .carousel-caption
+          | Badezimmer                                        
+
+
+block beschreibung
+    include:markdown ./details-schmetterling.md
+
+block calender
+    +calendar('SL')
+
+block buchen
+    +buchen('SL')

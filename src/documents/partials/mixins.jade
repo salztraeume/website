@@ -1,0 +1,45 @@
+mixin carousel()
+    - name = attributes.name ? attributes.name : 'carousel-default'
+    - href = '#' + name
+    div.carousel.slide(id=name data-ride='carousel')
+        ol.carousel-indicators
+            li.active(data-target=href, data-slide-to='0')
+            - r = block.toString().match(/<div class=\\"item/g)
+            - amount = r ? r.length : 0
+            - for (var i=1; i<amount; i++) {
+                li(data-target=href, data-slide-to=i)
+            - }
+
+          .carousel-inner(role="listbox")
+              block
+
+          a.left.carousel-control(href=href, data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+          a.right.carousel-control(href=href, data-slide='next')
+              span.glyphicon.glyphicon-chevron-right
+
+
+mixin checkInOut
+    +keyAndStrongValue('Check-In', '15:00')
+    +keyAndStrongValue('Check-Out', '11:00')
+
+//- Ausstattung template
+
+mixin as(icon, text, tooltip)
+    - classes = ['icon', 'icon2x']
+    - if (icon != null) classes.push(icon)
+
+    div
+        div.inline: i(class=classes)
+        span(data-toggle='tooltip', data-placement='top', title=tooltip)
+            |  #{text}
+
+mixin keyAndStrongValue(key, val)
+    div #{key}:
+        strong  #{val}
+
+mixin buchen(flatShortcut)
+    if flatShortcut == 'FS'
+        a(href="/buchen.html#filter-F1&filter-F2&filter-F3") Reservierungsanfrage stellen
+    else
+        a(href="/buchen.html#filter-#{flatShortcut}") Reservierungsanfrage stellen

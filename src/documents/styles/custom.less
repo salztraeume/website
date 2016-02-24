@@ -1,0 +1,418 @@
+/* Sticky footer styles */
+@footer-height: 60px;
+
+@media (max-width: @screen-sm-max) {
+    .text-center-sm {
+        text-align: center;
+    }
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+// overwrite and remove size and margin
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-style: normal;
+  margin-left: 0;
+  font-size: inherit;
+}
+
+
+.flaticon_base64-ac {
+  display: block;
+  margin-top: 4px;
+
+  max-width: 32px;
+  max-height: 32px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB0ElEQVRYR+2W4TFDURCFv1SADqgAFaACOkAFdCAqQAV0gApCBahAOiAVMN/MXbNz5XmSeW+SH9mZTO68d7Pn3LNn92bAgmOwYHxWBJZGgc3ihR1gu2dfPAPjgjFWgX3gHtgAnsrL2NA1F7EMvz/9lsBrObUEHoC9rlGrfCpwBHyILYGvsuEAsAR++lTAQ3rokbiZgC9OgTvgsCcVHoGTjJEJiHkNXJb69MFhHbgAziN5TSCea8Y+Ikz4k7uJQB/gU3MuBQH7ca2ip1k0Y3RD/X4Whd5KZym/tc+5Jiqg8c5SRsGHwG354SxgTXs9iOY2zBtxIwGdKaDtITtbUbbHXSCnHA4gcez/SVF4uDSXUdNhVceLysmVQ4XqVo0Jqqci4pJrnKxtCjgdDWd3hEZSSslFCP4C7FZkJeNefTY12gh4T3hH5NO69mPiCNeqkgeNa+v9J0YbAVvR0KARrh2nW5XU7+VZltu15CLPLxXaCFhDE9fSmlhZs7SCWJZcLslelf8ac5XAH/Vahv8qoNxt0jaVyxJEN8xcAs2mk7OsMbR0frRcGC6XynJYPifg3F1gDW3F3Nvxfy7PBk8ooWjb3LKN4G5qK0FT+3b2fEVgpcA3fzxnqhypo7AAAAAASUVORK5CYII=');
+}
+
+.padding-top {
+    padding-top: 10px;
+}
+
+.padding-arround {
+    padding: 10px;
+}
+
+.icon2x {
+    font-size: 2em;
+}
+
+.inline {
+    display: inline-block;
+    width: 2.5em;
+    height: 3em;
+    vertical-align: middle;
+}
+
+.bigger-line {
+    line-height: 1.4em;
+}
+
+.google-map #map {
+    width: 100%;
+    height: 500px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  //Margin bottom by footer height
+  margin-bottom: @footer-height;
+  background: url("/img/subtle_zebra_3d.png")
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  // Set the fixed height of the footer here
+  height: @footer-height;
+  background-color: #f5f5f5;
+}
+
+body > .container {
+  padding: 130px 15px 30px; // top: @footer-height + 70 = 130
+  background: #fff;
+}
+
+.footer ul {
+  list-style: none;
+  li {
+    float: left;
+    padding-right: 20px
+  }
+  padding-top: @footer-height / 3;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+// header, logo
+
+.navbar-toggle {
+    position: absolute;
+    right: 0;
+}
+
+.navbar-default {
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+a.navbar-brand.logo {
+    margin-left: 15px;
+    width: 290px;
+    height: 55px;
+    background: url('/img/logo.png');
+    background-position: 0px -20px;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #9b70fe;
+  border-color: #ccc;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+   color: #000000;
+   border-color: #ccc;
+   background-color: #9b70fe;
+}
+
+//
+
+#maps-container {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+ul.icons {
+    list-style: none;
+    li i {
+        padding-right: 2px;
+    }
+}
+
+.table .base {
+    background-color: #eee;
+}
+
+// checkboxes
+
+label.checker input {
+  display: none;/* <-- hide the default checkbox */
+}
+label.checker span {/* <-- style the artificial checkbox */
+  height: 10px;
+  width: 10px;
+  border: 1px solid grey;
+  display: inline-block;
+  margin-bottom: 0.7em;
+}
+input.checker:checked + span {/* <-- style its checked state */
+  background: #9B70FE;
+  margin-bottom: 0.7em;
+}
+
+// buchen.html
+
+.price-extra-saison {
+    display: none;
+}
+
+@media (min-width: @screen-lg-min) {
+    .calendar .cal-date-control {
+        padding-top: 165px;
+    }
+}
+
+.cal-date-control {
+    input.date {
+        width: 120px;
+        height: 34px;
+        vertical-align: top;
+        margin-top: 1px;
+    }
+}
+
+form.booking {
+    padding-bottom: 30px;
+}
+
+.start {
+    background:-webkit-gradient(linear,28.08% -10.22%,71.92% 110.22%,color-stop(transparent,0),color-stop(transparent,0.5),color-stop(#9B70FE,0.51),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:   -moz-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:    -ms-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:     -o-linear-gradient(-70deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:        linear-gradient(160deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+}
+.end {
+    background:-webkit-gradient(linear,71.92% 110.22%,28.08% -10.22%,color-stop(transparent,0),color-stop(transparent,0.5),color-stop(#9B70FE,0.51),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:   -moz-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:    -ms-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:     -o-linear-gradient(110deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+    background:        linear-gradient(330deg, transparent 0%, transparent 50%, #9B70FE 51%, #9B70FE 100%);
+}
+.middle {
+    background:#9B70FE;
+}
+.end.start {
+    background:-webkit-gradient(linear,28.08% -10.22%,71.92% 110.22%,color-stop(#9B70FE,0),color-stop(#9B70FE,0.48),color-stop(transparent,0.49),color-stop(transparent,0.51),color-stop(#9B70FE,0.52),color-stop(#9B70FE,1));
+    background:-webkit-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:   -moz-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:    -ms-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:     -o-linear-gradient(-70deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+    background:        linear-gradient(160deg, #9B70FE 0%, #9B70FE 48%, transparent 49%, transparent 51%, #9B70FE 52%, #9B70FE 100%);
+}
+
+div[data-id] {
+    display: inline-block;
+}
+
+.flat {
+    margin-bottom: 8px;
+    margin-top: 0px;
+    height: 28px;
+}
+.icon {
+    height: 1em;
+}
+.flat span.title {
+    display: none;
+    color: white;
+}
+.flat.start span.title {
+    text-align: right;
+}
+.flat.end span.title {
+    text-align: left;
+}
+.flat.middle span.title {
+    text-align: center;
+}
+
+table.booking-calendar {
+    //width: 100%;
+}
+
+table.booking-calendar {
+    border-collapse: collapse;
+
+    th {
+        padding-top: 1em;
+    }
+
+    td {
+        //width: 14%;
+        padding-top: 1em; /* space for day number above */
+        background: #F2F2F2;
+        border: 1px solid #ccc;
+        width: 14.2858%; // 100 / 7 = 14.2857
+    }
+
+    td .calDate {
+        font-size: 14px;
+        position: relative;
+        top: 0;
+        margin-top: -17px;
+    }
+
+    // td.day {
+    //     background: #eee;
+    // }
+
+    td[data-date] {
+        background: #fff;
+    }
+
+    td.today {
+        background: #ffdb99;
+    }
+}
+
+th.month-name {
+  text-align: center
+}
+
+.flat-icon-container input[type="checkbox"] {
+    margin-left: 2px;
+}
+
+
+.flat-icon-container {
+    .icon {
+        display: inline-block;
+    }
+
+    .icon-label {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 6px;
+      text-transform: uppercase;
+    }
+}
+
+
+.flat-icon-container .icon, .table-header.icon {
+    margin-right: 2px;
+    height: 32px;
+    width: 40px;
+    background-repeat: no-repeat;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.checker {
+    .icon {
+        margin-left: 5px;
+    }
+}
+
+.icon.SL {
+    background-image: url(/img/kalender_sl.svg);
+}
+.icon.EH {
+    background-image: url(/img/kalender_eh.svg);
+}
+.icon.F1 {
+    background-image: url(/img/kalender_f1.svg);
+}
+.icon.F2 {
+    background-image: url(/img/kalender_f2.svg);
+}
+.icon.F3 {
+    background-image: url(/img/kalender_f3.svg);
+}
+
+// customize form elements
+
+.calculation .left-col {
+    width: 30%;
+}
+
+.input-daterange input {
+    text-align: left;
+}
+
+label.margin-right {
+    margin-right: 5px;
+}
+
+#flat_fuchs_detail {
+    display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.form-control.ignore-error {
+    border-color: @input-border
+}
+
+label.validation {
+    display: none;
+}
+
+.has-error, .has-warning {
+    label.validation {
+        display: inline-block;
+    }
+}
+
+// special validation label logic
+label.size-underflow, label.size-overflow {
+    display: none;
+}
+
+.has-error {
+    label.size-underflow {
+        display: inline-block;
+    }
+}
+.has-warning {
+    label.size-overflow {
+        display: inline-block;
+    }
+}
+
+
+.ajax-spinner {
+  text-align: center;
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+.width100procent {
+  width: 100%;
+}
+.carousel-margin {
+    margin-top: 40px;
+}
