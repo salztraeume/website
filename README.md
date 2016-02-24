@@ -4,7 +4,8 @@
 `make install`
 
 2. Bei jedem Neustart bzw. Schließen des Prozesses
-`make`
+`make`???
+
 
 ---
 JADE BEISPIELE Zeilenumbruch
@@ -38,6 +39,7 @@ RSP für Reservierungsbestätigung
 - Apfel(cmd) + T drücken 
 - `make` im Terminal ausführen (mit Enter am Ende)
 - http://127.0.0.1:9777 im browser öffnen
+????
 
 `ctrl+c` zum Beenden von make, Pfeiltaste hoch, um letzten Befehl anzuzeigen, mit Enter ausführen
 
