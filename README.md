@@ -1,3 +1,14 @@
+## Anna
+### Gesamten Arbeitsordner im Terminal öffnen
+
+- GitHub öffnen
+- Apfel(cmd) + T drücken 
+- `make` im Terminal ausführen (mit Enter am Ende)
+- http://127.0.0.1:9777 im browser öffnen
+????
+
+`ctrl+c` zum Beenden von make, Pfeiltaste hoch, um letzten Befehl anzuzeigen, mit Enter ausführen
+
 # Setup für gulp
 
 1. einmalig
@@ -32,16 +43,7 @@ p.3.
 RSP für Reservierungsbestätigung
 
 
-## Anna
-### Gesamten Arbeitsordner im Terminal öffnen
 
-- GitHub öffnen
-- Apfel(cmd) + T drücken 
-- `make` im Terminal ausführen (mit Enter am Ende)
-- http://127.0.0.1:9777 im browser öffnen
-????
-
-`ctrl+c` zum Beenden von make, Pfeiltaste hoch, um letzten Befehl anzuzeigen, mit Enter ausführen
 
 
 ## Selector live im Browser prüfen
