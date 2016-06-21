@@ -154,3 +154,17 @@ so ähnlich formulieren:
 Küche: Neben der vollen Ausstattung mit Küchengeschirr und Pfannen, verfügt die große Küche außerdem über einen Elektroherd (Ceranfeld mit 4 Kochplatten), Ofen, ein Kühlschrank mit Gefrierfach, eine Mikrowelle, eine Kaffeemaschine, ein Wasserkocher, ein Backofen, ein Toaster, ein Esstisch und 4 Stühle. Extras: Aufzug, TV-Plasma, Radio, CD Player, Föhn, Zimmersafe, Bügeleisen/ Bügelbrett, Staubsauger, Bettwäsche und Handtücher werden Ihnen kostenlos zur Verfügung gestellt. Gebührenpflichtig: Endreinigung 35,00 EUR, Wlan flat (5 Euro/Tag), Babybett (5 Euro/ Tag) Waschen Waschmaschine & Trockner (Waschsalon) in der Nähe Essen & Trinken Restaurant, Cafe´s, Supermärkte, Bäckerei, Bistro in unmittelbarer Nähe. Parken - Parken, öffentlich: Das Parken auf der Strasse ist kostenfrei möglich (öffentliche Parkplätze). - Parkplätze und Parkhäuser in der Umgebung: Tiefgarage, Brüsseler Straße 3, 13353 Berlin
 
 
+
+RESERVIERUNG VERFALLEN
+
+Falls Gast innerhalb 24 Stunden nicht zurück meldet.
+Hallo Antje Martinat,
+
+leider haben Sie sich nicht mehr zurück gemeldet – vermutlich haben Sie eine andere Unterkunft gefunden. Wir werden die Wohnung nun an die nächsten Interessenten vermieten.
+
+Wir würden uns freuen, wenn Sie bei Ihrer nächsten Urlaubsplanung an uns denken.
+
+
+
+
+

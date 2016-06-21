@@ -25,9 +25,8 @@ Das gewisse Extra an an unserer Ferienunterkunft SALZ›T‹RÄUME AM SEE ist di
 
 #### TERRASSE & VERLEIH
 
-Unseren Gästen steht auf der Terrasse eine Sitzgruppe unter einem Pavillon zur Verfügung. Weiterhin 1 Grill, 5 Fahrräder & 2 Gummiboote zum kostenlosen Verleih.
+Unseren Gästen aus allen drei Ferienwohnungen steht eine weitläufige Rasenfläche, sowie ein Pavillon und zwei Sitzgruppen auf der Terrasse zur gemeinsamen Nutzung zur Verfügung. Weiterhin können 1 Grill, 5 Fahrräder & 2 Gummiboote kostenlos geliehen werden.
 
-Die Grünfläche hinter dem Haus ist noch nicht mit Rasen bepflanzt, ist aber zur Mitbenutzung freigegeben.  
 
 #### PARKEN
 Pro Wohnung steht ein kostenloser Parkplatz vor dem Haus zur Verfügung.
