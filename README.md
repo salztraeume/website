@@ -5,17 +5,30 @@
 - Apfel(cmd) + T drücken 
 - `make` im Terminal ausführen (mit Enter am Ende)
 - http://127.0.0.1:9777 im browser öffnen
-????
 
 `ctrl+c` zum Beenden von make, Pfeiltaste hoch, um letzten Befehl anzuzeigen, mit Enter ausführen
 
-# Setup für gulp
+# Einmaliges Setup (gulp)
 
 1. einmalig
-`make install`
 
-2. Bei jedem Neustart bzw. Schließen des Prozesses
-`make`???
+```
+make install
+```
+
+
+2. Zum Generieren der Website folgendne Befehl ausführen: 
+
+```
+make
+```
+
+Info: 
+
+Wenn es erfolgreich ist, bleibt der Prozess offen, im Fehlerfall oder
+beim manuellen Beenden via (CTRL + C) wird der Prozess beendet.
+Ob der Prozess beendet ist ist merkst du daran, dass in der letzten Zeile
+das hier steht: `annagebhardt$` (das nennt man Prompt).
 
 
 ---
@@ -79,3 +92,4 @@ Um diese Datei aus Sublime heraus als HTML anzuschauen, kannst du das von Anton 
 - Danach kannst du nach dem gewünschten Kommando suchen, in unserem Fall: `markdown`
 - Danach siehst du eine Liste mit Kommandos für markdown. Wir brauchen den 3. in der Liste, also **Markdown Preview: Python Markdown: Preview in Browser**
 - Du kannst ihn anklicken oder mit den Pfeiltasten (hoch/runter) anwählen und dann ENTER drücken
+

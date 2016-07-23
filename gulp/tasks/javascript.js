@@ -33,17 +33,14 @@ gulp.task('javascript', function() {
     .pipe(concat('kurtaxe.js'))
     .pipe(gulp.dest(config.dest+'/js'));
 
-    gulp.src('./src/files/js/maps.coffee')
-    .pipe(coffee({bare: true}))
-    .pipe(concat('maps.js'))
-    .pipe(gulp.dest(config.dest+'/js'));
 
     gulp.src([
             'node_modules/d3/d3.min.js',
             'node_modules/topojson/topojson.min.js',
-            'node_modules/datamaps/dist/datamaps.world.min.js'
+            'node_modules/datamaps/dist/datamaps.world.min.js',
+            './src/files/js/init-map.js'
         ])
-        .pipe(concat('map-libs.js'))
+        .pipe(concat('map.js'))
         .pipe(gulp.dest(config.dest+'/js'));
 
 });

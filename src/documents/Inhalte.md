@@ -18,6 +18,8 @@ Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x 
 
 Alle Wohnungen sind mit wertvollem unbehandelten Naturspeisesalz aus unserem Salzshop ausgestattet.
 
+In Bad Saarow kann es im Sommer schon Mal etwas wärmer werden! In der Wohnung ist neuerdings eine Klimaanlage eingebaut, so lässt sich die Wohnung innerhalb weniger Minuten auf angenehme Temperaturen abkühlen.
+
 ## EINFÜHRUNGSPREISE 
 Wohnungspreis pro Nacht: 50 € 
 ab der 3. Person zzgl. 15 € p. N. 
@@ -53,6 +55,8 @@ Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x 
 
 Alle Wohnungen sind mit wertvollem unbehandelten Naturspeisesalz aus unserem Salzshop ausgestattet.
 
+In Bad Saarow kann es im Sommer schon Mal etwas wärmer werden! In der Wohnung ist neuerdings eine Klimaanlage eingebaut, so lässt sich die Wohnung innerhalb weniger Minuten auf angenehme Temperaturen abkühlen.
+
 ## EINFÜHRUNGSPREISE 
 Wohnungspreis pro Nacht: 55 € 
 ab der 3. Person zzgl. 15 € p. N. 
@@ -81,12 +85,16 @@ Die preiswerte Wohnung ›Fuchs‹ ist ein Gemeinschaftswohnraum im Hostel-Flair
 - GästeWC
 - Diele
 
-## AUSSTATTUNG
-Neben der vollen Ausstattung mit Küchengeschirr, Töpfen und Pfannen, verfügt die Einbauküche über: Herd (Ceranfeld mit 4 Kochplatten), Ofen, Kühlschrank mit Gefrierfach, Mikrowelle  mit Grill, Kaffeemaschine, Wasserkocher, Toaster, ein großer Esstisch mit Sitzgelegenheiten für bis zu 8 Personen.
+
+##AUSSTATTUNG
+Neben der vollen Ausstattung mit Küchengeschirr, Töpfen und Pfannen, verfügt die Einbauküche über: Herd (Ceranfeld mit 4 Kochplatten), Ofen, Kühlschrank mit Gefrierfach, Mikrowelle mit Grill, Kaffeemaschine, Wasserkocher, Toaster, ein großer Esstisch mit Sitzgelegenheiten für bis zu 8 Personen, ein Bartisch mit 2 Barhockern.
+(Der Einbau einer Spülmaschine ist in Planung.)
 
 Zur Grundausstattung gehört ein Wäschepaket (je Person 1x Bettwäsche & je 1x Dusch- und Handtuch, Badvorleger, Geschirrtücher). Weiterhin sämtliche Artikel des täglichen Bedarfs: Seife, Fön, Spüli, Lappen, Backpapier, Salz, etc.)
 
 Alle Wohnungen sind mit wertvollem unbehandelten Naturspeisesalz aus unserem Salzshop ausgestattet.
+
+In Bad Saarow kann es im Sommer schon Mal etwas wärmer werden! In der Wohnung ist neuerdings eine Klimaanlage eingebaut, so lässt sich die Wohnung innerhalb weniger Minuten auf angenehme Temperaturen abkühlen.
 
 EINFÜHRUNGSPREISE 
 Wohnungspreis für gesamte Wohnung pro Nacht: 90 € 
@@ -155,16 +163,134 @@ Küche: Neben der vollen Ausstattung mit Küchengeschirr und Pfannen, verfügt d
 
 
 
-RESERVIERUNG VERFALLEN
+## RESERVIERUNG VERFALLEN
 
 Falls Gast innerhalb 24 Stunden nicht zurück meldet.
-Hallo Antje Martinat,
+
+Hallo xxx,
 
 leider haben Sie sich nicht mehr zurück gemeldet – vermutlich haben Sie eine andere Unterkunft gefunden. Wir werden die Wohnung nun an die nächsten Interessenten vermieten.
 
 Wir würden uns freuen, wenn Sie bei Ihrer nächsten Urlaubsplanung an uns denken.
 
 
+Sehr geehrte xxx,
 
+da wir innerhalb von 24 Stunden von Ihnen keine verbindliche Buchungsbestätigung erhalten haben, müssen wir Ihnen leider mitteilen, dass inzwischen eine andere verbindliche Buchung für diesen Zeitraum eingegangen ist und die Wohnung anderweitig vergeben wurde. 
+
+Wir bitten um Verständnis.
+
+Wir wünschen Ihnen viel Erfolg bei der weiteren Suche und würden uns freuen, wenn Sie bei Ihrer nächsten Reiseplanung an uns denken.
+
+
+## AIRBNB UND FEWO GÄSTE ÜBER KURTAXE UND SCHLÜSSELÜBERGABE INFORMIEREN
+
+Hej xxx,
+
+der Schlüssel wird für Euch voraussichtlich hinten im Garten hinterlegt. Den genauen Platz teile ich Euch spätestens einen Tag vor der Anreise mit.
+
+Weitere Infos zur An- und Abreise sind auf unserer offiziellen Webseite zu finden: 
+http://salztraeume-am-see.de/anreiseinfos.html
+
+Bitte beachtet, dass in Bad Saarow eine Kurtaxe anfällt (derzeit 2 Euro pro Person/pro Nacht), die in bar entrichtet werden muss. Mit der ausgestellten Kurkarte erhält man Rabatte u.a. in der SaarowTherme sowie kostenlosen Bustransfer im Landkreis Oder-Spree.
+http://www.amt-scharmuetzelsee.de/satzungen/bs_011.pdf
+
+## INFO ZU FUCHS WOHNUNG TEILEN
+
+Bitte beachten Sie, das das 3. Zimmer in der Wohnung von anderen Gästen belegt werden kann, so dass Sie die Wohnküche und das Bad ggf. mit anderen Gästen teilen würden. 
+
+# SPRACHEN
+
+## ENGL: ZAHLUNGBESTÄTIGUNG
+
+Hello xxx,
+
+thank you, we have received your payment!
+
+## RUSS: BUCHUNGSBESTÄTIGUNG
+
+Здравствуйте!
+
+Благодарим за подтверждение бронирования и за перевод первого транша в счёт платежа за Ваш отдых! 
+Мы очень рады скоро приветствовать Вас в нашем пансионате "Salzträume am See“.
+
+С уважением
+Валентина Вильгельм
+
+и.о. Анна Гебгардт
+
+
+
+
+
+## INFO SCHLÜSSEL HINTERLEGEN EICHHÖRNCHEN
+
+Der Check-In ist am Anreisetag ab 15 Uhr möglich. Der Schlüssel wird für Sie voraussichtlich auf der Terrasse hinterlegt sein.
+
+So finden Sie den Schlüssel:
+
+Gehen Sie bitte vom Parkplatz aus rechts ums Haus. Der Schlüssel befindet sich auf dem Tisch unter einem Blumentopf. 
+
+Der Eingang zur Wohnung befindet sich links neben dem Pavillon (ein kleines Hinweis-Schild ist an der Glastür befestigt). 
+Wenn Sie eintreten, gehen Sie bitte noch Mal links. Die Wohnung liegt im Obergeschoss. 
+
+Auf dem Schlüsselbund haben Sie auch einen Schlüssel zum Haupteingang vorne zur Straße.
+
+In der Wohnung finden Sie ein Infoblatt mit allgemeinen Infos (wie WLAN Passwort) im Flur an der Wand gegenüber den Klappstühlen. Die Kurkarte zum Ausfüllen und das Infomaterial (für die Vergünstigungen mit der Kurkarte) liegen auf dem Tisch bereit. 
+
+Fahrräder und der Grill befinden sich unter dem Unterstand. In der Box auf der Terrasse ist die Hängematte für das weiße Gestell zu finden sowie Sitzkissen für die Gartenmöbel.
+
+Weitere Infos zur An- und Abreise finden Sie auf unserer Webseite: 
+http://salztraeume-am-see.de/anreiseinfos.html
+
+Wir wünschen Ihnen einen angenehmen Aufenthalt!
+
+
+
+
+
+
+## INFO SCHLÜSSEL HINTERLEGEN SCHMETTERLING
+
+Der Check-In ist am Anreisetag ab 15 Uhr möglich. Der Schlüssel wird für Sie voraussichtlich auf der Terrasse hinterlegt sein.
+
+So finden Sie den Schlüssel:
+
+Gehen Sie bitte vom Parkplatz aus rechts ums Haus. Der Schlüssel befindet sich auf dem Tisch unter einem Blumentopf. 
+
+Der Eingang zur Wohnung befindet sich links neben dem Pavillon (ein kleines Hinweis-Schild ist an der Glastür befestigt). 
+Wenn Sie eintreten, gehen Sie bitte noch Mal links. Die Wohnung liegt im Erdgeschoss. 
+
+Auf dem Schlüsselbund haben Sie auch einen Schlüssel zum Haupteingang vorne zur Straße.
+
+In der Wohnung finden Sie ein Infoblatt mit allgemeinen Infos (wie WLAN Passwort) rechts neben der Eingangstür. Die Kurkarte zum Ausfüllen und das Infomaterial (für die Vergünstigungen mit der Kurkarte) liegen auf dem Tisch bereit. 
+
+Fahrräder und der Grill befinden sich unter dem Unterstand. In der Box auf der Terrasse ist die Hängematte für das weiße Gestell zu finden sowie Sitzkissen für die Gartenmöbel.
+
+Weitere Infos zur An- und Abreise finden Sie auf unserer Webseite: 
+http://salztraeume-am-see.de/anreiseinfos.html
+
+
+
+
+
+## INFO SCHLÜSSEL HINTERLEGEN FUCHS
+
+Der Check-In ist am Anreisetag ab 15 Uhr möglich. Der Schlüssel wird für Sie voraussichtlich auf der Terrasse hinterlegt sein.
+
+So findet ihr den Schlüssel:
+Geht bitte vom Parkplatz aus rechts ums Haus. Der Schlüssel befindet sich auf dem Tisch unter einem Blumentopf. 
+
+Der Eingang zur Wohnung befindet sich rechts neben dem Pavillon (ein kleines Hinweis-Schild und eine Fuchs Deko ist an der Tür befestigt). 
+Die Wohnung liegt im Obergeschoss. 
+
+In der Wohnung finden Sie ein eingerahmtes Infoblatt mit allgemeinen Infos (wie WLAN Passwort) auf dem Bartisch. Die Kurkarte zum Ausfüllen und das Infomaterial (für die Vergünstigungen mit der Kurkarte) liegen auf dem Tisch bereit.
+
+Fahrräder und der Grill befinden sich unter dem Unterstand. In der Box auf der Terrasse ist die Hängematte für das weiße Gestell zu finden sowie Sitzkissen für die Gartenmöbel.
+
+Weitere Infos zur An- und Abreise finden Sie auf unserer Webseite: 
+http://salztraeume-am-see.de/anreiseinfos.html
+
+Wir wünschen einen schönen Aufenthalt!
 
 

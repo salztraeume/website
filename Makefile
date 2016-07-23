@@ -1,4 +1,4 @@
-# Docpad starten
+# Gulp starten
 run: node_modules
 	npm run gulp
 

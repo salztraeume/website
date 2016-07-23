@@ -102,7 +102,9 @@ form#booking-form.conainter.booking(onsubmit="return false;")
         input#b_send_email(type="checkbox", checked)
 
     div.form-group
-        input#b_phone.form-control(type="tel", placeholder="Telefon")
+
+        label.validation.phone.control-label(for="b_phone")
+        input#b_phone.form-control(type="tel", required, placeholder="Telefon")
 
     div.form-group
         textarea#b_note.form-control(rows="2", placeholder="Bemerkungen")

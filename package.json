@@ -10,8 +10,8 @@
     "autoprefixer-core": "^5.1.5",
     "coffee-script": "^1.9.2",
     "csswring": "^3.0.1",
-    "d3": "^3.5.6",
-    "datamaps": "^0.3.6",
+    "d3": "^3.5.16",
+    "datamaps": "^0.4.4",
     "debug": "^2.1.1",
     "del": "^1.1.1",
     "express": "^4.11.2",
@@ -35,7 +35,7 @@
     "moment-timezone": "^0.3.0",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
-    "topojson": "^1.6.19",
+    "topojson": "^1.6.24",
     "utils-merge": "^1.0.0"
   },
   "scripts": {
