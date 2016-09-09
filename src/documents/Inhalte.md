@@ -293,4 +293,9 @@ http://salztraeume-am-see.de/anreiseinfos.html
 
 Wir wünschen einen schönen Aufenthalt!
 
+## VORLAGE BESTÄTIGUNGSMAIL NACH BUCHUNG DES GASTES
+
+wir bedanken uns für Ihre Buchungsbestätigung und bestätigen Ihnen ebenfalls die Buchung zu den unten genannten Konditionen.
+Spätestens einen Tag vor Anreise schicken wir Ihnen die genauen Infos zur Schlüsselübergabe. Hier schon Mal de Vorabinfos zur Anreise:
+http://salztraeume-am-see.de/anreiseinfos.html
 
