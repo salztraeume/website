@@ -27,14 +27,14 @@ mixin calendarControls(flat)
                         div.icon.EH
                         div.icon-label Eichhörnchen
                             
-                div
+                div(style="display:none")
                     label.checker
                         input.checker.filter-F1(type="checkbox")
                         span
                         div.icon.F1
                         div.icon-label Fuchs 1
                             
-                div
+                div(style="display:none")
                     label.checker
                         input.checker.filter-F2(type="checkbox")
                         span
@@ -46,7 +46,7 @@ mixin calendarControls(flat)
                         input.checker.filter-F3(type="checkbox")
                         span
                         div.icon.F3
-                        div.icon-label Fuchs 3
+                        div.icon-label Fuchs
                             
 
         div.col-lg-4.col-md-12.cal-controls
@@ -85,8 +85,6 @@ mixin bookingCalendar(flat, month, columns)
                         if flat == null
                             .table-header.icon.SL
                             .table-header.icon.EH
-                            .table-header.icon.F1
-                            .table-header.icon.F2
                             .table-header.icon.F3
 
                     each day in [0,1,2,3,4,5,6]

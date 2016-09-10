@@ -221,10 +221,10 @@ var readPermaLink = function(options) {
             case 'flat_d':
                 if (locationHash.flat != 'Fuchs') {break;}
 
-                flat_values = value.split('').map(function(i) {return i === '1' ? true : false});
-                $('#flat_fuchs_detail input')[0].checked = flat_values[0];
-                $('#flat_fuchs_detail input')[1].checked = flat_values[1];
-                $('#flat_fuchs_detail input')[2].checked = flat_values[2];
+                //flat_values = value.split('').map(function(i) {return i === '1' ? true : false});
+                // $('#flat_fuchs_detail input')[0].checked = flat_values[0];
+                // $('#flat_fuchs_detail input')[1].checked = flat_values[1];
+                // $('#flat_fuchs_detail input')[2].checked = flat_values[2];
                 $('#flat_fuchs_detail').show();
                 break;
             case 'ga':
@@ -514,9 +514,10 @@ var resetCalculation = function() {
 };
 
 var getDetailsForFuchs = function() {
-    var inputs = $('#flat_fuchs_detail input');
-    var values = inputs.map(function(i, e) {return e.checked === false ? 0 : 1});
-    return values;
+    // var inputs = $('#flat_fuchs_detail input');
+    // var values = inputs.map(function(i, e) {return e.checked === false ? 0 : 1});
+    // return values;
+    return [1,1,1]
 };
 
 var getValidationLabel = function(referenceElement) {
@@ -654,10 +655,10 @@ var toggleFlatDetails = function(element, noPermaLink) {
         if (values[0]) flatSize += 4; // 4 beds
         if (values[1]) flatSize += 2; // 1 double bed
         if (values[2]) flatSize += 2; // 1 double bed
-        if (result === 3) flatSize += 2; // 2 couch
+        // if (result === 3) flatSize += 2; // 2 couch
     } else {
         // disable all checkboxes for fuchs
-        $('#flat_fuchs_detail input').prop("checked", false);
+        //$('#flat_fuchs_detail input').prop("checked", false);
         $('#flat_fuchs_detail').hide();
         flatSize = $(element).find("[value="+element.value+"]").attr('data-max');
         if (!noPermaLink) setPermaLink('flat_d', null);
@@ -695,10 +696,10 @@ $(document).ready(function() {
         calculatePrice();
     });
 
-    $('#flat_fuchs_detail input').on('change', function(e) {
-        toggleFlatDetails($('#b_flat')[0]);
-        calculatePrice();
-    });
+    // $('#flat_fuchs_detail input').on('change', function(e) {
+    //     toggleFlatDetails($('#b_flat')[0]);
+    //     calculatePrice();
+    // });
 
     $('#guests_control input').on('change', function(e) {
         calculatePrice();
