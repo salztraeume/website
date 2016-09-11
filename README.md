@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/timaschew/salztraeume.svg?token=AyRd7rjyEhAZuYuvSWkN&branch=master)](https://travis-ci.com/timaschew/salztraeume)
+
 ## Anna
 ### Gesamten Arbeitsordner im Terminal öffnen
 
