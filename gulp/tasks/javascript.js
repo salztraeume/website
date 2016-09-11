@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var config = require('../config');
 var coffee = require('gulp-coffee');
-var addsrc = require('gulp-add-src');
 
 gulp.task('javascript', function() {
 
