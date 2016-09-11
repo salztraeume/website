@@ -34,13 +34,13 @@ gulp.task('javascript', function() {
     .pipe(gulp.dest(config.dest+'/js'));
 
 
+    gulp.src(['./src/files/js/map-libs.js',])
+    .pipe(gulp.dest(config.dest+'/js'));
+
     gulp.src([
-            'node_modules/d3/d3.min.js',
-            'node_modules/topojson/topojson.min.js',
-            'node_modules/datamaps/dist/datamaps.world.min.js',
-            './src/files/js/init-map.js'
-        ])
-        .pipe(concat('map.js'))
-        .pipe(gulp.dest(config.dest+'/js'));
+        './src/files/js/init-map.js'
+    ])
+    .pipe(concat('maps.js'))
+    .pipe(gulp.dest(config.dest+'/js'));
 
 });
