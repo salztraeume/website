@@ -23,10 +23,5 @@
 	<line fill="none" stroke="#9B71FF" stroke-width="0.5" stroke-miterlimit="10" x1="32.588" y1="10.751" x2="28.895" y2="16.376"/>
 	<line fill="none" stroke="#9B71FF" stroke-width="0.5" stroke-miterlimit="10" x1="28.771" y1="8.438" x2="24.953" y2="10.876"/>
 	<line fill="none" stroke="#9B71FF" stroke-width="0.5" stroke-miterlimit="10" x1="28.709" y1="8.438" x2="32.527" y2="10.876"/>
-	<g>
-		<polygon fill="#6E00C4" points="0,0.911 0,15.419 5.461,15.419 15.183,15.419 15.183,0.911 		"/>
-		<text transform="matrix(1.0015 0 0 1 2.8589 13.6377)" fill="#FFFFFF" font-family="'Vaccine-Regular'" font-size="16.0447">3</text>
-		<polygon fill="#6E00C4" points="0.219,16.343 7.158,22.188 7.158,16.343 		"/>
-	</g>
 </g>
 </svg>
