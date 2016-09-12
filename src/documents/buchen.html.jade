@@ -27,14 +27,15 @@ form#booking-form.conainter.booking(onsubmit="return false;")
             input#b_departure.form-control(type="text", required, name="end", placeholder="Abreise")
             span.input-group-addon in
             select#b_flat.form-control.ignore-error
-                option(data-price="60", data-max="2", value="Schmetterling", data-location='SL') Schmetterling
-                option(data-price="60", data-max="4", value="Eichhoernchen", data-location='EH') Eichhörnchen
-                option(data-price="105", data-max="8", value="Fuchs", data-location='FS') Fuchs
+                option(data-price="70", data-max="2", value="Schmetterling", data-location='SL') Schmetterling
+                option(data-price="70", data-max="3", value="Eichhoernchen", data-location='EH') Eichhörnchen
+                option(data-price="120", data-max="8", value="Fuchs", data-location='FS') Fuchs
 
     div#flat_fuchs_detail.form-group
         div.input-group
-            label.margin-right Die Wohnung Fuchs muss als gesamte Wohnung gebucht werden (eine Buchung einzelner Zimmer ist nicht mehr möglich)
+            label.margin-right Die Wohnung Fuchs wird als gesamte Wohnung vermietet (eine Buchung einzelner Zimmer ist nicht mehr möglich).
             label.validation.control-label(for="b_flat_fs1") Es muss mindestens ein Zimmer in Fuchs ausgewählt werden
+            br
             label.checkbox-inline
                 input#b_flat_fs1(type="checkbox" checked disabled)
                 | Fuchs 1

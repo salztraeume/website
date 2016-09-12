@@ -31,16 +31,14 @@ SAISONS = [
     }
 ];
 
-var SL_BASIC = 55;
-var EH_BASIC = 60;
-var FS_BASIC = 25;
-var DEFAULT_MIN_NIGHTS = 2;
-var WHOLE_FUCHS_BASE = 105; // 3 (each room) * 25 € + 30 € = 105
+var SL_BASIC;
+var EH_BASIC;
+var FS_BASIC;
+var WHOLE_FUCHS_BASE = $("#b_flat option[value=Fuchs]").attr('data-price');
 var EH_AND_SL_PERSON_THRESHOLD = 2; // count extra persons after the second
 var WHOLE_FUCHS_PERSON_THRESHOLD = 5; // count extra persons after the fifth
-// person threshold for fuchs: 1 per room
+var DEFAULT_MIN_NIGHTS = 2;
 var CLEAN_BASE = 30;
-var CLEAN_BASE_WHOLE_FUCHS = CLEAN_BASE;// + 5;
 
 var NL = NEWLINE = "%0D%0A";
 var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
@@ -62,6 +60,21 @@ if (sessionStorage.getItem(LOCAL_STORAGE_VERSION) === '0.1') {
     console.log("Fuchs komplett: "+WHOLE_FUCHS_BASE);
 }
 
+if (sessionStorage.getItem(LOCAL_STORAGE_VERSION) === '0.2') {
+    WHOLE_FUCHS_BASE = 105;
+    SL_BASIC = 55;
+    EH_BASIC = 60;
+    FS_BASIC = 25;
+    $("#b_flat option[value=Schmetterling]").attr('data-price', SL_BASIC);
+    $("#b_flat option[value=Eichhoernchen]").attr('data-price', EH_BASIC);
+    $("#b_flat option[value=Fuchs]").attr('data-price', FS_BASIC);
+    alert('alte Preise sind aktiv!');
+    console.log('Preistabelle:');
+    priceTable = $("#b_flat option").map(function(i, e) {
+        console.log($(e).text() + ': '+ $(e).attr('data-price'));
+    });
+    console.log("Fuchs komplett: "+WHOLE_FUCHS_BASE);
+}
 
 //  +++ booking +++
 
@@ -345,7 +358,7 @@ var calculatePrice = function() {
 
     // sepcial logic for fuchs rooms
     if (flatName === 'Fuchs') {
-        cleanFee = CLEAN_BASE_WHOLE_FUCHS;
+        cleanFee = CLEAN_BASE;
         var values = getDetailsForFuchs();
         var result = values[0] + values[1] + values[2];
         setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
@@ -354,6 +367,7 @@ var calculatePrice = function() {
             return;
         }
         if (result < 3) {
+            console.warn('this should not happen')
             extraTreshold = result;
             base = base * result;
         } else {
@@ -547,6 +561,7 @@ var extraValidation = function() {
     var flatDetails = getDetailsForFuchs();
     var flatSelectedValue = $('#b_flat').val();
     if (flatSelectedValue === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
+        console.warn('this should not happen')
         $('#flat_fuchs_detail').addClass('has-error');
         return returnValue;
     } else {
@@ -655,6 +670,7 @@ var toggleFlatDetails = function(element, noPermaLink) {
         if (values[0]) flatSize += 4; // 4 beds
         if (values[1]) flatSize += 2; // 1 double bed
         if (values[2]) flatSize += 2; // 1 double bed
+        // disable the next limit, limit to 8 persons
         // if (result === 3) flatSize += 2; // 2 couch
     } else {
         // disable all checkboxes for fuchs
