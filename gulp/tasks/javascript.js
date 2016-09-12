@@ -17,7 +17,7 @@ gulp.task('javascript', function() {
         './src/files/js/calendar.js',
         './src/files/js/buchen.js',
         './src/files/js/cookiechoices.js',
-        './src/fileS/js/init.js'
+        './src/files/js/init.js'
     ];
 
     if (process.env.OFFLINE) {
