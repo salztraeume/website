@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var config = require('../config');
 var coffee = require('gulp-coffee');
+var filelog = require('gulp-filelog');
 
 gulp.task('javascript', function() {
 
@@ -24,6 +25,7 @@ gulp.task('javascript', function() {
     }
 
     gulp.src(jsFiles)
+    .pipe(filelog())
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest(config.dest+'/js'));
 
