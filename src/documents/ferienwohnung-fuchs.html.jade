@@ -99,8 +99,7 @@ block ausstattung
 
 block preise
     div.col-md-6
-        +keyAndStrongValue('Zimmerpreis (1 Person)', '25 €')
-        +keyAndStrongValue('gesamte Wohnung (bis 5 Personen)', '105 €')
+        +keyAndStrongValue('Wohnung (bis 5 Personen)', '120 €')
         +keyAndStrongValue('Servicegebühr', '30 €')
         +keyAndStrongValue('Servicegebühr ab der 5. Person', 'zzgl. 5 € /p.P.')
         +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
@@ -118,7 +117,7 @@ block beschreibung
     include:markdown ./details-fuchs.md
 
 block calender
-    +calendar('FS')
+    +calendar('F3')
 
 block buchen
-    +buchen('FS')
+    +buchen('F3')
