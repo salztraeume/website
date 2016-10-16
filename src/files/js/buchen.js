@@ -864,7 +864,7 @@ var doSubmit = function(data) {
     submitButton[0].disabled = true;
 
     var request = $.ajax({
-        url: FORM_MAILER_URL,
+        url: window.FORM_MAILER_URL || FORM_MAILER_URL,
         type: "POST",
         data: data,
         dataType: 'json'
