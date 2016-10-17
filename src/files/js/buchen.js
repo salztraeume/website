@@ -831,7 +831,6 @@ var prepareSubmit = function() {
 
         var data = {
             flat_name: flat_name,
-            flat_details_text: flat_details_text,
             from: from,
             to: to,
             nights: nights,
