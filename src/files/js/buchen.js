@@ -815,19 +815,6 @@ var prepareSubmit = function() {
         var phone = $('#b_phone').val() || null;
         var note = $('#b_note').val() || null;
         var found = $('#b_found').val();
-        var flat_details_text = '';
-        // --------------------------------------
-
-        var flatDetails = getDetailsForFuchs();
-        flat_details_text = '';
-        if (flatDetails[0] + flatDetails[1] + flatDetails[2] > 0) {
-            var tmp = '';
-            tmp +=  flatDetails[0] ? ' 1. ' : '';
-            tmp +=  flatDetails[1] ? ' 2. ' : '';
-            tmp +=  flatDetails[2] ? ' 3. ' : '';
-            flat_details_text = "Fuchs Zimmer:" + tmp;
-        }
-        // --------------------------------------
 
         var data = {
             flat_name: flat_name,
