@@ -809,12 +809,15 @@ var prepareSubmit = function() {
         var price_fee = parsePrice($('#price-fee').text());
         var price_total = parsePrice($('#price-sum').text());
 
+        var firstname = $('#b_firstname').val();
         var name = $('#b_name').val();
         var email = $('#b_email').val();
         var send_email = $('#b_send_email').prop('checked');
         var phone = $('#b_phone').val() || null;
         var note = $('#b_note').val() || null;
         var found = $('#b_found').val();
+        var gender = $('[name=b_gender]:checked').val();
+        var tvDistinction = $('#b_tv-distinction').prop('checked');
 
         var data = {
             flat_name: flat_name,
@@ -831,6 +834,9 @@ var prepareSubmit = function() {
             price_clean: price_clean,
             price_fee: price_fee,
             price_total: price_total,
+            gender: gender,
+            tvDistinction: tvDistinction,
+            firstname: firstname,
             name: name,
             email: email,
             send_email: send_email,

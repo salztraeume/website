@@ -91,8 +91,27 @@ form#booking-form.conainter.booking(onsubmit="return false;")
 
 
     div.form-group
-        label.validation.name.control-label(for="b_name")
-        input#b_name.form-control(type="text", required, placeholder="Name")
+        div.form-inline
+            div.form-group
+                label.validation.name.control-label(for="b_gender")
+                label.radio-inline
+                    input(type="radio" name="b_gender" id="b_gender_f" required value="f")
+                    | Frau
+                label.radio-inline
+                    input(type="radio" name="b_gender" id="b_gender_m" required value="m")
+                    | Herr
+            span=" "
+            div.form-group
+                label.validation.name.control-label(for="b_firstname")
+                input#b_firstname.form-control(type="text", required, placeholder="Vorname", size=20)
+                label.validation.name.control-label(for="b_name")
+                input#b_name.form-control(type="text", required, placeholder="Nachname", size=20)
+            span=" "
+            div.form-group
+                div.form-inline
+                    span Ich möchte geduzt werden
+                    span=" "
+                    input#b_tv-distinction(type="checkbox" name="b_tv-distinction")
 
     div.form-group
         label.validation.email.control-label(for="b_email")
@@ -100,6 +119,7 @@ form#booking-form.conainter.booking(onsubmit="return false;")
 
     div.form-group
         span.control-label Kopie an mich mitschicken:
+        span=" "
         input#b_send_email(type="checkbox", checked)
 
     div.form-group
