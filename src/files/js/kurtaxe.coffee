@@ -1,4 +1,4 @@
-SERVER_URL = 'http://thunderwave.de:9771/kurtaxe'
+SERVER_URL = 'http://inquiry-webhook.awspace.de/kurtaxe'
 
 $n = (name, scope = window.document) ->
     $("[name='#{name}']", scope)
