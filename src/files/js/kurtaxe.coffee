@@ -268,7 +268,7 @@ submitButton.on 'click', (e) ->
     request.done (json, responseType, xhr) ->
         submitButton[0].disabled = true
         submitButton.text(submitButtonOriginalText)
-        feedbackDiv.text 'Vielenk Dank, die Daten wurden erfolgreich übermittelt'
+        feedbackDiv.html '<strong style="color: #9b70fe;">Vielenk Dank, die Daten wurden erfolgreich übermittelt</strong>'
         submitButton[0].disabled = false
 
     request.fail (xhr, responseType, statusText) ->
