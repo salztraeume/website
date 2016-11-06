@@ -4,7 +4,7 @@ mixin calendar(flat, month, columns)
 
 mixin loadCalendarEvents
     unless process.env.OFFLINE
-        script(src="http://thunderwave.de:9776/items.js")
+        script(src="http://cal-aggregator.awspace.de/items.js")
 
 mixin calendarControls(flat)
     div.row
