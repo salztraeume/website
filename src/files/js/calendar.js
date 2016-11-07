@@ -180,9 +180,9 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
             switch(item.location) {
                 case 'SL': flatName  = 'Schmetterling'; break;
                 case 'EH': flatName  = 'Eichhörnchen'; break;
-                case 'F1': flatName  = 'Fuchs1'; break;
-                case 'F2': flatName  = 'Fuchs2'; break;
-                case 'F3': flatName  = 'Fuchs3'; break;
+                case 'F1': flatName  = 'Fuchs'; break;
+                case 'F2': flatName  = 'Fuchs'; break;
+                case 'F3': flatName  = 'Fuchs'; break;
                 default: console.log('could not identify location for: ' + JSON.stringify(item));
             }
             item.summary = flatName;
