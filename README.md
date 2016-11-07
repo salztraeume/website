@@ -6,4 +6,5 @@
 > THE ORIGIN IS THE SOURCE OF TRUTH, BUT THAT WILL CHANGE SOON
 
 Source code for public website of http://salztraeume-am-see.de
+
 Commits to this repository will trigger a deployment to the production web server.
