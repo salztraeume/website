@@ -265,13 +265,6 @@ var setFlat = function(flat, item, cssClass) {
     flat.attr('data-toggle', 'tooltip');
     flat.attr('data-placement', 'top');
     var title = item.summary;
-    if ($.trim(item.summary) === 'Fuchs') {
-        var f1 = flat.hasClass('F1');
-        var f2 = flat.hasClass('F2');
-        var f3 = flat.hasClass('F3');
-        var flatNumber = f1 ? 1 : (f2 ? 2 : 3);
-        title = 'Fuchs '+ flatNumber;
-    }
     flat.attr('title', title);
     //flat.find('.title').text(item.summary);
     flat.append('<div data-id="'+item.id+'"></div>');
