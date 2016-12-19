@@ -695,10 +695,10 @@ $(document).ready(function() {
     // read initial url params
     readPermaLink({init: true});
 
-    if ($("#b_arrival").length > 0) {
-        $(".booking-calendar .day").on('click', function() {
+    if ($('#b_arrival').length > 0) {
+        $('.calendar').on('click', '.booking-calendar .day', function() {
             $('html, body').animate({
-                scrollTop: $("#header-title").offset().top - 60
+                scrollTop: $('#header-title').offset().top - 60
             }, 1000);
             setTimeout(function() {
                 $('#b_arrival').focus();
