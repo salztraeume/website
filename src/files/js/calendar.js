@@ -183,6 +183,7 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 case 'F1': flatName  = 'Fuchs'; break;
                 case 'F2': flatName  = 'Fuchs'; break;
                 case 'F3': flatName  = 'Fuchs'; break;
+                case 'FS': flatName  = 'Fuchs'; break;
                 default: console.log('could not identify location for: ' + JSON.stringify(item));
             }
             item.summary = flatName;
