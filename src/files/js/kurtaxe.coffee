@@ -1,4 +1,4 @@
-SERVER_URL = 'http://inquiry-webhook.awspace.de/kurtaxe'
+SERVER_URL = 'https://inquiry-webhook.awspace.de/kurtaxe'
 
 $n = (name, scope = window.document) ->
     $("[name='#{name}']", scope)

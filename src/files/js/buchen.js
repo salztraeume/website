@@ -1,5 +1,4 @@
-var FORM_MAILER_URL = 'http://inquiry-webhook.awspace.de/submit';
-
+var FORM_MAILER_URL = 'https://inquiry-webhook.awspace.de/submit';
 var DE_FORMATTER = 'DD.MM.YYYY';
 var EN_FORMATTER = 'YYYY-MM-DD';
 var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
