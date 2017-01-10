@@ -1,0 +1,6 @@
+build
+node_modules
+ftp
+vendor/fonts/*
+.DS_Store
+.env

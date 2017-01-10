@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flaticon WebFont</title>
+    <link rel="stylesheet" type="text/css" href="flaticon.css">
+    <meta charset="UTF-8">
+    <style>
+    body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-size: 16px;
+        padding: 20px;
+        color:#333;
+    }
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+        font-family: Flaticon;
+        font-size: 30px;
+        font-style: normal;
+        margin-left: 20px;
+        color: #333;
+    }
+    .image p {
+		font-size: 12px;
+		margin: 0px;
+		clear: none;
+		width: 300px;
+		line-height: 40px;
+	}
+    .text {
+        float: left;
+        font-size:14px;
+        margin-top: 15px;
+    }
+    .text ul {
+        margin-left:0px;
+        color:#111;
+        margin-bottom:20px;
+    }
+    .text .ex {
+        font-size:12px;
+        color:#666;
+        margin-left:35px;
+        display:block;
+    }
+    .text ul li {
+        margin-top:10px;
+        list-style:none;
+    }
+    .num {
+        background:#66A523;
+        color:#fff;
+        border-radius:20px;
+        padding:1px;
+        display:inline-block;
+        width:22px;
+        height:22px;
+        text-align:center;
+        margin-right: 5px;
+    }
+    .text ul strong {
+        font-weight:normal;
+        color:#000;
+    }
+    .image {
+        width: 280px;
+        float: left;
+        margin-bottom: 15px;
+        margin-right: 30px;
+    }
+    #glyphs {
+        clear: both;
+    }
+    .image p:nth-child(even) i {
+        clear: none;
+    }
+    .glyph {
+        display: inline-block;
+        width: 120px;
+        margin: 10px;
+        text-align: center;
+        vertical-align: top;
+        background: #FFF;
+    }
+    .glyph .glyph-icon {
+        padding: 10px;
+        display: block;
+        font-family:"Flaticon";
+        font-size: 64px;
+        line-height: 1;
+    }
+    .glyph .glyph-icon:before {
+        font-size: 64px;
+        color: #666;
+        margin-left: 0;
+    }
+    .class-name {
+        font-size: 12px;
+    }
+    .author-name {
+		font-size: 10px;
+	}
+	a{
+		color: #66A523;
+	}
+    .instructions {
+        font-style:italic;
+        font-size:22px;
+        margin-bottom:10px;
+    }
+    .iconsuse {
+        font-size:22px;
+        font-style:italic;
+        padding-top:20px;
+        margin-top:20px;
+        border-top:1px solid #bbb;
+    }
+    .usetitle {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-style: italic;
+    }
+    .class-name:last-child {
+        font-size: 10px;
+        color:#888;
+    }
+    .class-name:last-child a {
+        font-size: 10px;
+        color:#555;
+    }
+    .class-name:last-child a:hover {
+        color:#66A523;
+    }
+    .glyph > input {
+        display: block;
+        width: 100px;
+        margin: 5px auto;
+        text-align: center;
+        font-size: 12px;
+        cursor: text;
+    }
+    .glyph > input.icon-input {
+        font-family:"Flaticon";
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    h1.logo {
+        font-size: 40px;
+        letter-spacing: -1px;
+        margin-top: -16px;
+        text-transform: lowercase;
+        border-bottom:1px solid #bbb;
+    }
+    h1.logo strong {
+        font-size: 16px;
+        font-family:sans-serif;
+        font-weight:normal;
+        color:#333;
+    }
+    h1.logo a {
+        color:#34302d;
+        text-decoration: none;
+    }
+    h1.logo a span {
+        color:#66A523;
+    }
+    #footer {
+        padding-top:40px;
+        clear:both;
+        text-align:center;
+    }
+    #footer a {
+        color:#66A523;
+    }
+    textarea {
+		margin: 0px;
+		width: 800px;
+		height: 150px;
+		border: 1px solid #CCC;
+		resize: none;
+		background: #EEE;
+    }
+    .author-link, .attrDiv a{
+    	font-size: 12px;
+    	color: #333;
+    	text-decoration: none;
+    }
+    .external {
+    	display: block;
+    }
+    .attrDiv {
+		font-size: 12px;
+	}
+    .attribution {
+        border-top: 1px solid #AAA;
+        margin: 10px 0;
+        padding-top: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="http://www.flaticon.com">
+                <span>FLAT</span>ICON</a>
+            <strong>Font Demo</strong>
+        </h1>
+    </header>
+
+    <section class="demo">
+        <div class="text">
+
+            <div class="instructions">Instructions:</div>
+
+            <ul>
+                <li>
+                    <p>
+                        <span class="num">1</span>Copy the "Fonts" files and CSS files to your website CSS folder.
+                </li>
+                <li>
+                    <p>
+                        <span class="num">2</span>Add the CSS link to your website source code on header.
+                        <br />
+                        <span class="ex">&lt;head&gt;
+                            <br/>...
+                            <br/>&lt;link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css"&gt;
+                            <br/>...
+                            <br/>&lt;/head&gt;</span>
+                </li>
+
+                <li>
+                    <p>
+                        <span class="num">3</span>Use the icon class on "display:inline" elements:
+                        <br />
+                        <span class="ex">Use example: &lt;i class=&quot;flaticon-airplane49&quot;&gt;&lt;/i&gt; or &lt;span class=&quot;flaticon-airplane49&quot;&gt;&lt;/span&gt;</span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section id="glyphs"><div class="glyph">
+		<div class="glyph-icon flaticon-barbecue1"></div>
+		<div class="class-name">.flaticon-barbecue1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/barbecue_14480">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-barbecue5"></div>
+		<div class="class-name">.flaticon-barbecue5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/barbecue_53564">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bath1"></div>
+		<div class="class-name">.flaticon-bath1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bath-of-bubbles_14804">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bathroom13"></div>
+		<div class="class-name">.flaticon-bathroom13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bathroom-towel_47602">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bathtub3"></div>
+		<div class="class-name">.flaticon-bathtub3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bathtub-with-opened-shower_47634">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bathtub7"></div>
+		<div class="class-name">.flaticon-bathtub7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bathtub-with-water-dropping_62823">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-beach5"></div>
+		<div class="class-name">.flaticon-beach5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/beach-view-of-sea-sun-and-seagulls-couple_34940">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bed2"></div>
+		<div class="class-name">.flaticon-bed2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bed-with-person-sleeping_14088">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bed28"></div>
+		<div class="class-name">.flaticon-bed28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/double-bed_62842">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bed29"></div>
+		<div class="class-name">.flaticon-bed29</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/hotel-single-bed_62948">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bed6"></div>
+		<div class="class-name">.flaticon-bed6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bed-cushion-with-wooden-furniture_16949">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bicycle18"></div>
+		<div class="class-name">.flaticon-bicycle18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bicycle-side-view_61606">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bowl12"></div>
+		<div class="class-name">.flaticon-bowl12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bowl-in-a-microwave_52075">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-broom2"></div>
+		<div class="class-name">.flaticon-broom2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/broom-and-dustpan_15446">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-clock96"></div>
+		<div class="class-name">.flaticon-clock96</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/clock-circular-outline_59252">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-connection4"></div>
+		<div class="class-name">.flaticon-connection4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/connection_23644">Icomoon</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cup16"></div>
+		<div class="class-name">.flaticon-cup16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cup-for-drink-with-something-hot-inside_15234">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dryer1"></div>
+		<div class="class-name">.flaticon-dryer1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dryer-hair_13284">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dwelling1"></div>
+		<div class="class-name">.flaticon-dwelling1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dwelling-house_2144">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-electrical6"></div>
+		<div class="class-name">.flaticon-electrical6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/electrical-kettle-tool-side-view_45224">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-family11"></div>
+		<div class="class-name">.flaticon-family11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/family-silhouette_33728">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-family24"></div>
+		<div class="class-name">.flaticon-family24</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/family-of-four-in-front-of-their-home_46855">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-family4"></div>
+		<div class="class-name">.flaticon-family4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/family-of-three_27506">OCHA</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-favorite21"></div>
+		<div class="class-name">.flaticon-favorite21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/favorite-heart-button_60993">Google</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-fireextinguisher"></div>
+		<div class="class-name">.flaticon-fireextinguisher</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/fire-extinguisher_62777">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-fishing2"></div>
+		<div class="class-name">.flaticon-fishing2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/fishing-rod_10965">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-flavor"></div>
+		<div class="class-name">.flaticon-flavor</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flavor-salt_12340">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-forest7"></div>
+		<div class="class-name">.flaticon-forest7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/christmas-trees_65189">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-fork"></div>
+		<div class="class-name">.flaticon-fork</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/fork-and-knife_14222">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-group12"></div>
+		<div class="class-name">.flaticon-group12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/group-of-people_14323">Picol</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-hairdryer"></div>
+		<div class="class-name">.flaticon-hairdryer</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/hair-dryer_62915">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-hanger23"></div>
+		<div class="class-name">.flaticon-hanger23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/towel-on-hanger_62918">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-heating3"></div>
+		<div class="class-name">.flaticon-heating3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/heating-black-tool_35045">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-home63"></div>
+		<div class="class-name">.flaticon-home63</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/home-black-silhouette_23665">Icomoon</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-info24"></div>
+		<div class="class-name">.flaticon-info24</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/information-sign_62903">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-invalid"></div>
+		<div class="class-name">.flaticon-invalid</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/invalid-on-wheels-chair_10673">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-key177"></div>
+		<div class="class-name">.flaticon-key177</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/hotel-door-key_62981">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-king11"></div>
+		<div class="class-name">.flaticon-king11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/king-size-bedroom_47698">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-kitchen4"></div>
+		<div class="class-name">.flaticon-kitchen4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/kitchen-oven_2172">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-microwave2"></div>
+		<div class="class-name">.flaticon-microwave2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/microwave-oven_45623">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-microwave3"></div>
+		<div class="class-name">.flaticon-microwave3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/microwave-or-small-oven-kitchen-cooking-tool_47544">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-monitor13"></div>
+		<div class="class-name">.flaticon-monitor13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/monitor-wide-and-flat-screen_15415">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-multiple25"></div>
+		<div class="class-name">.flaticon-multiple25</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/multiple-users-silhouette_33308">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-no12"></div>
+		<div class="class-name">.flaticon-no12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/no-smoking-ios-7-interface-symbol_17876">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-open213"></div>
+		<div class="class-name">.flaticon-open213</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/open-sign_62909">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-opened37"></div>
+		<div class="class-name">.flaticon-opened37</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/opened-exit-door_59905">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-oven1"></div>
+		<div class="class-name">.flaticon-oven1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/oven-kitchen_13252">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-oven2"></div>
+		<div class="class-name">.flaticon-oven2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/oven-in-small-version_15364">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-oven4"></div>
+		<div class="class-name">.flaticon-oven4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/oven-kitchen-tool-for-cooking-foods_45442">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-parking14"></div>
+		<div class="class-name">.flaticon-parking14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/parking-sign_60526">Google</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-parking16"></div>
+		<div class="class-name">.flaticon-parking16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/parking-sign_62400">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-parking19"></div>
+		<div class="class-name">.flaticon-parking19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/parking-sign_62820">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-person107"></div>
+		<div class="class-name">.flaticon-person107</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/person-escalation_10889">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-person193"></div>
+		<div class="class-name">.flaticon-person193</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/person-lying-on-bed-inside-a-home_27793">OCHA</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-person83"></div>
+		<div class="class-name">.flaticon-person83</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/person-play-golf_10865">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-planet5"></div>
+		<div class="class-name">.flaticon-planet5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/planet-land_15681">Designerz Base</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-plate13"></div>
+		<div class="class-name">.flaticon-plate13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/plate-with-fork-and-knife-eating-set-tools-from-top-view_45531">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-pot"></div>
+		<div class="class-name">.flaticon-pot</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pot-with-handles_13914">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-refrigerator3"></div>
+		<div class="class-name">.flaticon-refrigerator3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/refrigerator_45705">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-restaurant26"></div>
+		<div class="class-name">.flaticon-restaurant26</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/restaurant-eating-tools-set-of-three-pieces_45266">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-restaurant50"></div>
+		<div class="class-name">.flaticon-restaurant50</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/restaurant-sign_62976">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-salt5"></div>
+		<div class="class-name">.flaticon-salt5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/salt-and-pepper-containers-for-dining-room_47633">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-sea8"></div>
+		<div class="class-name">.flaticon-sea8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/sea-ship_45998">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-service"></div>
+		<div class="class-name">.flaticon-service</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/service-wc-toilet_13316">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-ship18"></div>
+		<div class="class-name">.flaticon-ship18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/sailboat_64326">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-classic2"></div>
+		<div class="class-name">.flaticon-classic2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/vintage-bathtub_1290">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shower5"></div>
+		<div class="class-name">.flaticon-shower5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shower-with-water-droplets_27797">OCHA</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shower6"></div>
+		<div class="class-name">.flaticon-shower6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shower_31312">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-silhouette66"></div>
+		<div class="class-name">.flaticon-silhouette66</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/swimming-silhouette_62423">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-sink"></div>
+		<div class="class-name">.flaticon-sink</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/sink-of-bathroom_15222">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-sitting3"></div>
+		<div class="class-name">.flaticon-sitting3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/sitting-man-fishing-on-coast_10588">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-sofa1"></div>
+		<div class="class-name">.flaticon-sofa1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/sofa-of-two-places_14821">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-surf"></div>
+		<div class="class-name">.flaticon-surf</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/surf-sea_9905">Scott de Jonge</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-swim1"></div>
+		<div class="class-name">.flaticon-swim1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/swim-exercise_8911">Scott de Jonge</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-swimmer9"></div>
+		<div class="class-name">.flaticon-swimmer9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/swimmer_47743">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tap1"></div>
+		<div class="class-name">.flaticon-tap1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tap-close-up_15248">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-teapot2"></div>
+		<div class="class-name">.flaticon-teapot2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/teapot-black-shape_14790">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-television4"></div>
+		<div class="class-name">.flaticon-television4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/television-screen-with-antenna_21392">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-thermometer56"></div>
+		<div class="class-name">.flaticon-thermometer56</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thermometer-high-temperature_62980">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-toaster6"></div>
+		<div class="class-name">.flaticon-toaster6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/toaster_45678">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-toilet12"></div>
+		<div class="class-name">.flaticon-toilet12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/toilet-sign_63090">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-toilet2"></div>
+		<div class="class-name">.flaticon-toilet2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/toilet-paper_14070">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-toilet7"></div>
+		<div class="class-name">.flaticon-toilet7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/toilet-hanging-sign_35004">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-towel"></div>
+		<div class="class-name">.flaticon-towel</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/towel_31864">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-towel4"></div>
+		<div class="class-name">.flaticon-towel4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/towel-on-hanger_62965">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-train6"></div>
+		<div class="class-name">.flaticon-train6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/train-and-bus-fronts_8775">Scott de Jonge</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-travel20"></div>
+		<div class="class-name">.flaticon-travel20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cruise-ship_430">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-treasury"></div>
+		<div class="class-name">.flaticon-treasury</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/treasury-map_48487">Icons8</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tv13"></div>
+		<div class="class-name">.flaticon-tv13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tv_23641">Icomoon</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tv27"></div>
+		<div class="class-name">.flaticon-tv27</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/hotel-tv_62982">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tv4"></div>
+		<div class="class-name">.flaticon-tv4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tv-monitor_14798">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-umbrella28"></div>
+		<div class="class-name">.flaticon-umbrella28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/umbrella-of-a-beach-of-brazil_47168">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-vacuum2"></div>
+		<div class="class-name">.flaticon-vacuum2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/vacuum-for-home-cleansing_15317">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-wheelchair"></div>
+		<div class="class-name">.flaticon-wheelchair</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wheelchair-accident_9285">Zurb</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-widescreen"></div>
+		<div class="class-name">.flaticon-widescreen</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/widescreen-television_24472">Icons8</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-wifi33"></div>
+		<div class="class-name">.flaticon-wifi33</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wifi-signal-coverage_24468">Icons8</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-wifi93"></div>
+		<div class="class-name">.flaticon-wifi93</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wifi-signal_64240">Freepik</a></div></div></section>
+
+<section class="attribution">
+
+	<div class="usetitle">License and attribution:</div><div class="attrDiv">Font generated by <a href="http://www.flaticon.com">flaticon.com</a>
+ under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY</a>. The authors are: <a href="http://www.freepik.com">Freepik</a>, <a href="http://www.icomoon.io">Icomoon</a>, <a href="http://www.unocha.org">OCHA</a>, <a href="http://www.google.com">Google</a>, <a href="http://picol.org">Picol</a>, <a href="http://www.finest.graphics">Designerz Base</a>, <a href="http://www.scottdejonge.com">Scott de Jonge</a>, <a href="http://www.icons8.com">Icons8</a>, <a href="http://www.zurb.com">Zurb</a>.</div><div class="usetitle">Copy the Attribution License:</div>
+
+<textarea onclick="this.focus();this.select();">Font generated by &lt;a href=&quot;http://www.flaticon.com&quot;&gt;flaticon.com&lt;/a&gt;
+ under &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY&lt;/a&gt;. The authors are: &lt;a href=&quot;http://www.freepik.com&quot;&gt;Freepik&lt;/a&gt;, &lt;a href=&quot;http://www.icomoon.io&quot;&gt;Icomoon&lt;/a&gt;, &lt;a href=&quot;http://www.unocha.org&quot;&gt;OCHA&lt;/a&gt;, &lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;, &lt;a href=&quot;http://picol.org&quot;&gt;Picol&lt;/a&gt;, &lt;a href=&quot;http://www.finest.graphics&quot;&gt;Designerz Base&lt;/a&gt;, &lt;a href=&quot;http://www.scottdejonge.com&quot;&gt;Scott de Jonge&lt;/a&gt;, &lt;a href=&quot;http://www.icons8.com&quot;&gt;Icons8&lt;/a&gt;, &lt;a href=&quot;http://www.zurb.com&quot;&gt;Zurb&lt;/a&gt;.</textarea>
+
+</section>
+
+<section class="iconsuse">
+    	<div class="usetitle">Examples:</div>
+		<div class="image"><p>&lt;i class=&quot;flaticon-barbecue1&quot;&gt;&lt;/i&gt; <i class="flaticon-barbecue1"></i></p><p>&lt;i class=&quot;flaticon-barbecue5&quot;&gt;&lt;/i&gt; <i class="flaticon-barbecue5"></i></p><p>&lt;i class=&quot;flaticon-bath1&quot;&gt;&lt;/i&gt; <i class="flaticon-bath1"></i></p><p>&lt;i class=&quot;flaticon-bathroom13&quot;&gt;&lt;/i&gt; <i class="flaticon-bathroom13"></i></p><p>&lt;i class=&quot;flaticon-bathtub3&quot;&gt;&lt;/i&gt; <i class="flaticon-bathtub3"></i></p></div><div class="image"><p>&lt;span class=&quot;flaticon-bathtub7&quot;&gt;&lt;/span&gt; <span class="flaticon-bathtub7"></span></p><p>&lt;span class=&quot;flaticon-beach5&quot;&gt;&lt;/span&gt; <span class="flaticon-beach5"></span></p><p>&lt;span class=&quot;flaticon-bed2&quot;&gt;&lt;/span&gt; <span class="flaticon-bed2"></span></p><p>&lt;span class=&quot;flaticon-bed28&quot;&gt;&lt;/span&gt; <span class="flaticon-bed28"></span></p><p>&lt;span class=&quot;flaticon-bed29&quot;&gt;&lt;/span&gt; <span class="flaticon-bed29"></span></p></div><div class="image"><p>&lt;span class=&quot;flaticon-bed6&quot;&gt;&lt;/span&gt; <span class="flaticon-bed6"></span></p><p>&lt;i class=&quot;flaticon-bicycle18&quot;&gt;&lt;/i&gt; <i class="flaticon-bicycle18"></i></p><p>&lt;i class=&quot;flaticon-bowl12&quot;&gt;&lt;/i&gt; <i class="flaticon-bowl12"></i></p><p>&lt;i class=&quot;flaticon-broom2&quot;&gt;&lt;/i&gt; <i class="flaticon-broom2"></i></p><p>&lt;i class=&quot;flaticon-clock96&quot;&gt;&lt;/i&gt; <i class="flaticon-clock96"></i></p></div><div class="image"><p>&lt;span class=&quot;flaticon-connection4&quot;&gt;&lt;/span&gt; <span class="flaticon-connection4"></span></p><p>&lt;span class=&quot;flaticon-cup16&quot;&gt;&lt;/span&gt; <span class="flaticon-cup16"></span></p><p>&lt;span class=&quot;flaticon-dryer1&quot;&gt;&lt;/span&gt; <span class="flaticon-dryer1"></span></p><p>&lt;span class=&quot;flaticon-dwelling1&quot;&gt;&lt;/span&gt; <span class="flaticon-dwelling1"></span></p><p>&lt;span class=&quot;flaticon-electrical6&quot;&gt;&lt;/span&gt; <span class="flaticon-electrical6"></span></p></div><div class="image"></div>
+</section>
+<div id="footer">
+    <div>Generated by <a href="http://www.flaticon.com">flaticon.com</a>
+    </div>
+</div>
+	</body>
+</html>
