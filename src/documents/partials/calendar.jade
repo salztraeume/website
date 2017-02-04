@@ -3,8 +3,10 @@ mixin calendar(flat, month, columns)
     +bookingCalendar(flat, month, columns)
 
 mixin loadCalendarEvents
-    unless process.env.OFFLINE
+    if process.env.NODE_ENV == 'production'
         script(src="//cal-aggregator.awspace.de/items.js")
+    else
+        script(src="//localhost:5002/items.js")
 
 mixin calendarControls(flat)
     div.row

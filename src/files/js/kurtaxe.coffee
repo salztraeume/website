@@ -1,4 +1,6 @@
 SERVER_URL = 'https://inquiry-webhook.awspace.de/kurtaxe'
+if window.location.hostname == 'localhost'
+    SERVER_URL = 'http://localhost:5001/service/online-checkin'
 
 $n = (name, scope = window.document) ->
     $("[name='#{name}']", scope)
