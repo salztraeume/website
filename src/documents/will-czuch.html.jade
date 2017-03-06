@@ -11,7 +11,7 @@ div
             ## Will Czuch
 
             #### Wann
-            24.03.2017, Einlass 20:00
+            24.03.2017, Einlass 20:00 Uhr
 
             #### Was kostet es
             Der Eintritt ist frei!<br>
@@ -22,6 +22,11 @@ div
             Um genug Plätze zu gewährleisten, bitte [hier angeben, wieviele Leute du mitbringen willst](//timaschew.typeform.com/to/qDri27).<br>
             Alternativ per E-Mail
             an [wohnzimmerkonzert@salztraeume-am-see.de](mailto:wohnzimmerkonzert@salztraeume-am-see.de)
+
+            #### Kann ich sitzen oder muss ich stehen?
+            Es wird Sitzplätze geben, aber nur begrenzt, der Rest darf stehen.<br>
+            Also lieber schnell einen Platz reservieren ;)<br>
+            <span class="guests-amount"></span>
 
             #### Wo
             Tagungsraum, Salzträume am See<br>
@@ -51,3 +56,17 @@ div
       span.instagram
             a(href="//www.instagram.com/willczuch/" target="_blank")
                   img(height="100" src="//s-media-cache-ak0.pinimg.com/736x/a0/b3/0b/a0b30b7b751b30961fd4667b9c68b2ac.jpg")
+script.
+      const ref = setInterval(function() {
+            if (window.jQuery != null) {
+                  clearInterval(ref);
+                  load();
+            }
+      }, 100);
+      function load() {
+            jQuery.get('//sas-public.awspace.de/ext-api/will-czuch').done(function(data) {
+                  console.log('>', arguments);
+                  jQuery('.guests-amount').text('Aktuell haben sich ' + data.guests + ' Personen angemeldet.');
+            })
+      }
+

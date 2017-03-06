@@ -51,6 +51,12 @@ html(lang='en')
 
             li: a(href='/see-und-saarow.html') See&amp;Saarow
             li: a(href='/tagungsraum.html') Tagungsraum
+            li.dropdown
+              a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false")
+                | Veranstaltungen
+                span.caret
+              ul.dropdown-menu(role="menu")
+                li: a(href="/will-czuch.html") Wohnzimmerkonzert
 
           ul.nav.navbar-nav.navbar-right
             li: a(href="/buchen.html") Buchen
