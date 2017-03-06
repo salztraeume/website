@@ -1,6 +1,6 @@
-var FORM_MAILER_URL = 'https://inquiry-webhook.awspace.de/submit';
+var FORM_MAILER_URL = '//sas-public.awspace.de/ext-api/website-form';
 if (window.location.hostname === 'localhost') {
-    FORM_MAILER_URL = 'http://localhost:5001/service/website-form'
+    FORM_MAILER_URL = '//localhost:5001/ext-api/website-form'
 }
 var DE_FORMATTER = 'DD.MM.YYYY';
 var EN_FORMATTER = 'YYYY-MM-DD';
@@ -630,9 +630,7 @@ var limitDatePicker = function(element) {
 
     for (var i=0; i<SAISONS.length; i++) {
         var saison = SAISONS[i];
-        var saisonStart = saison.start.split('.').map(function(i) {
-            return parseInt(i);
-        });
+        var saisonStart = saison.start.split('.').map(parseInt)
         var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'days');
         // extra check for winter saison, year change
         if (arrivalDate.months() === 0) {
@@ -825,17 +823,17 @@ var prepareSubmit = function() {
             flat_name: flat_name,
             from: from,
             to: to,
-            nights: nights,
-            guests: guests,
-            guests_adult: guests_adult,
-            guests_teens: guests_teens,
-            guests_children: guests_children,
-            guests_children_free: guests_children_free,
-            price_basic: price_basic,
-            price_extra_persons: price_extra_persons,
-            price_clean: price_clean,
-            price_fee: price_fee,
-            price_total: price_total,
+            nights: parseInt(nights) || 0,
+            guests: parseInt(guests) || 0,
+            guests_adult: parseInt(guests_adult) || 0,
+            guests_teens: parseInt(guests_teens) || 0,
+            guests_children: parseInt(guests_children) || 0,
+            guests_children_free: parseInt(guests_children_free) || 0,
+            price_basic: parseFloat(price_basic) || 0,
+            price_extra_persons: parseFloat(price_extra_persons) || 0,
+            price_clean: parseFloat(price_clean) || 0,
+            price_fee: parseFloat(price_fee) || 0,
+            price_total: parseFloat(price_total) || 0,
             gender: gender,
             tvDistinction: tvDistinction,
             firstname: firstname,

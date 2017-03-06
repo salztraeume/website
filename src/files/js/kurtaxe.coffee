@@ -1,6 +1,6 @@
-SERVER_URL = 'https://inquiry-webhook.awspace.de/kurtaxe'
+SERVER_URL = '//sas-public.awspace.de/ext-api/online-checkin'
 if window.location.hostname == 'localhost'
-    SERVER_URL = 'http://localhost:5001/service/online-checkin'
+    SERVER_URL = '//localhost:5001/ext-api/online-checkin'
 
 $n = (name, scope = window.document) ->
     $("[name='#{name}']", scope)
