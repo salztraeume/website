@@ -131,7 +131,8 @@ form#booking-form.conainter.booking(onsubmit="return false;")
         textarea#b_note.form-control(rows="2", placeholder="Bemerkungen")
 
     div.form-group
-        select#b_found.form-control
+        label.validation.found.control-label(for="b_found")
+        select#b_found.form-control(required)
             option(value='' disabled, selected) Gefunden über ...
             option(value="suchmaschine") Suchmaschine
             option(value="airbnb") Airbnb

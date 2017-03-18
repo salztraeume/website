@@ -549,6 +549,14 @@ var extraValidation = function() {
         returnValue = true;
     }
 
+    const foundValue = $('#b_found').val()
+    if (foundValue == null || foundValue == '') {
+        alert("Bitte Gefunden über auswählen")
+        $('label.found').text('Bitte auswählen').show().parent().addClass('has-error');
+    } else {
+        $('label.found').hide().parent().removeClass('has-error');
+    }
+
     // check that at least one person is booked
     if (calcTotalGuests() <= 0) {
         $('.guests-size').addClass('has-error');
@@ -571,24 +579,8 @@ var extraValidation = function() {
     }
 
     // check if time and flat is available
-    var available = true;
-    if (flatSelectedValue === 'Fuchs') {
-        if(checkAvailabilityFor('F1', flatDetails[0]) === false) {
-            available = false;
-        }
-        if (checkAvailabilityFor('F2', flatDetails[1]) === false) {
-            available = false;
-        }
-        if(checkAvailabilityFor('F3', flatDetails[2]) === false) {
-            available = false;
-        }
-    } else {
-        var location = $("#b_flat :selected").attr('data-location');
-        if (checkAvailabilityFor(location, 1) === false) {
-            available = false;
-        }
-    }
-    if (available === false) {
+    var location = $("#b_flat :selected").attr('data-location');
+    if (checkAvailabilityFor(location, 1) === false) {
         if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
             if (window.location.hash.indexOf('verify') !== -1) {
                 // verify mode, use green or red
@@ -863,7 +855,7 @@ var doSubmit = function(data) {
     });
 
     request.done(function(json, responseType, xhr) {
-        alert('Anfrage erfolgreich verschickt. Sie bekommen in wenigen Minuten eine E-Mail.');
+        alert('Anfrage erfolgreich verschickt');
         console.log(xhr);
         submitButton[0].disabled = true;
         var content = parseJson(xhr.responseText).content || '';
@@ -871,7 +863,7 @@ var doSubmit = function(data) {
     });
 
     request.fail(function(xhr, responseType, statusText) {
-        var content = parseJson(xhr.responseText).content || 'Entschuldigung, bitte versuchen Sie es später noch einmal';
+        var content = parseJson(xhr.responseText).content || 'Anfrage konnte nicht gesendet werden, bitte technik@salztraeume-am-see.de kontaktieren';
         if (content !== '') content = ': ' + content;
         alert('Anfrage konnte nicht gesendet werden' + content);
         submitButton.text(submitButtonOriginalText);

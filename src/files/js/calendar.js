@@ -170,6 +170,9 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                     console.log('could not match flat name for: '+item.summary);
             }
         }
+        if (item.location == '') {
+            return
+        }
         // set summary by location for cases with a r_id is only set
         if (isNaN(parseInt(item.summary))) {
             // do nothing
