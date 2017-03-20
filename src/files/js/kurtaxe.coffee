@@ -177,6 +177,8 @@ buttonStep1 = $ '#init-load'
 buttonStep1.on 'click', (e) ->
     e.preventDefault()
     [name, id] = window.location.search.split('=')
+    Raven.setUserContext
+        id: id
     request = $.ajax
         url: "#{SERVER_URL}/#{id}"
         type: "GET"
@@ -185,7 +187,7 @@ buttonStep1.on 'click', (e) ->
     request.done (json, responseType, xhr) ->
         $('.step-1').hide()
         $('.step-2').show()
-        data = xhr.responseJSON
+        window.inquiryData = data = xhr.responseJSON
         template = renderTemplate(data)
         $(template).appendTo '#booking-data'
 
@@ -196,6 +198,7 @@ buttonStep1.on 'click', (e) ->
             content = 'Entschuldigung, bitte versuchen Sie es später noch einmal'
         alert(content)
         console.log(arguments)
+        Raven.captureException(new Error('taxform receiving data'))
 
 buttonStep2 = $ '#show-form'
 buttonStep2.on 'click', (e) ->
@@ -205,7 +208,9 @@ buttonStep2.on 'click', (e) ->
 
 submitButton = $('#submit-data')
 feedbackDiv = $ '#submit-feedback'
-submitButton.on 'click', (e) ->
+submitButton.on 'click', (e) =>
+    Raven.context () => submitHandler(e)
+submitHandler = (e) ->
     feedbackDiv.text ''
     e.preventDefault()
 
@@ -260,6 +265,17 @@ submitButton.on 'click', (e) ->
             &b_firstname2[#{index+1}]=#{$nGetValue 'b_firstname2', form}
             &b_lastname2[#{index+1}]=#{$nGetValue 'b_lastname2', form}
         """
+    Raven.captureBreadcrumb
+      message: 'sending taxform'
+      category: 'action'
+      data: formData
+
+    Raven.setUserContext
+        rId: window.inquiryData.r_id
+        firstname: window.inquiryData.firstname
+        name: window.inquiryData.name
+        flatName: window.inquiryData.flat_name
+
 
     request = $.ajax
         url: "#{SERVER_URL}/#{id}"
@@ -283,7 +299,7 @@ submitButton.on 'click', (e) ->
         submitButton.text(submitButtonOriginalText)
         submitButton[0].disabled = false
         console.log(arguments)
-
+        Raven.captureException(new Error('taxform sending failed'))
 
 
 renderTemplate = (data) ->

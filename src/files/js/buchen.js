@@ -549,14 +549,6 @@ var extraValidation = function() {
         returnValue = true;
     }
 
-    const foundValue = $('#b_found').val()
-    if (foundValue == null || foundValue == '') {
-        alert("Bitte Gefunden über auswählen")
-        $('label.found').text('Bitte auswählen').show().parent().addClass('has-error');
-    } else {
-        $('label.found').hide().parent().removeClass('has-error');
-    }
-
     // check that at least one person is booked
     if (calcTotalGuests() <= 0) {
         $('.guests-size').addClass('has-error');
@@ -593,6 +585,7 @@ var extraValidation = function() {
             return false;
         }
     }
+
     return true;
 };
 
@@ -744,7 +737,9 @@ $(document).ready(function() {
 
         var data = prepareSubmit();
         if (data != null) {
-            doSubmit(data);
+            Raven.context(function() {
+                doSubmit(data);
+            })
         }
     });
 
@@ -762,6 +757,13 @@ var prepareSubmit = function() {
     if (!extraValidation()) return;
 
     var form = $('.conainter.booking')[0];
+
+    let foundIsValid = true;
+    const foundValue = $('#b_found').val();
+    if (foundValue == null || foundValue == '') {
+        $('label.found').text('Bitte auswählen').show().parent().addClass('has-error');
+        foundIsValid = false;
+    }
     if (form.checkValidity && !form.checkValidity() && localStorage.getItem(LOCAL_STORAGE_KEY) !== 'on') {
         var inputs = form.querySelectorAll("input");
         for (var i=0; i<inputs.length; i++) {
@@ -776,7 +778,7 @@ var prepareSubmit = function() {
         return null;
     } else {
         if (!extraValidation()) return;
-
+        if (!foundIsValid) return;
         var dates = calcGuestDates();
 
         // --------------------------------------
@@ -847,6 +849,11 @@ var doSubmit = function(data) {
     submitButton.text('Bitte warten ...');
     submitButton[0].disabled = true;
 
+    Raven.setUserContext({
+        firstname: data.firstname,
+        name: data.name,
+        email: data.email,
+    });
     var request = $.ajax({
         url: window.FORM_MAILER_URL || FORM_MAILER_URL,
         type: "POST",
@@ -863,12 +870,25 @@ var doSubmit = function(data) {
     });
 
     request.fail(function(xhr, responseType, statusText) {
-        var content = parseJson(xhr.responseText).content || 'Anfrage konnte nicht gesendet werden, bitte technik@salztraeume-am-see.de kontaktieren';
+        var content = parseJson(xhr.responseText).content || 'Anfrage konnte nicht gesendet werden, der Administrator wird darüber automatisch informiert';
         if (content !== '') content = ': ' + content;
-        alert('Anfrage konnte nicht gesendet werden' + content);
+        alert('FEHLER' + content);
         submitButton.text(submitButtonOriginalText);
         submitButton[0].disabled = false;
         console.log(xhr);
+        data._xhr = {
+            readyState: xhr.readyState,
+            responseText: xhr.responseText,
+            status: xhr.status,
+            hrstatusText: xhr.statusText
+          }
+        Raven.captureBreadcrumb({
+          message: 'sending inquiry',
+          category: 'action',
+          data: data
+        });
+        Raven.captureException(new Error('inquiry sending failed'))
+        console.log('Raven.lastEventId()', Raven.lastEventId())
     });
 }
 
