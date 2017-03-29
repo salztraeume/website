@@ -794,6 +794,7 @@ var prepareSubmit = function() {
         var guests_teens = $('#b_guests_teens').val() || null;
         var guests_children = $('#b_guests_children').val() || null;
         var guests_children_free = $('#b_guests_children_free').val() || null;
+        var voucherCode = $('#b_code').val() || null;
 
         var price_Basic_ = parsePrice($('#price-base').text());
         var price_Saison_ = parsePrice($('#price-extra-saison').text());
@@ -822,6 +823,7 @@ var prepareSubmit = function() {
             guests_teens: parseInt(guests_teens) || 0,
             guests_children: parseInt(guests_children) || 0,
             guests_children_free: parseInt(guests_children_free) || 0,
+            voucherCode: voucherCode,
             gender: gender,
             tvDistinction: tvDistinction,
             firstname: firstname,
