@@ -615,7 +615,7 @@ var limitDatePicker = function(element) {
 
     for (var i=0; i<SAISONS.length; i++) {
         var saison = SAISONS[i];
-        var saisonStart = saison.start.split('.').map(parseInt)
+        var saisonStart = saison.start.split('.').map(Number)
         var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'days');
         // extra check for winter saison, year change
         if (arrivalDate.months() === 0) {
