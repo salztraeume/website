@@ -19,11 +19,13 @@ table.table.table-bordered.price-table
             th Personen
             th Schmetterling
             th Eichhörnchen
+            th Schwan
             th Fuchs
 
     tbody
         tr
             th(scope='row') 1
+            td.base(rowspan=2) 70 €
             td.base(rowspan=2) 70 €
             td.base(rowspan=2) 70 €
             td.base(rowspan=5) 120 €
@@ -33,11 +35,14 @@ table.table.table-bordered.price-table
             th(scope='row') 3
             td(rowspan=6)
             td 85 €
+            td 85 €
         tr
             th(scope='row') 4
             td(rowspan=5)
+            td 100 €
         tr
             th(scope='row') bis 5
+            td(rowspan=4)
         tr
             th(scope='row') 6
             td 135 €
@@ -50,10 +55,10 @@ table.table.table-bordered.price-table
     tbody
         tr
             th(scope="row") Servicegebühr
-            td(colspan=3) 30 € &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            td(colspan=4) 30 € &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         tr
             th(scope="row") ab der 5. Person
-            td(colspan=2)
+            td(colspan=3)
             td zzgl. 5 € pro Person
 
 :markdown

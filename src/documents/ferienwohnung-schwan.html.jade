@@ -1,0 +1,150 @@
+---
+layout: master
+title: Schwan. Zwischen Wald & See.
+keywords: ferienwohnung, schwan
+description: Ferienwohnung Schwan
+---
+include partials/mixins
+include partials/calendar
+
+extends flat_template
+
+block flat-title
+    h1 Ferienwohnung Schwan. <br>Direkt zwischen Wald &amp; See.
+
+block carousel
+    +carousel()
+        .item.active
+            img(alt="Schmetterling", src='/img/schwan/1-head.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Schmetterling", src='/img/schwan/7-head.jpg')
+            .carousel-caption
+                | Wohnküche
+        .item
+            img(alt="Schmetterling", src='/img/schwan/11-head.jpg')
+            .carousel-caption
+                | Schlafzimmer
+        .item
+            img(alt="Schmetterling", src='/img/schwan/15-head.jpg')
+            .carousel-caption
+                | Badezimmer
+        
+
+
+block unterkunft
+    div.col-sm-6
+        +keyAndStrongValue('Art der Unterkunft', 'Wohnung')
+        +keyAndStrongValue('Unterkunft für', '4')
+        +keyAndStrongValue('Schlafzimmer', '1')
+        +keyAndStrongValue('Badezimmer', '1')
+
+    div.col-sm-6
+        +keyAndStrongValue('Betten', '2')
+        +checkInOut()
+
+block ausstattung
+    div.col-xs-6
+        +as('flaticon-fork', 'Küche', 'Küche mit Kühlschrank, Herd, Spühlmaschine sowie Kochutensilien')
+        +as('flaticon-wifi93', 'Wi-Fi')
+        +as('flaticon-widescreen', 'TV', 'Fernseher mit Kabelanschluss')
+        +as('flaticon-bathroom13', 'Wesentliches', 'Bettwäsche, Handtücher, Seife, Haartrockner, Toilettenpapier')
+
+    div.col-xs-6
+        +as('flaticon-oven4', 'Backofen', 'großes Cerankochfeld')
+        +as('flaticon-parking19', 'Parkplatz', 'kostenloser Parkplatz auf dem Grundstück')
+        +as('flaticon-family11', 'Familien-/Kinderfreundlich')
+
+block preise
+    div.col-md-6
+        +keyAndStrongValue('Wohnungspreis (bis 2 P.)', '70 €')
+        +keyAndStrongValue('Servicegebühr', '30 €')
+        +keyAndStrongValue('Mindestaufenthalt', '2 Nächte')
+
+
+    div.col-md-6
+        |Ermäßigungen:
+        +keyAndStrongValue('Jugendliche bis 17 Jahren', '10 €')
+        +keyAndStrongValue('Kinder bis 9 Jahren', '5 €')
+        +keyAndStrongValue('Kinder bis 4 Jahren', 'kostenlos')
+
+block specialcarusel        
+    +carousel(name='special-carousel')
+      .item.active
+        img(src='img/schwan/1.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/2.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/3.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/4.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche   
+      .item
+        img(src='img/schwan/5.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche   
+      .item
+        img(src='img/schwan/6.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/7.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/8.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche    
+      .item
+        img(src='img/schwan/9.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche
+      .item
+        img(src='img/schwan/10.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Wohnküche   
+      .item
+        img(src='img/schwan/11.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer   
+      .item
+        img(src='img/schwan/12.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer                                        
+      .item
+        img(src='img/schwan/13.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Schlafzimmer    
+      .item
+        img(src='img/schwan/14.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Flur    
+      .item
+        img(src='img/schwan/15.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Badezimmer    
+      .item
+        img(src='img/schwan/16.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Badezimmer    
+      .item
+        img(src='img/schwan/17.jpg', alt='Ferienwohnung Schwan Bad Saarow')
+        .carousel-caption
+          | Badezimmer    
+
+block beschreibung
+    include:markdown ./details-schwan.md
+
+block calender
+    +calendar('SN')
+
+block buchen
+    +buchen('SN')
