@@ -5,13 +5,22 @@ keywords: ferienwohnung, bad saarow, preise, übernachtung, ermäßigung
 description: Hier finden Sie unsere Preistabelle für unsere Ferienwohnungen am Scharmützelsee in Bad Saarow
 ---
 
-
-div(style="padding: 10px")
+div
     :markdown
-        Die folgende Tabelle zeigt unsere Preise pro Übernachtung.
-        Mindestaufenthalt beträgt 2 Nächte*.
-        Die Ferienwohnung Fuchs fungiert als eine Art Hostel, die einzelnen Schlafräume können von verschiedenen Parteien gebucht werden.
-        Fuchs kann auch exklusiv gebucht werden.
+        Die Tabelle zeigt die Preise der aktuellen Saison an. Die Saison kann in dem Auswahlfeld geändert werden. Bitte Beachten Sie, dass sich der Mindestaufenthalt in der Hauptsaisons ändert.
+
+div.saison-container
+    select.saisons
+        option(selected disabled) Saisonpreise werden geladen...
+        option(disabled) Hauptsaison
+        option(disabled) Zwischensaison
+        option(disabled) Nebensaison
+    span.min-stay(style="margin-left: 10px")
+    div.ranges(style="margin-top: 10px")
+
+
+
+div(style="margin-bottom: 20px")
 
 table.table.table-bordered.price-table
     thead
@@ -25,41 +34,41 @@ table.table.table-bordered.price-table
     tbody
         tr
             th(scope='row') 1
-            td.base(rowspan=2) 70 €
-            td.base(rowspan=2) 70 €
-            td.base(rowspan=2) 70 €
-            td.base(rowspan=5) 120 €
+            td.base.base-SL(rowspan=2) 
+            td.base.base-EH(rowspan=2) 
+            td.base.base-SW(rowspan=2) 
+            td.base.base-FS(rowspan=5)
         tr
             th(scope='row') 2
         tr
             th(scope='row') 3
             td(rowspan=6)
-            td 85 €
-            td 85 €
+            td.extra-EH-1 
+            td.extra-SW-1 
         tr
             th(scope='row') 4
             td(rowspan=5)
-            td 100 €
+            td.extra-SW-2 
         tr
             th(scope='row') bis 5
             td(rowspan=4)
         tr
             th(scope='row') 6
-            td 135 €
+            td.extra-FS-1 
         tr
             th(scope='row') 7
-            td 150 €
+            td.extra-FS-2
         tr
             th(scope='row') 8
-            td 165 €
+            td.extra-FS-3 
     tbody
         tr
             th(scope="row") Servicegebühr
-            td(colspan=4) 30 € &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            td.service-fee(colspan=4)
         tr
-            th(scope="row") ab der 5. Person
+            th(scope="row") ab der 5. Person je
             td(colspan=3)
-            td zzgl. 5 € pro Person
+            td.extra-fs-person
 
 :markdown
     Der Gesamtpreis kann auf der [Buchen](buchen.html) Seite interaktiv berechnet werden.
@@ -68,16 +77,8 @@ table.table.table-bordered.price-table
     <br>
     Für die Preisangaben in den __nicht__ grau markieren Feldern gibt es für Kinder Ermäßigungen.<br>
     Kinder von 10—17 Jahren zahlen 10 € ~~statt 15 €~~ pro Übernachtung.<br>
-    Kinder von 5—9 Jahren zahlen 5 € ~~statt 10 €~~ pro Übernachtung<br>
+    Kinder von 5—9 Jahren zahlen 5 € ~~statt 15 €~~ pro Übernachtung<br>
     Kinder unter 4 Jahren übernachten bei uns kostenlos.
-
-
-    *SAISONPREISE
-    <br>
-    In der Hauptsaison (01.06. — 31.08.) wird auf den Wohnungsgrundpreis ein Aufschlag von 5 € pro Nacht <br>
-    und in der Wintersaison (24.12.–3.1.) ein Aufschlag von 15 € pro Nacht erhoben.<br>
-    Der Mindestaufenthalt beträgt in diesen Zeiträumen 4 Nächte.
-
 
     __Kurtaxe:__
     In Bad Saarow fällt eine Kurtaxe in Höhe von 2,00 € pro Person (ab 18 Jahre) pro Tag an.
