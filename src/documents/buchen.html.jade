@@ -10,9 +10,6 @@ div.calendar
     +calendarControls()
     div.multi-calendar.row
         +bookingCalendar()
-        //- +bookingCalendar(null, -1, 4)
-        //- +bookingCalendar(null, 0, 4)
-        //- +bookingCalendar(null, 1, 4)
 
 form#booking-form.conainter.booking(onsubmit="return false;")
 
@@ -55,7 +52,7 @@ form#booking-form.conainter.booking(onsubmit="return false;")
             input#b_guests_children.input.form-control(type="number", min="0", data-price="5", data-fee="0", placeholder="Kinder (5-9 Jahre)", data-toggle="tooltip", data-placement="top", title="5-9 Jahre")
             span.input-group-addon
             input#b_guests_children_free.input.form-control(type="number", min="0", data-price="0", data-fee="0", placeholder="Kinder (bis 4 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 4 Jahre")
-
+        
     div.form-group.guests-size
         label.size-overflow.control-label(for="b_guests_total") Wohnung bietet evtl. nicht genug Schlafplätze! Eine Anfrage ist dennoch möglich.
         label.size-underflow.control-label(for="b_guests_total") Es muss für mindestens eine Person gebucht werden
