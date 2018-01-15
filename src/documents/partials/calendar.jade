@@ -10,6 +10,7 @@ mixin loadCalendarEvents
         }
         var script = document.createElement('script')
         script.src = url
+        script.onload = function() {window.initializeCalendar()}
         document.getElementsByTagName('head')[0].appendChild(script)
 
 mixin calendarControls(flat)

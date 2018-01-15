@@ -153,10 +153,11 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                     item.location = "SW";
                     break;
                 default:
-                    console.log('could not match flat name for: '+item.summary);
+                    console.warn('could not match flat name for: '+item.summary);
             }
         }
         if (item.location == '') {
+            console.warn('location property was empty')
             return
         }
         // set summary by location for cases with a r_id is only set
@@ -255,48 +256,45 @@ var setFlat = function(flat, item, cssClass) {
 
 $(document).ready(function() {
 
-    //  +++ calendar +++
-    if ($('table.booking-calendar').length === 0) {
-        return;
+    window.initializeCalendar = function() {
+        //  +++ calendar +++
+        window.tableTemplate = $('table.booking-calendar').clone();
+        // initial is now
+        //TODO: maybe should better be the start date's month
+        window.current = moment();
+
+        calcCalendar(window.current);
+        updateItemsForCurrentMonth();
+
+        $('.prev').click(function(e) {
+            window.current.subtract(1, 'months');
+            clearCal();
+            calcCalendar(window.current);
+            updateItemsForCurrentMonth();
+            e.preventDefault();
+        });
+        $('.next').click(function(e) {
+            window.current.add(1, 'month');
+            clearCal();
+            calcCalendar(window.current);
+            updateItemsForCurrentMonth();
+            e.preventDefault();
+        });
+        $('.filter-SL').change(function() {
+            $('.booking-calendar .SL').toggle();
+            if (setPermaLink) setPermaLink('filter', 'SL');
+        });
+        $('.filter-EH').change(function() {
+            $('.booking-calendar .EH').toggle();
+            if (setPermaLink) setPermaLink('filter', 'EH');
+        });
+        $('.filter-FS').change(function() {
+            $('.booking-calendar .FS').toggle();
+            if (setPermaLink) setPermaLink('filter', 'FS');
+        });
+        $('.filter-SW').change(function() {
+            $('.booking-calendar .SW').toggle();
+            if (setPermaLink) setPermaLink('filter', 'SW');
+        });
     }
-
-    window.tableTemplate = $('table.booking-calendar').clone();
-    // initial is now
-    //TODO: maybe should better be the start date's month
-    window.current = moment();
-
-    calcCalendar(window.current);
-    updateItemsForCurrentMonth();
-
-    $('.prev').click(function(e) {
-        window.current.subtract(1, 'months');
-        clearCal();
-        calcCalendar(window.current);
-        updateItemsForCurrentMonth();
-        e.preventDefault();
-    });
-    $('.next').click(function(e) {
-        window.current.add(1, 'month');
-        clearCal();
-        calcCalendar(window.current);
-        updateItemsForCurrentMonth();
-        e.preventDefault();
-    });
-    $('.filter-SL').change(function() {
-        $('.booking-calendar .SL').toggle();
-        if (setPermaLink) setPermaLink('filter', 'SL');
-    });
-    $('.filter-EH').change(function() {
-        $('.booking-calendar .EH').toggle();
-        if (setPermaLink) setPermaLink('filter', 'EH');
-    });
-    $('.filter-FS').change(function() {
-        $('.booking-calendar .FS').toggle();
-        if (setPermaLink) setPermaLink('filter', 'FS');
-    });
-    $('.filter-SW').change(function() {
-        $('.booking-calendar .SW').toggle();
-        if (setPermaLink) setPermaLink('filter', 'SW');
-    });
-
 });
