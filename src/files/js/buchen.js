@@ -1,7 +1,14 @@
-var FORM_MAILER_URL = '//sas-public.awspace.de/ext-api/website-form';
+var FORM_MAILER_URL = 'https://sas-public.awspace.de/ext-api/website-form';
+var PRICING_URL = 'https://sas-public.awspace.de/ext-api/pricing';
+
 if (window.location.hostname === 'localhost') {
     FORM_MAILER_URL = '//localhost:5001/ext-api/website-form'
 }
+
+if (window.location.hostname === 'localhost') {
+    PRICING_URL = '//localhost:5001/ext-api/pricing'
+}
+
 var DE_FORMATTER = 'DD.MM.YYYY';
 var EN_FORMATTER = 'YYYY-MM-DD';
 var DATEPICKER_SELECTOR = '.conainter.booking .input-daterange';
@@ -14,69 +21,8 @@ var DATEPICKER_OPTS = {
     todayHighlight: true,
     todayBtn: true
 };
-SAISONS = [
-    {
-        name: 'summer',
-        start: '01.06',
-        duration: moment('2000-08-31').diff(moment('2000-06-01'), 'days'),
-        nights: 4,
-        type: 'fix-offset',
-        amount: 5
-    },
-    {
-        name: 'winter',
-        start: '23.12',
-        duration: moment('2001-01-03').diff(moment('2000-12-23'), 'days'),
-        nights: 4,
-        type: 'fix-offset',
-        amount: 15
-    }
-];
 
-var SL_BASIC;
-var EH_BASIC;
-var FS_BASIC;
-var WHOLE_FUCHS_BASE = $("#b_flat option[value=Fuchs]").attr('data-price');
-var EH_AND_SL_PERSON_THRESHOLD = 2; // count extra persons after the second
-var WHOLE_FUCHS_PERSON_THRESHOLD = 5; // count extra persons after the fifth
-var DEFAULT_MIN_NIGHTS = 2;
-var CLEAN_BASE = 30;
-
-var NL = NEWLINE = "%0D%0A";
-var LOCAL_STORAGE_KEY = 'salttraeume_rsp';
-var LOCAL_STORAGE_VERSION = 'preis';
-
-if (sessionStorage.getItem(LOCAL_STORAGE_VERSION) === '0.1') {
-    WHOLE_FUCHS_BASE = 90;
-    SL_BASIC = 50;
-    EH_BASIC = 55;
-    FS_BASIC = 20;
-    $("#b_flat option[value=Schmetterling]").attr('data-price', SL_BASIC);
-    $("#b_flat option[value=Eichhoernchen]").attr('data-price', EH_BASIC);
-    $("#b_flat option[value=Fuchs]").attr('data-price', FS_BASIC);
-    alert('alte Preise sind aktiv!');
-    console.log('Preistabelle:');
-    priceTable = $("#b_flat option").map(function(i, e) {
-        console.log($(e).text() + ': '+ $(e).attr('data-price'));
-    });
-    console.log("Fuchs komplett: "+WHOLE_FUCHS_BASE);
-}
-
-if (sessionStorage.getItem(LOCAL_STORAGE_VERSION) === '0.2') {
-    WHOLE_FUCHS_BASE = 105;
-    SL_BASIC = 55;
-    EH_BASIC = 60;
-    FS_BASIC = 25;
-    $("#b_flat option[value=Schmetterling]").attr('data-price', SL_BASIC);
-    $("#b_flat option[value=Eichhoernchen]").attr('data-price', EH_BASIC);
-    $("#b_flat option[value=Fuchs]").attr('data-price', FS_BASIC);
-    alert('alte Preise sind aktiv!');
-    console.log('Preistabelle:');
-    priceTable = $("#b_flat option").map(function(i, e) {
-        console.log($(e).text() + ': '+ $(e).attr('data-price'));
-    });
-    console.log("Fuchs komplett: "+WHOLE_FUCHS_BASE);
-}
+const DEFAULT_MIN_NIGHTS = 2;
 
 //  +++ booking +++
 
@@ -84,9 +30,8 @@ var locationHash = {};
 var PERMA_LINK_KEYS = [
     'filter-SL',
     'filter-EH',
-    'filter-F1',
-    'filter-F2',
-    'filter-F3',
+    'filter-FS',
+    'filter-SW',
     'from',
     'to',
     'flat',
@@ -163,15 +108,8 @@ var handleFilterFromURL = function(flatShortcut) {
     var setFilter = function(key) {
         $('input.filter-'+key).click();
     };
-    if (flatShortcut === 'FS') {
-        setFilter('F1');
-        setFilter('F2');
-        setFilter('F3');
-        setPermaLink('filter', 'FS');
-    } else {
-        setFilter(flatShortcut);
-        setPermaLink('filter', flatShortcut);
-    }
+    setFilter(flatShortcut);
+    setPermaLink('filter', flatShortcut);
 };
 
 var readPermaLink = function(options) {
@@ -179,24 +117,12 @@ var readPermaLink = function(options) {
     var pairs = str.split('&');
     var filterHandled = false;
 
-    // prophylactic reset
-    $('#flat_fuchs_detail').hide();
-
     for (var i=0; i<pairs.length; i++) {
         var splitted = pairs[i].split('=');
         var key = splitted[0];
         var value = splitted[1];
         locationHash[key] = value;
 
-        if (key === 'RSP') {
-            if (value === 'off' || value === '0') {
-                localStorage.setItem(LOCAL_STORAGE_KEY, null);
-                console.log('reservation-view disabled');
-            } else {
-                localStorage.setItem(LOCAL_STORAGE_KEY, 'on');
-                console.log('reservation-view activated');
-            }
-        }
         if (options.init) {
             if (key === 'verify') continue;
         }
@@ -212,16 +138,12 @@ var readPermaLink = function(options) {
                 handleFilterFromURL('EH');
                 filterHandled = true;
                 break;
-            case 'filter-F1':
-                handleFilterFromURL('F1');
+            case 'filter-FS':
+                handleFilterFromURL('FS');
                 filterHandled = true;
                 break;
-            case 'filter-F2':
-                handleFilterFromURL('F2');
-                filterHandled = true;
-                break;
-            case 'filter-F3':
-                handleFilterFromURL('F3');
+            case 'filter-SW':
+                handleFilterFromURL('SW');
                 filterHandled = true;
                 break;
             case 'from':
@@ -232,15 +154,6 @@ var readPermaLink = function(options) {
                 break;
             case 'flat':
                 $('#b_flat').val(value);
-                break;
-            case 'flat_d':
-                if (locationHash.flat != 'Fuchs') {break;}
-
-                //flat_values = value.split('').map(function(i) {return i === '1' ? true : false});
-                // $('#flat_fuchs_detail input')[0].checked = flat_values[0];
-                // $('#flat_fuchs_detail input')[1].checked = flat_values[1];
-                // $('#flat_fuchs_detail input')[2].checked = flat_values[2];
-                $('#flat_fuchs_detail').show();
                 break;
             case 'ga':
                 $('#b_guests_adult').val(value);
@@ -270,7 +183,6 @@ var readPermaLink = function(options) {
     }
     if ($('.conainter.booking').length > 0) {
         // only on the buchen.html
-        toggleFlatDetails($('#b_flat')[0], true);
         limitDatePicker($('#b_arrival')[0]);
         if (!options.init) {
             calculatePrice();
@@ -327,14 +239,6 @@ var calculatePrice = function() {
     // sum up total guests
     var totalGuests = calcTotalGuests();
     $('#b_guests_total').val(totalGuests);
-    // validte flat size and show warning if needed
-    if (totalGuests > parseInt($('#flat_size').val())) {
-        $('.guests-size').addClass('has-warning');
-        $('label.size-overflow').show();
-    } else {
-        $('.guests-size').removeClass('has-warning');
-        $('label.size-overflow').hide();
-    }
 
     if ($("#arrival").val() === '' || $("#b_departure").val() === '') {
         resetCalculation();
@@ -355,169 +259,89 @@ var calculatePrice = function() {
     var fromDate = dates[1];
     var toDate = dates[2];
 
-    var extraTreshold = 0;
-    var cleanFee = CLEAN_BASE;
-
-    // sepcial logic for fuchs rooms
-    if (flatName === 'Fuchs') {
-        cleanFee = CLEAN_BASE;
-        var values = getDetailsForFuchs();
-        var result = values[0] + values[1] + values[2];
-        setPermaLink('flat_d', ('' + values[0]) + values[1] + values[2]);
-        if (result === 0) {
-            resetCalculation();
-            return;
-        }
-        if (result < 3) {
-            console.warn('this should not happen')
-            extraTreshold = result;
-            base = base * result;
-        } else {
-            // exclusive
-            extraTreshold = WHOLE_FUCHS_PERSON_THRESHOLD;
-            base = WHOLE_FUCHS_BASE;
-        }
-
-    } else {
-        // Schmetterling and Eichhoernchen
-        extraTreshold = EH_AND_SL_PERSON_THRESHOLD;
-    }
-
-    $('#price-base').text(nights + ' Nächte * ' + base + ' €');
-
-    var toSubtract = extraTreshold;
 
     var extraPersonSum = 0;
     var extraText = [];
-    var fee = 0;
 
-    var map = {
-        adult: {
-            size: parseInt($('#b_guests_adult').val()),
-            price: parseInt($('#b_guests_adult').attr('data-price')),
-            fee: 2
-        },
-        teens: {
-            size: parseInt($('#b_guests_teens').val()),
-            price: parseInt($('#b_guests_teens').attr('data-price')),
-            fee: 1
-        },
-        children: {
-            size: parseInt($('#b_guests_children').val()),
-            price: parseInt($('#b_guests_children').attr('data-price')),
-            fee: 0
-        },
-        babies: {
-            size: parseInt($('#b_guests_children_free').val()),
-            price: parseInt($('#b_guests_children_free').attr('data-price')),
-            fee: 0
-        }
-    };
-    var array = ['adult', 'teens', 'children', 'babies'];
+    var accommodationShortname = $("#b_flat :selected").attr('data-location');
 
-    // calc fee
-    for (var i=0; i<array.length; i++) {
-        var tmp = map[array[i]];
-        if (tmp.size > 0) {
-            fee += tmp.size * tmp.fee;
+    const payload = {
+        start: fromDate.format(EN_FORMATTER),
+        end: toDate.format(EN_FORMATTER),
+        accommodation: accommodationShortname,
+        persons: {
+            adult: parseInt($('#b_guests_adult').val() || 0),
+            teen: parseInt($('#b_guests_teens').val() || 0),
+            child: parseInt($('#b_guests_children').val() || 0),
+            baby: parseInt($('#b_guests_children_free').val() || 0)
         }
     }
+    $('#price-base').text('Preis wird berechnet...');
+    var request = $.ajax({
+        url: PRICING_URL,
+        type: "POST",
+        data: JSON.stringify(payload),
+        contentType:"application/json; charset=utf-8"
+    });
 
-    // calc extra persons
-    if (totalGuests > extraTreshold) {
-        // compensate the person inclusive amount
-        for (var i=0; i<array.length; i++) {
-            var personGroup = array[i];
-            var tmp = map[personGroup];
-            if (tmp.size > 0) {
-                while (tmp.size > 0 && toSubtract > 0) {
-                    tmp.size--;
-                    toSubtract--;
-                }
-            }
+    request.done(function(json, responseType, xhr) {
+        const result = xhr.responseJSON
+        console.log(result)
+        $('#price-base').text(result.base + ' €')
+        if (result.extra != 0) {
+            $('#price-extra-person').text(result.extra + ' €')
+        } else {
+            $('#price-extra-person').text('–')
         }
-        // the add now the extra costs
-        for (var i=0; i<array.length; i++) {
-            var personGroup = array[i];
-            if (personGroup === 'babies') continue;
-            var tmp = map[personGroup];
-            if (tmp.size > 0 && tmp.price > 0) {
-                extraText.push(tmp.size + ' P. * ' + tmp.price + ' €');
-                extraPersonSum += tmp.size * tmp.price;
-            }
-        }
+        $('#price-clean').text(result.service + ' €');
+        $('#price-fee').text(result.taxfee + ' €')
+        $('#price-sum').text(result.total + ' €')
 
-    }
-    if (extraText.length > 0) {
-        $('#price-extra-person').text(nights + ' Nächte * (' + extraText.join(' + ')+')');
-    } else {
-        $('#price-extra-person').text('–');
-    }
-
-    // clean
-    var extraClean = 0;
-    if (totalGuests > 4) {
-        extraClean = (totalGuests - 4) * 5;
-    }
-    var totalClean = cleanFee + extraClean;
-    $('#price-clean').text(totalClean + ' €');
-
-    // special costs
-    // check if the daterange is within a saison
-    var saisonSpecial = 0;
-    var saisonDays = 0;
-    var saisonPrice = 0;
-    for (var i=0; i<SAISONS.length; i++) {
-        var saison = SAISONS[i];
-        var currentYear = moment().year();
-        var specialPriceStart = moment(saison.start + '.' + currentYear, DE_FORMATTER).subtract(1, 'day');
-        var specialPriceEnd = moment(specialPriceStart).add(saison.duration + 1, 'days');
-        var specialPriceStartNext = moment(specialPriceStart).add(1, 'year');
-        var specialPriceEndNext = moment(specialPriceEnd).add(1, 'year');
-        if (saison.type !== 'fix-offset') {
-            console.log(new Error('cannot handle saison type: '+saison.type));
-            alert('Entschuldigung, es ist ein Fehler aufgetreten (CODE: 101)');
-            return;
+        // validate flat size and show warning if needed
+        const maxPersonsWarning = result.warnings.filter(function(e) { return e.type == 'maxPersons'})
+        if (maxPersonsWarning.length > 0) {
+            $('#b_guests_total').val(maxPersonsWarning[0].actual)
+            $('#flat_size').val(maxPersonsWarning[0].expected)
+            $('.guests-size').addClass('has-warning');
+            $('label.size-overflow').show();
+        } else {
+            $('.guests-size').removeClass('has-warning');
+            $('label.size-overflow').hide();
         }
 
-        var tmpDate = moment(fromDate);
-        while (isBefore(tmpDate, toDate)) {
-            if (isAfter(tmpDate, specialPriceStart) && isBefore(tmpDate, specialPriceEnd)) {
-                // check current year
-                saisonSpecial += saison.amount;
-                saisonPrice = saison.amount;
-                saisonDays++;
-            } else if(isAfter(tmpDate, specialPriceStartNext) && isBefore(tmpDate, specialPriceEndNext)) {
-                // check for next year
-                saisonSpecial += saison.amount;
-                saisonPrice = saison.amount;
-                saisonDays++;
-            } else {
-                saisonSpecial += 0;
-            }
-            // increment for loop
-            tmpDate.add(1, 'days');
+        const minStayWarning = result.warnings.filter(function(e) { return e.type == 'minStay'})
+        if (minStayWarning.length > 0) {
+            $('#min-stay-value').text(minStayWarning[0].expected)
+            $('.min-stay').show();
+            $('.min-stay').addClass('has-error');
+            window.validMinStay = false;
+        } else {
+            $('.min-stay').removeClass('has-error');
+            $('.min-stay').hide();
+            window.validMinStay = true;
         }
-    }
+    });
 
-    if (saisonSpecial > 0) {
-        $('.price-extra-saison').show();
-        $('#price-extra-saison').text(saisonDays + ' Nächte * ' + saisonPrice + ' €');
-    } else {
-        $('#price-extra-saison').text('');
-        $('.price-extra-saison').hide();
-    }
-
-    // total price
-    $('#price-sum').text((base*nights + saisonSpecial + extraPersonSum*nights + totalClean) + ' €');
-
-    // fee
-    $('#price-fee').text('ca. ' + (fee*nights) + ' €');
-
-
-    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
-        showReservation();
-    }
+    request.fail(function(xhr, responseType, statusText) {
+        resetCalculation();
+        $('#price-base').text('Fehler bei der Preisberechnung');
+        var content = parseJson(xhr.responseText).content || 'Preis konnte nicht abgefragt werden';
+        if (content !== '') content = ': ' + content;
+        console.log(content)
+        payload._xhr = {
+            readyState: xhr.readyState,
+            responseText: xhr.responseText,
+            status: xhr.status,
+            hrstatusText: xhr.statusText
+          }
+        Raven.captureBreadcrumb({
+          message: 'calculating price',
+          category: 'action',
+          data: payload
+        });
+        Raven.captureException(new Error('calculating price failed'))
+        console.log('Raven.lastEventId()', Raven.lastEventId())
+    });    
 };
 
 var resetCalculation = function() {
@@ -529,13 +353,6 @@ var resetCalculation = function() {
     $('#price-fee').text('');
 };
 
-var getDetailsForFuchs = function() {
-    // var inputs = $('#flat_fuchs_detail input');
-    // var values = inputs.map(function(i, e) {return e.checked === false ? 0 : 1});
-    // return values;
-    return [1,1,1]
-};
-
 var getValidationLabel = function(referenceElement) {
     if ($(referenceElement).prev().is('label.validation')) {
         return $(referenceElement).prev()[0];
@@ -545,8 +362,9 @@ var getValidationLabel = function(referenceElement) {
 
 var extraValidation = function() {
     var returnValue = false;
-    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
-        returnValue = true;
+
+    if (window.validMinStay == false) {
+        return false
     }
 
     // check that at least one person is booked
@@ -559,31 +377,11 @@ var extraValidation = function() {
         $('label.size-underflow').hide();
     }
 
-    // check if at least one room for fuchs was checked
-    var flatDetails = getDetailsForFuchs();
-    var flatSelectedValue = $('#b_flat').val();
-    if (flatSelectedValue === 'Fuchs' && flatDetails[0] + flatDetails[1] + flatDetails[2] <= 0) {
-        console.warn('this should not happen')
-        $('#flat_fuchs_detail').addClass('has-error');
-        return returnValue;
-    } else {
-        $('#flat_fuchs_detail').removeClass('has-error');
-    }
-
     // check if time and flat is available
     var location = $("#b_flat :selected").attr('data-location');
     if (checkAvailabilityFor(location, 1) === false) {
-        if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') {
-            if (window.location.hash.indexOf('verify') !== -1) {
-                // verify mode, use green or red
-            } else {
-                // non verify mode, make orange
-                $("body").css('background', 'orange');
-            }
-        } else {
-            alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
-            return false;
-        }
+        alert('Die Wohnung ist für den angegebenen Zeitraum nicht verfügbar.');
+        return false;
     }
 
     return true;
@@ -605,31 +403,12 @@ var checkAvailabilityFor = function(flatShortCut, check) {
 }
 
 var limitDatePicker = function(element) {
-    if (localStorage.getItem(LOCAL_STORAGE_KEY) === 'on') return;
     // limit the start date of departure
     // at least to book 2 nights
     var arrivalDate = moment(element.value, DE_FORMATTER);
     var departureDate = moment($('#b_departure').val(), DE_FORMATTER);
 
     checkNights(arrivalDate, departureDate, DEFAULT_MIN_NIGHTS);
-
-    for (var i=0; i<SAISONS.length; i++) {
-        var saison = SAISONS[i];
-        var saisonStart = saison.start.split('.').map(Number)
-        var saisonStartDate = moment(arrivalDate).month(saisonStart[1]-1).date(saisonStart[0]).add(2, 'days');
-        // extra check for winter saison, year change
-        if (arrivalDate.months() === 0) {
-            // if arrival is January
-            saisonStartDate.subtract(1, 'year');
-        }
-        var saisonEndDate = moment(saisonStartDate).add(saison.duration - 2, 'days');
-
-        var tmp = moment(arrivalDate).add(saison.nights, 'days');
-        if (tmp.diff(saisonStartDate) >= 0 && tmp.diff(saisonEndDate) <= 0 ||
-            arrivalDate.diff(saisonStartDate) >= 0 && arrivalDate.diff(saisonEndDate) <= 0) {
-            checkNights(arrivalDate, departureDate, saison.nights);
-        }
-    }
 };
 
 var checkNights = function(arrivalDate, departureDate, minNights) {
@@ -643,38 +422,12 @@ var checkNights = function(arrivalDate, departureDate, minNights) {
 };
 
 
-// toggle flat details
-// adapt flat size
-var toggleFlatDetails = function(element, noPermaLink) {
-    var flatSize = 0;
-    if (element.value === 'Fuchs') {
-        $('#flat_fuchs_detail').show();
-        var values = getDetailsForFuchs();
-        var result = values[0] + values[1] + values[2];
-        // set max room
-        if (values[0]) flatSize += 4; // 4 beds
-        if (values[1]) flatSize += 2; // 1 double bed
-        if (values[2]) flatSize += 2; // 1 double bed
-        // disable the next limit, limit to 8 persons
-        // if (result === 3) flatSize += 2; // 2 couch
-    } else {
-        // disable all checkboxes for fuchs
-        //$('#flat_fuchs_detail input').prop("checked", false);
-        $('#flat_fuchs_detail').hide();
-        flatSize = $(element).find("[value="+element.value+"]").attr('data-max');
-        if (!noPermaLink) setPermaLink('flat_d', null);
-    }
-    $('#flat_size').val(flatSize);
-};
-
 $(document).ready(function() {
 
     //  +++ booking +++
 
     window.current = moment();
-    if (localStorage.getItem(LOCAL_STORAGE_KEY) != 'on') {
-        DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
-    }
+    DATEPICKER_OPTS.startDate = window.current.format(DE_FORMATTER);
     $(DATEPICKER_SELECTOR).datepicker(DATEPICKER_OPTS);
 
     // read initial url params
@@ -693,14 +446,11 @@ $(document).ready(function() {
 
 
     $('#b_flat').on('change', function(event) {
-        toggleFlatDetails(event.target);
+        const element = event.target
+        const maxValue = $(element).find("[value="+element.value+"]").attr('data-max');
+        $('#flat_size').val(maxValue);
         calculatePrice();
     });
-
-    // $('#flat_fuchs_detail input').on('change', function(e) {
-    //     toggleFlatDetails($('#b_flat')[0]);
-    //     calculatePrice();
-    // });
 
     $('#guests_control input').on('change', function(e) {
         calculatePrice();
@@ -752,10 +502,11 @@ $(document).ready(function() {
 
 var prepareSubmit = function() {
     // remove validation errors if there were some
-    $('div.form-group.has-error').removeClass('has-error');
 
     if (!extraValidation()) return;
 
+    $('div.form-group.has-error').removeClass('has-error');
+    
     var form = $('.conainter.booking')[0];
 
     let foundIsValid = true;
@@ -764,7 +515,7 @@ var prepareSubmit = function() {
         $('label.found').text('Bitte auswählen').show().parent().addClass('has-error');
         foundIsValid = false;
     }
-    if (form.checkValidity && !form.checkValidity() && localStorage.getItem(LOCAL_STORAGE_KEY) !== 'on') {
+    if (form.checkValidity && !form.checkValidity()) {
         var inputs = form.querySelectorAll("input");
         for (var i=0; i<inputs.length; i++) {
             var tmp = inputs[i];
@@ -788,21 +539,12 @@ var prepareSubmit = function() {
         var to = $('#b_departure').val();
         from = moment(from, DE_FORMATTER).format(EN_FORMATTER);
         to = moment(to, DE_FORMATTER).format(EN_FORMATTER);
-        var nights = dates[0];
         var guests = $('#b_guests_total').val();
         var guests_adult = $('#b_guests_adult').val() || null;
         var guests_teens = $('#b_guests_teens').val() || null;
         var guests_children = $('#b_guests_children').val() || null;
         var guests_children_free = $('#b_guests_children_free').val() || null;
         var voucherCode = $('#b_code').val() || null;
-
-        var price_Basic_ = parsePrice($('#price-base').text());
-        var price_Saison_ = parsePrice($('#price-extra-saison').text());
-        var price_basic = price_Basic_ + price_Saison_;
-        var price_extra_persons = parsePrice($('#price-extra-person').text());
-        var price_clean = parsePrice($('#price-clean').text());
-        var price_fee = parsePrice($('#price-fee').text());
-        var price_total = parsePrice($('#price-sum').text());
 
         var firstname = $('#b_firstname').val();
         var name = $('#b_name').val();
@@ -896,26 +638,3 @@ var parseJson = function(string) {
     return json;
 };
 
-var showReservation = function() {
-    var data = prepareSubmit();
-    /*
-    ignore:
-          "send_email": true,
-          "phone": null,
-          "note": null,
-          "found": "-",
-    */
-    data = $(data)
-        .removeProp('send_email')
-        .removeProp('phone')
-        .removeProp('note')
-        .removeProp('found')
-        .removeProp('user_url')
-        .removeProp('name')
-        .removeProp('email')
-        [0]
-
-    var jsonData = JSON.stringify(data, null, 2);
-    var content = '<div class="container"><pre>' + jsonData +  '</pre></div>';
-    $('#reservation').html(content);
-}

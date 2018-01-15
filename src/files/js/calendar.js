@@ -70,21 +70,13 @@ var calcSingleCalendar = function(dayInMonth, scope) {
     var cellTemplate = "<div class='calDate'></div>";
     var flat = $(scope).attr('data-flat'); // specific flat
     if (flat != null || flat == '') {
-        if (flat === 'FS') {
-            cellTemplate +=
-            "<div class='flat F1'><span class='title'></span></div>"+
-            "<div class='flat F2'><span class='title'></span></div>"+
-            "<div class='flat F3'><span class='title'></span></div>";
-        } else {
-            cellTemplate += "<div class='flat "+flat+"'><span class='title'></span></div>";
-        }
+        cellTemplate += "<div class='flat "+flat+"'><span class='title'></span></div>";
     } else {
         cellTemplate +=
         "<div class='flat SL'><span class='title'></span></div>"+
         "<div class='flat EH'><span class='title'></span></div>"+
-        "<div class='flat F1'><span class='title'></span></div>"+
-        "<div class='flat F2'><span class='title'></span></div>"+
-        "<div class='flat F3'><span class='title'></span></div>";
+        "<div class='flat FS'><span class='title'></span></div>"+
+        "<div class='flat SW'><span class='title'></span></div>";
     }
 
     while (isBefore(start, end)) {
@@ -157,14 +149,8 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 case 'Fuchs':
                     item.location = 'FS';
                     break;
-                case 'Fuchs1', 'FS1':
-                    item.location = "F1";
-                    break;
-                case 'Fuchs2', 'FS2':
-                    item.location = "F2";
-                    break;
-                case 'Fuchs3', 'FS3':
-                    item.location = "F3";
+                case 'Schwan':
+                    item.location = "SW";
                     break;
                 default:
                     console.log('could not match flat name for: '+item.summary);
@@ -183,10 +169,9 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
             switch(item.location) {
                 case 'SL': flatName  = 'Schmetterling'; break;
                 case 'EH': flatName  = 'Eichhörnchen'; break;
-                case 'F1': flatName  = 'Fuchs'; break;
-                case 'F2': flatName  = 'Fuchs'; break;
-                case 'F3': flatName  = 'Fuchs'; break;
                 case 'FS': flatName  = 'Fuchs'; break;
+                case 'F3': flatName  = 'Fuchs'; break;
+                case 'SW': flatName  = 'Schwan'; break;
                 default: console.log('could not identify location for: ' + JSON.stringify(item));
             }
             item.summary = flatName;
@@ -205,13 +190,7 @@ var updateItemsForSingleCalendar = function(data, monthToShow, scope) {
                 } else {
                     cssClass = 'middle';
                 }
-                if (item.location === 'FS') {
-                    setFlat($('.date'+date+' .F1', scope), item, cssClass);
-                    setFlat($('.date'+date+' .F2', scope), item, cssClass);
-                    setFlat($('.date'+date+' .F3', scope), item, cssClass);
-                } else {
-                    setFlat($('.date'+date+' .'+item.location, scope), item, cssClass);
-                }
+                setFlat($('.date'+date+' .'+item.location, scope), item, cssClass);
 
             }
             tmp.add(1, 'day');
@@ -252,7 +231,7 @@ var updateItemsForCurrentMonth = function() {
 };
 
 var considerFlatFilter = function() {
-    var flatShortcuts = ['SL', 'EH', 'F1', 'F2', 'F3'];
+    var flatShortcuts = ['SL', 'EH', 'FS', 'SW'];
     for (var i=0; i<flatShortcuts.length; i++) {
         var flatShortcut = flatShortcuts[i];
         var filterElement = $('.filter-' + flatShortcut);
@@ -311,17 +290,13 @@ $(document).ready(function() {
         $('.booking-calendar .EH').toggle();
         if (setPermaLink) setPermaLink('filter', 'EH');
     });
-    $('.filter-F1').change(function() {
-        $('.booking-calendar .F1').toggle();
-        if (setPermaLink) setPermaLink('filter', 'F1');
+    $('.filter-FS').change(function() {
+        $('.booking-calendar .FS').toggle();
+        if (setPermaLink) setPermaLink('filter', 'FS');
     });
-    $('.filter-F2').change(function() {
-        $('.booking-calendar .F2').toggle();
-        if (setPermaLink) setPermaLink('filter', 'F2');
-    });
-    $('.filter-F3').change(function() {
-        $('.booking-calendar .F3').toggle();
-        if (setPermaLink) setPermaLink('filter', 'F3');
+    $('.filter-SW').change(function() {
+        $('.booking-calendar .SW').toggle();
+        if (setPermaLink) setPermaLink('filter', 'SW');
     });
 
 });

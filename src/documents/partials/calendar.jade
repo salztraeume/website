@@ -3,10 +3,14 @@ mixin calendar(flat, month, columns)
     +bookingCalendar(flat, month, columns)
 
 mixin loadCalendarEvents
-    if process.env.NODE_ENV == 'production'
-        script(src="//cal-aggregator.awspace.de/items.js")
-    else
-        script(src="//localhost:5002/items.js")
+    script.
+        var url = "https://cal-aggregator.awspace.de/items.js"
+        if (window.location.hostname === 'localhost') {
+            url = 'http://localhost:5002/items.js'
+        }
+        var script = document.createElement('script')
+        script.src = url
+        document.getElementsByTagName('head')[0].appendChild(script)
 
 mixin calendarControls(flat)
     div.row
@@ -28,27 +32,20 @@ mixin calendarControls(flat)
                         span
                         div.icon.EH
                         div.icon-label Eichhörnchen
-
-                div(style="display:none")
+                div
                     label.checker
-                        input.checker.filter-F1(type="checkbox")
+                        input.checker.filter-FS(type="checkbox")
                         span
-                        div.icon.F1
-                        div.icon-label Fuchs 1
-
-                div(style="display:none")
-                    label.checker
-                        input.checker.filter-F2(type="checkbox")
-                        span
-                        div.icon.F2
-                        div.icon-label Fuchs 2
+                        div.icon.FS
+                        div.icon-label Fuchs
 
                 div
                     label.checker
-                        input.checker.filter-F3(type="checkbox")
+                        input.checker.filter-SW(type="checkbox")
                         span
-                        div.icon.F3
-                        div.icon-label Fuchs
+                        div.icon.SW
+                        div.icon-label Schwan
+
 
 
         div.col-lg-4.col-md-12.cal-controls
@@ -86,7 +83,8 @@ mixin bookingCalendar(flat, month, columns)
                         if flat == null
                             .table-header.icon.SL
                             .table-header.icon.EH
-                            .table-header.icon.F3
+                            .table-header.icon.FS
+                            .table-header.icon.SW
 
                     each day in [0,1,2,3,4,5,6]
                         td(class=['day','w'+week, 'd'+day])
