@@ -132,7 +132,6 @@ var readPermaLink = function(options) {
         }
         switch(key) {
             case 'date':
-                clearInterval(id);
                 window.current = moment(value + '-01');
                 clearCal();
                 calcCalendar(window.current);
