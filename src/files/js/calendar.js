@@ -271,6 +271,7 @@ $(document).ready(function() {
             clearCal();
             calcCalendar(window.current);
             updateItemsForCurrentMonth();
+            if (setPermaLink) setPermaLink('date', window.current.format("YYYY-MM"));
             e.preventDefault();
         });
         $('.next').click(function(e) {
@@ -278,6 +279,7 @@ $(document).ready(function() {
             clearCal();
             calcCalendar(window.current);
             updateItemsForCurrentMonth();
+            if (setPermaLink) setPermaLink('date', window.current.format("YYYY-MM"));
             e.preventDefault();
         });
         $('.filter-SL').change(function() {

@@ -28,6 +28,7 @@ const DEFAULT_MIN_NIGHTS = 2;
 
 var locationHash = {};
 var PERMA_LINK_KEYS = [
+    'date',
     'filter-SL',
     'filter-EH',
     'filter-FS',
@@ -130,6 +131,17 @@ var readPermaLink = function(options) {
             if (key !== 'verify') continue;
         }
         switch(key) {
+            case 'date':
+                var id = setInterval(function() {
+                    if (window.tableTemplate != null) {
+                        clearInterval(id);
+                        window.current = moment(value + '-01');
+                        clearCal();
+                        calcCalendar(window.current);
+                        updateItemsForCurrentMonth();
+                    }
+                }, 100);
+                break;
             case 'filter-SL':
                 handleFilterFromURL('SL');
                 filterHandled = true;
