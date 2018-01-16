@@ -132,15 +132,11 @@ var readPermaLink = function(options) {
         }
         switch(key) {
             case 'date':
-                var id = setInterval(function() {
-                    if (window.tableTemplate != null) {
-                        clearInterval(id);
-                        window.current = moment(value + '-01');
-                        clearCal();
-                        calcCalendar(window.current);
-                        updateItemsForCurrentMonth();
-                    }
-                }, 100);
+                clearInterval(id);
+                window.current = moment(value + '-01');
+                clearCal();
+                calcCalendar(window.current);
+                updateItemsForCurrentMonth();
                 break;
             case 'filter-SL':
                 handleFilterFromURL('SL');
@@ -190,7 +186,10 @@ var readPermaLink = function(options) {
                 break;
         }
     }
-    if (!filterHandled && $(".checker input").filter(function(i, input){return input.checked}).length === 0) {
+    var initialState = Array.prototype.slice.call($(".checker input")).every(function(input) {
+        return input.checked == false;
+    });
+    if (initialState) {
         $('.filter-SL').click();
     }
     if ($('.conainter.booking').length > 0) {
@@ -435,7 +434,16 @@ var checkNights = function(arrivalDate, departureDate, minNights) {
 
 
 $(document).ready(function() {
+    var id = setInterval(function() {
+        // waiting until calendar items are loaded
+        if (window.tableTemplate != null) {
+            clearInterval(id);
+            initializeBookingPage()
+        }
+    }, 100);
+})
 
+function initializeBookingPage() {
     //  +++ booking +++
 
     window.current = moment();
@@ -510,7 +518,7 @@ $(document).ready(function() {
 
     readPermaLink({finished: true});
 
-});
+}
 
 var prepareSubmit = function() {
     // remove validation errors if there were some

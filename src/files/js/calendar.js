@@ -255,6 +255,22 @@ var setFlat = function(flat, item, cssClass) {
 };
 
 $(document).ready(function() {
+    $('.filter-SL').change(function() {
+        $('.booking-calendar .SL').toggle();
+        if (setPermaLink) setPermaLink('filter', 'SL');
+    });
+    $('.filter-EH').change(function() {
+        $('.booking-calendar .EH').toggle();
+        if (setPermaLink) setPermaLink('filter', 'EH');
+    });
+    $('.filter-FS').change(function() {
+        $('.booking-calendar .FS').toggle();
+        if (setPermaLink) setPermaLink('filter', 'FS');
+    });
+    $('.filter-SW').change(function() {
+        $('.booking-calendar .SW').toggle();
+        if (setPermaLink) setPermaLink('filter', 'SW');
+    });
 
     window.initializeCalendar = function() {
         //  +++ calendar +++
@@ -282,21 +298,6 @@ $(document).ready(function() {
             if (setPermaLink) setPermaLink('date', window.current.format("YYYY-MM"));
             e.preventDefault();
         });
-        $('.filter-SL').change(function() {
-            $('.booking-calendar .SL').toggle();
-            if (setPermaLink) setPermaLink('filter', 'SL');
-        });
-        $('.filter-EH').change(function() {
-            $('.booking-calendar .EH').toggle();
-            if (setPermaLink) setPermaLink('filter', 'EH');
-        });
-        $('.filter-FS').change(function() {
-            $('.booking-calendar .FS').toggle();
-            if (setPermaLink) setPermaLink('filter', 'FS');
-        });
-        $('.filter-SW').change(function() {
-            $('.booking-calendar .SW').toggle();
-            if (setPermaLink) setPermaLink('filter', 'SW');
-        });
+        
     }
 });
