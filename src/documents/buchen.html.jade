@@ -132,6 +132,10 @@ form#booking-form.conainter.booking(onsubmit="return false;")
             option(value="empfehlung") Empfehlung
             option(value="sonstiges") Sonstiges
 
+    div.form-group
+        span.control-label Ich habe die Datenschutzerklärung gelesen und bin damit einverstanden:
+        span=" "
+        input#b_privacy_policy(type="checkbox" required)
 
     div.form-group
         button#b_submit.btn.btn-primary Unverbindlich anfragen
