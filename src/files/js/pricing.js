@@ -77,6 +77,7 @@ const exraFS2= $('.extra-FS-2')
 const exraFS3= $('.extra-FS-3')
 
 const serviceFee = $('.service-fee')
+const serviceFeeFS = $('.service-fee-FS')
 const extraFSPerson = $('.extra-fs-person')
 
 function updateTable(saison) {
@@ -87,8 +88,11 @@ function updateTable(saison) {
 
 	const includedPersons = baseSettings.FS.personsInclusive
 	const formula = baseSettings.FS.extraService.formula
-	const perPersonValue = eval(formula.replace('$x', 5)) - baseSettings.FS.service
-	extraFSPerson.text(perPersonValue + ' €')
+	const priceSample = eval(formula.replace('$x', includedPersons - 1))
+	const priceSampleAbove = eval(formula.replace('$x', includedPersons))
+	const priceFeePerAdditionalPerson = priceSampleAbove - priceSample
+	serviceFeeFS.text(priceSample + ' €')
+	extraFSPerson.text(priceFeePerAdditionalPerson + ' €')
 
 	baseSL.text(price.SL + ' €')
 	baseEH.text(price.EH + ' €')
