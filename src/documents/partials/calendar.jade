@@ -6,7 +6,7 @@ mixin loadCalendarEvents
     script.
         var url = "https://cal-aggregator.awspace.de/items.js"
         if (window.location.hostname === 'localhost') {
-            url = 'http://localhost:5002/items.js'
+            url = 'http://localhost:9777/items.js'
         }
         var script = document.createElement('script')
         script.src = url

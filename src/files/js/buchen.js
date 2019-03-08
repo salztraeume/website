@@ -6,7 +6,7 @@ if (window.location.hostname === 'localhost') {
 }
 
 if (window.location.hostname === 'localhost') {
-    PRICING_URL = '//localhost:5001/ext-api/pricing'
+    PRICING_URL = '//localhost:5011/ext-api/pricing'
 }
 
 var DE_FORMATTER = 'DD.MM.YYYY';
