@@ -333,8 +333,9 @@ var calculatePrice = function() {
     });
 
     request.fail(function(xhr, responseType, statusText) {
+        var message = (xhr.responseJSON || {}).message || 'Fehler bei der Preisberechnung';
         resetCalculation();
-        $('#price-base').text('Fehler bei der Preisberechnung');
+        $('#price-base').text(message);
         var content = parseJson(xhr.responseText).content || 'Preis konnte nicht abgefragt werden';
         if (content !== '') content = ': ' + content;
         console.log(content)
