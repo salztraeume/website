@@ -1,6 +1,6 @@
 <!-- -->
 
-Die preiswerte 3 1/2-Zi-Wohnung ›Fuchs‹ bietet Platz für bis zu 9 Erwachsene. Die Wohnung kann komplett oder alle 3 Schlafräume ›Fuchs1‹, ›Fuchs2‹ und ›Fuchs3‹ separat gemietet werden. Die Wohnküche, das Bad und Gäste-WC wird dann mit anderen Gästen geteilt. Alle drei Schlafräume lassen sich separat abschließen.
+Die preiswerte 3 1/2-Zi-Wohnung ›Fuchs‹ bietet Platz für bis zu 8 Personen. Die Wohnung kann komplett oder alle 3 Schlafräume ›Fuchs1‹, ›Fuchs2‹ und ›Fuchs3‹ separat gemietet werden. Die Wohnküche, das Bad und Gäste-WC wird dann mit anderen Gästen geteilt. Alle drei Schlafräume lassen sich separat abschließen.
 
 
 - Größe: ca. 100qm
@@ -46,6 +46,6 @@ Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer 
 Das Rauchen ist in der Wohnung nicht gestattet. Dafür steht ein Aschenbecher und eine Sitzgruppe auf dem Hof bereit. 
 In den Wohnungen befinden sich Deko Elemente aus Himalayasalz. Diese sind besonders feuchtigkeitsempfindlich. Um die Räume zu entfeuchten muss besonders bei Regenwetter und an schwülen Tagen die Klimaanlage tagsüber angeschaltet werden. Sie kann beispielsweise in den Zeiten der Abwesenheit aus der Wohnung angestellt werden.
 
-*Bei Belegungswunsch mit mehr als 8 Personen bitte anfragen.
+*Bei Belegungswunsch mit mehr als 8 Personen bitte anfragen.*
 
 

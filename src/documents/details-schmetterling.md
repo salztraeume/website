@@ -43,6 +43,4 @@ Wir bieten unseren Gästen frisch renovierte und sanierte Räume mit nagelneuer 
 Das Rauchen ist in der Wohnung nicht gestattet. Dafür steht ein Aschenbecher und eine Sitzgruppe auf dem Hof bereit. 
 In den Wohnungen befinden sich Deko Elemente aus Himalayasalz. Diese sind besonders feuchtigkeitsempfindlich. Um die Räume zu entfeuchten muss besonders bei Regenwetter und an schwülen Tagen die Klimaanlage tagsüber angeschaltet werden. Sie kann beispielsweise in den Zeiten der Abwesenheit aus der Wohnung angestellt werden.
 
-*Bei Belegungswunsch mit mehr als 2 Personen bitte anfragen. 
-
-
+*Bei Belegungswunsch mit mehr als 2 Personen bitte anfragen.*
