@@ -168,8 +168,11 @@ var readPermaLink = function(options) {
             case 'gb':
                 $('#b_guests_teens').val(value);
                 break;
-            case 'gc':
-                $('#b_guests_children').val(value);
+            case 'gc1':
+                $('#b_guests_childre1').val(value);
+                break;
+            case 'gc2':
+                $('#b_guests_children2').val(value);
                 break;
             case 'gd':
                 $('#b_guests_children_free').val(value);
@@ -282,7 +285,8 @@ var calculatePrice = function() {
         persons: {
             adult: parseInt($('#b_guests_adult').val() || 0),
             teen: parseInt($('#b_guests_teens').val() || 0),
-            child: parseInt($('#b_guests_children').val() || 0),
+            child2: parseInt($('#b_guests_children2').val() || 0),
+            child1: parseInt($('#b_guests_children1').val() || 0),
             baby: parseInt($('#b_guests_children_free').val() || 0)
         }
     }
@@ -562,7 +566,8 @@ var prepareSubmit = function() {
         var guests = $('#b_guests_total').val();
         var guests_adult = $('#b_guests_adult').val() || null;
         var guests_teens = $('#b_guests_teens').val() || null;
-        var guests_children = $('#b_guests_children').val() || null;
+        var guests_children1 = $('#b_guests_children1').val() || null;
+        var guests_children2 = $('#b_guests_children2').val() || null;
         var guests_children_free = $('#b_guests_children_free').val() || null;
         var voucherCode = $('#b_code').val() || null;
 

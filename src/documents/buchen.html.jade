@@ -34,13 +34,15 @@ form#booking-form.conainter.booking(onsubmit="return false;")
 
     div.form-group
         div.input-group#guests_control
-            input#b_guests_adult.input.form-control(type="number", min="0", data-price="15", data-fee="2", placeholder="Personen (ab 18 Jahre)", data-toggle="tooltip", data-placement="top", title="ab 18 Jahre")
+            input#b_guests_adult.input.form-control(type="number", min="0", data-price="15", data-fee="2", placeholder="Erw. ab 18 Jahre", data-toggle="tooltip", data-placement="top", title="ab 18 Jahre")
             span.input-group-addon
-            input#b_guests_teens.input.form-control(type="number", min="0", data-price="10", data-fee="1", placeholder="Kinder (10-17 Jahre)", data-toggle="tooltip", data-placement="top", title="10-17 Jahre")
+            input#b_guests_teens.input.form-control(type="number", min="0", data-price="15", data-fee="1", placeholder="Kinder 13-17 Jahre", data-toggle="tooltip", data-placement="top", title="13-17 Jahre")
             span.input-group-addon
-            input#b_guests_children.input.form-control(type="number", min="0", data-price="5", data-fee="0", placeholder="Kinder (5-9 Jahre)", data-toggle="tooltip", data-placement="top", title="5-9 Jahre")
+            input#b_guests_children2.input.form-control(type="number", min="0", data-price="10", data-fee="1", placeholder="Kinder 10-12 Jahre", data-toggle="tooltip", data-placement="top", title="10-12 Jahre")
             span.input-group-addon
-            input#b_guests_children_free.input.form-control(type="number", min="0", data-price="0", data-fee="0", placeholder="Kinder (bis 4 Jahre)", data-toggle="tooltip", data-placement="top", title="bis 4 Jahre")
+            input#b_guests_children1.input.form-control(type="number", min="0", data-price="5", data-fee="0", placeholder="Kinder 3-9 Jahre", data-toggle="tooltip", data-placement="top", title="3-9 Jahre")
+            span.input-group-addon
+            input#b_guests_children_free.input.form-control(type="number", min="0", data-price="0", data-fee="0", placeholder="Kinder bis 2 Jahre", data-toggle="tooltip", data-placement="top", title="bis 2 Jahre")
         
     div.form-group.guests-size
         label.size-overflow.control-label(for="b_guests_total") Wohnung bietet evtl. nicht genug Schlafplätze! Eine Anfrage ist dennoch möglich.
