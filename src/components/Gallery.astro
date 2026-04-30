@@ -8,7 +8,7 @@ const { images } = Astro.props;
 
 <div class="gallery-container">
   <!-- Main Image -->
-  <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-4">
+  <div class="relative rounded-2xl overflow-hidden aspect-[1000/460] mb-4">
     <img
       id="gallery-main"
       src={images[0].src}
@@ -46,7 +46,7 @@ const { images } = Astro.props;
       <button
         class:list={[
           'gallery-thumb flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden cursor-pointer transition-all duration-300',
-          i === 0 ? 'ring-2 ring-salt-500 opacity-100' : 'opacity-50 hover:opacity-80'
+          i === 0 ? 'ring-salt-500 opacity-100' : 'opacity-50 hover:opacity-80'
         ]}
         data-index={i}
         aria-label={`Bild ${i + 1} anzeigen`}
@@ -54,7 +54,7 @@ const { images } = Astro.props;
         <img
           src={img.src}
           alt=""
-          class="w-full h-full object-cover"
+          class="w-full object-cover"
           loading="lazy"
           width="80"
           height="64"
@@ -84,10 +84,10 @@ const { images } = Astro.props;
 
       thumbs.forEach((thumb, i) => {
         if (i === currentIndex) {
-          thumb.classList.add('ring-2', 'ring-salt-500', 'opacity-100');
+          thumb.classList.add('ring-salt-500', 'opacity-100');
           thumb.classList.remove('opacity-50');
         } else {
-          thumb.classList.remove('ring-2', 'ring-salt-500', 'opacity-100');
+          thumb.classList.remove('ring-salt-500', 'opacity-100');
           thumb.classList.add('opacity-50');
         }
       });
