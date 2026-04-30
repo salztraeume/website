@@ -1,0 +1,846 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const apartments = [
+  { id: 'schmetterling', name: 'Schmetterling', size: '43 m²' },
+  { id: 'eichhoernchen', name: 'Eichhörnchen', size: '53 m²' },
+  { id: 'fuchs', name: 'Fuchs', size: '100 m²' },
+  { id: 'schwan', name: 'Schwan', size: '70 m²' },
+];
+---
+
+<BaseLayout title="Buchen" description="Buchen Sie Ihre Ferienwohnung in Bad Saarow. Unverbindliche Anfrage mit sofortiger Preisberechnung." bodyClass="page-light">
+  <section class="pt-28 lg:pt-36 pb-24 section-padding bg-cream-50">
+    <div class="content-width">
+      <div class="max-w-3xl mb-12">
+        <div class="divider-salt mb-8"></div>
+        <h1 class="text-h1 font-heading text-charcoal-900 mb-4">Buchen</h1>
+        <p class="section-subtitle">
+          Wählen Sie Ihre Wohnung und Ihren Wunschzeitraum. Wir melden uns innerhalb eines Werktages.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Form Column -->
+        <div class="lg:col-span-2 space-y-8">
+
+          <!-- 1. Apartment Selection -->
+          <div class="bg-white rounded-2xl shadow-warm p-8">
+            <h2 class="font-heading text-xl font-semibold text-charcoal-800 mb-5">1. Wohnung wählen</h2>
+            <div class="grid grid-cols-2 gap-3">
+              {apartments.map((apt) => (
+                <button
+                  type="button"
+                  class="apt-select border-2 border-cream-200 rounded-xl p-4 text-left transition-all duration-200 hover:border-salt-300 cursor-pointer"
+                  data-id={apt.id}
+                  data-name={apt.name}
+                  data-size={apt.size}
+                >
+                  <span class="block font-heading text-lg font-medium text-charcoal-700">{apt.name}</span>
+                  <span class="block text-caption text-charcoal-400 mt-1" data-apt-info={apt.id}>{apt.size}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- 2. Calendar -->
+          <div class="bg-white rounded-2xl shadow-warm p-8">
+            <h2 class="font-heading text-xl font-semibold text-charcoal-800 mb-2">2. Zeitraum wählen</h2>
+            <p class="text-body-sm text-charcoal-400 mb-6">Klicken Sie auf ein Anreise- und dann auf ein Abreisedatum. Mindestaufenthalt: 2 Nächte.</p>
+
+            <!-- Calendar Navigation -->
+            <div class="flex items-center justify-between mb-6">
+              <button type="button" id="cal-prev" class="w-10 h-10 rounded-full border border-cream-200 flex items-center justify-center hover:border-salt-300 hover:bg-salt-50 transition-all duration-200 cursor-pointer" aria-label="Vorheriger Monat">
+                <svg class="w-5 h-5 text-charcoal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+              </button>
+              <div id="cal-title" class="font-heading text-lg font-semibold text-charcoal-800"></div>
+              <button type="button" id="cal-next" class="w-10 h-10 rounded-full border border-cream-200 flex items-center justify-center hover:border-salt-300 hover:bg-salt-50 transition-all duration-200 cursor-pointer" aria-label="Nächster Monat">
+                <svg class="w-5 h-5 text-charcoal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+              </button>
+            </div>
+
+            <!-- Calendar Grid (2 months) -->
+            <div class="grid md:grid-cols-2 gap-6" id="cal-months"></div>
+
+            <!-- Loading indicator -->
+            <div id="cal-loading" class="text-center py-4 text-body-sm text-charcoal-400">
+              <svg class="animate-spin w-5 h-5 mx-auto mb-2 text-salt-500" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+              </svg>
+              Belegungsdaten werden geladen…
+            </div>
+
+            <!-- Booking conflict warning -->
+            <div id="booking-conflict" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-body-sm text-red-700 flex items-start gap-3">
+              <svg class="w-5 h-5 flex-shrink-0 mt-0.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+              <span id="booking-conflict-text"></span>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex flex-wrap items-center gap-5 mt-6 pt-5 border-t border-cream-100">
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded bg-red-100 border border-red-300"></span>
+                <span class="text-caption text-charcoal-400">Belegt</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded overflow-hidden flex">
+                  <span class="w-2 h-4 bg-white border-y border-l border-cream-200"></span>
+                  <span class="w-2 h-4 bg-red-100 border-y border-r border-red-200"></span>
+                </span>
+                <span class="text-caption text-charcoal-400">An-/Abreisetag</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded bg-salt-200 border border-salt-400"></span>
+                <span class="text-caption text-charcoal-400">Ihre Anreise</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded bg-salt-500"></span>
+                <span class="text-caption text-charcoal-400">Ihre Abreise</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded bg-salt-50 border border-salt-200"></span>
+                <span class="text-caption text-charcoal-400">Ihr Zeitraum</span>
+              </div>
+            </div>
+
+            <!-- Selected range display -->
+            <div id="date-selection" class="hidden mt-6 p-4 bg-salt-50 rounded-xl border border-salt-100">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-caption text-charcoal-400">Anreise</span>
+                  <p id="sel-checkin" class="font-heading text-lg font-semibold text-charcoal-800">—</p>
+                </div>
+                <div class="text-center">
+                  <span id="sel-nights" class="font-heading text-2xl font-semibold text-salt-600">0</span>
+                  <p class="text-caption text-charcoal-400">Nächte</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-caption text-charcoal-400">Abreise</span>
+                  <p id="sel-checkout" class="font-heading text-lg font-semibold text-charcoal-800">—</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Guests -->
+          <div class="bg-white rounded-2xl shadow-warm p-8">
+            <h2 class="font-heading text-xl font-semibold text-charcoal-800 mb-5">3. Gäste</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="adults" class="block text-sm font-medium text-charcoal-600 mb-2">Erwachsene</label>
+                <div class="flex items-center gap-3">
+                  <button type="button" data-counter="adults" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="adults" name="adults" value="2" min="1" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="adults" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                </div>
+              </div>
+              <div>
+                <label for="children" class="block text-sm font-medium text-charcoal-600 mb-2">Kinder</label>
+                <div class="flex items-center gap-3">
+                  <button type="button" data-counter="children" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="children" name="children" value="0" min="0" max="6" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="children" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                </div>
+              </div>
+            </div>
+            <p id="guest-warning" class="hidden mt-4 text-body-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-2"></p>
+          </div>
+
+          <!-- 4. Contact Details -->
+          <form id="booking-form" class="bg-white rounded-2xl shadow-warm p-8">
+            <h2 class="font-heading text-xl font-semibold text-charcoal-800 mb-5">4. Kontaktdaten</h2>
+            <div class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="firstname" class="block text-sm font-medium text-charcoal-600 mb-2">Vorname *</label>
+                  <input type="text" id="firstname" name="firstname" required autocomplete="given-name"
+                    class="w-full px-4 py-3 border border-cream-300 rounded-xl text-charcoal-800 bg-white focus:border-salt-500 focus:ring-2 focus:ring-salt-200 transition-all duration-200 outline-none" />
+                </div>
+                <div>
+                  <label for="lastname" class="block text-sm font-medium text-charcoal-600 mb-2">Nachname *</label>
+                  <input type="text" id="lastname" name="lastname" required autocomplete="family-name"
+                    class="w-full px-4 py-3 border border-cream-300 rounded-xl text-charcoal-800 bg-white focus:border-salt-500 focus:ring-2 focus:ring-salt-200 transition-all duration-200 outline-none" />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-charcoal-600 mb-2">E-Mail *</label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                  class="w-full px-4 py-3 border border-cream-300 rounded-xl text-charcoal-800 bg-white focus:border-salt-500 focus:ring-2 focus:ring-salt-200 transition-all duration-200 outline-none" />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-charcoal-600 mb-2">Telefon</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel"
+                  class="w-full px-4 py-3 border border-cream-300 rounded-xl text-charcoal-800 bg-white focus:border-salt-500 focus:ring-2 focus:ring-salt-200 transition-all duration-200 outline-none" />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-charcoal-600 mb-2">Nachricht</label>
+                <textarea id="message" name="message" rows="3"
+                  class="w-full px-4 py-3 border border-cream-300 rounded-xl text-charcoal-800 bg-white focus:border-salt-500 focus:ring-2 focus:ring-salt-200 transition-all duration-200 outline-none resize-y"
+                  placeholder="Besondere Wünsche, Fragen..."></textarea>
+              </div>
+            </div>
+
+            <label class="flex items-start gap-3 cursor-pointer mt-6">
+              <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-4 h-4 accent-salt-500 cursor-pointer" />
+              <span class="text-body-sm text-charcoal-500">
+                Ich habe die <a href="/datenschutz/" class="text-salt-600 underline hover:text-salt-700" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+              </span>
+            </label>
+
+            <!-- Validation errors -->
+            <div id="form-errors" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-body-sm text-red-700"></div>
+
+            <button type="submit" id="submit-btn" class="btn-primary w-full sm:w-auto mt-8">
+              Unverbindlich anfragen
+            </button>
+          </form>
+
+          <!-- Success Message (hidden by default) -->
+          <div id="form-success" class="hidden bg-white rounded-2xl shadow-warm p-10 text-center">
+            <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-forest-100 flex items-center justify-center">
+              <svg class="w-8 h-8 text-forest-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <h2 class="font-heading text-2xl font-semibold text-charcoal-900 mb-3">Anfrage gesendet!</h2>
+            <p class="text-body text-charcoal-500 mb-2">
+              Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb eines Werktages bei Ihnen.
+            </p>
+            <p class="text-body-sm text-charcoal-400 mb-8">
+              Eine Kopie wurde an Ihre E-Mail-Adresse gesendet.
+            </p>
+            <a href="/" class="btn-secondary text-sm">Zurück zur Startseite</a>
+          </div>
+        </div>
+
+        <!-- Sidebar: Price Summary -->
+        <div class="space-y-6">
+          <!-- Price Estimate -->
+          <div id="price-card" class="bg-white rounded-2xl shadow-warm p-6 sticky top-28">
+            <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-5">Preisübersicht</h3>
+
+            <div id="price-empty" class="text-body-sm text-charcoal-400 italic">
+              Wählen Sie eine Wohnung und einen Zeitraum, um den Preis zu sehen.
+            </div>
+
+            <div id="price-details" class="hidden space-y-3">
+              <div class="flex justify-between text-body-sm">
+                <span class="text-charcoal-500"><span id="p-nights">0</span> Nächte Unterkunft</span>
+                <span class="font-medium text-charcoal-800"><span id="p-subtotal">0</span> €</span>
+              </div>
+              <div id="p-extra-row" class="hidden flex justify-between text-body-sm">
+                <span class="text-charcoal-500">Zusatzpersonen</span>
+                <span class="font-medium text-charcoal-800"><span id="p-extra">0</span> €</span>
+              </div>
+              <div class="flex justify-between text-body-sm">
+                <span class="text-charcoal-500">Servicegebühr (einmalig)</span>
+                <span class="font-medium text-charcoal-800"><span id="p-service">0</span> €</span>
+              </div>
+              <div class="flex justify-between text-body-sm">
+                <span class="text-charcoal-500">Kurtaxe (geschätzt)</span>
+                <span class="font-medium text-charcoal-800">~ <span id="p-tax">0</span> €</span>
+              </div>
+              <div id="p-deposit-row" class="hidden flex justify-between text-body-sm">
+                <span class="text-charcoal-500">Kaution (wird erstattet)</span>
+                <span class="font-medium text-charcoal-800"><span id="p-deposit">0</span> €</span>
+              </div>
+              <div class="border-t border-cream-200 pt-3 mt-3 flex justify-between">
+                <span class="font-heading text-lg font-semibold text-charcoal-800">Gesamt</span>
+                <span class="font-heading text-xl font-semibold text-salt-600"><span id="p-total">0</span> €</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="bg-white rounded-2xl shadow-warm p-6">
+            <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-4">Gut zu wissen</h3>
+            <ul class="space-y-3 text-body-sm text-charcoal-500">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-salt-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Mindestaufenthalt: 2 Nächte
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-salt-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Check-in ab 15:00 Uhr
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-salt-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Check-out bis 11:00 Uhr
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-salt-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Kostenlose Parkplätze
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-salt-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Nichtraucher-Wohnungen
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-salt-50 rounded-2xl p-6 border border-salt-100">
+            <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-3">Fragen?</h3>
+            <p class="text-body-sm text-charcoal-500 mb-4">Wir helfen gerne bei der Buchung.</p>
+            <a href="tel:+4933631809869" class="text-salt-600 font-medium text-body-sm hover:text-salt-700 transition-colors duration-200">
+              +49 33631 809869
+            </a>
+            <p class="text-caption text-charcoal-400 mt-1">Mo–Fr 10–12 & 14–17 Uhr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { fetchRules, calculateStay, getMinStayForDate } from '../lib/pricing';
+  import type { Rules } from '../lib/pricing';
+
+  // ─── Types ──────────────────────────────────────────
+  interface Booking { start: Date; end: Date; }
+  interface CalendarItem {
+    location: string;
+    start: { dateTime: string };
+    end: { dateTime: string };
+    status: string;
+  }
+
+  // ─── Constants ──────────────────────────────────────
+  const MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const DAYS_DE = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+  const LOCATION_MAP: Record<string, string> = {
+    schmetterling: 'SL',
+    eichhoernchen: 'EH',
+    fuchs: 'FS',
+    schwan: 'SW',
+  };
+  const DAY_MS = 24 * 60 * 60 * 1000;
+
+  // ─── State ──────────────────────────────────────────
+  let selectedApt: { id: string; name: string } | null = null;
+  let checkinDate: Date | null = null;
+  let checkoutDate: Date | null = null;
+  let calendarBaseMonth = new Date().getMonth();
+  let calendarBaseYear = new Date().getFullYear();
+  let allBookings: CalendarItem[] = [];
+  let bookingsLoaded = false;
+  let rulesData: Rules | null = null;
+
+  function getAccCode(): string {
+    return selectedApt ? (LOCATION_MAP[selectedApt.id] || '') : '';
+  }
+
+  function getMaxGuests(): number {
+    if (!rulesData || !selectedApt) return 8;
+    const code = getAccCode();
+    return rulesData.baseSettings[code]?.maxPersons ?? 8;
+  }
+
+  // ─── Load Rules ────────────────────────────────────
+  async function loadRules() {
+    try {
+      rulesData = await fetchRules();
+      updateAptLabels();
+    } catch {
+      // pricing will show fallback
+    }
+  }
+
+  function updateAptLabels() {
+    if (!rulesData) return;
+    for (const [id, code] of Object.entries(LOCATION_MAP)) {
+      const el = document.querySelector(`[data-apt-info="${id}"]`) as HTMLElement | null;
+      const btn = document.querySelector(`.apt-select[data-id="${id}"]`) as HTMLElement | null;
+      if (!el || !btn || !rulesData) continue;
+      const s = rulesData.baseSettings[code];
+      if (!s) continue;
+      const minPrice = Math.min(...rulesData.saisons.map(ss => ss.price[code] ?? Infinity));
+      const size = btn.dataset.size || '';
+      el.textContent = `${size} · bis ${s.maxPersons} Pers. · ab ${minPrice} €`;
+    }
+  }
+
+  // ─── Load Bookings ─────────────────────────────────
+  function loadBookings() {
+    const script = document.createElement('script');
+    script.src = 'https://cal-aggregator.awzone.de/items.js';
+    script.onload = () => {
+      const win = window as any;
+      if (win.calendar_items && win.calendar_items.items) {
+        allBookings = win.calendar_items.items;
+      }
+      bookingsLoaded = true;
+      document.getElementById('cal-loading')?.classList.add('hidden');
+      renderCalendar();
+    };
+    script.onerror = () => {
+      bookingsLoaded = true;
+      document.getElementById('cal-loading')?.classList.add('hidden');
+      renderCalendar();
+    };
+    document.head.appendChild(script);
+  }
+
+  function getBookingsForApt(): Booking[] {
+    if (!selectedApt) return [];
+    const code = LOCATION_MAP[selectedApt.id];
+    if (!code) return [];
+    return allBookings
+      .filter(b => b.location === code && b.status === 'CONFIRMED')
+      .map(b => ({
+        start: toLocalDate(b.start.dateTime),
+        end: toLocalDate(b.end.dateTime),
+      }));
+  }
+
+  function toLocalDate(iso: string): Date {
+    const d = new Date(iso);
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+
+  function getDayStatus(date: Date, bookings: Booking[]): 'free' | 'booked' | 'checkin-day' | 'checkout-day' | 'turnover' {
+    const t = date.getTime();
+    let isArrival = false;
+    let isDeparture = false;
+    let isOccupied = false;
+
+    for (const b of bookings) {
+      if (t === b.start.getTime()) isArrival = true;
+      if (t === b.end.getTime()) isDeparture = true;
+      if (t >= b.start.getTime() && t < b.end.getTime()) isOccupied = true;
+    }
+
+    if (isDeparture && isArrival) return 'turnover';
+    if (isArrival && isOccupied) return 'checkin-day';
+    if (isDeparture) return 'checkout-day';
+    if (isOccupied) return 'booked';
+    return 'free';
+  }
+
+  function canBeNewCheckin(status: string): boolean {
+    return status === 'free' || status === 'checkout-day';
+  }
+
+  function canBeNewCheckout(status: string): boolean {
+    return status === 'free' || status === 'checkin-day';
+  }
+
+  function rangeHasConflict(newStart: Date, newEnd: Date, bookings: Booking[]): boolean {
+    for (const b of bookings) {
+      if (newStart.getTime() < b.end.getTime() && newEnd.getTime() > b.start.getTime()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // ─── Apartment Selection ────────────────────────────
+  document.querySelectorAll('.apt-select').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.apt-select').forEach(b => {
+        b.classList.remove('border-salt-500', 'bg-salt-50');
+        b.classList.add('border-cream-200');
+      });
+      btn.classList.remove('border-cream-200');
+      btn.classList.add('border-salt-500', 'bg-salt-50');
+
+      const el = btn as HTMLElement;
+      selectedApt = {
+        id: el.dataset.id!,
+        name: el.dataset.name!,
+      };
+
+      checkinDate = null;
+      checkoutDate = null;
+      hideConflict();
+      updateDateDisplay();
+      updatePrice();
+      checkGuestLimit();
+      renderCalendar();
+    });
+  });
+
+  // ─── Guest Counters ─────────────────────────────────
+  document.querySelectorAll('.counter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = btn as HTMLElement;
+      const targetId = el.dataset.counter!;
+      const dir = Number(el.dataset.dir);
+      const input = document.getElementById(targetId) as HTMLInputElement;
+      const min = Number(input.min);
+      const max = Number(input.max);
+      const newVal = Math.min(max, Math.max(min, Number(input.value) + dir));
+      input.value = String(newVal);
+      updatePrice();
+      checkGuestLimit();
+    });
+  });
+
+  function checkGuestLimit() {
+    const adults = Number((document.getElementById('adults') as HTMLInputElement).value);
+    const children = Number((document.getElementById('children') as HTMLInputElement).value);
+    const total = adults + children;
+    const warning = document.getElementById('guest-warning')!;
+    const maxGuests = getMaxGuests();
+
+    if (selectedApt && total > maxGuests) {
+      warning.textContent = `Die Wohnung ${selectedApt.name} ist für maximal ${maxGuests} Personen ausgelegt. Bitte wählen Sie eine größere Wohnung oder reduzieren Sie die Personenzahl.`;
+      warning.classList.remove('hidden');
+    } else {
+      warning.classList.add('hidden');
+    }
+  }
+
+  // ─── Conflict UI ────────────────────────────────────
+  function showConflict(msg: string) {
+    const el = document.getElementById('booking-conflict')!;
+    document.getElementById('booking-conflict-text')!.textContent = msg;
+    el.classList.remove('hidden');
+  }
+
+  function hideConflict() {
+    document.getElementById('booking-conflict')!.classList.add('hidden');
+  }
+
+  // ─── Calendar Rendering ─────────────────────────────
+  function renderCalendar() {
+    const container = document.getElementById('cal-months')!;
+    const title = document.getElementById('cal-title')!;
+
+    const m1 = calendarBaseMonth;
+    const y1 = calendarBaseYear;
+    const m2 = m1 === 11 ? 0 : m1 + 1;
+    const y2 = m1 === 11 ? y1 + 1 : y1;
+
+    title.textContent = `${MONTHS_DE[m1]} ${y1}` + (y1 === y2 ? ` – ${MONTHS_DE[m2]}` : ` – ${MONTHS_DE[m2]} ${y2}`);
+
+    const bookings = getBookingsForApt();
+    container.innerHTML = renderMonth(y1, m1, bookings) + renderMonth(y2, m2, bookings);
+
+    container.querySelectorAll('[data-date]').forEach(cell => {
+      const el = cell as HTMLElement;
+      if (el.dataset.disabled === 'true') return;
+      el.addEventListener('click', () => {
+        handleDateClick(new Date(el.dataset.date! + 'T00:00:00'));
+      });
+    });
+  }
+
+  function renderMonth(year: number, month: number, bookings: Booking[]): string {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    let startDow = firstDay.getDay();
+    if (startDow === 0) startDow = 7;
+
+    let html = `<div>`;
+    html += `<h3 class="font-heading text-base font-semibold text-charcoal-700 mb-3 text-center">${MONTHS_DE[month]} ${year}</h3>`;
+    html += `<div class="grid grid-cols-7 gap-0.5">`;
+
+    DAYS_DE.forEach(d => {
+      html += `<div class="text-center text-caption text-charcoal-400 py-1.5 font-medium">${d}</div>`;
+    });
+
+    for (let i = 1; i < startDow; i++) {
+      html += `<div></div>`;
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+      const date = new Date(year, month, day);
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const isPast = date < today;
+      const isToday = date.getTime() === today.getTime();
+      const isCheckin = checkinDate && date.getTime() === checkinDate.getTime();
+      const isCheckout = checkoutDate && date.getTime() === checkoutDate.getTime();
+      const isInRange = checkinDate && checkoutDate && date > checkinDate && date < checkoutDate;
+
+      const status = selectedApt ? getDayStatus(date, bookings) : 'free';
+
+      let classes = 'relative h-10 flex items-center justify-center text-sm rounded-lg transition-all duration-150 ';
+      let disabled = false;
+      let extraHtml = '';
+
+      if (isPast) {
+        classes += 'text-charcoal-300 bg-charcoal-50/50 cursor-not-allowed';
+        disabled = true;
+      } else if (isCheckin) {
+        classes += 'bg-salt-200 text-salt-900 font-semibold ring-2 ring-salt-400 cursor-pointer';
+      } else if (isCheckout) {
+        classes += 'bg-salt-500 text-white font-semibold ring-2 ring-salt-600 cursor-pointer';
+      } else if (isInRange) {
+        classes += 'bg-salt-50 text-salt-700 cursor-pointer';
+      } else if (status === 'booked') {
+        classes += 'bg-red-100 text-red-400 cursor-not-allowed line-through';
+        disabled = true;
+      } else if (status === 'checkin-day') {
+        classes += 'cursor-pointer text-charcoal-600';
+        extraHtml = `<span class="absolute inset-0 rounded-lg overflow-hidden pointer-events-none"><span class="absolute top-0 right-0 w-1/2 h-full bg-red-100"></span></span>`;
+      } else if (status === 'checkout-day') {
+        classes += 'cursor-pointer text-charcoal-600';
+        extraHtml = `<span class="absolute inset-0 rounded-lg overflow-hidden pointer-events-none"><span class="absolute top-0 left-0 w-1/2 h-full bg-red-100"></span></span>`;
+      } else if (status === 'turnover') {
+        classes += 'bg-red-100 text-red-400 cursor-not-allowed';
+        disabled = true;
+      } else {
+        classes += 'text-charcoal-700 hover:bg-salt-50 hover:text-salt-700 cursor-pointer';
+      }
+
+      if (isToday && !isPast) {
+        classes += ' font-semibold';
+      }
+
+      html += `<div class="${classes}" data-date="${dateStr}" data-disabled="${disabled}" data-status="${status}">`;
+      html += extraHtml;
+      html += `<span class="relative z-10">${day}</span>`;
+      if (isToday) {
+        html += `<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${status === 'booked' ? 'bg-red-400' : 'bg-salt-500'} z-10"></span>`;
+      }
+      html += `</div>`;
+    }
+
+    html += `</div></div>`;
+    return html;
+  }
+
+  // ─── Date Click Handler ─────────────────────────────
+  function handleDateClick(date: Date) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (date < today) return;
+
+    const bookings = getBookingsForApt();
+    const status = selectedApt ? getDayStatus(date, bookings) : 'free';
+
+    if (!selectedApt) {
+      showConflict('Bitte wählen Sie zuerst eine Wohnung aus.');
+      return;
+    }
+
+    hideConflict();
+
+    const minNights = rulesData ? getMinStayForDate(date, rulesData) : 2;
+
+    if (!checkinDate || (checkinDate && checkoutDate)) {
+      if (!canBeNewCheckin(status)) {
+        showConflict('Dieser Tag ist belegt. Anreise ist hier nicht möglich.');
+        return;
+      }
+      checkinDate = date;
+      checkoutDate = null;
+    } else {
+      if (date <= checkinDate) {
+        if (!canBeNewCheckin(status)) {
+          showConflict('Dieser Tag ist belegt. Anreise ist hier nicht möglich.');
+          return;
+        }
+        checkinDate = date;
+        checkoutDate = null;
+      } else {
+        if (!canBeNewCheckout(status)) {
+          showConflict('Dieser Tag ist belegt. Abreise ist hier nicht möglich.');
+          return;
+        }
+
+        const checkinMinNights = rulesData ? getMinStayForDate(checkinDate, rulesData) : 2;
+        const nights = Math.round((date.getTime() - checkinDate.getTime()) / DAY_MS);
+        let proposedCheckout = date;
+        if (nights < checkinMinNights) {
+          proposedCheckout = new Date(checkinDate.getTime() + checkinMinNights * DAY_MS);
+          const snapStatus = getDayStatus(proposedCheckout, bookings);
+          if (!canBeNewCheckout(snapStatus)) {
+            showConflict(`Mindestaufenthalt sind ${checkinMinNights} Nächte, aber der ${formatDateDE(proposedCheckout)} ist belegt.`);
+            return;
+          }
+        }
+
+        if (rangeHasConflict(checkinDate, proposedCheckout, bookings)) {
+          showConflict('Der gewählte Zeitraum überschneidet sich mit einer bestehenden Buchung. Bitte wählen Sie einen anderen Zeitraum.');
+          checkinDate = null;
+          checkoutDate = null;
+        } else {
+          checkoutDate = proposedCheckout;
+        }
+      }
+    }
+
+    renderCalendar();
+    updateDateDisplay();
+    updatePrice();
+  }
+
+  // ─── Date Display ───────────────────────────────────
+  function updateDateDisplay() {
+    const selBox = document.getElementById('date-selection')!;
+    const selCheckin = document.getElementById('sel-checkin')!;
+    const selCheckout = document.getElementById('sel-checkout')!;
+    const selNights = document.getElementById('sel-nights')!;
+
+    if (checkinDate) {
+      selBox.classList.remove('hidden');
+      selCheckin.textContent = formatDateDE(checkinDate);
+
+      if (checkoutDate) {
+        const nights = Math.round((checkoutDate.getTime() - checkinDate.getTime()) / DAY_MS);
+        selCheckout.textContent = formatDateDE(checkoutDate);
+        selNights.textContent = String(nights);
+      } else {
+        selCheckout.textContent = 'Bitte wählen…';
+        selNights.textContent = '—';
+      }
+    } else {
+      selBox.classList.add('hidden');
+    }
+  }
+
+  function formatDateDE(d: Date): string {
+    return `${d.getDate()}. ${MONTHS_DE[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  // ─── Calendar Navigation ───────────────────────────
+  document.getElementById('cal-prev')!.addEventListener('click', () => {
+    const today = new Date();
+    if (calendarBaseYear > today.getFullYear() || (calendarBaseYear === today.getFullYear() && calendarBaseMonth > today.getMonth())) {
+      calendarBaseMonth--;
+      if (calendarBaseMonth < 0) {
+        calendarBaseMonth = 11;
+        calendarBaseYear--;
+      }
+      renderCalendar();
+    }
+  });
+
+  document.getElementById('cal-next')!.addEventListener('click', () => {
+    calendarBaseMonth++;
+    if (calendarBaseMonth > 11) {
+      calendarBaseMonth = 0;
+      calendarBaseYear++;
+    }
+    renderCalendar();
+  });
+
+  // ─── Price Calculation ──────────────────────────────
+  function updatePrice() {
+    const empty = document.getElementById('price-empty')!;
+    const details = document.getElementById('price-details')!;
+
+    if (!selectedApt || !checkinDate || !checkoutDate || !rulesData) {
+      empty.classList.remove('hidden');
+      details.classList.add('hidden');
+      return;
+    }
+
+    const accCode = getAccCode();
+    const adults = Number((document.getElementById('adults') as HTMLInputElement).value);
+    const children = Number((document.getElementById('children') as HTMLInputElement).value);
+
+    const guests = [
+      { ageGroup: 'adult', count: adults },
+      { ageGroup: 'child1', count: children },
+    ];
+
+    const result = calculateStay(accCode, checkinDate, checkoutDate, guests, rulesData);
+
+    document.getElementById('p-nights')!.textContent = String(result.nights);
+    document.getElementById('p-subtotal')!.textContent = String(result.accommodationTotal);
+    document.getElementById('p-service')!.textContent = String(result.serviceFee);
+    document.getElementById('p-tax')!.textContent = String(Math.round(result.kurtaxeTotal));
+    document.getElementById('p-total')!.textContent = String(Math.round(result.total));
+
+    const extraRow = document.getElementById('p-extra-row')!;
+    if (result.extraPersonTotal > 0) {
+      document.getElementById('p-extra')!.textContent = String(result.extraPersonTotal);
+      extraRow.classList.remove('hidden');
+    } else {
+      extraRow.classList.add('hidden');
+    }
+
+    const depositRow = document.getElementById('p-deposit-row')!;
+    const deposit = rulesData.baseSettings[accCode]?.deposit;
+    if (deposit) {
+      document.getElementById('p-deposit')!.textContent = String(deposit);
+      depositRow.classList.remove('hidden');
+    } else {
+      depositRow.classList.add('hidden');
+    }
+
+    empty.classList.add('hidden');
+    details.classList.remove('hidden');
+  }
+
+  // ─── Form Submission ────────────────────────────────
+  document.getElementById('booking-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const errBox = document.getElementById('form-errors')!;
+    const errors: string[] = [];
+
+    if (!selectedApt) errors.push('Bitte wählen Sie eine Wohnung aus.');
+    if (!checkinDate || !checkoutDate) errors.push('Bitte wählen Sie einen Zeitraum im Kalender.');
+
+    if (selectedApt && checkinDate && checkoutDate) {
+      const bookings = getBookingsForApt();
+      if (rangeHasConflict(checkinDate, checkoutDate, bookings)) {
+        errors.push('Der gewählte Zeitraum überschneidet sich mit einer bestehenden Buchung.');
+      }
+    }
+
+    const firstname = (document.getElementById('firstname') as HTMLInputElement).value.trim();
+    const lastname = (document.getElementById('lastname') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+    const privacy = (document.getElementById('privacy') as HTMLInputElement).checked;
+
+    if (!firstname) errors.push('Bitte geben Sie Ihren Vornamen ein.');
+    if (!lastname) errors.push('Bitte geben Sie Ihren Nachnamen ein.');
+    if (!email) errors.push('Bitte geben Sie Ihre E-Mail-Adresse ein.');
+    if (!privacy) errors.push('Bitte stimmen Sie der Datenschutzerklärung zu.');
+
+    if (errors.length > 0) {
+      errBox.innerHTML = errors.map(err => `<p>• ${err}</p>`).join('');
+      errBox.classList.remove('hidden');
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    errBox.classList.add('hidden');
+
+    const adults = (document.getElementById('adults') as HTMLInputElement).value;
+    const children = (document.getElementById('children') as HTMLInputElement).value;
+    const nights = Math.round((checkoutDate!.getTime() - checkinDate!.getTime()) / DAY_MS);
+    const totalEl = document.getElementById('p-total');
+    const total = totalEl ? totalEl.textContent : '—';
+
+    const subject = encodeURIComponent(`Buchungsanfrage ${selectedApt!.name} – ${firstname} ${lastname}`);
+    const body = encodeURIComponent(
+      `Buchungsanfrage — Salzträume am See\n` +
+      `${'═'.repeat(40)}\n\n` +
+      `Wohnung: ${selectedApt!.name}\n` +
+      `Anreise: ${formatDateDE(checkinDate!)}\n` +
+      `Abreise: ${formatDateDE(checkoutDate!)}\n` +
+      `Nächte: ${nights}\n\n` +
+      `Erwachsene: ${adults}\n` +
+      `Kinder: ${children}\n\n` +
+      `Geschätzter Gesamtpreis: ${total} €\n\n` +
+      `${'─'.repeat(40)}\n` +
+      `Name: ${firstname} ${lastname}\n` +
+      `E-Mail: ${email}\n` +
+      `Telefon: ${phone || '—'}\n\n` +
+      `Nachricht:\n${message || '(keine)'}\n\n` +
+      `${'─'.repeat(40)}\n` +
+      `Gesendet über salztraeume-am-see.de`
+    );
+
+    window.location.href = `mailto:hej@salztraeume-am-see.de?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      document.getElementById('form-success')!.classList.remove('hidden');
+      document.getElementById('booking-form')!.classList.add('hidden');
+      document.getElementById('form-success')!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 500);
+  });
+
+  // ─── Init ───────────────────────────────────────────
+  renderCalendar();
+  loadBookings();
+  loadRules();
+</script>

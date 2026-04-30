@@ -1,0 +1,40 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const images = Array.from({ length: 14 }, (_, i) => ({
+  src: `https://www.salztraeume-am-see.de/img/fuchs/fuchs${i + 1}.jpg`,
+  alt: `Ferienwohnung Fuchs — Ansicht ${i + 1}`,
+}));
+
+const features = [
+  '4 Einzelbetten (kombi.)', '2 Doppelbetten 1,40m', '2 Schlafcouches', 'Einbauküche',
+  'Kühl-/Gefrierkombination', 'Herd & Ofen', 'Mikrowelle', 'Spülmaschine',
+  'Eckbadewanne', 'Dusche', 'Gäste-WC', 'Klimaanlage',
+  'WLAN', 'Smart TV', 'Parkplatz', 'Kinderfreundlich',
+];
+
+const highlights = [
+  'Größte Wohnung mit 100 m² — ideal für Familien und Gruppen',
+  '3 separate Schlafzimmer, einzeln mietbar',
+  'Eigenes Gäste-WC neben dem Hauptbad',
+  'Himalayasalz-Elemente in allen Räumen',
+  'Platz für bis zu 8 Personen',
+];
+---
+
+<ApartmentLayout
+  name="Fuchs"
+  slug="fuchs"
+  tagline="Raum für die ganze Familie"
+  description="Die Wohnung Fuchs ist mit 100 Quadratmetern unsere größte und bietet in der ersten Etage Platz für bis zu 8 Personen. Drei separate Schlafzimmer, eine voll ausgestattete Küche und das einzigartige Himalayasalz-Raumklima machen diese Wohnung zum idealen Ziel für Familien und Gruppen."
+  size="100 m²"
+  guests="bis 8"
+  bedrooms="3,5"
+  bathrooms="1,5"
+  checkIn="ab 15:00"
+  checkOut="bis 11:00"
+  images={images}
+  features={features}
+  highlights={highlights}
+  heroImage={images[0].src}
+/>

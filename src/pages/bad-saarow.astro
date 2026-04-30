@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const highlights = [
+  {
+    title: 'SaarowTherme',
+    desc: 'Überregional bekanntes Thermalsolebad mit Sauna-Landschaft',
+    distance: '15 Min. zu Fuß',
+    icon: 'M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z',
+  },
+  {
+    title: 'Badestelle',
+    desc: 'Naturnahe Badestelle direkt am Scharmützelsee',
+    distance: '250m entfernt',
+    icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3',
+  },
+  {
+    title: 'Kurpark',
+    desc: 'Historischer Kurpark mit Steg und Seepromenade',
+    distance: '10 Min. zu Fuß',
+    icon: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z',
+  },
+  {
+    title: 'Maxim-Gorki-Haus',
+    desc: 'Historische Villa „Putti" — Kulturdenkmal am See',
+    distance: '20 Min. zu Fuß',
+    icon: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z',
+  },
+];
+---
+
+<BaseLayout title="Bad Saarow & der See" description="Entdecken Sie Bad Saarow am Scharmützelsee — Natur, Therme, Kultur. Nur 45 Minuten von Berlin." bodyClass="page-light">
+  <!-- Hero -->
+  <section class="relative pt-28 lg:pt-36 pb-24 section-padding overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-lake-50 via-cream-50 to-forest-50"></div>
+    </div>
+    <div class="content-width">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="divider-salt mb-8"></div>
+          <h1 class="text-h1 font-heading text-charcoal-900 mb-6 text-balance">
+            Bad Saarow &<br />der Scharmützelsee
+          </h1>
+          <p class="text-body-lg text-charcoal-500 mb-6 leading-relaxed">
+            Bad Saarow ist ein Kurort am Scharmützelsee in Brandenburg — auch bekannt als
+            das „Märkische Meer". Atemberaubende Natur, vielfältige Freizeitangebote und
+            die Nähe zu Berlin machen ihn zum perfekten Erholungsort.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="bg-white rounded-xl px-5 py-3 shadow-warm">
+              <p class="font-heading text-2xl font-semibold text-lake-600">45 Min.</p>
+              <p class="text-caption text-charcoal-400">von Berlin</p>
+            </div>
+            <div class="bg-white rounded-xl px-5 py-3 shadow-warm">
+              <p class="font-heading text-2xl font-semibold text-lake-600">250m</p>
+              <p class="text-caption text-charcoal-400">zum See</p>
+            </div>
+            <div class="bg-white rounded-xl px-5 py-3 shadow-warm">
+              <p class="font-heading text-2xl font-semibold text-lake-600">10 km²</p>
+              <p class="text-caption text-charcoal-400">Seefläche</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img
+            src="https://www.salztraeume-am-see.de/img/start/start1.jpg"
+            alt="Scharmützelsee in Bad Saarow"
+            class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
+            width="640"
+            height="480"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° Video Teaser -->
+  <section class="section-padding py-20 bg-charcoal-900 relative overflow-hidden">
+    <div class="content-width text-center relative z-10">
+      <h2 class="text-h2 font-heading text-white mb-4">Erleben Sie den See von oben</h2>
+      <p class="text-body-lg text-cream-200/70 max-w-xl mx-auto mb-8">
+        Unsere Drohnenaufnahmen zeigen die atemberaubende Landschaft rund um den Scharmützelsee
+        aus der Vogelperspektive.
+      </p>
+      <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden aspect-video bg-charcoal-800">
+        <video
+          class="w-full h-full object-cover"
+          controls
+          preload="metadata"
+          poster="https://www.salztraeume-am-see.de/img/start/start1.jpg"
+        >
+          <source src="/videos/drone-360.mp4" type="video/mp4" />
+          <p class="text-cream-300 p-8">Ihr Browser unterstützt kein Video.</p>
+        </video>
+      </div>
+      <p class="text-body-sm text-cream-300/50 mt-4">360°-Drohnenaufnahme über dem Scharmützelsee</p>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section-padding py-24 bg-white">
+    <div class="content-width">
+      <div class="text-center mb-16">
+        <div class="divider-salt mx-auto mb-8"></div>
+        <h2 class="section-title">Sehenswürdigkeiten & Aktivitäten</h2>
+        <p class="section-subtitle mx-auto">
+          Von der Therme über historische Gebäude bis hin zu Naturerlebnissen —
+          Bad Saarow bietet für jeden etwas.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {highlights.map((h) => (
+          <div class="bg-cream-50 rounded-2xl p-6 hover:shadow-warm transition-all duration-300">
+            <div class="w-12 h-12 mb-4 rounded-xl bg-lake-100 flex items-center justify-center">
+              <svg class="w-6 h-6 text-lake-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d={h.icon} />
+              </svg>
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-charcoal-800 mb-2">{h.title}</h3>
+            <p class="text-body-sm text-charcoal-500 mb-3">{h.desc}</p>
+            <p class="text-caption text-lake-600 font-medium">{h.distance}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section class="section-padding py-24 bg-cream-50">
+    <div class="content-width">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="divider-salt mb-8"></div>
+          <h2 class="section-title">Aktiv am See</h2>
+          <p class="text-body text-charcoal-500 mb-8">
+            Ob Radtouren durch die Märkische Schweiz, Wanderungen durch den Wald
+            oder eine Bootsfahrt auf dem Scharmützelsee — hier wird es nie langweilig.
+          </p>
+          <div class="space-y-4">
+            {['Fahrradverleih (kostenlos bei uns)', 'Gummibootverleih (kostenlos bei uns)', 'Wanderwege direkt am Haus', 'Bootsvermietung am See', 'Sandstrandbad (7 Min. zu Fuß)', 'SaarowTherme (15 Min. zu Fuß)'].map((activity) => (
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-forest-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-body text-charcoal-600">{activity}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <img
+            src="https://www.salztraeume-am-see.de/img/start/start6.jpg"
+            alt="Garten und Natur bei Salzträume am See"
+            class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
+            loading="lazy"
+            width="640"
+            height="480"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding py-16 bg-lake-600">
+    <div class="content-width text-center">
+      <h2 class="text-h2 font-heading text-white mb-4">Bereit für Bad Saarow?</h2>
+      <p class="text-body-lg text-lake-100/80 max-w-lg mx-auto mb-8">
+        Buchen Sie jetzt Ihre Ferienwohnung zwischen Wald und See.
+      </p>
+      <a href="/buchen/" class="btn-primary bg-white text-lake-700 hover:bg-cream-100">
+        Jetzt buchen
+      </a>
+    </div>
+  </section>
+</BaseLayout>

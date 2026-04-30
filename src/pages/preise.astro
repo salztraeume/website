@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const apartments = [
+  { code: 'SL', name: 'Schmetterling', size: '43 m²', href: '/ferienwohnungen/schmetterling/' },
+  { code: 'EH', name: 'Eichhörnchen', size: '53 m²', href: '/ferienwohnungen/eichhoernchen/' },
+  { code: 'SW', name: 'Schwan', size: '70 m²', href: '/ferienwohnungen/schwan/' },
+  { code: 'FS', name: 'Fuchs', size: '100 m²', href: '/ferienwohnungen/fuchs/' },
+];
+---
+
+<BaseLayout title="Preise" description="Preise und Saisonzeiten für unsere Ferienwohnungen in Bad Saarow." bodyClass="page-light">
+  <section class="pt-28 lg:pt-36 pb-24 section-padding bg-cream-50">
+    <div class="content-width">
+      <div class="max-w-3xl mb-16">
+        <div class="divider-salt mb-8"></div>
+        <h1 class="text-h1 font-heading text-charcoal-900 mb-4">Preise & Saison</h1>
+        <p class="section-subtitle" id="price-intro">
+          Alle Preise verstehen sich pro Nacht. Preise werden geladen…
+        </p>
+      </div>
+
+      <!-- Pricing Table -->
+      <div class="bg-white rounded-2xl shadow-warm overflow-hidden mb-16">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-salt-50 border-b border-cream-200">
+                <th class="text-left py-5 px-6 font-heading text-lg font-semibold text-charcoal-800">Wohnung</th>
+                <th class="text-center py-5 px-4 font-body text-sm font-medium text-charcoal-500 uppercase tracking-wider">Nebensaison</th>
+                <th class="text-center py-5 px-4 font-body text-sm font-medium text-charcoal-500 uppercase tracking-wider">Zwischensaison</th>
+                <th class="text-center py-5 px-4 font-body text-sm font-medium text-salt-600 uppercase tracking-wider">Hauptsaison</th>
+              </tr>
+            </thead>
+            <tbody>
+              {apartments.map((apt, i) => (
+                <tr class:list={['border-b border-cream-100 last:border-0', i % 2 === 1 && 'bg-cream-50/50']}>
+                  <td class="py-5 px-6">
+                    <a href={apt.href} class="font-heading text-lg font-semibold text-charcoal-800 hover:text-salt-600 transition-colors duration-200">
+                      {apt.name}
+                    </a>
+                    <p class="text-caption text-charcoal-400 mt-0.5" data-info={apt.code}>
+                      {apt.size} · <span data-guests={apt.code}>–</span>
+                    </p>
+                  </td>
+                  <td class="py-5 px-4 text-center">
+                    <span class="font-heading text-xl font-semibold text-charcoal-700" data-price-neben={apt.code}>– €</span>
+                  </td>
+                  <td class="py-5 px-4 text-center">
+                    <span class="font-heading text-xl font-semibold text-charcoal-700" data-price-zwischen={apt.code}>– €</span>
+                  </td>
+                  <td class="py-5 px-4 text-center">
+                    <span class="font-heading text-xl font-semibold text-salt-600" data-price-haupt={apt.code}>– €</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Extra Persons -->
+        <div class="bg-white rounded-2xl shadow-warm p-8">
+          <h2 class="text-h3 font-heading text-charcoal-900 mb-6">Zusätzliche Personen</h2>
+          <p class="text-body-sm text-charcoal-400 mb-6">Preis pro Nacht und Person (zusätzlich zur inkludierten Personenzahl)</p>
+          <div id="extra-persons" class="space-y-4">
+            <p class="text-body-sm text-charcoal-400 italic">Wird geladen…</p>
+          </div>
+        </div>
+
+        <!-- Kurtaxe & Extras -->
+        <div class="bg-white rounded-2xl shadow-warm p-8">
+          <h2 class="text-h3 font-heading text-charcoal-900 mb-6">Kurtaxe & Extras</h2>
+          <div id="kurtaxe-extras" class="space-y-4">
+            <p class="text-body-sm text-charcoal-400 italic">Wird geladen…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Season Dates -->
+      <div class="bg-white rounded-2xl shadow-warm p-8 mt-8">
+        <h2 class="text-h3 font-heading text-charcoal-900 mb-6">Saisonzeiten</h2>
+        <div id="season-dates" class="space-y-4">
+          <p class="text-body-sm text-charcoal-400 italic">Wird geladen…</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-16">
+        <p class="text-body text-charcoal-400 mb-6">
+          Der Gesamtpreis wird auf unserer Buchungsseite interaktiv berechnet.
+        </p>
+        <a href="/buchen/" class="btn-primary">
+          Jetzt unverbindlich anfragen
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { fetchRules } from '../lib/pricing';
+  import type { Rules } from '../lib/pricing';
+
+  const MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+  const AGE_LABELS: Record<string, string> = {
+    adult: 'Erwachsene (ab 18)',
+    teen: 'Jugendliche (13–17)',
+    child2: 'Kinder (10–12)',
+    child1: 'Kinder (3–9)',
+    baby: 'Kleinkinder (0–2)',
+  };
+
+  const ACC_NAMES: Record<string, string> = {
+    SL: 'Schmetterling',
+    EH: 'Eichhörnchen',
+    SW: 'Schwan',
+    FS: 'Fuchs',
+  };
+
+  function formatDateDE(iso: string): string {
+    const [y, m, d] = iso.split('-').map(Number);
+    return `${d}. ${MONTHS_DE[m - 1]}`;
+  }
+
+  function populatePrices(rules: Rules) {
+    const saisonMap: Record<string, string> = {
+      'Nebensaison': 'neben',
+      'Zwischensaison': 'zwischen',
+      'Hauptsaison': 'haupt',
+    };
+
+    for (const saison of rules.saisons) {
+      const key = saisonMap[saison.name];
+      if (!key) continue;
+      for (const code of rules.accommodations) {
+        const el = document.querySelector(`[data-price-${key}="${code}"]`);
+        if (el) el.textContent = `${saison.price[code]} €`;
+      }
+    }
+
+    for (const code of rules.accommodations) {
+      const settings = rules.baseSettings[code];
+      const guestsEl = document.querySelector(`[data-guests="${code}"]`);
+      if (guestsEl && settings) {
+        if (settings.maxPersons > settings.personsInclusive) {
+          guestsEl.textContent = `${settings.personsInclusive}–${settings.maxPersons} Pers.`;
+        } else {
+          guestsEl.textContent = `${settings.maxPersons} Pers.`;
+        }
+      }
+    }
+
+    const minStays = rules.saisons.map(s => s.minStay);
+    const minStayText = Math.min(...minStays);
+    document.getElementById('price-intro')!.textContent =
+      `Alle Preise verstehen sich pro Nacht inklusive ${rules.baseSettings[rules.accommodations[0]]?.personsInclusive || 2} Personen. Der Mindestaufenthalt beträgt je nach Saison ${minStayText}–${Math.max(...minStays)} Nächte.`;
+  }
+
+  function populateExtraPersons(rules: Rules) {
+    const container = document.getElementById('extra-persons')!;
+    const ageOrder = ['adult', 'teen', 'child2', 'child1', 'baby'];
+
+    let html = '';
+    for (const age of ageOrder) {
+      const label = AGE_LABELS[age] || age;
+      const prices = rules.accommodations.map(code => rules.baseSettings[code]?.extraPersons.byAge[age] ?? 0);
+      const unique = [...new Set(prices)];
+
+      let priceText: string;
+      if (unique.length === 1) {
+        priceText = unique[0] === 0 ? 'kostenfrei' : `${unique[0]} €`;
+      } else {
+        const nonZero = unique.filter(p => p > 0);
+        if (nonZero.length === 0) {
+          priceText = 'kostenfrei';
+        } else {
+          const details = rules.accommodations
+            .map(code => {
+              const p = rules.baseSettings[code]?.extraPersons.byAge[age] ?? 0;
+              return `${ACC_NAMES[code]}: ${p} €`;
+            })
+            .join(', ');
+          priceText = `${Math.min(...nonZero)}–${Math.max(...nonZero)} €`;
+          html += `<div class="flex items-center justify-between py-2 border-b border-cream-100 last:border-0">
+            <div>
+              <span class="text-body text-charcoal-600">${label}</span>
+              <p class="text-caption text-charcoal-400">${details}</p>
+            </div>
+            <span class="font-heading text-lg font-semibold text-charcoal-800">${priceText}</span>
+          </div>`;
+          continue;
+        }
+      }
+      html += `<div class="flex items-center justify-between py-2 border-b border-cream-100 last:border-0">
+        <span class="text-body text-charcoal-600">${label}</span>
+        <span class="font-heading text-lg font-semibold text-charcoal-800">${priceText}</span>
+      </div>`;
+    }
+    container.innerHTML = html;
+  }
+
+  function populateKurtaxe(rules: Rules) {
+    const container = document.getElementById('kurtaxe-extras')!;
+    const ageOrder = ['adult', 'teen', 'child2', 'child1', 'baby'];
+
+    let html = '';
+    for (const age of ageOrder) {
+      const ag = rules.ageGroups.find(a => a.name === age);
+      if (!ag) continue;
+      const label = AGE_LABELS[age] || age;
+      const priceText = ag.taxfee > 0 ? `${ag.taxfee.toFixed(2).replace('.', ',')} € / Tag` : 'frei';
+      html += `<div class="flex items-center justify-between py-2 border-b border-cream-100">
+        <span class="text-body text-charcoal-600">Kurtaxe – ${label}</span>
+        <span class="font-heading text-lg font-semibold text-charcoal-800">${priceText}</span>
+      </div>`;
+    }
+
+    const servicePrices = rules.accommodations.map(code => {
+      const s = rules.baseSettings[code];
+      if (s?.extraService) return null;
+      return s?.service ?? 0;
+    }).filter(p => p !== null) as number[];
+    const serviceUnique = [...new Set(servicePrices)];
+    const fsSettings = rules.baseSettings['FS'];
+
+    let serviceHtml = '';
+    if (serviceUnique.length === 1) {
+      serviceHtml = `<div class="flex items-center justify-between py-2 border-b border-cream-100">
+        <span class="text-body text-charcoal-600">Servicegebühr (einmalig)</span>
+        <span class="font-heading text-lg font-semibold text-charcoal-800">${serviceUnique[0]} €</span>
+      </div>`;
+    } else {
+      const details = rules.accommodations
+        .filter(code => !rules.baseSettings[code]?.extraService)
+        .map(code => `${ACC_NAMES[code]}: ${rules.baseSettings[code]?.service} €`)
+        .join(', ');
+      serviceHtml = `<div class="flex items-center justify-between py-2 border-b border-cream-100">
+        <div>
+          <span class="text-body text-charcoal-600">Servicegebühr (einmalig)</span>
+          <p class="text-caption text-charcoal-400">${details}</p>
+        </div>
+        <span class="font-heading text-lg font-semibold text-charcoal-800">${Math.min(...serviceUnique)}–${Math.max(...serviceUnique)} €</span>
+      </div>`;
+    }
+    if (fsSettings?.extraService) {
+      serviceHtml += `<div class="flex items-center justify-between py-2 border-b border-cream-100">
+        <div>
+          <span class="text-body text-charcoal-600">Servicegebühr Fuchs (einmalig)</span>
+          <p class="text-caption text-charcoal-400">Ab 45 €, abhängig von Personenzahl</p>
+        </div>
+        <span class="font-heading text-lg font-semibold text-charcoal-800">ab 45 €</span>
+      </div>`;
+    }
+    html += serviceHtml;
+
+    html += `<div class="flex items-center justify-between py-2">
+      <span class="text-body text-charcoal-600">Parkplätze</span>
+      <span class="font-heading text-lg font-semibold text-forest-600">kostenfrei</span>
+    </div>`;
+
+    container.innerHTML = html;
+  }
+
+  function populateSeasons(rules: Rules) {
+    const container = document.getElementById('season-dates')!;
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    let html = '<div class="grid sm:grid-cols-3 gap-6">';
+    for (const saison of rules.saisons) {
+      const relevantRanges = saison.ranges.filter(r => {
+        const endYear = parseInt(r.to.substring(0, 4));
+        return endYear >= currentYear;
+      }).slice(0, 4);
+
+      html += `<div>
+        <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-3">${saison.name}</h3>
+        <p class="text-caption text-charcoal-400 mb-3">Mind. ${saison.minStay} Nächte</p>
+        <ul class="space-y-2">`;
+      for (const r of relevantRanges) {
+        html += `<li class="text-body-sm text-charcoal-600">${formatDateDE(r.from)} – ${formatDateDE(r.to)} ${r.to.substring(0, 4)}</li>`;
+      }
+      html += `</ul></div>`;
+    }
+    html += '</div>';
+
+    container.innerHTML = html;
+  }
+
+  fetchRules().then(rules => {
+    populatePrices(rules);
+    populateExtraPersons(rules);
+    populateKurtaxe(rules);
+    populateSeasons(rules);
+  });
+</script>

@@ -1,0 +1,41 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const images = Array.from([1, 7, 11, 15], (number, i) => ({
+  src: `https://www.salztraeume-am-see.de//img/schwan/${number}-head.jpg`,
+  alt: `Ferienwohnung Schwan — Ansicht ${i + 1}`,
+}));
+
+const features = [
+  'Doppelbett 1,80m', 'Schlafcouch 1,40m', 'Kochinsel', 'Ceranfeld',
+  'Backofen', 'Kühlschrank', 'Spülmaschine', 'Waschmaschine',
+  'Kaffeemaschine', 'Badewanne', 'Dusche', 'Zwei Waschbecken',
+  'Klimaanlage', 'WLAN', 'Smart TV', 'Parkplatz',
+];
+
+const highlights = [
+  'Unsere eleganteste Wohnung mit 70 m² im Erdgeschoss',
+  'Offene Wohnküche mit stilvoller Kochinsel',
+  'Ausziehbarer Esstisch für bis zu 6 Personen',
+  'Eigene Terrasse mit Gartenblick',
+  'Himalayasalz-Design in allen Räumen',
+  'Waschmaschine in der Wohnung',
+];
+---
+
+<ApartmentLayout
+  name="Schwan"
+  slug="schwan"
+  tagline="Eleganz am Wasser"
+  description="Die Wohnung Schwan ist unsere eleganteste Unterkunft. Auf 70 Quadratmetern im Erdgeschoss erwartet Sie eine offene Wohnküche mit Kochinsel, ein großzügiges Schlafzimmer und eine eigene Terrasse. Die Himalayasalz-Elemente verleihen jedem Raum eine besondere Wärme und Atmosphäre."
+  size="70 m²"
+  guests="2"
+  bedrooms="1,5"
+  bathrooms="1"
+  checkIn="ab 15:00"
+  checkOut="bis 11:00"
+  images={images}
+  features={features}
+  highlights={highlights}
+  heroImage={images[0].src}
+/>

@@ -1,0 +1,89 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-charcoal-900 text-cream-200">
+  <!-- Main Footer -->
+  <div class="section-padding pt-20 pb-12">
+    <div class="content-width">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <a href="/" class="inline-block mb-6">
+            <span class="font-heading text-2xl font-semibold text-white tracking-wide">
+              SALZ‹T›RÄUME
+            </span>
+            <br />
+            <span class="font-body text-xs tracking-[0.3em] uppercase text-salt-400">
+              am See
+            </span>
+          </a>
+          <p class="text-sm text-cream-300/70 leading-relaxed max-w-xs">
+            Deutschlands erste Salz-Ferienunterkunft. Erholen Sie sich zwischen Wald und See in Bad Saarow.
+          </p>
+        </div>
+
+        <!-- Wohnungen -->
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-white mb-5">Ferienwohnungen</h3>
+          <ul class="space-y-3">
+            <li><a href="/ferienwohnungen/schmetterling/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Schmetterling</a></li>
+            <li><a href="/ferienwohnungen/eichhoernchen/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Eichhörnchen</a></li>
+            <li><a href="/ferienwohnungen/fuchs/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Fuchs</a></li>
+            <li><a href="/ferienwohnungen/schwan/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Schwan</a></li>
+          </ul>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-white mb-5">Informationen</h3>
+          <ul class="space-y-3">
+            <li><a href="/preise/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Preise & Saison</a></li>
+            <li><a href="/buchen/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Buchen</a></li>
+            <li><a href="/bad-saarow/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Bad Saarow & See</a></li>
+            <li><a href="/tagungsraum/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Tagungsraum</a></li>
+            <li><a href="/kontakt/" class="text-sm text-cream-300/70 hover:text-salt-400 transition-colors duration-200">Kontakt & Anreise</a></li>
+          </ul>
+        </div>
+
+        <!-- Kontakt -->
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-white mb-5">Kontakt</h3>
+          <address class="not-italic space-y-3 text-sm text-cream-300/70">
+            <p>Silberberger Straße 16<br />15526 Bad Saarow</p>
+            <p>
+              <a href="tel:+4933631809869" class="hover:text-salt-400 transition-colors duration-200">
+                +49 33631 809869
+              </a>
+            </p>
+            <p>
+              <a href="mailto:hej@salztraeume-am-see.de" class="hover:text-salt-400 transition-colors duration-200">
+                hej@salztraeume-am-see.de
+              </a>
+            </p>
+            <p class="text-cream-300/50">Mo–Fr 10–12 & 14–17 Uhr</p>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-charcoal-700/50">
+    <div class="section-padding py-6">
+      <div class="content-width flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-cream-300/40">
+          &copy; {currentYear} Salzträume am See. Alle Rechte vorbehalten.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="/impressum/" class="text-xs text-cream-300/40 hover:text-cream-300/70 transition-colors duration-200">
+            Impressum
+          </a>
+          <a href="/datenschutz/" class="text-xs text-cream-300/40 hover:text-cream-300/70 transition-colors duration-200">
+            Datenschutz
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

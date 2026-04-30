@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ApartmentCard from '../components/ApartmentCard.astro';
+
+const apartments = [
+  {
+    name: 'Schmetterling',
+    slug: 'schmetterling',
+    image: 'https://www.salztraeume-am-see.de/img/tangram_start_schmetterling.jpg',
+    size: '43 m²',
+    guests: '2 Personen',
+    tagline: 'Leichtigkeit zwischen Wald und See',
+  },
+  {
+    name: 'Eichhörnchen',
+    slug: 'eichhoernchen',
+    image: 'https://www.salztraeume-am-see.de/img/tangram_start_eichhoernchen.jpg',
+    size: '53 m²',
+    guests: '2–3 Personen',
+    tagline: 'Gemütlichkeit unter dem Blätterdach',
+  },
+  {
+    name: 'Fuchs',
+    slug: 'fuchs',
+    image: 'https://www.salztraeume-am-see.de/img/tangram_start_fuchs.jpg',
+    size: '100 m²',
+    guests: 'bis 8 Personen',
+    tagline: 'Raum für die ganze Familie',
+  },
+  {
+    name: 'Schwan',
+    slug: 'schwan',
+    image: 'https://www.salztraeume-am-see.de/img/tangram_start_schwan.jpg',
+    size: '70 m²',
+    guests: '2 Personen',
+    tagline: 'Eleganz am Wasser',
+  },
+];
+---
+
+<BaseLayout title="Startseite">
+  <!-- Hero with Video -->
+  <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <!-- Video Background -->
+    <div class="absolute inset-0">
+      <img
+        src="/videos/720.webp"
+        srcset="/videos/480.webp 720w, /videos/720.webp 1280w, /videos/1080.webp 1920w"
+        sizes="100vw"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <video
+        id="hero-video"
+        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-out data-[ready]:opacity-100"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="/videos/see-480.mp4" type="video/mp4" media="(max-width: 767px)" />
+        <source src="/videos/see-720.mp4" type="video/mp4" media="(max-width: 1279px)" />
+        <source src="/videos/see-1080.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-charcoal-900/40 via-charcoal-900/20 to-charcoal-900/60"></div>
+    </div>
+
+    <script>
+      const video = document.getElementById('hero-video') as HTMLVideoElement | null;
+      if (video) {
+        const reveal = () => video.setAttribute('data-ready', '');
+        if (video.readyState >= 3) {
+          reveal();
+        } else {
+          video.addEventListener('canplay', reveal, { once: true });
+        }
+      }
+    </script>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center section-padding">
+      <div class="content-width">
+        <div class="animate-fade-in">
+          <p class="font-body text-sm tracking-[0.35em] uppercase text-salt-200 mb-6">
+            Bad Saarow · Scharmützelsee
+          </p>
+        </div>
+        <h1 class="text-display font-heading font-light text-white mb-6 animate-fade-up">
+          Salz<span class="text-salt-300">träume</span><br class="sm:hidden" /> am See
+        </h1>
+        <p class="text-body-lg text-cream-200/90 max-w-xl mx-auto mb-10 animate-fade-up animate-delay-200">
+          Deutschlands erste Salz-Ferienunterkunft. <br class="hidden sm:block" />
+          Erholen Sie sich zwischen Wald und See.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up animate-delay-400">
+          <a href="/buchen/" class="btn-primary bg-salt-500/90 backdrop-blur-sm">
+            Verfügbarkeit prüfen
+          </a>
+          <a href="#wohnungen" class="btn-ghost text-white/90 hover:text-white">
+            Wohnungen entdecken
+            <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-float">
+      <div class="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+        <div class="w-1 h-2 bg-white/60 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Salt Story Section -->
+  <section class="section-padding py-24 lg:py-32 bg-cream-50">
+    <div class="content-width">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <div class="divider-salt mb-8"></div>
+          <h2 class="section-title text-balance">
+            Ein Ort, an dem Salz<br /> auf Natur trifft
+          </h2>
+          <p class="section-subtitle mb-6">
+            Unsere Räume sind mit Himalayasalz-Elementen gestaltet, die eine mineralsalzhaltige
+            Atmosphäre schaffen — wie in einem Salzstollen oder an der Meeresküste.
+          </p>
+          <p class="text-body text-charcoal-400 mb-8">
+            Nur 250 Meter von der Badestelle am Scharmützelsee entfernt, liegt unser Haus
+            buchstäblich am Waldesrand. Gäste aus über 11 Ländern haben hier bereits
+            ihre Salzträume erlebt.
+          </p>
+          <a href="/bad-saarow/" class="btn-secondary text-sm">
+            Bad Saarow entdecken
+          </a>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="relative">
+            <img
+              src="https://www.salztraeume-am-see.de/img/start/start6.jpg"
+              alt="Garten der Salzträume am See"
+              class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
+              loading="lazy"
+              width="640"
+              height="480"
+            />
+            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-elevated max-w-[200px] hidden lg:block">
+              <p class="font-heading text-3xl font-semibold text-salt-600">250m</p>
+              <p class="text-body-sm text-charcoal-400 mt-1">zur Badestelle</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apartments Grid -->
+  <section id="wohnungen" class="section-padding py-24 lg:py-32 bg-white">
+    <div class="content-width">
+      <div class="text-center mb-16 reveal">
+        <div class="divider-salt mx-auto mb-8"></div>
+        <h2 class="section-title">Unsere Ferienwohnungen</h2>
+        <p class="section-subtitle mx-auto">
+          Vier individuell gestaltete Wohnungen, jede mit eigenem Charakter —
+          alle mit dem besonderen Salzklima.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {apartments.map((apt, i) => (
+          <ApartmentCard {...apt} index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Strip -->
+  <section class="section-padding py-20 bg-gradient-to-br from-salt-50 via-cream-50 to-lake-50">
+    <div class="content-width">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div class="text-center reveal">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-salt-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-salt-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-1">Salzklima</h3>
+          <p class="text-body-sm text-charcoal-400">Himalayasalz in jedem Raum</p>
+        </div>
+        <div class="text-center reveal reveal-delay-1">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-lake-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-lake-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-1">Natur pur</h3>
+          <p class="text-body-sm text-charcoal-400">Direkt am Waldesrand</p>
+        </div>
+        <div class="text-center reveal reveal-delay-2">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-forest-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-forest-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-1">Komfort</h3>
+          <p class="text-body-sm text-charcoal-400">WLAN, Klima, voll ausgestattet</p>
+        </div>
+        <div class="text-center reveal reveal-delay-3">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-cream-200 flex items-center justify-center">
+            <svg class="w-6 h-6 text-charcoal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-charcoal-800 mb-1">Erholung</h3>
+          <p class="text-body-sm text-charcoal-400">45 Min. von Berlin</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://www.salztraeume-am-see.de/img/start/start1.jpg"
+        alt=""
+        class="w-full h-full object-cover"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-charcoal-900/70"></div>
+    </div>
+    <div class="relative z-10 content-width text-center">
+      <div class="reveal">
+        <h2 class="text-h1 font-heading text-white mb-6 text-balance">
+          Bereit für Ihren Salztraum?
+        </h2>
+        <p class="text-body-lg text-cream-200/80 max-w-xl mx-auto mb-10">
+          Prüfen Sie die Verfügbarkeit und buchen Sie Ihren Aufenthalt
+          zwischen Wald und See.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/buchen/" class="btn-primary">
+            Jetzt anfragen
+          </a>
+          <a href="/kontakt/" class="btn-ghost text-white/80 hover:text-white">
+            Kontakt aufnehmen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

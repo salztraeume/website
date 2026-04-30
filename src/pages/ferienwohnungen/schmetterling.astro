@@ -1,0 +1,40 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const images = Array.from({ length: 4 }, (_, i) => ({
+  src: `https://www.salztraeume-am-see.de//img/schmetterling/schmetterling-tea${i + 1}.jpg`,
+  alt: `Ferienwohnung Schmetterling — Ansicht ${i + 1}`,
+}));
+
+const features = [
+  'Doppelbett 1,80m', 'Schlafcouch', 'Ceranfeld (4 Platten)', 'Backofen',
+  'Kühlschrank', 'Spülmaschine', 'Kaffeemaschine', 'Wasserkocher',
+  'Ebenerdige Dusche', 'Klimaanlage', 'WLAN', 'Smart TV',
+  'Bettwäsche inkl.', 'Handtücher inkl.', 'Parkplatz',
+];
+
+const highlights = [
+  'Erdgeschoss mit direktem Gartenzugang',
+  'Schiebetür zwischen Schlaf- und Wohnbereich',
+  'Himalayasalz-Wandelemente für besonderes Raumklima',
+  'Eigene Terrasse mit Blick zum Garten',
+  'Nur 250m zur Badestelle am See',
+];
+---
+
+<ApartmentLayout
+  name="Schmetterling"
+  slug="schmetterling"
+  tagline="Leichtigkeit zwischen Wald und See"
+  description="Die Wohnung Schmetterling bietet auf 43 Quadratmetern alles für einen erholsamen Aufenthalt zu zweit. Im Erdgeschoss gelegen, mit direktem Zugang zum Garten und nur wenige Schritte vom Waldrand entfernt. Die Himalayasalz-Elemente schaffen eine besondere Atmosphäre — wie ein Stück Salzstollen in Ihrer Ferienwohnung."
+  size="43 m²"
+  guests="2"
+  bedrooms="1"
+  bathrooms="1"
+  checkIn="ab 15:00"
+  checkOut="bis 11:00"
+  images={images}
+  features={features}
+  highlights={highlights}
+  heroImage={images[0].src}
+/>

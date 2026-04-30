@@ -1,0 +1,112 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="gallery-container">
+  <!-- Main Image -->
+  <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-4">
+    <img
+      id="gallery-main"
+      src={images[0].src}
+      alt={images[0].alt}
+      class="w-full h-full object-cover transition-opacity duration-500"
+      width="960"
+      height="600"
+    />
+    <button
+      id="gallery-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors duration-200 cursor-pointer shadow-warm"
+      aria-label="Vorheriges Bild"
+    >
+      <svg class="w-5 h-5 text-charcoal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+    <button
+      id="gallery-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors duration-200 cursor-pointer shadow-warm"
+      aria-label="Nächstes Bild"
+    >
+      <svg class="w-5 h-5 text-charcoal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+    <div class="absolute bottom-4 right-4 bg-charcoal-900/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full">
+      <span id="gallery-counter">1</span> / {images.length}
+    </div>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+    {images.map((img, i) => (
+      <button
+        class:list={[
+          'gallery-thumb flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden cursor-pointer transition-all duration-300',
+          i === 0 ? 'ring-2 ring-salt-500 opacity-100' : 'opacity-50 hover:opacity-80'
+        ]}
+        data-index={i}
+        aria-label={`Bild ${i + 1} anzeigen`}
+      >
+        <img
+          src={img.src}
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          width="80"
+          height="64"
+        />
+      </button>
+    ))}
+  </div>
+</div>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const mainImg = document.getElementById('gallery-main');
+    const counter = document.getElementById('gallery-counter');
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    if (!mainImg || !counter) return;
+
+    currentIndex = (index + images.length) % images.length;
+    mainImg.style.opacity = '0';
+
+    setTimeout(() => {
+      mainImg.src = images[currentIndex].src;
+      mainImg.alt = images[currentIndex].alt;
+      mainImg.style.opacity = '1';
+      counter.textContent = String(currentIndex + 1);
+
+      thumbs.forEach((thumb, i) => {
+        if (i === currentIndex) {
+          thumb.classList.add('ring-2', 'ring-salt-500', 'opacity-100');
+          thumb.classList.remove('opacity-50');
+        } else {
+          thumb.classList.remove('ring-2', 'ring-salt-500', 'opacity-100');
+          thumb.classList.add('opacity-50');
+        }
+      });
+    }, 250);
+  }
+
+  document.getElementById('gallery-prev')?.addEventListener('click', () => showImage(currentIndex - 1));
+  document.getElementById('gallery-next')?.addEventListener('click', () => showImage(currentIndex + 1));
+  document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => showImage(Number(thumb.dataset.index)));
+  });
+</script>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

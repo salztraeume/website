@@ -1,0 +1,40 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const images = Array.from({ length: 12 }, (_, i) => ({
+  src: `https://www.salztraeume-am-see.de/img/eichhoernchen/eich${i + 1}.jpg`,
+  alt: `Ferienwohnung Eichhörnchen — Ansicht ${i + 1}`,
+}));
+
+const features = [
+  'Doppelbett 1,40m', 'Schlafcouch 1,40m', 'Ceranfeld', 'Backofen',
+  'Mikrowelle', 'Kühlschrank', 'Spülmaschine', 'Kaffeemaschine',
+  'Eckbadewanne', 'Dusche', 'Zwei Waschbecken', 'Klimaanlage',
+  'WLAN', 'Smart TV', 'Parkplatz',
+];
+
+const highlights = [
+  '1. Etage mit Ausblick in die Baumkronen',
+  'Großzügiges Bad mit Eckbadewanne und separater Dusche',
+  'Zwei Waschbecken für Komfort zu zweit',
+  'Himalayasalz-Elemente für mineralsalzhaltige Raumluft',
+  'Gemütliche Wohnküche mit Schlafcouch für einen dritten Gast',
+];
+---
+
+<ApartmentLayout
+  name="Eichhörnchen"
+  slug="eichhoernchen"
+  tagline="Gemütlichkeit unter dem Blätterdach"
+  description="Auf 53 Quadratmetern in der ersten Etage erwartet Sie die Wohnung Eichhörnchen. Mit Blick in die Baumkronen, einer luxuriösen Eckbadewanne und dem einzigartigen Himalayasalz-Raumklima — hier fühlt man sich wie in einem Baumhaus, nur viel komfortabler."
+  size="53 m²"
+  guests="2–3"
+  bedrooms="1,5"
+  bathrooms="1"
+  checkIn="ab 15:00"
+  checkOut="bis 11:00"
+  images={images}
+  features={features}
+  highlights={highlights}
+  heroImage={images[0].src}
+/>
