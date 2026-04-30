@@ -1,0 +1,99 @@
+---
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-desc"
+  class="hidden fixed inset-x-4 bottom-4 z-[60] mx-auto max-w-xl rounded-2xl bg-white shadow-elevated border border-cream-200 p-6 sm:p-7"
+>
+  <h2 id="cookie-banner-title" class="font-heading text-lg font-semibold text-charcoal-800 mb-2">
+    Datenschutz auf dieser Seite
+  </h2>
+  <p id="cookie-banner-desc" class="text-body-sm text-charcoal-500 leading-relaxed mb-5">
+    Wir verwenden eine selbstgehostete Instanz von <strong>Matomo</strong> auf einem deutschen
+    Server, um die Nutzung dieser Website anonym zu analysieren — keine Daten verlassen die EU,
+    keine Weitergabe an Dritte. Sie können selbst entscheiden, ob Sie zustimmen.
+    Mehr in unserer <a href="/datenschutz/" class="text-salt-600 underline hover:text-salt-700">Datenschutzerklärung</a>.
+  </p>
+  <div class="flex flex-col sm:flex-row gap-3">
+    <button
+      type="button"
+      id="cookie-accept"
+      class="btn-primary text-sm flex-1 sm:flex-none"
+    >
+      Akzeptieren
+    </button>
+    <button
+      type="button"
+      id="cookie-decline"
+      class="btn-secondary text-sm flex-1 sm:flex-none"
+    >
+      Ablehnen
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'cookie-consent-v1';
+    var paq = (window._paq = window._paq || []);
+
+    paq.push(['requireConsent']);
+    paq.push(['requireCookieConsent']);
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+    if (stored === 'granted') {
+      paq.push(['setConsentGiven']);
+      paq.push(['setCookieConsentGiven']);
+    }
+
+    function showBanner() {
+      var el = document.getElementById('cookie-banner');
+      if (el) el.classList.remove('hidden');
+    }
+    function hideBanner() {
+      var el = document.getElementById('cookie-banner');
+      if (el) el.classList.add('hidden');
+    }
+
+    function accept() {
+      try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+      paq.push(['setConsentGiven']);
+      paq.push(['setCookieConsentGiven']);
+      paq.push(['rememberConsentGiven']);
+      paq.push(['rememberCookieConsentGiven']);
+      hideBanner();
+    }
+
+    function decline() {
+      try { localStorage.setItem(KEY, 'denied'); } catch (e) {}
+      paq.push(['forgetConsentGiven']);
+      paq.push(['forgetCookieConsentGiven']);
+      hideBanner();
+    }
+
+    window.openCookieSettings = showBanner;
+
+    function init() {
+      var acceptBtn = document.getElementById('cookie-accept');
+      var declineBtn = document.getElementById('cookie-decline');
+      if (acceptBtn) acceptBtn.addEventListener('click', accept);
+      if (declineBtn) declineBtn.addEventListener('click', decline);
+      var triggers = document.querySelectorAll('[data-cookie-settings]');
+      for (var i = 0; i < triggers.length; i++) {
+        triggers[i].addEventListener('click', showBanner);
+      }
+      if (stored !== 'granted' && stored !== 'denied') showBanner();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

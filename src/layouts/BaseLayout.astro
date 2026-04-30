@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -21,12 +22,19 @@ const fullTitle = title === 'Startseite' ? 'Salzträume am See — Ferienwohnung
   <meta name="description" content={description} />
   <title>{fullTitle}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/raleway-1Ptsg8zYS_SKggPNyCg4Q4FqL_KWxWMT.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cormorant-garamond-co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Matomo -->
   <script is:inline>
     var _paq = window._paq = window._paq || [];
+    _paq.push(['requireConsent']);
+    _paq.push(['requireCookieConsent']);
+    try {
+      if (localStorage.getItem('cookie-consent-v1') === 'granted') {
+        _paq.push(['setConsentGiven']);
+        _paq.push(['setCookieConsentGiven']);
+      }
+    } catch (e) {}
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {
@@ -46,6 +54,7 @@ const fullTitle = title === 'Startseite' ? 'Salzträume am See — Ferienwohnung
     <slot />
   </main>
   <Footer />
+  <CookieBanner />
 
   <script>
     const observerOptions = {
