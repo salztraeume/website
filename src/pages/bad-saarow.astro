@@ -64,9 +64,9 @@ const highlights = [
         </div>
         <div class="relative">
           <img
-            src="https://www.salztraeume-am-see.de/img/start/start1.jpg"
+            src="/img/bad-saarow.webp"
             alt="Scharmützelsee in Bad Saarow"
-            class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
+            class="rounded-2xl w-full aspect-[16/9] object-cover shadow-warm-lg"
             width="640"
             height="480"
           />
@@ -75,27 +75,42 @@ const highlights = [
     </div>
   </section>
 
-  <!-- 360° Video Teaser -->
   <section class="section-padding py-20 bg-charcoal-900 relative overflow-hidden">
     <div class="content-width text-center relative z-10">
-      <h2 class="text-h2 font-heading text-white mb-4">Erleben Sie den See von oben</h2>
-      <p class="text-body-lg text-cream-200/70 max-w-xl mx-auto mb-8">
-        Unsere Drohnenaufnahmen zeigen die atemberaubende Landschaft rund um den Scharmützelsee
-        aus der Vogelperspektive.
-      </p>
+      <h2 class="text-h2 font-heading text-white mb-4">Erleben Sie den Scharmützelsee von oben</h2>
       <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden aspect-video bg-charcoal-800">
+        <img
+          src="/videos/zoomout.webp"
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
         <video
-          class="w-full h-full object-cover"
-          controls
-          preload="metadata"
-          poster="https://www.salztraeume-am-see.de/img/start/start1.jpg"
+          id="zoomout-video"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-out data-[ready]:opacity-100"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
         >
-          <source src="/videos/drone-360.mp4" type="video/mp4" />
-          <p class="text-cream-300 p-8">Ihr Browser unterstützt kein Video.</p>
+          <source src="/videos/zoomout_480.mp4" type="video/mp4" media="(max-width: 767px)" />
+          <source src="/videos/zoomout_720.mp4" type="video/mp4" />
         </video>
       </div>
-      <p class="text-body-sm text-cream-300/50 mt-4">360°-Drohnenaufnahme über dem Scharmützelsee</p>
     </div>
+
+    <script>
+      const video = document.getElementById('zoomout-video') as HTMLVideoElement | null;
+      if (video) {
+        const reveal = () => video.setAttribute('data-ready', '');
+        if (video.readyState >= 3) {
+          reveal();
+        } else {
+          video.addEventListener('canplay', reveal, { once: true });
+        }
+      }
+    </script>
   </section>
 
   <!-- Highlights -->
@@ -152,7 +167,7 @@ const highlights = [
           <img
             src="https://www.salztraeume-am-see.de/img/start/start6.jpg"
             alt="Garten und Natur bei Salzträume am See"
-            class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
+            class="rounded-2xl w-full aspect-[2/1] object-cover shadow-warm-lg"
             loading="lazy"
             width="640"
             height="480"
