@@ -339,6 +339,16 @@ const apartments = [
   };
   const DAY_MS = 24 * 60 * 60 * 1000;
 
+  // ─── Matomo ─────────────────────────────────────────
+  function trackEvent(action: string, name?: string, value?: number) {
+    const w = window as any;
+    if (!w._paq) return;
+    const args: (string | number)[] = ['trackEvent', 'Buchung', action];
+    if (name !== undefined) args.push(name);
+    if (value !== undefined) args.push(value);
+    w._paq.push(args);
+  }
+
   // ─── State ──────────────────────────────────────────
   let selectedApt: { id: string; name: string } | null = null;
   let checkinDate: Date | null = null;
@@ -480,6 +490,7 @@ const apartments = [
       updatePrice();
       checkGuestLimit();
       renderCalendar();
+      trackEvent('Wohnung gewählt', selectedApt.name);
     });
   });
 
@@ -707,6 +718,11 @@ const apartments = [
     renderCalendar();
     updateDateDisplay();
     updatePrice();
+
+    if (checkinDate && checkoutDate) {
+      const nights = Math.round((checkoutDate.getTime() - checkinDate.getTime()) / DAY_MS);
+      trackEvent('Zeitraum gewählt', `${toIsoDate(checkinDate)} → ${toIsoDate(checkoutDate)}`, nights);
+    }
   }
 
   // ─── Date Display ───────────────────────────────────
@@ -846,10 +862,12 @@ const apartments = [
       errBox.innerHTML = errors.map(err => `<p>• ${err}</p>`).join('');
       errBox.classList.remove('hidden');
       errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      trackEvent('Formularfehler', errors.join(' | '));
       return;
     }
 
     errBox.classList.add('hidden');
+    trackEvent('Formular abgeschickt', selectedApt!.name);
 
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
     const originalLabel = submitBtn.textContent;
@@ -881,6 +899,11 @@ const apartments = [
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
+      const totalEl = document.getElementById('p-total');
+      const totalValue = totalEl ? Number((totalEl.textContent || '0').replace(/[^\d]/g, '')) : 0;
+      const nights = Math.round((checkoutDate!.getTime() - checkinDate!.getTime()) / DAY_MS);
+      trackEvent('Anfrage erfolgreich', `${selectedApt!.name} | ${nights} Nächte | ${getTotalGuests()} Gäste`, totalValue);
+
       document.getElementById('form-success')!.classList.remove('hidden');
       document.getElementById('booking-form')!.classList.add('hidden');
       document.getElementById('form-success')!.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -890,6 +913,7 @@ const apartments = [
       errBox.innerHTML = `<p>• Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.</p>`;
       errBox.classList.remove('hidden');
       errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      trackEvent('Anfrage fehlgeschlagen', String(err));
     }
   });
 
