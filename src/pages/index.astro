@@ -140,14 +140,25 @@ const apartments = [
         </div>
         <div class="reveal reveal-delay-2">
           <div class="relative">
-            <img
-              src="/img/sky-view-small.webp"
-              alt="Garten der Salzträume am See"
-              class="rounded-2xl w-full aspect-[4/3] object-cover shadow-warm-lg"
-              loading="lazy"
-              width="640"
-              height="480"
-            />
+            <div class="group relative rounded-2xl overflow-hidden shadow-warm-lg aspect-[4/3]">
+              <img
+                src="/img/sky-view-small.webp"
+                alt="Garten der Salzträume am See"
+                class="w-full h-full object-cover"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <img
+                src="/img/sky-view-small-hover.png"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+            </div>
             <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-elevated max-w-[200px] hidden lg:block">
               <p class="font-heading text-3xl font-semibold text-salt-600">250m</p>
               <p class="text-body-sm text-charcoal-400 mt-1">zur Badestelle</p>
