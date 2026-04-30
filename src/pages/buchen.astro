@@ -126,9 +126,9 @@ const apartments = [
           <!-- 3. Guests -->
           <div class="bg-white rounded-2xl shadow-warm p-8">
             <h2 class="font-heading text-xl font-semibold text-charcoal-800 mb-5">3. Gäste</h2>
-            <div class="grid sm:grid-cols-2 gap-6">
+            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
               <div>
-                <label for="adults" class="block text-sm font-medium text-charcoal-600 mb-2">Erwachsene</label>
+                <label for="adults" class="block text-sm font-medium text-charcoal-600 mb-2">Erwachsene <span class="text-charcoal-400 font-normal">(ab 18 Jahren)</span></label>
                 <div class="flex items-center gap-3">
                   <button type="button" data-counter="adults" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
                   <input type="number" id="adults" name="adults" value="2" min="1" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
@@ -136,11 +136,35 @@ const apartments = [
                 </div>
               </div>
               <div>
-                <label for="children" class="block text-sm font-medium text-charcoal-600 mb-2">Kinder</label>
+                <label for="teens" class="block text-sm font-medium text-charcoal-600 mb-2">Jugendliche <span class="text-charcoal-400 font-normal">(13–17 Jahre)</span></label>
                 <div class="flex items-center gap-3">
-                  <button type="button" data-counter="children" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
-                  <input type="number" id="children" name="children" value="0" min="0" max="6" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
-                  <button type="button" data-counter="children" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                  <button type="button" data-counter="teens" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="teens" name="teens" value="0" min="0" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="teens" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                </div>
+              </div>
+              <div>
+                <label for="child2" class="block text-sm font-medium text-charcoal-600 mb-2">Kinder <span class="text-charcoal-400 font-normal">(10–12 Jahre)</span></label>
+                <div class="flex items-center gap-3">
+                  <button type="button" data-counter="child2" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="child2" name="child2" value="0" min="0" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="child2" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                </div>
+              </div>
+              <div>
+                <label for="child1" class="block text-sm font-medium text-charcoal-600 mb-2">Kinder <span class="text-charcoal-400 font-normal">(3–9 Jahre)</span></label>
+                <div class="flex items-center gap-3">
+                  <button type="button" data-counter="child1" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="child1" name="child1" value="0" min="0" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="child1" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
+                </div>
+              </div>
+              <div>
+                <label for="babies" class="block text-sm font-medium text-charcoal-600 mb-2">Kleinkinder <span class="text-charcoal-400 font-normal">(bis 2 Jahre)</span></label>
+                <div class="flex items-center gap-3">
+                  <button type="button" data-counter="babies" data-dir="-1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">−</button>
+                  <input type="number" id="babies" name="babies" value="0" min="0" max="8" readonly class="w-12 text-center font-heading text-xl font-semibold text-charcoal-800 bg-transparent outline-none" />
+                  <button type="button" data-counter="babies" data-dir="1" class="counter-btn w-10 h-10 rounded-full border border-cream-300 flex items-center justify-center hover:border-salt-400 hover:bg-salt-50 transition-all duration-200 cursor-pointer text-charcoal-600 text-lg font-medium">+</button>
                 </div>
               </div>
             </div>
@@ -475,10 +499,27 @@ const apartments = [
     });
   });
 
+  const GUEST_FIELDS = ['adults', 'teens', 'child2', 'child1', 'babies'] as const;
+  type GuestField = typeof GUEST_FIELDS[number];
+
+  const FIELD_TO_AGE: Record<GuestField, string> = {
+    adults: 'adult',
+    teens: 'teen',
+    child2: 'child2',
+    child1: 'child1',
+    babies: 'baby',
+  };
+
+  function getGuestCount(field: GuestField): number {
+    return Number((document.getElementById(field) as HTMLInputElement).value);
+  }
+
+  function getTotalGuests(): number {
+    return GUEST_FIELDS.reduce((sum, f) => sum + getGuestCount(f), 0);
+  }
+
   function checkGuestLimit() {
-    const adults = Number((document.getElementById('adults') as HTMLInputElement).value);
-    const children = Number((document.getElementById('children') as HTMLInputElement).value);
-    const total = adults + children;
+    const total = getTotalGuests();
     const warning = document.getElementById('guest-warning')!;
     const maxGuests = getMaxGuests();
 
@@ -730,13 +771,11 @@ const apartments = [
     }
 
     const accCode = getAccCode();
-    const adults = Number((document.getElementById('adults') as HTMLInputElement).value);
-    const children = Number((document.getElementById('children') as HTMLInputElement).value);
 
-    const guests = [
-      { ageGroup: 'adult', count: adults },
-      { ageGroup: 'child1', count: children },
-    ];
+    const guests = GUEST_FIELDS.map(f => ({
+      ageGroup: FIELD_TO_AGE[f],
+      count: getGuestCount(f),
+    }));
 
     const result = calculateStay(accCode, checkinDate, checkoutDate, guests, rulesData);
 
@@ -768,7 +807,11 @@ const apartments = [
   }
 
   // ─── Form Submission ────────────────────────────────
-  document.getElementById('booking-form')!.addEventListener('submit', (e) => {
+  function toIsoDate(d: Date): string {
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }
+
+  document.getElementById('booking-form')!.addEventListener('submit', async (e) => {
     e.preventDefault();
     const errBox = document.getElementById('form-errors')!;
     const errors: string[] = [];
@@ -781,6 +824,10 @@ const apartments = [
       if (rangeHasConflict(checkinDate, checkoutDate, bookings)) {
         errors.push('Der gewählte Zeitraum überschneidet sich mit einer bestehenden Buchung.');
       }
+    }
+
+    if (selectedApt && getTotalGuests() > getMaxGuests()) {
+      errors.push(`Die Wohnung ${selectedApt.name} ist für maximal ${getMaxGuests()} Personen ausgelegt.`);
     }
 
     const firstname = (document.getElementById('firstname') as HTMLInputElement).value.trim();
@@ -804,39 +851,46 @@ const apartments = [
 
     errBox.classList.add('hidden');
 
-    const adults = (document.getElementById('adults') as HTMLInputElement).value;
-    const children = (document.getElementById('children') as HTMLInputElement).value;
-    const nights = Math.round((checkoutDate!.getTime() - checkinDate!.getTime()) / DAY_MS);
-    const totalEl = document.getElementById('p-total');
-    const total = totalEl ? totalEl.textContent : '—';
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet…';
 
-    const subject = encodeURIComponent(`Buchungsanfrage ${selectedApt!.name} – ${firstname} ${lastname}`);
-    const body = encodeURIComponent(
-      `Buchungsanfrage — Salzträume am See\n` +
-      `${'═'.repeat(40)}\n\n` +
-      `Wohnung: ${selectedApt!.name}\n` +
-      `Anreise: ${formatDateDE(checkinDate!)}\n` +
-      `Abreise: ${formatDateDE(checkoutDate!)}\n` +
-      `Nächte: ${nights}\n\n` +
-      `Erwachsene: ${adults}\n` +
-      `Kinder: ${children}\n\n` +
-      `Geschätzter Gesamtpreis: ${total} €\n\n` +
-      `${'─'.repeat(40)}\n` +
-      `Name: ${firstname} ${lastname}\n` +
-      `E-Mail: ${email}\n` +
-      `Telefon: ${phone || '—'}\n\n` +
-      `Nachricht:\n${message || '(keine)'}\n\n` +
-      `${'─'.repeat(40)}\n` +
-      `Gesendet über salztraeume-am-see.de`
-    );
+    const payload = new URLSearchParams({
+      flat_name: selectedApt!.name,
+      from: toIsoDate(checkinDate!),
+      to: toIsoDate(checkoutDate!),
+      guests: String(getTotalGuests()),
+      guests_adult: String(getGuestCount('adults')),
+      guests_teens: String(getGuestCount('teens')),
+      guests_children1: String(getGuestCount('child2')),
+      guests_children2: String(getGuestCount('child1')),
+      guests_children_free: String(getGuestCount('babies')),
+      firstname,
+      name: lastname,
+      email,
+      phone,
+      note: message,
+    });
 
-    window.location.href = `mailto:hej@salztraeume-am-see.de?subject=${subject}&body=${body}`;
+    try {
+      const res = await fetch('https://sas-public.awzone.de/ext-api/website-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString(),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    setTimeout(() => {
       document.getElementById('form-success')!.classList.remove('hidden');
       document.getElementById('booking-form')!.classList.add('hidden');
       document.getElementById('form-success')!.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 500);
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      errBox.innerHTML = `<p>• Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.</p>`;
+      errBox.classList.remove('hidden');
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   });
 
   // ─── Init ───────────────────────────────────────────
