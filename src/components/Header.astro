@@ -82,18 +82,18 @@ const navItems = [
         aria-label="Menü öffnen"
         aria-expanded="false"
       >
-        <div class="hamburger-lines">
+        <div class="hamburger-lines flex flex-col items-center">
           <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 origin-center"></span>
           <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 origin-center mt-1.5"></span>
-          <span class="hamburger-line block w-4 h-0.5 transition-all duration-300 origin-center mt-1.5"></span>
+          <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 origin-center mt-1.5"></span>
         </div>
       </button>
     </nav>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 z-40 bg-cream-50/98 backdrop-blur-xl opacity-0 invisible transition-all duration-500 lg:hidden">
-    <div class="flex flex-col items-center justify-center min-h-screen px-8 py-24">
+  <div id="mobile-menu" class="fixed inset-0 z-40 backdrop-blur-xl opacity-0 invisible transition-all duration-500 lg:hidden">
+    <div class="flex flex-col items-center justify-center min-h-screen px-8 py-24 bg-cream-50">
       <nav class="flex flex-col items-center gap-2 w-full max-w-sm">
         {navItems.map((item, i) => (
           <div class="w-full text-center">
@@ -221,15 +221,14 @@ const navItems = [
   }
 
   [aria-expanded="true"] .hamburger-line:nth-child(1) {
-    transform: translateY(4px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
     background-color: #2C2825 !important;
   }
   [aria-expanded="true"] .hamburger-line:nth-child(2) {
     opacity: 0;
   }
   [aria-expanded="true"] .hamburger-line:nth-child(3) {
-    transform: translateY(-4px) rotate(-45deg);
-    width: 1.5rem;
+    transform: translateY(-8px) rotate(-45deg);
     background-color: #2C2825 !important;
   }
 
@@ -244,4 +243,5 @@ const navItems = [
   :global(.page-light) #site-header .hamburger-line {
     background-color: #2C2825;
   }
+
 </style>
