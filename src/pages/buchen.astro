@@ -36,10 +36,10 @@ const apartments = [
                   data-name={apt.name}
                   data-size={apt.size}
                 >
-                  <div class="aspect-square w-12 sm:w-14 rounded-lg overflow-hidden shadow-warm flex-shrink-0">
-                    <img src={`/img/${apt.id}.webp`} alt={`Ferienwohnung ${apt.name}`} />
-                  </div>
                   <div class="min-w-0 flex flex-col">
+                    <div class="aspect-square w-12 sm:w-14 rounded-lg overflow-hidden shadow-warm flex-shrink-0">
+                      <img src={`/img/${apt.id}.webp`} alt={`Ferienwohnung ${apt.name}`} />
+                    </div>
                     <span class="font-heading text-lg font-medium text-charcoal-700">{apt.name}</span>
                     <span class="text-caption text-charcoal-400 mt-1" data-apt-info={apt.id}>{apt.size}</span>
                   </div>
