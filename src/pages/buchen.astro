@@ -218,7 +218,6 @@ const apartments = [
             <button type="submit" id="submit-btn" class="btn-primary w-full sm:w-auto mt-8">
               Unverbindlich anfragen
             </button>
-            <input type="hidden" name="tvDistinction" value="false">
           </form>
 
           <!-- Success Message (hidden by default) -->
@@ -228,7 +227,7 @@ const apartments = [
             </div>
             <h2 class="font-heading text-2xl font-semibold text-charcoal-900 mb-3">Anfrage gesendet!</h2>
             <p class="text-body text-charcoal-500 mb-2">
-              Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb eines Werktages bei Ihnen.
+              Vielen Dank für Ihre Anfrage. Wir melden uns so schnell wie möglich bei Ihnen.
             </p>
             <p class="text-body-sm text-charcoal-400 mb-8">
               Eine Kopie wurde an Ihre E-Mail-Adresse gesendet.
@@ -887,6 +886,7 @@ const apartments = [
       guests_children_free: String(getGuestCount('babies')),
       firstname,
       name: lastname,
+      tvDistinction: false,
       email,
       phone,
       note: message,
