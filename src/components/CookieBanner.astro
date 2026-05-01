@@ -40,16 +40,8 @@
     var KEY = 'cookie-consent-v1';
     var paq = (window._paq = window._paq || []);
 
-    paq.push(['requireConsent']);
-    paq.push(['requireCookieConsent']);
-
     var stored = null;
     try { stored = localStorage.getItem(KEY); } catch (e) {}
-
-    if (stored === 'granted') {
-      paq.push(['setConsentGiven']);
-      paq.push(['setCookieConsentGiven']);
-    }
 
     function showBanner() {
       var el = document.getElementById('cookie-banner');
