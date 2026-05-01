@@ -31,13 +31,18 @@ const apartments = [
               {apartments.map((apt) => (
                 <button
                   type="button"
-                  class="apt-select border-2 border-cream-200 rounded-xl p-4 text-left transition-all duration-200 hover:border-salt-300 cursor-pointer"
+                  class="apt-select border-2 border-cream-200 rounded-xl p-4 text-left transition-all duration-200 hover:border-salt-300 cursor-pointer flex items-center gap-3"
                   data-id={apt.id}
                   data-name={apt.name}
                   data-size={apt.size}
                 >
-                  <span class="block font-heading text-lg font-medium text-charcoal-700">{apt.name}</span>
-                  <span class="block text-caption text-charcoal-400 mt-1" data-apt-info={apt.id}>{apt.size}</span>
+                  <div class="aspect-square w-12 sm:w-14 rounded-lg overflow-hidden shadow-warm flex-shrink-0">
+                    <img src={`/img/${apt.id}.webp`} alt={`Ferienwohnung ${apt.name}`} />
+                  </div>
+                  <div class="min-w-0 flex flex-col">
+                    <span class="font-heading text-lg font-medium text-charcoal-700">{apt.name}</span>
+                    <span class="text-caption text-charcoal-400 mt-1" data-apt-info={apt.id}>{apt.size}</span>
+                  </div>
                 </button>
               ))}
             </div>
